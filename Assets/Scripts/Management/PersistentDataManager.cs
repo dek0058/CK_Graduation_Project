@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-namespace Management {
+namespace Game.Management {
     using JToolkit.Utility;
 
     public class PersistentDataManager : Singleton<PersistentDataManager> {

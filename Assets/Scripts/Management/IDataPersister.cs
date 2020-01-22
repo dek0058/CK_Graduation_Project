@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Management {
+namespace Game.Management {
     /// <summary>
     /// Classes that implement this interface should have an serialized instance of DataSettings to register through.
     /// </summary>

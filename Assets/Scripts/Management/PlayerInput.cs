@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Management {
+namespace Game.Management {
     using JToolkit.BasisComponent;
 
     public class PlayerInput : Input, IDataPersister {
