@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
 namespace Game.Unit {
+    using JToolkit.Math;
     using Game.Unit.Type;
 
     public abstract class Unit : MonoBehaviour {
 
+        public UnitData unit_data = null;
         public UnitModel unit_model = new UnitModel();
         public UnitStatus unit_status = new UnitStatus();
-
-        public string nickname = "";
 
 
         [HideInInspector]
@@ -20,18 +20,24 @@ namespace Game.Unit {
 
 
         /// <summary>
-        /// Unit을 회전시킵니다.
+        /// Unit을 목표 각도로 회전시킵니다.
         /// </summary>
-        /// <param name="angle">회전 값</param>
-        public abstract void rotate ( float angle );
+        public virtual void rotate ( float target ) {
+            unit_status.look_at = target;
+        }
 
         /// <summary>
-        /// Unit을 축을 기준으로 회전시킵니다.
+        /// Unit을 즉시 회전 시킵니다.
         /// </summary>
-        /// <param name="axis">축(X,Y,Z)</param>
-        /// <param name="angle">회전 값</param>
-        public void rotate ( Vector3 axis, float angle ) {
-            unit_model.transform.Rotate ( axis, angle * unit_status.rotation_speed );
+        public void rotate ( Vector3 target ) {
+            unit_model.transform.eulerAngles = target;
+        }
+
+        /// <summary>
+        /// Unit을 즉시 목표 값으로 회전 시킵니다.
+        /// </summary>
+        public void rotate ( float x, float y, float z ) {
+            unit_model.transform.Rotate ( x, y, z );
         }
 
 
@@ -48,7 +54,9 @@ namespace Game.Unit {
         /// Unit이 이동합니다.
         /// </summary>
         /// <param name="direction">이동 방향</param>
-        public abstract void move ( Vector3 direction );
+        public virtual void move ( Vector2 direction ) {
+            unit_status.next_direction = direction;
+        }
 
 
         /// <summary>
@@ -67,6 +75,15 @@ namespace Game.Unit {
             unit_model.animator.Play ( hash, layer );
         }
 
+
+        public virtual void load_data ( Object data ) {
+            // TODO : 불러올 유닛 능력치 데이터들
+        }
+
+
+        public virtual void save_data ( Object data ) {
+            // TODO : 저장할 유닛의 능력치 데이터들
+        }
 
 
         /// <summary>
@@ -87,47 +104,142 @@ namespace Game.Unit {
             if( movement_system  == null ) {
                 movement_system = GetComponent<MovementSystem> ( );
             }
+
+            // TODO : 추가 검증
+        }
+
+
+        /// <summary>
+        /// 유닛 회전을 갱신합니다.
+        /// </summary>
+        protected virtual void active_rotate ( ) {
+            float y = unit_model.transform.eulerAngles.y;
+            float gap = Mathf.DeltaAngle ( y, unit_status.look_at );
+            float rspeed = 0f;
+
+            if ( gap > 1f ) {
+                rspeed = unit_status.rspeed * Time.fixedDeltaTime;
+            } else if ( gap < -1f ) {
+                rspeed = -unit_status.rspeed * Time.fixedDeltaTime;
+            }
+
+            // 보정
+            while ( Mathf.Abs ( gap ) < Mathf.Abs ( rspeed ) ) {
+                rspeed *= 0.5f;
+            }
+
+            unit_model.transform.Rotate ( 0f, rspeed, 0f );
+            unit_status.angle = unit_model.transform.eulerAngles.y;
+        }
+
+
+        /// <summary>
+        /// 유닛 이동을 갱신합니다.
+        /// </summary>
+        protected virtual void active_move ( ) {
+            if ( unit_status.direction == Vector2.zero && unit_status.next_direction == Vector2.zero ) {
+                return;
+            }
+            unit_status.direction = Vector2.MoveTowards ( unit_status.direction, unit_status.next_direction, Time.fixedDeltaTime);
+            movement_system.move ( unit_status.direction * unit_status.mspeed );
+        }
+
+
+        protected void active ( ) { // FixedUpdate
+            active_rotate ( );
+            active_move ( );
+        }
+
+
+        public Vector3 get_position ( ) {
+            return transform.position;
+        }
+
+
+        public Vector3 get_rotation ( ) {
+            return transform.eulerAngles;
         }
     }
 
 
+    /// <summary>
+    /// Unit이 가진 능력치를 나타냅니다.
+    /// </summary>
     [System.Serializable]
     public class UnitStatus {
-        public float current_hp {           // 현재 체력
-            get; set;
-        }            
-        public float max_hp {               // 최대 체력
-            get; set;
+        public float current_hp;            // 현재 체력       
+        public float max_hp;                // 최대 체력
+
+
+        public float mspeed;                // 이동 속도
+        public float aspeed;                // 공격 속도
+        public float rspeed;                // 회전 속도
+
+
+        public float damage;                // 공격력
+        public float armor;                 // 방어력
+
+
+
+        // 현재 상태 값
+
+        public float angle;                 // 유닛의 각도
+        public float look_at;               // 바라볼 각도
+
+        public Vector2 direction;           // 바라보고 있는 방향
+        public Vector2 next_direction;      // 바라봐야 할 방향
+
+
+
+        // 추가 스텟
+
+        public float add_hp {               // 추가증가 체력
+            get; private set;
+        }
+        public float rate_hp {              // 비율증가 체력
+            get; private set;
         }
 
 
-        public float movement_speed {       // 이동 속도
-            get; set;
+        public float add_mspeed {           // 추가증가 이동속도
+            get; private set;
         }
-        public float attack_speed {         // 공격 속도
-            get; set;
-        }
-        public float rotation_speed {       // 회전 속도
-            get; set;
+        public float rate_mspeed {          // 비율증가 이동속도
+            get; private set;
         }
 
 
-        public float damage {               // 공격력
-            get; set;
+        public float add_aspeed {           // 추가증가 공격속도
+            get; private set;
         }
-        public float armor {                // 방어력
-            get; set;
+        public float rate_aspeed {          // 비율증가 공격속도
+            get; private set;
+        }
+
+        
+        public float add_damage {           // 추가증가 공격력
+            get; private set;
+        }
+        public float rate_damage {          // 비율 증가 공격력
+            get; private set;
         }
 
 
-        public float angle {                // 각도
-            get; set;
+        public float add_armor {            // 추가증가 방어력
+            get; private set;
         }
+        public float rate_armor {           // 비율증가 방어력
+            get; private set;
+        }
+
 
         // TODO : 추가할 스텟들
     }
 
 
+    /// <summary>
+    /// Unit에 포함된 모델 객체의 속성들을 나타냅니다.
+    /// </summary>
     [System.Serializable]
     public class UnitModel {
         public Transform parent;

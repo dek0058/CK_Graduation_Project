@@ -2,6 +2,7 @@
 
 namespace Game.Unit.Type {
     using JToolkit.Utility;
+    using JToolkit.Math;
     using Game.Unit;
 
     public class UUnityChan : Unit {
@@ -10,26 +11,25 @@ namespace Game.Unit.Type {
         /// UnityChan이 가진 Animator Parameter값 표시용 Enum
         /// </summary>
         public enum Animator_Parameter {
-            
+            Dir_X,
+            Dir_Y,
+            Idle_Type,
+            Active,
+            Run,
+            Walk,
         }
 
         private EnumDictionary<Animator_Parameter, int> animator_hash = new EnumDictionary<Animator_Parameter, int> {
-
+            { Animator_Parameter.Dir_X, Animator.StringToHash("Dir_X") },
+            { Animator_Parameter.Dir_Y, Animator.StringToHash("Dir_Y") },
+            { Animator_Parameter.Idle_Type, Animator.StringToHash("Idle_Type") },
+            { Animator_Parameter.Active, Animator.StringToHash("Active") },
+            { Animator_Parameter.Run, Animator.StringToHash("Run") },
+            { Animator_Parameter.Walk, Animator.StringToHash("Walk") },
         };
 
 
         private UnityChanType my_type;
-
-
-        public override void rotate ( float angle ) {
-            unit_model.transform.Rotate ( 0f, angle * unit_status.rotation_speed, 0f );
-        }
-
-
-        public override void move ( Vector3 direction ) {
-            movement_system.move ( direction * unit_status.movement_speed );
-        }
-
 
 
         public override void confirm ( ) {
@@ -38,12 +38,27 @@ namespace Game.Unit.Type {
             if(unit_type == null) {
                 unit_type = new UnityChanType ( );
             }
-
-            nickname = "Unity-Chan";
         }
 
 
-        
+        protected override void active_move ( ) {
+            if(unit_status.direction == Vector2.zero && unit_status.next_direction == Vector2.zero ) {
+                return;
+            }
+            unit_status.direction = Vector2.MoveTowards ( unit_status.direction, unit_status.next_direction, Time.fixedDeltaTime );
+            //movement_system.move ( unit_status.direction * unit_status.mspeed );
+
+            Vector2 temp = Polar.location ( 1f, unit_status.angle );
+            Vector2 location = new Vector2 ( temp.y, temp.x );
+            Vector2 gap = unit_status.direction - location;
+
+            Debug.Log ( gap );
+            //unit_status.direction 와 location을 비교해야함
+
+            unit_model.animator.SetFloat ( animator_hash[Animator_Parameter.Dir_X], 0f );
+            unit_model.animator.SetFloat ( animator_hash[Animator_Parameter.Dir_Y], 0f );
+        }
+
 
 
         ////////////////////////////////////////////////////////////////////////////
@@ -53,6 +68,16 @@ namespace Game.Unit.Type {
 
         private void Awake ( ) {
             confirm ( );
+
+            
+        }
+
+
+
+        private void FixedUpdate ( ) {
+
+            active ( );
+
         }
     }
 
