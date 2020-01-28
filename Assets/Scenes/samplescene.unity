@@ -199,8 +199,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 3
+  orthographic: 1
+  orthographic size: 3.61
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -265,7 +265,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -4393,8 +4393,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 3
+  orthographic: 1
+  orthographic size: 3.61
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4744,15 +4744,16 @@ MonoBehaviour:
   unit_status:
     current_hp: 0
     max_hp: 0
-    mspeed: 1
+    mspeed: 2
     aspeed: 0
     rspeed: 500
     damage: 0
     armor: 0
     angle: 0
     look_at: 0
+    input: {x: 0, y: 0}
     direction: {x: 0, y: 0}
-    next_direction: {x: 0, y: 0}
+    axis: {x: 0, y: 0}
   movement_system: {fileID: 0}
 --- !u!114 &2119992781
 MonoBehaviour:

@@ -55,7 +55,7 @@ namespace Game.Unit {
         /// </summary>
         /// <param name="direction">이동 방향</param>
         public virtual void move ( Vector2 direction ) {
-            unit_status.next_direction = direction;
+            unit_status.input = direction;
         }
 
 
@@ -134,20 +134,25 @@ namespace Game.Unit {
 
 
         /// <summary>
+        /// 유닛을 갱신합니다.
+        /// </summary>
+        protected virtual void active_update ( ) {
+        }
+
+
+        /// <summary>
         /// 유닛 이동을 갱신합니다.
         /// </summary>
         protected virtual void active_move ( ) {
-            if ( unit_status.direction == Vector2.zero && unit_status.next_direction == Vector2.zero ) {
-                return;
-            }
-            unit_status.direction = Vector2.MoveTowards ( unit_status.direction, unit_status.next_direction, Time.fixedDeltaTime);
-            movement_system.move ( unit_status.direction * unit_status.mspeed );
+            unit_status.input = Vector2.MoveTowards ( unit_status.input, unit_status.axis, Time.fixedDeltaTime);
+            movement_system.move ( unit_status.input * unit_status.mspeed );
         }
 
 
         protected void active ( ) { // FixedUpdate
             active_rotate ( );
             active_move ( );
+            active_update ( );
         }
 
 
@@ -158,6 +163,11 @@ namespace Game.Unit {
 
         public Vector3 get_rotation ( ) {
             return transform.eulerAngles;
+        }
+
+
+        public Animator get_animator ( ) {
+            return unit_model.animator;
         }
     }
 
@@ -186,8 +196,9 @@ namespace Game.Unit {
         public float angle;                 // 유닛의 각도
         public float look_at;               // 바라볼 각도
 
-        public Vector2 direction;           // 바라보고 있는 방향
-        public Vector2 next_direction;      // 바라봐야 할 방향
+        public Vector2 input;           // 바라봐야 할 방향
+        public Vector2 direction;   // 현재 방향
+        public Vector2 axis;                // 바라보고 있는 축
 
 
 

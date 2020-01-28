@@ -51,6 +51,11 @@ namespace Game.Unit {
         /// </summary>
         /// <param name="velocity">속도</param>
         public void move ( Vector3 velocity ) {
+            velocity.x = float.IsNaN(velocity.x) ? 0f : velocity.x;
+            velocity.y = float.IsNaN ( velocity.y ) ? 0f : velocity.y;
+            velocity.z = float.IsNaN ( velocity.z ) ? 0f : velocity.z;
+
+
             next_movement += velocity;
         }
 
@@ -104,7 +109,7 @@ namespace Game.Unit {
         private void FixedUpdate ( ) {
             previous_position = rigidbody.position;
             current_position = previous_position + next_movement;
-            velocity = (current_position - previous_position) / Time.deltaTime;
+            velocity = (current_position - previous_position) / Time.fixedDeltaTime;
 
             rigidbody.MovePosition ( current_position );
             next_movement = Vector3.zero;
