@@ -16,10 +16,13 @@ namespace Game.Management {
         public InputAxis horizontal = new InputAxis ( KeyCode.D, KeyCode.A, Xbox_Controller_Axes.Left_Stick_Horizontal );
         public InputAxis vertical = new InputAxis ( KeyCode.W, KeyCode.S, Xbox_Controller_Axes.Left_Stick_Vertical );
 
+        public InputButton attack = new InputButton ( KeyCode.Space, _Xbox_Controller_Buttons.Left_Bumper );
 
         protected override void get_inpts ( bool _fixed_update_happened ) {
             horizontal.get ( input_type );
             vertical.get ( input_type );
+
+            attack.get ( _fixed_update_happened, input_type );
         }
 
 
@@ -29,6 +32,7 @@ namespace Game.Management {
             gain_control ( horizontal );
             gain_control ( vertical );
 
+            gain_control ( attack );
         }
 
 
@@ -37,6 +41,8 @@ namespace Game.Management {
 
             release_control ( horizontal, _reset_values );
             release_control ( vertical, _reset_values );
+
+            release_control ( attack, _reset_values );
 
         }
 

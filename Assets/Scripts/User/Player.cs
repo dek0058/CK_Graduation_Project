@@ -28,6 +28,10 @@ namespace Game.User {
                 unit.rotate ( angle );
             }
 
+            if(Singleton<PlayerInput>.instance.attack.down) {
+                unit.unit_order.set_order ( Order_Id.Attack, true );
+            }
+
             // 마우스 회전
             //Camera main_camera = Camera.main;
             //Vector2 mouse_pos = Input.mousePosition;

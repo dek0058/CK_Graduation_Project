@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace Game.Unit {
-    using JToolkit.Math;
+    using JToolkit.Utility;
     using Game.Unit.Type;
 
     public abstract class Unit : MonoBehaviour {
@@ -17,6 +17,41 @@ namespace Game.Unit {
         [HideInInspector]
         public UnitType unit_type = null;
 
+        [HideInInspector]
+        public UnitOrder unit_order = null;
+
+
+        public enum Animator_Tag {
+            Default = 0,
+            Idle,
+            Movement,
+            Attack,
+            Dead,
+        }
+
+        public EnumDictionary<Animator_Tag, string> state_tag = new EnumDictionary<Animator_Tag, string> {
+            {Animator_Tag.Default, "" },
+            {Animator_Tag.Idle, "Idle" },
+            {Animator_Tag.Movement, "Movement" },
+            {Animator_Tag.Attack, "Attack" },
+            {Animator_Tag.Attack, "Dead" },
+        };
+
+
+        /// <summary>
+        /// Action Animation 시작점
+        /// </summary>
+        public virtual void action_begin ( ) {
+            unit_status.look_at = get_rotation ( ).y;
+        }
+
+        /// <summary>
+        /// Action Animation 종료점
+        /// </summary>
+        public virtual void action_end ( ) {
+            unit_status.look_at = get_rotation ( ).y;
+            unit_status.input = Vector2.zero;
+        }
 
 
         /// <summary>
@@ -105,6 +140,16 @@ namespace Game.Unit {
                 movement_system = GetComponent<MovementSystem> ( );
             }
 
+            if( unit_type  == null) {
+                unit_type = gameObject.GetComponentInChildren<UnitType> ( );
+                unit_type.schedules.Add ( UnitType.Begin, action_begin );
+                unit_type.schedules.Add ( UnitType.End, action_end );
+            }
+
+            if( unit_order == null) {
+                unit_order = new UnitOrder ( );
+            }
+
             // TODO : 추가 검증
         }
 
@@ -144,25 +189,31 @@ namespace Game.Unit {
         /// 유닛 이동을 갱신합니다.
         /// </summary>
         protected virtual void active_move ( ) {
-            unit_status.input = Vector2.MoveTowards ( unit_status.input, unit_status.axis, Time.fixedDeltaTime);
-            movement_system.move ( unit_status.input * unit_status.mspeed );
+            unit_status.direction = Vector2.MoveTowards ( unit_status.direction, unit_status.input, Time.fixedDeltaTime );
+            movement_system.move ( (unit_status.direction / unit_status.direction.magnitude) * unit_status.mspeed * Time.fixedDeltaTime );
         }
 
 
         protected void active ( ) { // FixedUpdate
-            active_rotate ( );
-            active_move ( );
             active_update ( );
+
+            if ( !unit_order.get_active ( UnitOrder.Active.Rotate ) ) {
+                active_rotate ( );
+            }
+
+            if ( !unit_order.get_active ( UnitOrder.Active.Move ) ) {
+                active_move ( );
+            }
         }
 
-
+        
         public Vector3 get_position ( ) {
-            return transform.position;
+            return unit_model.transform.position;
         }
 
 
         public Vector3 get_rotation ( ) {
-            return transform.eulerAngles;
+            return unit_model.transform.eulerAngles;
         }
 
 
@@ -196,8 +247,8 @@ namespace Game.Unit {
         public float angle;                 // 유닛의 각도
         public float look_at;               // 바라볼 각도
 
-        public Vector2 input;           // 바라봐야 할 방향
-        public Vector2 direction;   // 현재 방향
+        public Vector2 input;               // 바라봐야 할 방향
+        public Vector2 direction;           // 현재 방향
         public Vector2 axis;                // 바라보고 있는 축
 
 
