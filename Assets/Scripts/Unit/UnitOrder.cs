@@ -52,6 +52,8 @@ namespace Game.Unit {
 
     public enum Order_Id {
         None = 0,
+        Stop,
+        Move,
         Attack,
 
     }

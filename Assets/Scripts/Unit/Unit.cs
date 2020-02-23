@@ -3,8 +3,12 @@
 namespace Game.Unit {
     using JToolkit.Utility;
     using Game.Unit.Type;
+    using Game.User;
 
     public abstract class Unit : MonoBehaviour {
+
+        public Player player;
+        public Unit owner = null;
 
         public UnitData unit_data = null;
         public UnitModel unit_model = new UnitModel();
@@ -21,7 +25,7 @@ namespace Game.Unit {
         public UnitOrder unit_order = null;
 
 
-        public enum Animator_Tag {
+        public enum AnimatorTag {
             Default = 0,
             Idle,
             Movement,
@@ -29,12 +33,12 @@ namespace Game.Unit {
             Dead,
         }
 
-        public EnumDictionary<Animator_Tag, string> state_tag = new EnumDictionary<Animator_Tag, string> {
-            {Animator_Tag.Default, "" },
-            {Animator_Tag.Idle, "Idle" },
-            {Animator_Tag.Movement, "Movement" },
-            {Animator_Tag.Attack, "Attack" },
-            {Animator_Tag.Attack, "Dead" },
+        public EnumDictionary<AnimatorTag, string> state_tag = new EnumDictionary<AnimatorTag, string> {
+            {AnimatorTag.Default, "" },
+            {AnimatorTag.Idle, "Idle" },
+            {AnimatorTag.Movement, "Movement" },
+            {AnimatorTag.Attack, "Attack" },
+            {AnimatorTag.Attack, "Dead" },
         };
 
 
@@ -176,7 +180,7 @@ namespace Game.Unit {
             unit_model.transform.Rotate ( 0f, rspeed, 0f );
             unit_status.angle = unit_model.transform.eulerAngles.y;
         }
-
+        
 
         /// <summary>
         /// 유닛을 갱신합니다.
@@ -189,8 +193,8 @@ namespace Game.Unit {
         /// 유닛 이동을 갱신합니다.
         /// </summary>
         protected virtual void active_move ( ) {
-            unit_status.direction = Vector2.MoveTowards ( unit_status.direction, unit_status.input, Time.fixedDeltaTime );
-            movement_system.move ( (unit_status.direction / unit_status.direction.magnitude) * unit_status.mspeed * Time.fixedDeltaTime );
+            unit_status.direction = unit_status.input;
+            movement_system.move ( (unit_status.direction / unit_status.direction.magnitude) * unit_status.mspeed );
         }
 
 
@@ -204,9 +208,25 @@ namespace Game.Unit {
             if ( !unit_order.get_active ( UnitOrder.Active.Move ) ) {
                 active_move ( );
             }
+
+            if(unit_order.get_order(Order_Id.Stop)) {
+                unit_status.look_at = unit_model.transform.eulerAngles.y;
+                unit_order.set_order ( Order_Id.Stop, false );
+            }
         }
 
+
+        protected virtual void order ( ) { // Update
         
+        }
+
+
+
+        public void set_order ( Order_Id id, bool value ) {
+            unit_order.set_order ( id, value );
+        }
+
+
         public Vector3 get_position ( ) {
             return unit_model.transform.position;
         }
@@ -219,6 +239,23 @@ namespace Game.Unit {
 
         public Animator get_animator ( ) {
             return unit_model.animator;
+        }
+
+
+        /// <summary>
+        /// 현재 Animator State Machine을 가져옵니다.
+        /// </summary>
+        /// <returns>Current Animator State Machine</returns>
+        public AnimatorStateInfo get_animator_state ( int layer ) {
+            return get_animator ( ).GetCurrentAnimatorStateInfo ( layer );
+        }
+
+
+        /// <summary>
+        /// 현재 Animator State Machine의 해시값과 일치하는지 검증합니다.
+        /// </summary>
+        public bool equals_animator_hash ( int layer, int hash ) {
+            return get_animator_state ( layer ).fullPathHash == hash;
         }
     }
 

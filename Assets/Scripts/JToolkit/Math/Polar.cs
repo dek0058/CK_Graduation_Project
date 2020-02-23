@@ -20,7 +20,7 @@ namespace JToolkit.Math {
         }
 
         public static Vector2 location ( float distance, float angle ) {
-            return new Vector2 ( x ( distance, angle ), y ( distance, angle ) );
+            return new Vector2 ( -y ( distance, angle ), x ( distance, angle ) );
         }
 
     }

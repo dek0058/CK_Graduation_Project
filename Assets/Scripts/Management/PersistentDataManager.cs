@@ -69,7 +69,7 @@ namespace Game.Management {
 
         protected void save ( IDataPersister dp ) {
             var dataSettings = dp.get_data_settings ( );
-            if ( dataSettings.persistence_type == DataSettings._Persistence_Type.Read_Only || dataSettings.persistence_type == DataSettings._Persistence_Type.Do_Not_Persist )
+            if ( dataSettings.persistence_type == DataSettings.PersistenceType.Read_Only || dataSettings.persistence_type == DataSettings.PersistenceType.Do_Not_Persist )
                 return;
             if ( !string.IsNullOrEmpty ( dataSettings.data_tag ) ) {
                 store[dataSettings.data_tag] = dp.save_data ( );
@@ -81,7 +81,7 @@ namespace Game.Management {
             schedule += ( ) => {
                 foreach ( var dp in data_persisters ) {
                     var dataSettings = dp.get_data_settings ( );
-                    if ( dataSettings.persistence_type == DataSettings._Persistence_Type.Write_Only || dataSettings.persistence_type == DataSettings._Persistence_Type.Do_Not_Persist )
+                    if ( dataSettings.persistence_type == DataSettings.PersistenceType.Write_Only || dataSettings.persistence_type == DataSettings.PersistenceType.Do_Not_Persist )
                         continue;
                     if ( !string.IsNullOrEmpty ( dataSettings.data_tag ) ) {
                         if ( store.ContainsKey ( dataSettings.data_tag ) ) {
@@ -100,11 +100,14 @@ namespace Game.Management {
         private void OnEnable ( ) {
             if ( instance == null ) {
                 instance = this;
-                DontDestroyOnLoad ( gameObject );
             } else {
                 if ( instance != this ) {
                     Destroy ( gameObject );
                 }
+            }
+
+            if ( instance == this ) {
+                DontDestroyOnLoad ( gameObject );
             }
         }
 

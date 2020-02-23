@@ -1,5 +1,6 @@
 ﻿
 namespace Game.Unit.Type {
+    using Game.Unit;    
 
     public class UnityChanType : UnitType {
 

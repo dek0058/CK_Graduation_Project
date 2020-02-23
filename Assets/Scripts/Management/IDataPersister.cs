@@ -7,7 +7,7 @@ namespace Game.Management {
     public interface IDataPersister {
         DataSettings get_data_settings ( );
 
-        void set_data_settings ( string data_tag, DataSettings._Persistence_Type persistence_type );
+        void set_data_settings ( string data_tag, DataSettings.PersistenceType persistence_type );
 
         Data save_data ( );
 
@@ -16,7 +16,7 @@ namespace Game.Management {
 
     [Serializable]
     public class DataSettings {
-        public enum _Persistence_Type {
+        public enum PersistenceType {
             Do_Not_Persist,
             Read_Only,
             Write_Only,
@@ -24,7 +24,7 @@ namespace Game.Management {
         }
 
         public string data_tag = System.Guid.NewGuid ( ).ToString ( );
-        public _Persistence_Type persistence_type = _Persistence_Type.Read_Write;
+        public PersistenceType persistence_type = PersistenceType.Read_Write;
 
         public string to_string ( ) {
             return data_tag + " " + persistence_type.ToString ( );

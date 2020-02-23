@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Camera
+  - GameCamera
   layers:
   - Default
   - TransparentFX
@@ -14,10 +15,14 @@ TagManager:
   - UI
   - 
   - 
-  - Field
+  - 
   - VFX
   - 
   - 
+  - Object
+  - Door
+  - 
+  - Unit
   - 
   - 
   - 
@@ -28,17 +33,16 @@ TagManager:
   - 
   - 
   - 
+  - Field
+  - Ground
+  - Cliff
+  - MapCollider
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Room
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Object
+    uniqueID: 2919854043
     locked: 0

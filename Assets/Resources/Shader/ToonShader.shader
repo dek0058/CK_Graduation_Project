@@ -1,4 +1,6 @@
-﻿Shader "Custom/Toon"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/Toon"
 {
     Properties
     {
@@ -9,7 +11,8 @@
         _Brightness("Brightness", Range(0, 1)) = 0.3
         _Strength("Strength", Range(0, 1)) = 0.5
     }
-        SubShader
+
+    SubShader
     {
         Tags { "RenderType" = "Opaque" }
         LOD 200
@@ -75,9 +78,42 @@
         }
         ENDCG
 
-        Cull Front
+        // Pass to render object as a shadow caster
         Pass
         {
+            Cull Back
+            Name "CastShadow"
+            Tags { "LightMode" = "ShadowCaster" }
+
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #pragma multi_compile_shadowcaster
+            #include "UnityCG.cginc"
+
+            struct v2f
+            {
+                V2F_SHADOW_CASTER;
+            };
+
+            v2f vert(appdata_base v)
+            {
+                v2f o;
+                TRANSFER_SHADOW_CASTER(o)
+                return o;
+            }
+
+            float4 frag(v2f i) : COLOR
+            {
+                SHADOW_CASTER_FRAGMENT(i)
+            }
+            ENDCG
+        }
+
+        
+        Pass
+        {
+            Cull Front
             CGPROGRAM
 
             #pragma vertex vert
@@ -116,36 +152,6 @@
             }
             ENDCG
         }
-
-        //  Shadow rendering pass
-        Pass {
-            Name "ShadowCaster"
-            Tags { "LightMode" = "ShadowCaster" }
-
-            ZWrite On ZTest LEqual
-
-            CGPROGRAM
-            #pragma target 3.0
-
-            // -------------------------------------
-
-
-            #pragma shader_feature_local _ _ALPHATEST_ON _ALPHABLEND_ON _ALPHAPREMULTIPLY_ON
-            #pragma shader_feature_local _METALLICGLOSSMAP
-            #pragma shader_feature_local _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-            #pragma shader_feature_local _PARALLAXMAP
-            #pragma multi_compile_shadowcaster
-            #pragma multi_compile_instancing
-            // Uncomment the following line to enable dithering LOD crossfade. Note: there are more in the file to uncomment for other passes.
-            //#pragma multi_compile _ LOD_FADE_CROSSFADE
-
-            #pragma vertex vertShadowCaster
-            #pragma fragment fragShadowCaster
-
-            #include "UnityStandardShadow.cginc"
-
-            ENDCG
-        }
-        // ------------------------------------------------------------------
+        
     }
 }

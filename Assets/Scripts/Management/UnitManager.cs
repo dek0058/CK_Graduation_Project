@@ -12,7 +12,7 @@ namespace Game.Management {
         public UnitData[] unit_data;
 
 
-        public enum Data_Type {
+        public enum DataType {
             Id = 0,
             Nickname,
             Hp,
@@ -22,27 +22,27 @@ namespace Game.Management {
             Damage,
             Armor,
         }
-        public List<EnumDictionary<Data_Type, object>> data_table = null;
+        public List<EnumDictionary<DataType, object>> data_table = null;
         
 
 
         public void load_data() {
             if(data_table == null) {
-                data_table = new List<EnumDictionary<Data_Type, object>> ( );
+                data_table = new List<EnumDictionary<DataType, object>> ( );
             }
             data_table?.Clear ( );
 
             List<Dictionary<string, object>> table = CSVReader.read ( "DataTable/UnitDataTable" );
             foreach ( var data in table ) {
-                data_table.Add ( new EnumDictionary<Data_Type, object> {
-                    { Data_Type.Id,          Convert.ToUInt32 ( data["id"] ) },
-                    { Data_Type.Nickname,    data["nickname"] },
-                    { Data_Type.Hp,          Convert.ToSingle ( data["hp"] ) },
-                    { Data_Type.Mspeed,      Convert.ToSingle ( data["mspeed"] ) },
-                    { Data_Type.Aspeed,      Convert.ToSingle ( data["aspeed"] ) },
-                    { Data_Type.Rspeed,      Convert.ToSingle ( data["rspeed"] ) },
-                    { Data_Type.Damage,      Convert.ToSingle ( data["damage"] ) },
-                    { Data_Type.Armor,       Convert.ToSingle ( data["armor"] ) },
+                data_table.Add ( new EnumDictionary<DataType, object> {
+                    { DataType.Id,          Convert.ToUInt32 ( data["id"] ) },
+                    { DataType.Nickname,    data["nickname"] },
+                    { DataType.Hp,          Convert.ToSingle ( data["hp"] ) },
+                    { DataType.Mspeed,      Convert.ToSingle ( data["mspeed"] ) },
+                    { DataType.Aspeed,      Convert.ToSingle ( data["aspeed"] ) },
+                    { DataType.Rspeed,      Convert.ToSingle ( data["rspeed"] ) },
+                    { DataType.Damage,      Convert.ToSingle ( data["damage"] ) },
+                    { DataType.Armor,       Convert.ToSingle ( data["armor"] ) },
                 });
             }
         }
@@ -52,16 +52,16 @@ namespace Game.Management {
         /// ID를 검색하여 유닛 테이블을 찾습니다.
         /// </summary>
         /// <returns>Unit Data Table</returns>
-        public EnumDictionary<Data_Type, object> get_data ( uint id ) {
-            return data_table?.Find ( data => (uint)data[Data_Type.Id] == id );
+        public EnumDictionary<DataType, object> get_data ( uint id ) {
+            return data_table?.Find ( data => (uint)data[DataType.Id] == id );
         }
 
         /// <summary>
         /// Nickname을 검색하여 유닛 테이블을 찾습니다.
         /// </summary>
         /// <returns>Unit Data Table</returns>
-        public EnumDictionary<Data_Type, object> get_data ( string nickname ) {
-            return data_table?.Find ( data => (string)data[Data_Type.Nickname] == nickname );
+        public EnumDictionary<DataType, object> get_data ( string nickname ) {
+            return data_table?.Find ( data => (string)data[DataType.Nickname] == nickname );
         }
 
 
@@ -74,11 +74,14 @@ namespace Game.Management {
         private void OnEnable ( ) {
             if ( instance == null ) {
                 instance = this;
-                DontDestroyOnLoad ( gameObject );
             } else {
                 if ( instance != this ) {
                     Destroy ( gameObject );
                 }
+            }
+
+            if ( instance == this ) {
+                DontDestroyOnLoad ( gameObject );
             }
         }
 

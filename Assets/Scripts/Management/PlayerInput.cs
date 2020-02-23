@@ -52,7 +52,7 @@ namespace Game.Management {
         }
 
 
-        public void set_data_settings ( string data_tag, DataSettings._Persistence_Type persistence_type ) {
+        public void set_data_settings ( string data_tag, DataSettings.PersistenceType persistence_type ) {
             data_settings.data_tag = data_tag;
             data_settings.persistence_type = persistence_type;
         }
