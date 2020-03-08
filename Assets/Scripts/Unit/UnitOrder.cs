@@ -55,6 +55,7 @@ namespace Game.Unit {
         Stop,
         Move,
         Attack,
+        Weak,
 
     }
 }

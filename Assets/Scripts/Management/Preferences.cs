@@ -46,6 +46,7 @@ namespace Game.Management {
         UI,
 
         VFX = 9,
+        Shadow,
         
         Object = 12,
         Door,

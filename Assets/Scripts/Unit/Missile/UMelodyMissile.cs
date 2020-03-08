@@ -19,15 +19,12 @@ namespace Game.Unit.Missile {
 
 
         protected override void active_rotate ( ) {
-            float z = get_rotation().z;
-            float gap = Mathf.DeltaAngle ( z, unit_status.look_at );
-            unit_model.transform.Rotate ( 0f, 0f, gap * unit_status.rspeed * Time.fixedDeltaTime );
-            unit_status.angle = get_rotation ( ).z;
+            unit_status.angle = unit_status.look_at;
         }
 
 
         protected override void active_move ( ) {
-            Vector2 location = Polar.location ( 1f, get_rotation ( ).z );
+            Vector2 location = Polar.location ( 1f, unit_status.angle );
             unit_status.direction = location;    // 미사일이 정면을 향해서만 움직인다.
             movement_system.move ( (unit_status.direction / unit_status.direction.magnitude) * unit_status.mspeed );
         }

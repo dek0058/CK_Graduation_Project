@@ -104,7 +104,6 @@ namespace Game.Unit.Character {
             while(loop) {
                 GameObject missile = Instantiate ( missile_prefab, transform.position, Quaternion.identity);
                 UMelodyMissile unit = missile.GetComponent<UMelodyMissile> ( );
-                missile.transform.eulerAngles = new Vector3 ( 0f, 0f, angle );
                 unit.rotate ( angle );
 
                 angle -= delta;

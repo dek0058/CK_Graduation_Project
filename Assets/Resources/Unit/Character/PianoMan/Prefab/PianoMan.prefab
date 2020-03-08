@@ -114,7 +114,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.4854679}
@@ -227,7 +227,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 5799795628366887954, guid: 3afe9da2b7aa83c4aae9f48a7c5b48eb,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5529412}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -21,7 +21,7 @@ public class IntroInitailizer : MonoBehaviour {
             yield return new WaitForEndOfFrame ( );
         }
 
-        TransitionManager.instance.load ( TransitionManager.SceneType.Menu );
+        TransitionManager.instance.load_scene ( TransitionManager.SceneType.Menu );
     }
 
 

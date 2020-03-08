@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 namespace Game.Unit.Character {
+#if false
     using JToolkit.Testing;
     using JToolkit.Utility;
     using JToolkit.Math;
@@ -8,7 +9,7 @@ namespace Game.Unit.Character {
     using Game.Unit.Type;
     
     public class UUnityChan : Unit {
-
+        
         /// <summary>
         /// UnityChan이 가진 Animator Parameter값 표시용 Enum
         /// </summary>
@@ -247,4 +248,5 @@ namespace Game.Unit.Character {
             active ( );
         }
     }
+#endif
 }

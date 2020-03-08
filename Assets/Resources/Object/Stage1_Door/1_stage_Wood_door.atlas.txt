@@ -1,0 +1,41 @@
+
+1_stage_Wood_door.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+L
+  rotate: true
+  xy: 87, 741
+  size: 74, 83
+  orig: 76, 85
+  offset: 1, 1
+  index: -1
+L_door
+  rotate: false
+  xy: 172, 585
+  size: 319, 230
+  orig: 321, 232
+  offset: 1, 1
+  index: -1
+R
+  rotate: true
+  xy: 2, 742
+  size: 73, 83
+  orig: 75, 85
+  offset: 1, 1
+  index: -1
+R_door
+  rotate: false
+  xy: 493, 585
+  size: 322, 230
+  orig: 324, 232
+  offset: 1, 1
+  index: -1
+black
+  rotate: false
+  xy: 2, 353
+  size: 631, 230
+  orig: 674, 230
+  offset: 28, 0
+  index: -1

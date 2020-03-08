@@ -7,6 +7,8 @@ namespace Game.Management {
 
     public class SceneFader : Singleton<SceneFader> {
 
+        private const string Name_Blank = "Canvas_Blank";
+
         public enum FadeType {
             Blank = 0,
         }
@@ -24,6 +26,13 @@ namespace Game.Management {
             get => do_fading;
         }
 
+
+        /// <summary>
+        /// Scene Fader를 검증합니다.
+        /// </summary>
+        private void confirm ( ) {
+            StartCoroutine ( Einitialize ( ) );
+        }
 
 
         private IEnumerator Efade ( float alpha, CanvasGroup group ) {
@@ -48,10 +57,20 @@ namespace Game.Management {
             group.gameObject.SetActive ( false );
         }
 
+
         public static IEnumerator Efade_out ( FadeType type = FadeType.Blank ) {
+            float timeout = Time.time;
+
             CanvasGroup group;
             switch ( type ) {
                 case FadeType.Blank: {
+                    if( instance.blank_group == null) {
+                        if ( Time.time - timeout > 60f ) {
+                            Debug.LogError ( "Time Out : Resource Load가 정상적으로 이뤄지지 않았습니다." );
+                            yield break;
+                        }
+                        yield return null;
+                    }
                     group = instance.blank_group;
                 }
                     break;
@@ -60,6 +79,13 @@ namespace Game.Management {
                 // 예외처리
                 default: {
                     group = instance.blank_group;
+                    if ( instance.blank_group == null ) {
+                        if ( Time.time - timeout > 60f ) {
+                            Debug.LogError ( "Time Out : Resource Load가 정상적으로 이뤄지지 않았습니다." );
+                            yield break;
+                        }
+                        yield return null;
+                    }
                 }
                     break;
             }
@@ -70,16 +96,24 @@ namespace Game.Management {
         }
 
 
-        /// <summary>
-        /// Scene Fader를 검증합니다.
-        /// </summary>
-        private void confirm ( ) {
+        private IEnumerator Einitialize ( ) {
+            ResourceLoader loader = ResourceLoader.instance;
+            float timeout = Time.time;
+            
+            if ( !loader.is_complete ) {
+                if( Time.time - timeout > 60f) {
+                    Debug.LogError ( "Time Out : Resource Load가 정상적으로 이뤄지지 않았습니다." );
+                    yield break;
+                }
+                yield return null;
+            }
 
-            if(blank_group == null) {
-                Transform child = transform.Find ( "Canvas_Blank" );
-                if(child == null) {
-                    GameObject prefab = Resources.Load<GameObject> ( "Prefab/Management/SceneFader/Canvas_Blank" );
+            if ( blank_group == null ) {
+                Transform child = transform.Find ( Name_Blank );
+                if ( child == null ) {
+                    GameObject prefab = loader.get_prefab ( ResourceLoader.Resource.Canavs_Blank );
                     GameObject blank = Instantiate ( prefab, transform );
+                    blank.name = Name_Blank;
                     blank_group = blank.GetComponent<CanvasGroup> ( );
                 } else {
                     blank_group = child.GetComponent<CanvasGroup> ( );
@@ -89,9 +123,7 @@ namespace Game.Management {
             if ( blank_group != null ) {
                 blank_group.alpha = 0f;
             }
-
         }
-
 
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
@@ -100,6 +132,7 @@ namespace Game.Management {
         private void Awake ( ) {
             confirm ( );
         }
+
 
         private void OnEnable ( ) {
             if ( instance == null ) {

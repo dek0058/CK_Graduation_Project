@@ -14,7 +14,6 @@ namespace Game.Management {
 
         public static void register_persister ( IDataPersister persister ) {
             var ds = persister.get_data_settings ( );
-            Debug.Log ( ds );
             if ( !string.IsNullOrEmpty ( ds.data_tag ) ) {
                 instance.register ( persister );
             }

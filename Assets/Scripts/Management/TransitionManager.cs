@@ -4,6 +4,7 @@ using System.Collections;
 
 namespace Game.Management {
     using JToolkit.Utility;
+    using Game.Stage;
 
     public class TransitionManager : Singleton<TransitionManager> {
 
@@ -25,7 +26,8 @@ namespace Game.Management {
         }
 
 
-        public void load ( SceneType scene ) {
+
+        public void load_scene ( SceneType scene ) {
             StartCoroutine ( load_scenes_in_order ( scene ) );
         }
 

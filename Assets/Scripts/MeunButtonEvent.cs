@@ -30,7 +30,7 @@ public class MeunButtonEvent : MonoBehaviour {
 
 
     public void button_gamestart ( ) {
-        TransitionManager.instance.load ( TransitionManager.SceneType.Game );
+        TransitionManager.instance.load_scene ( TransitionManager.SceneType.Game );
     }
 
 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Spine.Unity;
 
 namespace Game.Obj {
     using Game.Stage;
@@ -8,57 +9,74 @@ namespace Game.Obj {
 
     public class GameDoor : MonoBehaviour {
 
+        public enum State {
+            Close = 0,
+            Open,
+            Broken,
+        }
+        public State state = State.Close;
+
+        
+        public GameRoom my_room = null;
+        public GameRoom next_room;
+
+
         [HideInInspector]
-        public Transform position;
-        
-        [HideInInspector]
-        public GameRoom current_room;
-        public GameDoor connect_door;
+        public Transform teleport_transform = null;
 
-        
+        public Collider2D block_collider;
+        public Collider2D trigger_collider;
 
 
-        public void transportRoom ( Player p ) {
-            quit ( p );
-            connect_door.join ( p );
+        public void set_state ( State state ) {
+            this.state = state;
         }
 
 
-
-        public void join ( Player p ) {
-
-            Transform unit_transform = p.unit.transform;
-
-            unit_transform.SetParent ( current_room.parent_character );
-            unit_transform.position = position.position;
-
-
-            current_room.join ( p );
-        }
-        
-        public void quit ( Player p ) {
-            current_room.quit ( p );
+        public void set_nextroom ( GameRoom room, Vector3 position ) {
+            next_room = room;
+            teleport_transform.position = position;
         }
 
 
-        public void open ( ) {
-        
+        protected virtual void open ( ) {
+            if(block_collider != null) {
+                block_collider.enabled = false;
+            }
+            trigger_collider.enabled = true;
         }
 
 
-        public void close ( ) {
-        
+        protected virtual void close ( ) {
+            if ( block_collider != null ) {
+                block_collider.enabled = true;
+            }
+            trigger_collider.enabled = false;
         }
 
 
+        protected virtual void transition ( Collider2D collision ) {
+            
+        }
 
-        private void confirm ( ) {
-            if ( position == null ) {
-                position = transform.Find ( "-Position" );
+
+        /// <summary>
+        /// GameDoor를 검증합니다.
+        /// </summary>
+        protected virtual void confirm ( ) {
+
+            if( my_room  == null) {
+                my_room = transform.parent.GetComponent<GameRoom> ( );
             }
 
-            if ( current_room == null ) {
-                current_room = transform.parent.parent.GetComponent<GameRoom>();
+            if ( teleport_transform == null ) {
+                teleport_transform = transform.GetChild ( 0 );
+                if(teleport_transform == null) {
+                    GameObject obj = new GameObject ( "Teleport Position" );
+                    obj.transform.SetParent ( transform );
+                    obj.transform.position = my_room.transform.position;
+                    teleport_transform = obj.transform;
+                }
             }
         }
 
@@ -67,29 +85,9 @@ namespace Game.Obj {
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
 
-        private void Awake ( ) {
-            confirm ( );
-        }
 
-
-
-        private void OnTriggerEnter2D ( Collider2D collision ) {
-            // HACK
-            if (current_room.state != GameRoom.State.Clear) {
-                return;
-            }
-
-            Unit u = collision.gameObject.GetComponent<Unit> ( );
-            Player p = PlayerManager.instance.get_player ( u );
-
-            
-
-            // HACK
-            if(p == null) {
-                return;
-            }
-
-            transportRoom ( p );
+        private void OnTriggerStay2D ( Collider2D collision ) {
+            transition ( collision );
         }
     }
 }

@@ -8,6 +8,13 @@ namespace Game.User {
 
     public class Player : MonoBehaviour {
 
+        public enum Team {
+            Player,
+            Npc,
+            Enemy,
+        }
+        public Team team;
+
         public Unit unit;
         public UnitOrder player_order = null;
 
@@ -29,7 +36,10 @@ namespace Game.User {
 
 
         private void Update ( ) {
-
+            // HACK
+            if(team == Team.Enemy) {
+                return;
+            }
             // 이동
             Vector2 axis = new Vector2 (
                 Singleton<PlayerInput>.instance.horizontal.value,
@@ -44,7 +54,7 @@ namespace Game.User {
 
             // 키보드 회전
             if ( !(Mathf.Approximately ( axis.x, 0f ) && Mathf.Approximately ( axis.y, 0f )) ) {
-                float angle = Angle.target_to_angle ( Vector2.zero, axis ) * Mathf.Rad2Deg;
+                float angle = (Angle.target_to_angle ( Vector2.zero, new Vector2(-axis.x, axis.y) ) * Mathf.Rad2Deg) - 90f;
                 unit.rotate ( angle );
             }
 

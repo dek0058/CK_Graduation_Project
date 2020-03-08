@@ -13,12 +13,26 @@ namespace JToolkit.Utility {
             set => Add ( key, value );
         }
 
+
         public void Add ( TKey key, TValue values ) {
             if ( !internalDictionary.TryGetValue ( ConvertToIndex ( key ), out TValue storedValues ) ) {
                 internalDictionary.Add ( ConvertToIndex ( key ), values );
             }
             storedValues = values;
         }
+
+
+        public void Remove ( TKey key ) {
+            if ( internalDictionary.ContainsKey ( ConvertToIndex ( key ) ) ) {
+                internalDictionary.Remove ( ConvertToIndex ( key ) );
+            }
+        }
+
+
+        public bool ContainsKey ( TKey key ) {
+            return internalDictionary.ContainsKey ( ConvertToIndex ( key ) );
+        }
+
 
         public static unsafe int ConvertToIndex ( TKey key ) {
             return *(int*)&key;

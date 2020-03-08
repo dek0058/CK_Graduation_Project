@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace Game.Stage {
     using Game.Management;
@@ -7,16 +8,6 @@ namespace Game.Stage {
 
     public abstract class GameRoom : MonoBehaviour{
 
-        [HideInInspector]
-        public Transform position;
-        [HideInInspector]
-        public Transform parent_tilemap;
-        [HideInInspector]
-        public Transform parent_door;
-        [HideInInspector]
-        public Transform parent_object;
-        [HideInInspector]
-        public Transform parent_character;
 
         /// <summary>
         /// Room의 상태
@@ -29,46 +20,38 @@ namespace Game.Stage {
         public State state = State.Inactive;
 
 
-
-        public void join ( Player p ) {
-            Debug.Log ( gameObject.name+ "join" );
-            CameraManager.instance.game_camera.set_collider ( position.GetComponent<PolygonCollider2D> ( ) );
-            CameraManager.instance.game_camera.confiner_target = position;
-            CameraManager.instance.game_camera.cv_camera.Follow = position;
-        }
+        public List<GameDoor> doors = new List<GameDoor> ( );
 
 
-        public void quit ( Player p ) {
-            Debug.Log ( gameObject.name + "quit" );
-        }
 
-
-        public void active ( bool active ) {
-            if(active) {
-                gameObject.SetActive ( true );
-                active_on ( );
-
-            } else {
-                active_off ( );
-                gameObject.SetActive ( false );
-            }
-        }
-
-
-        protected virtual void active_on ( ) {
-            if ( state != State.Clear ) {
-                state = State.Active;
-            }
+        public void join ( ) {
             load ( );
+
+            if( state != State.Clear ) {
+                active ( );
+            }
+            
         }
 
-        protected virtual void active_off ( ) {
-            if ( state == State.Active ) {
-                state = State.Inactive;
+
+        public void quit ( ) {
+            
+            if(state != State.Clear) {
+                inactive ( );
             }
+
             save ( );
         }
 
+
+        protected virtual void active ( ) {
+            
+        }
+
+
+        protected virtual void inactive ( ) {
+        
+        }
 
 
         public virtual void save ( ) {
@@ -96,7 +79,7 @@ namespace Game.Stage {
 
                     break;
                 case State.Clear:
-
+                    
 
                     break;
             }
@@ -108,25 +91,7 @@ namespace Game.Stage {
         /// </summary>
         public virtual void confirm ( ) {
 
-            if( position == null ) {
-                position = transform.Find ( "-Position" );
-            }
-
-            if (parent_tilemap == null) {
-                parent_tilemap = transform.Find ( "Tilemap" );
-            }
-
-            if ( parent_object == null ) {
-                parent_object = transform.Find ( "Door" );
-            }
-
-            if ( parent_object == null ) {
-                parent_object = transform.Find ( "Object" );
-            }
-
-            if ( parent_character == null ) {
-                parent_character = transform.Find ( "Character" );
-            }
+           
         }
     }
 }

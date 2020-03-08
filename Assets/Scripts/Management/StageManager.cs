@@ -3,15 +3,19 @@ using System.Collections.Generic;
 
 namespace Game.Management {
     using JToolkit.Utility;
+    using Game.Stage;
 
     public class StageManager : Singleton<StageManager> {
 
         public int level;
-        
-        //public Dictionary<int, >
 
-        
+        public GameStage current_stage;
 
+
+
+        public void load ( ) {
+            current_stage.load_resource ( );
+        }
 
 
         ////////////////////////////////////////////////////////////////////////////

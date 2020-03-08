@@ -1,0 +1,111 @@
+
+paint_Red.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+L_A_1
+  rotate: false
+  xy: 301, 46
+  size: 65, 69
+  orig: 65, 69
+  offset: 0, 0
+  index: -1
+L_L_1
+  rotate: false
+  xy: 223, 23
+  size: 76, 87
+  orig: 76, 87
+  offset: 0, 0
+  index: -1
+R_A_1
+  rotate: false
+  xy: 341, 131
+  size: 65, 69
+  orig: 65, 69
+  offset: 0, 0
+  index: -1
+R_L_1
+  rotate: false
+  xy: 267, 117
+  size: 72, 83
+  orig: 72, 83
+  offset: 0, 0
+  index: -1
+body_1
+  rotate: false
+  xy: 2, 435
+  size: 246, 283
+  orig: 246, 283
+  offset: 0, 0
+  index: -1
+body_2
+  rotate: true
+  xy: 2, 171
+  size: 262, 224
+  orig: 262, 224
+  offset: 0, 0
+  index: -1
+body_3
+  rotate: false
+  xy: 2, 720
+  size: 236, 296
+  orig: 236, 296
+  offset: 0, 0
+  index: -1
+body_4
+  rotate: true
+  xy: 240, 753
+  size: 263, 240
+  orig: 263, 240
+  offset: 0, 0
+  index: -1
+cup_1
+  rotate: true
+  xy: 2, 45
+  size: 124, 94
+  orig: 124, 94
+  offset: 0, 0
+  index: -1
+e_1
+  rotate: false
+  xy: 2, 2
+  size: 167, 41
+  orig: 167, 41
+  offset: 0, 0
+  index: -1
+e_2
+  rotate: false
+  xy: 98, 112
+  size: 167, 57
+  orig: 167, 57
+  offset: 0, 0
+  index: -1
+m_1
+  rotate: false
+  xy: 240, 729
+  size: 71, 22
+  orig: 71, 22
+  offset: 0, 0
+  index: -1
+m_2
+  rotate: false
+  xy: 171, 4
+  size: 50, 40
+  orig: 50, 40
+  offset: 0, 0
+  index: -1
+paint_1
+  rotate: false
+  xy: 98, 46
+  size: 90, 64
+  orig: 90, 64
+  offset: 0, 0
+  index: -1
+paint_2
+  rotate: false
+  xy: 228, 202
+  size: 182, 231
+  orig: 182, 231
+  offset: 0, 0
+  index: -1

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 namespace Game.Unit {
     using JToolkit.Utility;
@@ -38,24 +39,8 @@ namespace Game.Unit {
             {AnimatorTag.Idle, "Idle" },
             {AnimatorTag.Movement, "Movement" },
             {AnimatorTag.Attack, "Attack" },
-            {AnimatorTag.Attack, "Dead" },
+            {AnimatorTag.Dead, "Dead" },
         };
-
-
-        /// <summary>
-        /// Action Animation 시작점
-        /// </summary>
-        public virtual void action_begin ( ) {
-            unit_status.look_at = get_rotation ( ).y;
-        }
-
-        /// <summary>
-        /// Action Animation 종료점
-        /// </summary>
-        public virtual void action_end ( ) {
-            unit_status.look_at = get_rotation ( ).y;
-            unit_status.input = Vector2.zero;
-        }
 
 
         /// <summary>
@@ -125,6 +110,25 @@ namespace Game.Unit {
         }
 
 
+        public void revive ( float life ) {
+            unit_status.current_hp = life >= 1f ? life : 1f;
+            unit_status.is_dead = false;
+        }
+
+
+        public void damage ( float amount, Unit source = null ) {
+            if( unit_status.is_invincible || unit_status.is_dead) {   // 무적이거나 죽었을 경우 데미지를 받지 않는다...
+                return;
+            }
+
+            if(amount < 0f) {   // 데미지는 마이너스가 될 수 없으므로...
+                amount = 0f;
+            }
+
+            active_hit ( amount, source );
+        }
+
+
         /// <summary>
         /// Unit class를 검증합니다.
         /// </summary>
@@ -146,8 +150,6 @@ namespace Game.Unit {
 
             if( unit_type  == null) {
                 unit_type = gameObject.GetComponentInChildren<UnitType> ( );
-                unit_type.schedules.Add ( UnitType.Begin, action_begin );
-                unit_type.schedules.Add ( UnitType.End, action_end );
             }
 
             if( unit_order == null) {
@@ -156,6 +158,14 @@ namespace Game.Unit {
 
             // TODO : 추가 검증
         }
+
+
+        /// <summary>
+        /// 유닛을 갱신합니다.
+        /// </summary>
+        protected virtual void active_update ( ) {
+        }
+
 
 
         /// <summary>
@@ -180,13 +190,6 @@ namespace Game.Unit {
             unit_model.transform.Rotate ( 0f, rspeed, 0f );
             unit_status.angle = unit_model.transform.eulerAngles.y;
         }
-        
-
-        /// <summary>
-        /// 유닛을 갱신합니다.
-        /// </summary>
-        protected virtual void active_update ( ) {
-        }
 
 
         /// <summary>
@@ -198,8 +201,40 @@ namespace Game.Unit {
         }
 
 
+        protected virtual void active_dead ( ) {
+            unit_status.is_dead = true;
+            if(unit_status.current_hp > 0f) {
+                unit_status.current_hp = 0f;
+            }
+        }
+
+
+        protected virtual void active_alive ( ) {
+        }
+
+
+        protected virtual void active_hit ( float amount, Unit source = null ) {
+            // HACK : 나중에 I인터페이스로 만들어야 겠다.
+            float life = unit_status.current_hp;
+            float result = unit_status.current_hp - amount;
+            unit_status.current_hp = result;
+        }
+
+
         protected void active ( ) { // FixedUpdate
             active_update ( );
+
+            if(unit_status.current_hp <= 0.664f ||
+                unit_status.is_dead ) {
+                active_dead ( );
+                return;
+            } else if( !unit_status.is_dead ) {
+                if ( unit_model.animator != null ) {
+                    if ( get_animator_state ( 0 ).IsTag ( state_tag[AnimatorTag.Dead] ) ) {
+                        active_alive ( );
+                    }
+                }
+            }
 
             if ( !unit_order.get_active ( UnitOrder.Active.Rotate ) ) {
                 active_rotate ( );
@@ -252,6 +287,15 @@ namespace Game.Unit {
 
 
         /// <summary>
+        /// 다음 Animator State Machine을 가져옵니다.
+        /// </summary>
+        /// <returns>Current Animator State Machine</returns>
+        public AnimatorStateInfo get_animator_nextstate ( int layer ) {
+            return get_animator ( ).GetNextAnimatorStateInfo ( layer );
+        }
+
+
+        /// <summary>
         /// 현재 Animator State Machine의 해시값과 일치하는지 검증합니다.
         /// </summary>
         public bool equals_animator_hash ( int layer, int hash ) {
@@ -265,6 +309,9 @@ namespace Game.Unit {
     /// </summary>
     [System.Serializable]
     public class UnitStatus {
+        public bool is_dead;
+        public bool is_invincible;
+
         public float current_hp;            // 현재 체력       
         public float max_hp;                // 최대 체력
 
@@ -276,6 +323,7 @@ namespace Game.Unit {
 
         public float damage;                // 공격력
         public float armor;                 // 방어력
+        public float attack_cooltime;       // 공격 쿨타임
 
 
 
@@ -330,7 +378,6 @@ namespace Game.Unit {
         public float rate_armor {           // 비율증가 방어력
             get; private set;
         }
-
 
         // TODO : 추가할 스텟들
     }

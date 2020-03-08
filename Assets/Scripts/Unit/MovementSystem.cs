@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 namespace Game.Unit {
     using Game.Management;
@@ -45,6 +46,11 @@ namespace Game.Unit {
             velocity.x = float.IsNaN(velocity.x) ? 0f : velocity.x;
             velocity.y = float.IsNaN ( velocity.y ) ? 0f : velocity.y;
             next_velocity += velocity;
+        }
+
+
+        public void add_force ( Vector2 force ) {
+            StartCoroutine ( Eadd_force ( force ) );
         }
 
 
@@ -126,6 +132,29 @@ namespace Game.Unit {
             }
 
             is_grounded = true;
+        }
+
+
+        private IEnumerator Eadd_force ( Vector2 force ) {
+            float x = force.x >= 0f ? 1f : -1f;
+            float y = force.y >= 0f ? 1f : -1f;
+            float force_x = Mathf.Abs ( force.x );
+            float force_y = Mathf.Abs ( force.y );
+            float friction = 0.88f;
+            bool loop = true;
+
+            while(loop) {
+                if ( force_x < 0.001f && force_y < 0.001f ) {
+                    loop = false;
+                    Debug.Log ( "stop" );
+                    continue;
+                }
+
+                force_x = force_x * friction;
+                force_y = force_y * friction;
+                move ( new Vector2 ( force_x * x, force_y * y ) );
+                yield return new WaitForFixedUpdate ( );
+            }
         }
 
 
