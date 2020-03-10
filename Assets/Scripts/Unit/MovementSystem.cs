@@ -60,7 +60,7 @@ namespace Game.Unit {
                 return;
             }
 
-            rigidbody.velocity = next_velocity;
+            rigidbody.velocity = next_velocity * unit.unit_status.rhythm;
             next_velocity = Vector3.zero;
         }
 

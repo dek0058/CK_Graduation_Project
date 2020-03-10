@@ -274,6 +274,7 @@ MonoBehaviour:
     is_invincible: 1
     current_hp: 10
     max_hp: 10
+    rhythm: 1
     mspeed: 3
     aspeed: 1
     rspeed: 7

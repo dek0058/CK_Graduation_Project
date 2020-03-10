@@ -140,13 +140,17 @@ MonoBehaviour:
     transform: {fileID: 0}
     animator: {fileID: 0}
   unit_status:
-    current_hp: 0
+    is_dead: 0
+    is_invincible: 0
+    current_hp: 10
     max_hp: 0
+    rhythm: 1
     mspeed: 0
     aspeed: 0
     rspeed: 5
     damage: 0
     armor: 0
+    attack_cooltime: 0
     angle: 0
     look_at: 0
     input: {x: 0, y: 0}

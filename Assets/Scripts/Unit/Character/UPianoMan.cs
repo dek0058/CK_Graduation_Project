@@ -91,24 +91,31 @@ namespace Game.Unit.Character {
 
 
         private IEnumerator Erotation_attack ( ) {
-            int tick = 36;
-            float delta = 360f / tick;
-            float angle = 360f;
+            int tick = 50;
+            float angle = 90f;
+            float delta = angle / tick;
             float start = unit_model.transform.eulerAngles.y;
 
 
             // HACK
-            GameObject missile_prefab = Resources.Load<GameObject> ( "Unit/Missile/MelodyMissile/Prefab/MelodyMissile" );
+            GameObject missile_prefab = Game.Management.ResourceLoader.instance.get_prefab ( Management.ResourceLoader.Resource.Melody_Missile );
 
+            float time = 0f;
             bool loop = true;
             while(loop) {
-                GameObject missile = Instantiate ( missile_prefab, transform.position, Quaternion.identity);
-                UMelodyMissile unit = missile.GetComponent<UMelodyMissile> ( );
-                unit.rotate ( angle );
+                time += Time.deltaTime;
+                if(time >= 0.1f) {
+                    for ( int i = 0; i < 4; i++ ) {
+                        GameObject missile = Instantiate ( missile_prefab, transform.position, Quaternion.identity );
+                        UMelodyMissile unit = missile.GetComponent<UMelodyMissile> ( );
+                        unit.rotate ( angle - (i * 90f) );
+                    }
 
-                angle -= delta;
-                if(angle <= 0f ) {
-                    loop = false;
+                    angle -= delta;
+                    if ( angle <= 0f ) {
+                        loop = false;
+                    }
+                    time = 0f;
                 }
                 yield return new WaitForEndOfFrame ( );
             }

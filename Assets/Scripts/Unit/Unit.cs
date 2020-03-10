@@ -315,7 +315,7 @@ namespace Game.Unit {
         public float current_hp;            // 현재 체력       
         public float max_hp;                // 최대 체력
 
-
+        public float rhythm;                // 유닛 속도
         public float mspeed;                // 이동 속도
         public float aspeed;                // 공격 속도
         public float rspeed;                // 회전 속도
