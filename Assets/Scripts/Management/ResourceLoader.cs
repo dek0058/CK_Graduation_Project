@@ -10,6 +10,7 @@ namespace Game.Management {
 
         #region Management
         private const string Path_Canvas_Blank = "Prefab/Management/SceneFader/Canvas_Blank";
+        private const string Path_Canvas_Loading = "Prefab/Management/SceneFader/Canvas_Loading";
         #endregion
 
 
@@ -26,7 +27,8 @@ namespace Game.Management {
         /// </summary>
         public enum Resource {
             // Management
-            Canavs_Blank,
+            Canvas_Blank,
+            Canvas_Loading,
 
             // Unit
             // Character
@@ -45,9 +47,9 @@ namespace Game.Management {
             public string path;
         }
 
-        private bool is_loading;
+        private bool is_loading = false;
 
-        private bool do_complete;
+        private bool do_complete = false;
         public bool is_complete {
             get => do_complete;
         }
@@ -56,11 +58,16 @@ namespace Game.Management {
             get => current_resource_index;
         }
         private int max_resource_index = 0;
-        private int max {
+        public int max {
             get => max_resource_index;
         }
 
         private Queue<PrefabData> load_queue = new Queue<PrefabData> ( );
+
+
+        public void initialize ( ) {
+            do_complete = false;
+        }
 
 
         public void load ( ) {
@@ -87,27 +94,36 @@ namespace Game.Management {
         }
 
 
-        private void confirm ( ) {
-            do_complete = false;
-            add ( Resource.Canavs_Blank );
-            load ( );
+        public void confirm ( ) {
+            TransitionManager transition = TransitionManager.instance;
+            if (!transition.is_transition) {
+                StartCoroutine ( transition.Eload_resource ( transition.current ) );
+            }
         }
 
 
         public GameObject get_prefab ( Resource res ) {
             if ( !prefabs.ContainsKey ( res ) ) {
-                return null;
+                PrefabData data = create_data ( res );
+                prefabs.Add ( res, data );
+                return data.obj;
             }
 
             GameObject obj = prefabs[res].obj;
-            if(obj == null) {
-                PrefabData data = prefabs[res];
-                obj = Resources.Load<GameObject> ( data.path );
-                data.obj = obj;
+            if( obj == null) {  // 예외처리 : 만약 키값은 존재하는데 내용물이 없을 경우
+                PrefabData data = create_data ( res );
                 prefabs.Remove ( res );
                 prefabs.Add ( res, data );
+                return data.obj;
             }
             return obj;
+        }
+
+
+        private PrefabData create_data ( Resource res ) {
+            PrefabData data = new PrefabData ( );
+            data.obj = Resources.Load<GameObject> ( get_path ( res ) );
+            return data;
         }
 
 
@@ -115,15 +131,16 @@ namespace Game.Management {
             string path = "none";
             switch ( res ) {
                 // Management
-                case Resource.Canavs_Blank:     path = Path_Canvas_Blank; break;
+                case Resource.Canvas_Blank:     { path = Path_Canvas_Blank;     } break;
+                case Resource.Canvas_Loading:   { path = Path_Canvas_Loading;   } break;
 
                 // Unit
                 // Character
-                case Resource.Protagonist:      path = Path_Protagonist;break;
-                case Resource.Piano_Man:        path = Path_Piano_Man; break;
+                case Resource.Protagonist:      { path = Path_Protagonist;      } break;
+                case Resource.Piano_Man:        { path = Path_Piano_Man;        } break;
 
                 // Missile
-                case Resource.Melody_Missile:   path = Path_Melody_Missile; break;
+                case Resource.Melody_Missile:   { path = Path_Melody_Missile;   } break;
             }
             return path;
         }
@@ -157,11 +174,6 @@ namespace Game.Management {
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
 
-        private void Awake ( ) {
-            confirm ( );
-        }
-
-
         private void OnEnable ( ) {
             if ( instance == null ) {
                 instance = this;
@@ -172,6 +184,7 @@ namespace Game.Management {
             }
 
             if ( instance == this ) {
+                confirm ( );
                 DontDestroyOnLoad ( gameObject );
             }
         }

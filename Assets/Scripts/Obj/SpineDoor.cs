@@ -48,7 +48,6 @@ namespace Game.Obj {
             Player player = PlayerManager.instance.get_player ( unit );
 
             if(player != null) {
-                Debug.Log ( StageManager.instance );
                 StageManager.instance.current_stage.transition_room ( next_room, unit, teleport_transform.position );
 
             } else {

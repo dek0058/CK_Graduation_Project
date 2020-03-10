@@ -24,10 +24,6 @@ namespace Game.Management {
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
 
-        private void Awake ( ) {
-            
-        }
-
 
         private void OnEnable ( ) {
             if ( instance == null ) {

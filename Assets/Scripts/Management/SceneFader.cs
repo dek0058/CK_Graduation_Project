@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Game.Management {
     using JToolkit.Utility;
@@ -8,16 +9,17 @@ namespace Game.Management {
     public class SceneFader : Singleton<SceneFader> {
 
         private const string Name_Blank = "Canvas_Blank";
+        private const string Name_Loading = "Canvas_Loading";
 
         public enum FadeType {
             Blank = 0,
+            Loading,
         }
 
         public CanvasGroup blank_group;
+        public CanvasGroup loading_group;
 
-        
-        private CanvasGroup current_group = null; 
-
+        private Stack<CanvasGroup> group_stack = new Stack<CanvasGroup> ( );
 
         public float fade_duration = 0.5f;
 
@@ -26,12 +28,47 @@ namespace Game.Management {
             get => do_fading;
         }
 
+        private bool is_initilaize = false;
 
         /// <summary>
         /// Scene Fader를 검증합니다.
         /// </summary>
         private void confirm ( ) {
-            StartCoroutine ( Einitialize ( ) );
+            is_initilaize = false;
+            ResourceLoader loader = ResourceLoader.instance;
+            Transform child;
+            GameObject prefab;
+            GameObject obj;
+
+            if ( blank_group == null ) {
+                child = transform.Find ( Name_Blank );
+                if ( child == null ) {
+                    prefab = loader.get_prefab ( ResourceLoader.Resource.Canvas_Blank );
+                    obj = Instantiate ( prefab, transform );
+                    obj.name = Name_Blank;
+                    blank_group = obj.GetComponent<CanvasGroup> ( );
+                } else {
+                    blank_group = child.GetComponent<CanvasGroup> ( );
+                }
+            }
+
+            if ( loading_group == null ) {
+                child = transform.Find ( Name_Loading );
+                if ( child == null ) {
+                    prefab = loader.get_prefab ( ResourceLoader.Resource.Canvas_Loading );
+                    obj = Instantiate ( prefab, transform );
+                    obj.name = Name_Loading;
+                    loading_group = obj.GetComponent<CanvasGroup> ( );
+                } else {
+                    loading_group = child.GetComponent<CanvasGroup> ( );
+                }
+            }
+
+            if ( blank_group != null ) {
+                blank_group.alpha = 0f;
+            }
+
+            is_initilaize = true;
         }
 
 
@@ -51,87 +88,38 @@ namespace Game.Management {
 
 
         public static IEnumerator Efade_in ( ) {
-            CanvasGroup group = instance.current_group;
+            while ( !instance.is_initilaize ) {
+                yield return null;
+            }
+
+            if ( instance.group_stack.Count == 0) {
+                yield break;
+            }
+            CanvasGroup group = instance.group_stack.Pop ( );
             yield return instance.StartCoroutine ( instance.Efade ( 0f, group ) );
-            instance.current_group = null;
             group.gameObject.SetActive ( false );
         }
 
 
         public static IEnumerator Efade_out ( FadeType type = FadeType.Blank ) {
-            float timeout = Time.time;
-
-            CanvasGroup group;
-            switch ( type ) {
-                case FadeType.Blank: {
-                    if( instance.blank_group == null) {
-                        if ( Time.time - timeout > 60f ) {
-                            Debug.LogError ( "Time Out : Resource Load가 정상적으로 이뤄지지 않았습니다." );
-                            yield break;
-                        }
-                        yield return null;
-                    }
-                    group = instance.blank_group;
-                }
-                    break;
-
-
-                // 예외처리
-                default: {
-                    group = instance.blank_group;
-                    if ( instance.blank_group == null ) {
-                        if ( Time.time - timeout > 60f ) {
-                            Debug.LogError ( "Time Out : Resource Load가 정상적으로 이뤄지지 않았습니다." );
-                            yield break;
-                        }
-                        yield return null;
-                    }
-                }
-                    break;
-            }
-
-            instance.current_group = group;
-            group.gameObject.SetActive ( true );
-            yield return instance.StartCoroutine ( instance.Efade ( 1f, group ) );
-        }
-
-
-        private IEnumerator Einitialize ( ) {
-            ResourceLoader loader = ResourceLoader.instance;
-            float timeout = Time.time;
-            
-            if ( !loader.is_complete ) {
-                if( Time.time - timeout > 60f) {
-                    Debug.LogError ( "Time Out : Resource Load가 정상적으로 이뤄지지 않았습니다." );
-                    yield break;
-                }
+            while ( !instance.is_initilaize ) {
                 yield return null;
             }
 
-            if ( blank_group == null ) {
-                Transform child = transform.Find ( Name_Blank );
-                if ( child == null ) {
-                    GameObject prefab = loader.get_prefab ( ResourceLoader.Resource.Canavs_Blank );
-                    GameObject blank = Instantiate ( prefab, transform );
-                    blank.name = Name_Blank;
-                    blank_group = blank.GetComponent<CanvasGroup> ( );
-                } else {
-                    blank_group = child.GetComponent<CanvasGroup> ( );
-                }
+            CanvasGroup group = null;
+            switch ( type ) {
+                case FadeType.Blank:    { group = instance.blank_group;    } break;
+                case FadeType.Loading:  { group = instance.loading_group;  } break;
             }
 
-            if ( blank_group != null ) {
-                blank_group.alpha = 0f;
-            }
+            instance.group_stack.Push ( group );
+            group.gameObject.SetActive ( true );
+            yield return instance.StartCoroutine ( instance.Efade ( 1f, group ) );
         }
 
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
-
-        private void Awake ( ) {
-            confirm ( );
-        }
 
 
         private void OnEnable ( ) {
@@ -144,6 +132,7 @@ namespace Game.Management {
             }
 
             if ( instance == this ) {
+                confirm ( );    // 초기화
                 DontDestroyOnLoad ( gameObject );
             }
         }
