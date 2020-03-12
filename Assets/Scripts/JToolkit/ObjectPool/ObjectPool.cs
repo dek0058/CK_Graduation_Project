@@ -3,8 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Linq;
 
-public class ObjectPool
-{
+public class ObjectPool {
     /// <summary>
     /// Event(s) which is invoked when a object is spawned.
     /// </summary>
