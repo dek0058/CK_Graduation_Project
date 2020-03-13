@@ -44,8 +44,14 @@ namespace Game.Obj {
             if( mask != (int)GameLayer.Unit) {
                 return;
             }
-            Unit unit = collision.GetComponent<Unit> ( );
+
+            // HACK
+            Unit unit = collision.GetComponentInParent<Unit> ( );
             Player player = PlayerManager.instance.get_player ( unit );
+
+            if ( unit == null ) {
+                return;
+            }
 
             if(player != null) {
                 StageManager.instance.current_stage.transition_room ( next_room, unit, teleport_transform.position );

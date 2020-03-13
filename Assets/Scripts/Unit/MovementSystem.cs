@@ -119,18 +119,21 @@ namespace Game.Unit {
         /// MovementSystem class를 검증합니다.
         /// </summary>
         public void confirm ( ) {
-            if ( collider == null ) {
-                collider = GetComponent<Collider2D> ( );
+
+            if ( unit == null ) {
+                unit = GetComponent<Unit> ( );
             }
 
             if ( rigidbody == null ) {
                 rigidbody = GetComponent<Rigidbody2D> ( );
             }
             
-            if(unit == null ) {
-                unit = GetComponent<Unit> ( );
+            if(unit != null) {
+                if ( collider == null ) {
+                    collider = unit.unit_model.transform.GetComponent<Collider2D> ( );
+                }
             }
-
+            
             is_grounded = true;
         }
 
@@ -161,12 +164,6 @@ namespace Game.Unit {
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
-
-
-        private void Awake ( ) {
-            confirm ( );
-        }
-
 
         private void FixedUpdate ( ) {
             check_ground ( );

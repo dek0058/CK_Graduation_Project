@@ -23,7 +23,11 @@ namespace Game.Unit.Character {
         };
 
         private PianoManType my_type;
+        [SerializeField]
+        private Transform missile_transform = null;
 
+        [Header ( "테스트용(HACK)" )]
+        public Unit target;
 
 
         /// <summary>
@@ -47,16 +51,39 @@ namespace Game.Unit.Character {
         /// 타겟이 있는 위치로 일직선으로 날아온다.
         /// </summary>
         public void attack_guidedmissile ( ) {
-            float angle = 0f;
-
-            GameObject missile_prefab = Resources.Load<GameObject> ( "Unit/Missile/MelodyMissile/Prefab/MelodyMissile" );
-
-            GameObject missile = Instantiate ( missile_prefab, transform.position, Quaternion.identity );
-            UMelodyMissile unit = missile.GetComponent<UMelodyMissile> ( );
-            missile.transform.eulerAngles = new Vector3 ( 0f, 0f, angle );
-            unit.rotate ( angle );
+            float angle = Angle.target_to_angle ( get_position ( ), target.get_position ( ) ) * Mathf.Rad2Deg - 90f;
+            create_missile ( angle );
         }
 
+
+        public void attack_randommissile ( ) {
+            StartCoroutine ( Erandom_attack ( ) );
+        }
+
+
+        public void attack_tripplemissile ( ) {
+            StartCoroutine ( Etripple_attack ( ) );
+        }
+
+
+        public void attack_cornermissile ( ) {
+            float angle = 45;
+            for(int i = 0; i < 4; ++i ) {
+                for(int j = 0; j < 2; ++j ) {
+                    if(j % 2 == 0) {
+                        create_missile ( angle - 5f );
+                    } else {
+                        create_missile ( angle + 5f );
+                    }
+                }
+                angle += 90;
+            }
+        }
+
+
+        public void attack_scattermissile ( ) {
+            StartCoroutine ( Escatter_attack ( ) );
+        }
 
         protected override void active_rotate ( ) {
             float y = get_rotation ( ).y;
@@ -78,6 +105,22 @@ namespace Game.Unit.Character {
             if ( Input.GetKeyDown ( KeyCode.Alpha3 ) ) {
                 attack_guidedmissile ( );
             }
+
+            if ( Input.GetKeyDown ( KeyCode.Alpha4 ) ) {
+                attack_randommissile ( );
+            }
+
+            if ( Input.GetKeyDown ( KeyCode.Alpha5 ) ) {
+                attack_tripplemissile ( );
+            }
+
+            if ( Input.GetKeyDown ( KeyCode.Alpha6 ) ) {
+                attack_cornermissile ( );
+            }
+
+            if ( Input.GetKeyDown ( KeyCode.Alpha7 ) ) {
+                attack_scattermissile ( );
+            }
         }
 
 
@@ -89,33 +132,104 @@ namespace Game.Unit.Character {
 
 
 
+        public GameObject create_missile ( float angle ) {
+            GameObject missile_prefab = Management.ResourceLoader.instance.get_prefab ( Management.ResourceLoader.Resource.Melody_Missile );
+            GameObject missile = Instantiate ( missile_prefab, missile_transform.position, Quaternion.identity );
+            UMelodyMissile unit = missile.GetComponent<UMelodyMissile> ( );
+            unit.rotate ( angle );
+            return missile;
+        }
+
 
         private IEnumerator Erotation_attack ( ) {
             int tick = 50;
-            float angle = 90f;
-            float delta = angle / tick;
-            float start = unit_model.transform.eulerAngles.y;
+            int count = 0;
+            float angle = Angle.target_to_angle ( get_position ( ), target.get_position ( ) ) * Mathf.Rad2Deg - 90f;
+            float delta = 90f / tick;
 
-
-            // HACK
-            GameObject missile_prefab = Game.Management.ResourceLoader.instance.get_prefab ( Management.ResourceLoader.Resource.Melody_Missile );
-
-            float time = 0f;
+            float time = 0.1f;
             bool loop = true;
             while(loop) {
                 time += Time.deltaTime;
                 if(time >= 0.1f) {
                     for ( int i = 0; i < 4; i++ ) {
-                        GameObject missile = Instantiate ( missile_prefab, transform.position, Quaternion.identity );
-                        UMelodyMissile unit = missile.GetComponent<UMelodyMissile> ( );
-                        unit.rotate ( angle - (i * 90f) );
+                        create_missile ( angle - (i * 90f) );
                     }
 
                     angle -= delta;
-                    if ( angle <= 0f ) {
-                        loop = false;
-                    }
+                    count++;
                     time = 0f;
+                }
+                if(count >= tick) {
+                    loop = false; continue;
+                }
+                yield return new WaitForEndOfFrame ( );
+            }
+        }
+
+        private IEnumerator Erandom_attack ( ) {
+            int tick = Random.Range ( 5, 10 );
+            int count = 0;
+            
+
+            float time = 0.33f;
+            bool loop = true;
+            while(loop) {
+                time += Time.deltaTime;
+                if ( time >= 0.33f ) {
+                    create_missile ( Random.Range ( 0f, 360f ) );
+                    time = 0f;
+                    if ( ++count >= tick ) {
+                        loop = false; continue;
+                    }
+                }
+                yield return new WaitForEndOfFrame ( );
+            }
+        }
+
+
+        private IEnumerator Etripple_attack ( ) {
+            int tick = 3;
+            int count = 0;
+            float angle = Angle.target_to_angle ( get_position ( ), target.get_position ( ) ) * Mathf.Rad2Deg - 90f;
+            float delta = 15f;
+
+            // 빨간색
+            create_missile ( angle );
+
+            float time = -0.33f;
+            bool loop = true;
+            while ( loop ) {
+                time += Time.deltaTime;
+                if ( time >= 0.33f ) {
+                    create_missile ( angle - delta );
+                    delta -= 15f;
+                    time = 0f;
+                    if ( ++count >= tick ) {
+                        loop = false; continue;
+                    }
+                }
+                yield return new WaitForEndOfFrame ( );
+            }
+        }
+
+
+        private IEnumerator Escatter_attack ( ) {
+            int tick = 50;
+            int count = 0;
+            float angle = Angle.target_to_angle ( get_position ( ), target.get_position ( ) ) * Mathf.Rad2Deg - 85f;
+            float delta = 270f / tick;
+
+            create_missile ( angle );
+            angle -= delta;
+
+            //float time = 0f;
+            bool loop = true;
+            while ( loop ) {
+                create_missile ( angle );
+                angle -= delta;
+                if ( ++count >= tick ) {
+                    loop = false; continue;
                 }
                 yield return new WaitForEndOfFrame ( );
             }

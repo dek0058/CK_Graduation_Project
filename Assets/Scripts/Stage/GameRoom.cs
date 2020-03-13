@@ -25,31 +25,23 @@ namespace Game.Stage {
 
 
         public void join ( ) {
-            load ( );
+            active ( );
 
-            if( state != State.Clear ) {
-                active ( );
-            }
-            
         }
 
 
         public void quit ( ) {
-            
-            if(state != State.Clear) {
-                inactive ( );
-            }
 
-            save ( );
+            inactive ( );
         }
 
 
-        protected virtual void active ( ) {
+        public virtual void active ( ) {
             
         }
 
 
-        protected virtual void inactive ( ) {
+        public virtual void inactive ( ) {
         
         }
 

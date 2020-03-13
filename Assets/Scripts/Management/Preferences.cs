@@ -46,18 +46,14 @@ namespace Game.Management {
         UI,
 
         VFX = 9,
-        Shadow,
         
         Object = 12,
         Door,
 
         Unit = 15,
 
-        Field = 26,
-        Ground,
+        Ground = 27,
         Cliff,
         MapCollider,
-
-        Room = 31       // END
     }
 }

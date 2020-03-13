@@ -5,8 +5,11 @@ namespace Game.User {
     public class GameCamera : MonoBehaviour {
 
         public CinemachineVirtualCamera cv_camera = null;
-        public Transform confiner_target = null;
+        public Transform camera_point;
 
+        [Header ( "테스트용(Hack)" )]
+        public Unit.Unit source;
+        public Unit.Unit target;
 
         /// <summary>
         /// Game Camera를 검증합니다.

@@ -15,13 +15,17 @@ namespace Game.Unit.Character {
         /// Protagonist가 가진 Animator Paramter
         /// </summary>
         public enum AnimatorParameter {
+            Aspeed,
+            Angle,
             Run,
-            Attack,
+            //Attack,
         }
 
         private EnumDictionary<AnimatorParameter, int> parameter_hash = new EnumDictionary<AnimatorParameter, int> {
+            { AnimatorParameter.Aspeed, Animator.StringToHash("Aspeed") },
+            { AnimatorParameter.Angle, Animator.StringToHash("Angle") },
             { AnimatorParameter.Run, Animator.StringToHash("Run") },
-            { AnimatorParameter.Attack, Animator.StringToHash("Attack") },
+            //{ AnimatorParameter.Attack, Animator.StringToHash("Attack") },
         };
 
 
@@ -34,7 +38,8 @@ namespace Game.Unit.Character {
 
         public void attack ( ) {
             if(get_animator_state(0).IsTag(state_tag[AnimatorTag.Attack])) {        // 이미 공격에 성공했으므로
-                get_animator ( ).ResetTrigger ( parameter_hash[AnimatorParameter.Attack] );
+                active_attack ( );
+                //get_animator ( ).ResetTrigger ( parameter_hash[AnimatorParameter.Attack] );
                 unit_order.set_order ( Order_Id.Attack, false );
                 return;
             }
@@ -43,7 +48,7 @@ namespace Game.Unit.Character {
                 return;
             }
 
-            get_animator ( ).SetTrigger ( parameter_hash[AnimatorParameter.Attack] );
+            //get_animator ( ).SetTrigger ( parameter_hash[AnimatorParameter.Attack] );
             StartCoroutine ( Eattack_cooltime ( ) );
         }
 
@@ -79,10 +84,10 @@ namespace Game.Unit.Character {
 
 
         protected override void active_rotate ( ) {
-            float y = get_rotation ( ).y;
-            float gap = Mathf.DeltaAngle ( y, unit_status.look_at );
-            unit_model.transform.Rotate ( 0f, gap * unit_status.rspeed * Time.fixedDeltaTime, 0f );
-            unit_status.angle = get_rotation ( ).y;
+            //float y = get_rotation ( ).y;
+            //float gap = Mathf.DeltaAngle ( y, unit_status.look_at );
+           // unit_model.transform.Rotate ( 0f, gap * unit_status.rspeed * Time.fixedDeltaTime, 0f );
+            unit_status.angle = unit_status.look_at;
         }
 
 
@@ -96,12 +101,20 @@ namespace Game.Unit.Character {
         }
 
 
+        protected override void active_update ( ) {
+            base.active_update ( );
+
+            float angle = Angle.trim ( unit_status.angle ) / 360f;
+            get_animator ( ).SetFloat ( parameter_hash[AnimatorParameter.Angle], angle );
+        }
+
+
         /// <summary>
         /// Unit 명령 실행
         /// </summary>
         protected override void order ( ) {
             if ( unit_order.get_order ( Order_Id.Attack ) ) {
-                attack ( );
+                //attack ( );
             }
         }
 
@@ -133,8 +146,10 @@ namespace Game.Unit.Character {
             my_type.attacked_units.Clear ( );
             unit_order.set_active ( UnitOrder.Active.Rotate, true );
 
+            
+
             // - HACK
-            weapon_pivot.gameObject.SetActive ( true );
+           //weapon_pivot.gameObject.SetActive ( true );
             // - 
 
             float damage = unit_status.damage + unit_status.add_damage + unit_status.rate_damage;
@@ -162,7 +177,7 @@ namespace Game.Unit.Character {
             unit_order.set_active ( UnitOrder.Active.Rotate, false );
 
             // - HACK
-            weapon_pivot.gameObject.SetActive ( false );
+            //weapon_pivot.gameObject.SetActive ( false );
             // - 
 
         }

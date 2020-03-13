@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1619842573359473289}
   - component: {fileID: 1619842573359473287}
   - component: {fileID: 9024707955804965658}
+  - component: {fileID: 4065343747166150400}
   m_Layer: 9
   m_Name: MelodyMissile
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619842573359473288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.036, y: 0.1479, z: 0}
+  m_LocalPosition: {x: -0.036, y: -0.079, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5312166627831149867}
@@ -69,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1375113253
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a12c7a26a728d2b46b08618d98e92096, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -108,40 +109,20 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06, y: -0.27}
+  m_Offset: {x: 0.06, y: 0.12}
   serializedVersion: 2
   m_Radius: 0.13
---- !u!1 &5312166627791239785
-GameObject:
+--- !u!210 &4065343747166150400
+SortingGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5312166627791239786}
-  m_Layer: 15
-  m_Name: GroundCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5312166627791239786
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5312166627791239785}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6662824684401444131}
-  m_Father: {fileID: 5312166628597922219}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1619842573359473288}
+  m_Enabled: 1
+  m_SortingLayerID: -1375113253
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!1 &5312166627831149866
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +184,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5312166627791239786}
+  - {fileID: 6662824684401444131}
   - {fileID: 5312166627831149867}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -270,7 +251,7 @@ MonoBehaviour:
     current_hp: 1
     max_hp: 0
     rhythm: 1
-    mspeed: 1.5
+    mspeed: 8
     aspeed: 0
     rspeed: 10
     damage: 0
@@ -293,8 +274,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6662824684401444131}
   - component: {fileID: 6686435265169594961}
+  - component: {fileID: 6057577273601538695}
   m_Layer: 10
-  m_Name: lpc_shadow_0
+  m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -311,7 +293,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.391, z: 0}
   m_LocalScale: {x: 0.24, y: 0.24, z: 0.24}
   m_Children: []
-  m_Father: {fileID: 5312166627791239786}
+  m_Father: {fileID: 5312166628597922219}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6686435265169594961
@@ -350,8 +332,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1812428937
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -4341751324554102747, guid: 3afe9da2b7aa83c4aae9f48a7c5b48eb,
     type: 3}
@@ -365,3 +347,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &6057577273601538695
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8367482544188953694}
+  m_Enabled: 1
+  m_SortingLayerID: -1375113253
+  m_SortingLayer: 2
+  m_SortingOrder: -1

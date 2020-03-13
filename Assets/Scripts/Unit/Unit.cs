@@ -3,8 +3,7 @@ using System.Collections;
 
 namespace Game.Unit {
     using JToolkit.Utility;
-    using Game.Unit.Type;
-    using Game.User;
+    using User;
 
     public abstract class Unit : MonoBehaviour {
 
@@ -14,6 +13,11 @@ namespace Game.Unit {
         public UnitData unit_data = null;
         public UnitModel unit_model = new UnitModel();
         public UnitStatus unit_status = new UnitStatus();
+
+        public event on_dead event_revive      = null;
+        public event on_dead event_dead        = null;
+        public event on_attack event_attack    = null;
+        public event on_damaged event_damaged  = null;
 
 
         [HideInInspector]
@@ -41,6 +45,7 @@ namespace Game.Unit {
             {AnimatorTag.Attack, "Attack" },
             {AnimatorTag.Dead, "Dead" },
         };
+
 
 
         /// <summary>
@@ -110,6 +115,11 @@ namespace Game.Unit {
         }
 
 
+        public void active_attack ( ) {
+            event_attack?.Invoke ( this );
+        }
+
+
         public void revive ( float life ) {
             unit_status.current_hp = life >= 1f ? life : 1f;
             unit_status.is_dead = false;
@@ -125,6 +135,7 @@ namespace Game.Unit {
                 amount = 0f;
             }
 
+            event_damaged?.Invoke ( source, this, amount );
             active_hit ( amount, source );
         }
 
@@ -144,9 +155,7 @@ namespace Game.Unit {
                 unit_model.animator = unit_model.transform?.GetComponent<Animator> ( );
             }
 
-            if( movement_system  == null ) {
-                movement_system = GetComponent<MovementSystem> ( );
-            }
+            
 
             if( unit_type  == null) {
                 unit_type = gameObject.GetComponentInChildren<UnitType> ( );
@@ -154,6 +163,11 @@ namespace Game.Unit {
 
             if( unit_order == null) {
                 unit_order = new UnitOrder ( );
+            }
+
+            if ( movement_system == null ) {
+                movement_system = GetComponent<MovementSystem> ( );
+                movement_system.confirm ( );
             }
 
             // TODO : 추가 검증
@@ -206,15 +220,17 @@ namespace Game.Unit {
             if(unit_status.current_hp > 0f) {
                 unit_status.current_hp = 0f;
             }
+
+            event_dead?.Invoke ( this );
         }
 
 
         protected virtual void active_alive ( ) {
+            event_revive?.Invoke ( this );
         }
 
 
         protected virtual void active_hit ( float amount, Unit source = null ) {
-            // HACK : 나중에 I인터페이스로 만들어야 겠다.
             float life = unit_status.current_hp;
             float result = unit_status.current_hp - amount;
             unit_status.current_hp = result;
@@ -399,4 +415,10 @@ namespace Game.Unit {
             animator = transform?.GetComponent<Animator> ( );
         }
     }
+
+
+    public delegate void on_revive ( Unit unit );
+    public delegate void on_dead ( Unit unit );
+    public delegate void on_attack ( Unit source );
+    public delegate void on_damaged ( Unit source, Unit target, float amount );
 }

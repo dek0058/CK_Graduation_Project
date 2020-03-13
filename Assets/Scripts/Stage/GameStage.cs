@@ -27,26 +27,13 @@ namespace Game.Stage {
         public void initialize ( ) {
             foreach(var room in rooms.Values) {
                 if(room == start_room) {
-                    active ( room );
+                    room.active ( );
                 } else {
-                    inactive ( room );
+                    room.inactive ( );
                 }
             }
 
             current_room = start_room;
-        }
-
-
-
-        public void inactive ( GameRoom room ) {
-
-            room.gameObject.SetActive ( false );
-        }
-
-
-        public void active ( GameRoom room ) {
-
-            room.gameObject.SetActive ( true );
         }
 
 
@@ -94,10 +81,7 @@ namespace Game.Stage {
 
 
             current_room.quit ( );
-            inactive ( current_room );
-
             current_room = room;
-            active ( current_room );
             current_room.join ( );
             unit.movement_system.set_position ( position );
 

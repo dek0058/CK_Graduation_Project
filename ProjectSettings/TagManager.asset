@@ -16,8 +16,8 @@ TagManager:
   - 
   - 
   - 
-  - VFX
-  - Shadow
+  - 
+  - 
   - 
   - Object
   - Door
@@ -33,19 +33,19 @@ TagManager:
   - 
   - 
   - 
-  - Field
+  - 
   - Ground
   - Cliff
   - MapCollider
   - 
-  - Room
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Shadow
-    uniqueID: 1812428937
+  - name: BackLayer
+    uniqueID: 807270455
     locked: 0
-  - name: Object
+  - name: ForeLayer
     uniqueID: 2919854043
     locked: 0
