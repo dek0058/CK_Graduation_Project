@@ -40,19 +40,5 @@ namespace Game.Unit.Missile {
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
-
-        private void Awake ( ) {
-            confirm ( );
-        }
-
-
-        private void Update ( ) {
-            order ( );
-        }
-
-
-        private void FixedUpdate ( ) {
-            active ( );
-        }
     }
 }

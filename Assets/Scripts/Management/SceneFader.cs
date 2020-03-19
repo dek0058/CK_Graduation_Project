@@ -43,7 +43,7 @@ namespace Game.Management {
             if ( blank_group == null ) {
                 child = transform.Find ( Name_Blank );
                 if ( child == null ) {
-                    prefab = loader.get_prefab ( ResourceLoader.Resource.Canvas_Blank );
+                    prefab = loader.get_prefab ( ResourceLoader.Resource.Canvas_Blank ) as GameObject;
                     obj = Instantiate ( prefab, transform );
                     obj.name = Name_Blank;
                     blank_group = obj.GetComponent<CanvasGroup> ( );
@@ -55,7 +55,7 @@ namespace Game.Management {
             if ( loading_group == null ) {
                 child = transform.Find ( Name_Loading );
                 if ( child == null ) {
-                    prefab = loader.get_prefab ( ResourceLoader.Resource.Canvas_Loading );
+                    prefab = loader.get_prefab ( ResourceLoader.Resource.Canvas_Loading ) as GameObject;
                     obj = Instantiate ( prefab, transform );
                     obj.name = Name_Loading;
                     loading_group = obj.GetComponent<CanvasGroup> ( );

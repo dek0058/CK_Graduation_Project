@@ -8,25 +8,31 @@ namespace Game.Management {
 
     public class PlayerManager : Singleton<PlayerManager> {
 
-
         public List<Player> players = new List<Player> ( );
 
+        public Player local_player = null;
 
-        
 
-
-        public Player get_player ( Unit unit ) {
-            Player player = null;
-
-            players.ForEach ( p => {
-                if(p.unit.Equals(unit)) {
-                    player = p;
-                }
-            } );
-
-            return player;
+        public Player create ( Player.Team team, bool local = false ) {
+            Player p = Player.create ( team, local );
+            players.Add ( p );
+            string count = players.Count.ToString ( );
+            p.name += local ? count + "(Local)" : count;
+            return p;
         }
 
+
+        public void load ( ) {
+
+            players.Add ( create ( Player.Team.Enemy ) );   // Enemy 플레이어 생성
+            players.Add ( create ( Player.Team.Npc ) );     // NPC 플레이어 생성
+        }
+
+        public void confirm ( ) {
+            if(local_player == null) {
+                local_player = create ( Player.Team.User, true );
+            }
+        }
 
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///

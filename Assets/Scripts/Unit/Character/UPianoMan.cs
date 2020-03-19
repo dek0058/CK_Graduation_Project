@@ -7,6 +7,7 @@ namespace Game.Unit.Character {
     using Game.Unit;
     using Game.Unit.Type;
     using Game.Unit.Missile;
+    using Game.Management;
 
     public class UPianoMan : Unit {
 
@@ -93,8 +94,18 @@ namespace Game.Unit.Character {
         }
 
 
-        protected override void order ( ) {
-            if(Input.GetKeyDown(KeyCode.Alpha1)) {
+        public override void confirm ( ) {
+            base.confirm ( );
+
+            my_type = unit_type as PianoManType;
+        }
+
+
+        protected override void active_update ( ) {
+            base.active_update ( );
+
+
+            if ( Input.GetKeyDown ( KeyCode.Alpha1 ) ) {
                 attention ( );
             }
 
@@ -124,16 +135,19 @@ namespace Game.Unit.Character {
         }
 
 
-        public override void confirm ( ) {
-            base.confirm ( );
+        protected override void active_fixedupdate ( ) {
+            base.active_fixedupdate ( );
+        }
 
-            my_type = unit_type as PianoManType;
+
+        protected override void active_lateupdate ( ) {
+            base.active_lateupdate ( );
         }
 
 
 
         public GameObject create_missile ( float angle ) {
-            GameObject missile_prefab = Management.ResourceLoader.instance.get_prefab ( Management.ResourceLoader.Resource.Melody_Missile );
+            GameObject missile_prefab = ResourceLoader.instance.get_prefab ( ResourceLoader.Resource.Melody_Missile ) as  GameObject;
             GameObject missile = Instantiate ( missile_prefab, missile_transform.position, Quaternion.identity );
             UMelodyMissile unit = missile.GetComponent<UMelodyMissile> ( );
             unit.rotate ( angle );
@@ -239,19 +253,5 @@ namespace Game.Unit.Character {
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
-
-        private void Awake ( ) {
-            confirm ( );
-        }
-
-
-        private void Update ( ) {
-            order ( );
-        }
-
-
-        private void FixedUpdate ( ) {
-            active ( );
-        }
     }
 }

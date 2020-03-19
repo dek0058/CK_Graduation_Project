@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6900162634574620030}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,8 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6900162636431911422}
   - component: {fileID: 6900162636431911423}
-  - component: {fileID: 6900162636431911393}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,22 +84,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6900162636431911393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6900162636431911420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5157b45fb5a9f9949aef94c74afc3703, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  path_type: 0
-  collider: {fileID: 0}
-  rigidbody: {fileID: 0}
-  unit: {fileID: 0}
 --- !u!1 &7018541542010078059
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +95,8 @@ GameObject:
   - component: {fileID: 5898545837636967709}
   - component: {fileID: 2951626514697722051}
   - component: {fileID: 3547470403439381382}
-  m_Layer: 10
+  - component: {fileID: 8262075259713049866}
+  m_Layer: 21
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +154,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1812428937
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 5799795628366887954, guid: 3afe9da2b7aa83c4aae9f48a7c5b48eb,
     type: 3}
@@ -198,5 +182,21 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.61, y: 0.2113138}
+  m_Size: {x: 1.02, y: 0.34}
   m_Direction: 1
+--- !u!114 &8262075259713049866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7018541542010078059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5157b45fb5a9f9949aef94c74afc3703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path_type: 21
+  collider: {fileID: 0}
+  rigidbody: {fileID: 0}
+  unit: {fileID: 0}

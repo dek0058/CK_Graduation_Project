@@ -41,24 +41,22 @@ namespace Game.Obj {
 
         protected override void transition ( Collider2D collision ) {
             LayerMask mask = collision.gameObject.layer;
-            if( mask != (int)GameLayer.Unit) {
-                return;
-            }
+            if( mask == (int)GameLayer.Path_Ground || mask == (int)GameLayer.Path_Air ) {
+                // HACK
+                Unit unit = collision.GetComponentInParent<Unit> ( );
+                Player player = unit.player;
 
-            // HACK
-            Unit unit = collision.GetComponentInParent<Unit> ( );
-            Player player = PlayerManager.instance.get_player ( unit );
+                if ( unit == null ) {
+                    return;
+                }
 
-            if ( unit == null ) {
-                return;
-            }
+                if ( player != null ) {
+                    StageManager.instance.current_stage.transition_room ( next_room, unit, teleport_transform.position );
 
-            if(player != null) {
-                StageManager.instance.current_stage.transition_room ( next_room, unit, teleport_transform.position );
-
-            } else {
-                unit.movement_system.set_position ( teleport_transform.position );
-                // 이동 효과
+                } else {
+                    unit.movement_system.set_position ( teleport_transform.position );
+                    // 이동 효과
+                }
             }
         }
 

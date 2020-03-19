@@ -6,8 +6,8 @@ using UnityEngine;
 public class ScriptableObjectObjectPool : ScriptableObject
 {
     [SerializeField]
-    ObjectPoolLookupName[] _serilizableObject;
-    DictionaryObjectPool _objectPool;
+    ObjectPoolLookupName[] _serilizableObject = null;
+    DictionaryObjectPool _objectPool = null;
 
     /// <summary>
     /// Gets the objects dictionary pool.

@@ -13,13 +13,18 @@ namespace Game.Management {
         private const string Path_Canvas_Loading = "Prefab/Management/SceneFader/Canvas_Loading";
         #endregion
 
-
         #region Unit
         private const string Path_Protagonist = "Unit/Character/Protagonist/Prefab/Protagonist";
         private const string Path_Piano_Man = "Unit/Character/PianoMan/Prefab/PianoMan";
 
         private const string Path_Melody_Missile = "Unit/Missile/MelodyMissile/Prefab/MelodyMissile";
+        #endregion
 
+        #region Auido
+        private const string Path_Game_Audio = "Audio/Prefab/GameAudio";
+
+        //Clip
+        private const string Path_Stage1_Boss_Music = "Audio/Music/The Moon Over the Lake Composed by Hemio - New age piano";
         #endregion
 
         /// <summary>
@@ -37,13 +42,22 @@ namespace Game.Management {
 
             // Missile
             Melody_Missile,
+            //
+
+            // Audio
+            // GameObject
+            Game_Audio,
+
+            // Clip
+            Stage1_Boss_Music,
+            //
         }
         private EnumDictionary<Resource, PrefabData> prefabs = new EnumDictionary<Resource, PrefabData> ( );
         
 
         private struct PrefabData {
             public Resource type;
-            public GameObject obj;
+            public Object obj;
             public string path;
         }
 
@@ -102,14 +116,14 @@ namespace Game.Management {
         }
 
 
-        public GameObject get_prefab ( Resource res ) {
+        public Object get_prefab ( Resource res ) {
             if ( !prefabs.ContainsKey ( res ) ) {
                 PrefabData data = create_data ( res );
                 prefabs.Add ( res, data );
                 return data.obj;
             }
 
-            GameObject obj = prefabs[res].obj;
+            Object obj = prefabs[res].obj;
             if( obj == null) {  // 예외처리 : 만약 키값은 존재하는데 내용물이 없을 경우
                 PrefabData data = create_data ( res );
                 prefabs.Remove ( res );
@@ -122,7 +136,7 @@ namespace Game.Management {
 
         private PrefabData create_data ( Resource res ) {
             PrefabData data = new PrefabData ( );
-            data.obj = Resources.Load<GameObject> ( get_path ( res ) );
+            data.obj = Resources.Load ( get_path ( res ) );
             return data;
         }
 
@@ -131,16 +145,23 @@ namespace Game.Management {
             string path = "none";
             switch ( res ) {
                 // Management
-                case Resource.Canvas_Blank:     { path = Path_Canvas_Blank;     } break;
-                case Resource.Canvas_Loading:   { path = Path_Canvas_Loading;   } break;
+                case Resource.Canvas_Blank:         { path = Path_Canvas_Blank;         } break;
+                case Resource.Canvas_Loading:       { path = Path_Canvas_Loading;       } break;
 
                 // Unit
                 // Character
-                case Resource.Protagonist:      { path = Path_Protagonist;      } break;
-                case Resource.Piano_Man:        { path = Path_Piano_Man;        } break;
+                case Resource.Protagonist:          { path = Path_Protagonist;          } break;
+                case Resource.Piano_Man:            { path = Path_Piano_Man;            } break;
 
                 // Missile
-                case Resource.Melody_Missile:   { path = Path_Melody_Missile;   } break;
+                case Resource.Melody_Missile:       { path = Path_Melody_Missile;       } break;
+                //
+
+                // Audio
+                case Resource.Game_Audio:           { path = Path_Game_Audio;           } break;
+
+                //Clip
+                case Resource.Stage1_Boss_Music:    { path = Path_Stage1_Boss_Music;    } break;
             }
             return path;
         }
@@ -150,7 +171,7 @@ namespace Game.Management {
             PrefabData data = load_queue.Dequeue ( );
             ResourceRequest request = Resources.LoadAsync(data.path);
             yield return request;
-            data.obj = request.asset as GameObject;
+            data.obj = request.asset;
             prefabs.Add ( data.type, data );
             current_resource_index++;
         }

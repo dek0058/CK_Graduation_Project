@@ -15,14 +15,12 @@ namespace Game.Unit.Character {
         /// Protagonist가 가진 Animator Paramter
         /// </summary>
         public enum AnimatorParameter {
-            Aspeed,
             Angle,
             Run,
             //Attack,
         }
 
-        private EnumDictionary<AnimatorParameter, int> parameter_hash = new EnumDictionary<AnimatorParameter, int> {
-            { AnimatorParameter.Aspeed, Animator.StringToHash("Aspeed") },
+        readonly private EnumDictionary<AnimatorParameter, int> parameter_hash = new EnumDictionary<AnimatorParameter, int> {
             { AnimatorParameter.Angle, Animator.StringToHash("Angle") },
             { AnimatorParameter.Run, Animator.StringToHash("Run") },
             //{ AnimatorParameter.Attack, Animator.StringToHash("Attack") },
@@ -78,15 +76,12 @@ namespace Game.Unit.Character {
                 }
 
                 my_type.attacked_units.Add ( unit );
-                unit.damage ( damage, this );
+                unit.damage ( DamageInfo.Type.Melee, damage, this );
             }
         }
 
 
         protected override void active_rotate ( ) {
-            //float y = get_rotation ( ).y;
-            //float gap = Mathf.DeltaAngle ( y, unit_status.look_at );
-           // unit_model.transform.Rotate ( 0f, gap * unit_status.rspeed * Time.fixedDeltaTime, 0f );
             unit_status.angle = unit_status.look_at;
         }
 
@@ -101,30 +96,34 @@ namespace Game.Unit.Character {
         }
 
 
-        protected override void active_update ( ) {
-            base.active_update ( );
-
-            float angle = Angle.trim ( unit_status.angle ) / 360f;
-            get_animator ( ).SetFloat ( parameter_hash[AnimatorParameter.Angle], angle );
-        }
-
-
-        /// <summary>
-        /// Unit 명령 실행
-        /// </summary>
-        protected override void order ( ) {
-            if ( unit_order.get_order ( Order_Id.Attack ) ) {
-                //attack ( );
-            }
-        }
-
-
         public override void confirm ( ) {
             base.confirm ( );
 
             my_type = unit_type as ProtagonistType;
             my_type.add ( ProtagonistType.Action_Attack, action_attack );
             my_type.add ( ProtagonistType.Action_Attack_Stop, action_attack_stop );
+        }
+
+
+        protected override void active_update ( ) {
+            base.active_update ( );
+
+            if ( unit_order.get_order ( Order_Id.Attack ) ) {
+                //attack ( );
+            }
+        }
+
+
+        protected override void active_fixedupdate ( ) {
+            base.active_fixedupdate ( );
+        }
+
+
+        protected override void active_lateupdate ( ) {
+            base.active_lateupdate ( );
+
+            float angle = Angle.trim ( unit_status.angle ) / 360f;
+            get_animator ( ).SetFloat ( parameter_hash[AnimatorParameter.Angle], angle );
         }
 
 
@@ -155,7 +154,7 @@ namespace Game.Unit.Character {
             float damage = unit_status.damage + unit_status.add_damage + unit_status.rate_damage;
             float angle = 90f;
             float range = 1f;
-            LayerMask layer = 1 << (int)GameLayer.Unit;
+            LayerMask layer = 1 << (int)GameLayer.Unit_Collider;
 
             while ( my_type.do_attack ) {
                 if ( !get_animator_nextstate ( 0 ).IsTag ( state_tag[AnimatorTag.Attack] ) &&
@@ -208,20 +207,5 @@ namespace Game.Unit.Character {
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
-
-        private void Awake ( ) {
-            confirm ( );
-        }
-
-
-        private void Update ( ) {
-            order ( );
-        }
-
-
-        private void FixedUpdate ( ) {
-            active ( );
-        }
-
     }
 }

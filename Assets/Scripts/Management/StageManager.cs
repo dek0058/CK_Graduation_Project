@@ -14,6 +14,7 @@ namespace Game.Management {
 
 
         public void load ( ) {
+            
             current_stage.load_resource ( );
         }
 

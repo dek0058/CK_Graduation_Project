@@ -27,7 +27,7 @@ namespace Game.Unit.Character {
             TWeak,
             TDead,
         }
-        private EnumDictionary<AnimatorParameter, int> parameter_hash = new EnumDictionary<AnimatorParameter, int> {
+        readonly private EnumDictionary<AnimatorParameter, int> parameter_hash = new EnumDictionary<AnimatorParameter, int> {
             {AnimatorParameter.Walk, Animator.StringToHash("Walk") },
             {AnimatorParameter.Weak, Animator.StringToHash("Weak") },
             {AnimatorParameter.Dead, Animator.StringToHash("Dead") },
@@ -65,9 +65,8 @@ namespace Game.Unit.Character {
 
         private void on_damage ( float damage, float radius, LayerMask layer) {
             Collider2D[] colliders = Physics2D.OverlapCircleAll ( get_position ( ), radius, layer );
-            Debug.Log ( "A" );
             foreach(var col in colliders) {
-                Unit unit = col.GetComponent<Unit> ( );
+                Unit unit = col.GetComponentInParent<Unit> ( );
                 if (unit == null || my_type.attacked_units.Contains(unit)) {
                     continue;
                 }
@@ -76,7 +75,7 @@ namespace Game.Unit.Character {
                 }
                 
                 my_type.attacked_units.Add ( unit );
-                unit.damage ( damage, this );
+                unit.damage ( DamageInfo.Type.Melee, damage, this );
 
                 float angle = (Angle.target_to_angle ( get_position ( ), unit.get_position ( ) ) * Mathf.Rad2Deg) - 90f;
                 Vector2 force = Polar.location ( 3f, angle );
@@ -124,9 +123,9 @@ namespace Game.Unit.Character {
         }
 
 
-        protected override void active_hit ( float amount, Unit source = null ) {
+        private void damaged ( Unit source, Unit target ) {
             get_animator ( ).SetTrigger ( parameter_hash[AnimatorParameter.Hit] );
-
+            
             if(source != null) {
                 float angle = (Angle.target_to_angle ( source.get_position ( ), get_position ( ) ) * Mathf.Rad2Deg) - 90f;
                 Vector2 force = Polar.location ( 5f, angle );
@@ -141,23 +140,6 @@ namespace Game.Unit.Character {
         }
 
 
-        protected override void active_update ( ) {
-            
-        }
-
-
-        protected override void order ( ) {
-            if ( unit_order.get_order ( Order_Id.Attack ) ) {
-                attack ( );
-            }
-
-
-            if ( unit_order.get_order ( Order_Id.Weak ) ) {
-                weak ( );
-            }
-        }
-
-
         public override void confirm ( ) {
             base.confirm ( );
 
@@ -166,11 +148,42 @@ namespace Game.Unit.Character {
             my_type?.add ( PaintManType.Action_Attack, action_attack );
             my_type?.add ( PaintManType.Action_Attack_Stop, action_attack_stop );
 
-            my_type?.add ( PaintManType.Begin_Hit, begin_hit );
-            my_type?.add ( PaintManType.End_Hit, end_hit );
+            my_type?.add ( PaintManType.Action_Hit, begin_hit );
 
-
+            event_damaged += damaged;
         }
+
+
+        protected override void active_update ( ) {
+            base.active_update ( );
+
+            if ( unit_order.get_order ( Order_Id.Attack ) ) {
+                attack ( );
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha1)) {
+                weak ( );
+            }
+
+            if ( Input.GetKeyDown ( KeyCode.Alpha2 ) ) {
+                unit_status.current_hp = 0f;
+            }
+        }
+
+
+        protected override void active_fixedupdate ( ) {
+            base.active_fixedupdate ( );
+        }
+
+
+        protected override void active_lateupdate ( ) {
+            base.active_lateupdate ( );
+
+            if ( !do_weaked && my_type.hit_count > weak_count ) {
+                weak ( );
+            }
+        }
+
 
 
         // Animation Action
@@ -185,12 +198,7 @@ namespace Game.Unit.Character {
 
         private void begin_hit ( ) {
             if ( !do_weaked ) {
-                my_type.hit_count++;
-            }
-        }
-        private void end_hit ( ) {
-            if( my_type.hit_count >= weak_count ) {
-                weak ( );
+                ++my_type.hit_count;
             }
         }
 
@@ -206,7 +214,7 @@ namespace Game.Unit.Character {
 
             float damage = unit_status.damage + unit_status.add_damage + unit_status.rate_damage;
             float range = 1f;
-            LayerMask layer = 1 << (int)GameLayer.Unit;
+            LayerMask layer = 1 << (int)GameLayer.Unit_Collider;
 
             while ( my_type.do_attack ) {
                 if ( !get_animator_nextstate ( 0 ).IsTag ( state_tag[AnimatorTag.Attack]) &&
@@ -242,6 +250,7 @@ namespace Game.Unit.Character {
             }
 
             get_animator ( ).SetBool ( parameter_hash[AnimatorParameter.Weak], false );
+            my_type.hit_count = 0;
             do_weaked = false;
         }
 
@@ -270,20 +279,6 @@ namespace Game.Unit.Character {
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
-
-        private void Awake ( ) {
-            confirm ( );
-        }
-
-
-        private void Update ( ) {
-            order ( );
-        }
-
-
-        private void FixedUpdate ( ) {
-            active ( );
-        }
 
 
         private void OnTriggerEnter2D ( Collider2D collision ) {

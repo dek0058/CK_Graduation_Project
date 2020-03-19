@@ -7,22 +7,22 @@ namespace Game.Unit {
     public class MovementSystem : MonoBehaviour {
 
         public enum PathType {
-            Null = 0,
-            Ground,
-            Air,
+            Ground = GameLayer.Path_Ground,
+            Air = GameLayer.Path_Air,
         }
 
-        public PathType path_type = PathType.Null;
+        public PathType path_type = PathType.Ground;
         
+        [HideInInspector]
         public new Collider2D collider;
         [HideInInspector]
         public new Rigidbody2D rigidbody;
         [HideInInspector]
         public Unit unit;
 
-
         private Vector2 next_velocity = Vector2.zero;
 
+        
 
         public bool is_grounded {
             get; private set;
@@ -54,6 +54,12 @@ namespace Game.Unit {
         }
 
 
+        public void set_path_type ( PathType type ) {
+            path_type = type;
+            gameObject.layer = (int)path_type;
+        }
+
+
         private void update_movement ( ) {
             if(next_velocity == Vector2.zero) {
                 rigidbody.velocity = Vector2.zero;
@@ -65,53 +71,35 @@ namespace Game.Unit {
         }
 
 
+        private void update_flying ( ) {
+            float cur = unit.unit_status.current_flying;
+            float flying = unit.unit_status.flying + cur;
+            if(flying < 0f) {
+                flying = 0f;
+            }
+            unit.unit_model.transform.localPosition = new Vector3 ( 0f, flying, 0f );
 
-        private void check_ground ( ) {
-            switch ( path_type ) {
-                case PathType.Null:
-
-                    // Null 상태는 공중 상태와 같기 때문
-                case PathType.Air:
-
-
-                case PathType.Ground: {
-                    Vector2 offset = collider.offset;
-                    Vector2 origin = (Vector2)transform.position;
-                    Vector2 size = bottom_collider_size ( );
-                    int mask = 1 << (int)GameLayer.Ground;
-
-                    Collider2D[] ground = Physics2D.OverlapCapsuleAll ( origin, size, CapsuleDirection2D.Horizontal, unit.unit_status.angle, mask );
-
-                    foreach(var tile in ground) {
-
-                    }
-                }
-                    break;
-
-                default: return;
+            if( cur > 0f) {
+                unit.unit_status.current_flying += Physics2D.gravity.y * Time.fixedDeltaTime;
+            } else if( cur < 0f ) {
+                unit.unit_status.current_flying = 0f;
             }
         }
 
 
-        private void check_collision ( ) {
-        
-        }
+        private void update_ground ( ) {
+            int mask = 0;
+            mask |= 1 << (int)GameLayer.Map_Ground;
+            mask |= 1 << (int)GameLayer.Map_Cliff;
+            Collider2D[] colliders = Physics2D.OverlapPointAll ( transform.position, mask );
 
-
-
-
-        private Vector2 bottom_collider_size ( ) {
-            Vector2 size = Vector2.zero;
-            switch ( collider ) {
-                case CapsuleCollider2D capsule when collider is CapsuleCollider2D: {
-                    float x = capsule.size.x;
-                    float y = capsule.size.y;
-                    size = capsule.direction == CapsuleDirection2D.Vertical ? new Vector2 ( x / 2.22f, 0.1f ) : new Vector2 ( x / 1.34f, 0.1f );
+            bool result = false;
+            for ( int i = 0; i < colliders.Length; ++i ) {
+                if ( colliders[i].gameObject.layer == (int)GameLayer.Map_Ground ) {
+                    result = true; break;
                 }
-                break;
             }
-
-            return size;
+            is_grounded = result;
         }
 
 
@@ -120,20 +108,19 @@ namespace Game.Unit {
         /// </summary>
         public void confirm ( ) {
 
+            if ( collider == null ) {
+                collider = GetComponent<Collider2D> ( );
+            }
+
             if ( unit == null ) {
-                unit = GetComponent<Unit> ( );
+                unit = GetComponentInParent<Unit> ( );
             }
 
             if ( rigidbody == null ) {
-                rigidbody = GetComponent<Rigidbody2D> ( );
+                rigidbody = GetComponentInParent<Rigidbody2D> ( );
             }
-            
-            if(unit != null) {
-                if ( collider == null ) {
-                    collider = unit.unit_model.transform.GetComponent<Collider2D> ( );
-                }
-            }
-            
+
+            set_path_type ( path_type );
             is_grounded = true;
         }
 
@@ -149,7 +136,6 @@ namespace Game.Unit {
             while(loop) {
                 if ( force_x < 0.001f && force_y < 0.001f ) {
                     loop = false;
-                    Debug.Log ( "stop" );
                     continue;
                 }
 
@@ -165,13 +151,16 @@ namespace Game.Unit {
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
 
-        private void FixedUpdate ( ) {
-            check_ground ( );
-            check_collision ( );
-            update_movement ( );
-            //rigidbody.AddForce ( next_movement );
-            //next_movement = Vector3.zero;
+        private void Update ( ) {
+            if ( gameObject.layer != (int)path_type ) {    // Layer 조정
+                set_path_type ( path_type );
+            }
         }
 
+        private void FixedUpdate ( ) {
+            update_movement ( );
+            update_flying ( );
+            update_ground ( );
+        }
     }
 }

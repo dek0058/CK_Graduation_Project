@@ -76,6 +76,7 @@ namespace Game.Stage {
                 yield break;
             }
             do_transtion = true;
+            PlayerInput.instance.release_control ( );
 
             yield return StartCoroutine ( SceneFader.Efade_out ( SceneFader.FadeType.Blank ) );
 
@@ -87,6 +88,7 @@ namespace Game.Stage {
 
             yield return StartCoroutine ( SceneFader.Efade_in ( ) );
 
+            PlayerInput.instance.gain_control ( );
             do_transtion = false;
         }
 

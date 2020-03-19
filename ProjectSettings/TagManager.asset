@@ -15,28 +15,28 @@ TagManager:
   - UI
   - 
   - 
+  - Unit Collider
+  - Unit Collision
   - 
   - 
   - 
-  - 
-  - Object
   - Door
   - 
-  - Unit
   - 
   - 
   - 
   - 
   - 
   - 
+  - Path Ground
+  - Path Air
   - 
   - 
   - 
   - 
-  - 
-  - Ground
-  - Cliff
-  - MapCollider
+  - Map Ground
+  - Map Cliff
+  - Map Border
   - 
   - 
   m_SortingLayers:

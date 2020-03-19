@@ -6,6 +6,7 @@ namespace Game.Unit {
     using User;
 
     public abstract class Unit : MonoBehaviour {
+        public readonly int Animation_Speed_Hash = Animator.StringToHash ( "Aspeed" );
 
         public Player player;
         public Unit owner = null;
@@ -38,7 +39,7 @@ namespace Game.Unit {
             Dead,
         }
 
-        public EnumDictionary<AnimatorTag, string> state_tag = new EnumDictionary<AnimatorTag, string> {
+        readonly public EnumDictionary<AnimatorTag, string> state_tag = new EnumDictionary<AnimatorTag, string> {
             {AnimatorTag.Default, "" },
             {AnimatorTag.Idle, "Idle" },
             {AnimatorTag.Movement, "Movement" },
@@ -126,7 +127,7 @@ namespace Game.Unit {
         }
 
 
-        public void damage ( float amount, Unit source = null ) {
+        public void damage ( DamageInfo.Type type, float amount, Unit source = null ) {
             if( unit_status.is_invincible || unit_status.is_dead) {   // 무적이거나 죽었을 경우 데미지를 받지 않는다...
                 return;
             }
@@ -135,8 +136,16 @@ namespace Game.Unit {
                 amount = 0f;
             }
 
-            event_damaged?.Invoke ( source, this, amount );
-            active_hit ( amount, source );
+            unit_type.add_damage ( type, amount, true );    // 기본 피해
+            event_damaged?.Invoke ( source, this );
+
+            float armor = unit_status.armor + unit_status.add_armor + unit_status.rate_armor;
+            float life = unit_status.current_hp;
+            float melee = DamageInfo.damage ( DamageInfo.Type.Melee, unit_type.get_damage_to_value ( DamageInfo.Type.Melee ), armor );
+            float spell = DamageInfo.damage ( DamageInfo.Type.Spell, unit_type.get_damage_to_value ( DamageInfo.Type.Melee ), armor );
+            float universal = DamageInfo.damage ( DamageInfo.Type.Universal, unit_type.get_damage_to_value ( DamageInfo.Type.Melee ), armor );
+            float result = melee + spell + universal;
+            unit_status.current_hp -= result;
         }
 
 
@@ -166,7 +175,7 @@ namespace Game.Unit {
             }
 
             if ( movement_system == null ) {
-                movement_system = GetComponent<MovementSystem> ( );
+                movement_system = GetComponentInChildren<MovementSystem> ( );
                 movement_system.confirm ( );
             }
 
@@ -175,17 +184,9 @@ namespace Game.Unit {
 
 
         /// <summary>
-        /// 유닛을 갱신합니다.
-        /// </summary>
-        protected virtual void active_update ( ) {
-        }
-
-
-
-        /// <summary>
         /// 유닛 회전을 갱신합니다.
         /// </summary>
-        protected virtual void active_rotate ( ) {
+        protected virtual void active_rotate ( ) {  // Fixed Update
             float y = unit_model.transform.eulerAngles.y;
             float gap = Mathf.DeltaAngle ( y, unit_status.look_at );
             float rspeed = 0f;
@@ -209,13 +210,13 @@ namespace Game.Unit {
         /// <summary>
         /// 유닛 이동을 갱신합니다.
         /// </summary>
-        protected virtual void active_move ( ) {
+        protected virtual void active_move ( ) {    // Fixed Update
             unit_status.direction = unit_status.input;
             movement_system.move ( (unit_status.direction / unit_status.direction.magnitude) * unit_status.mspeed );
         }
 
 
-        protected virtual void active_dead ( ) {
+        protected virtual void active_dead ( ) {    // Late Update
             unit_status.is_dead = true;
             if(unit_status.current_hp > 0f) {
                 unit_status.current_hp = 0f;
@@ -225,33 +226,17 @@ namespace Game.Unit {
         }
 
 
-        protected virtual void active_alive ( ) {
+        protected virtual void active_alive ( ) {   // Late Update
             event_revive?.Invoke ( this );
         }
 
 
-        protected virtual void active_hit ( float amount, Unit source = null ) {
-            float life = unit_status.current_hp;
-            float result = unit_status.current_hp - amount;
-            unit_status.current_hp = result;
+
+        protected virtual void active_update ( ) {      
         }
 
 
-        protected void active ( ) { // FixedUpdate
-            active_update ( );
-
-            if(unit_status.current_hp <= 0.664f ||
-                unit_status.is_dead ) {
-                active_dead ( );
-                return;
-            } else if( !unit_status.is_dead ) {
-                if ( unit_model.animator != null ) {
-                    if ( get_animator_state ( 0 ).IsTag ( state_tag[AnimatorTag.Dead] ) ) {
-                        active_alive ( );
-                    }
-                }
-            }
-
+        protected virtual void active_fixedupdate ( ) {
             if ( !unit_order.get_active ( UnitOrder.Active.Rotate ) ) {
                 active_rotate ( );
             }
@@ -259,16 +244,30 @@ namespace Game.Unit {
             if ( !unit_order.get_active ( UnitOrder.Active.Move ) ) {
                 active_move ( );
             }
-
-            if(unit_order.get_order(Order_Id.Stop)) {
-                unit_status.look_at = unit_model.transform.eulerAngles.y;
-                unit_order.set_order ( Order_Id.Stop, false );
-            }
         }
 
 
-        protected virtual void order ( ) { // Update
-        
+        protected virtual void active_lateupdate ( ) {
+            if ( unit_status.current_hp <= 0.664f ||
+                unit_status.is_dead ) {
+                active_dead ( );
+                return;
+            } else if ( !unit_status.is_dead ) {
+                if ( get_animator ( ) != null ) {
+                    if ( get_animator_state ( 0 ).IsTag ( state_tag[AnimatorTag.Dead] ) ) {
+                        active_alive ( );
+                    }
+                }
+            }
+
+            if ( unit_order.get_order ( Order_Id.Stop ) ) {
+                unit_status.look_at = unit_status.angle;
+                unit_order.set_order ( Order_Id.Stop, false );
+            }
+
+            if(get_animator() != null) {
+                get_animator ( ).SetFloat ( Animation_Speed_Hash, unit_status.rhythm );
+            }
         }
 
 
@@ -317,6 +316,27 @@ namespace Game.Unit {
         public bool equals_animator_hash ( int layer, int hash ) {
             return get_animator_state ( layer ).fullPathHash == hash;
         }
+
+
+        ////////////////////////////////////////////////////////////////////////////
+        ///                               Unity                                  ///
+        ////////////////////////////////////////////////////////////////////////////
+
+        private void Awake ( ) {
+            confirm ( );
+        }
+
+        private void Update ( ) {
+            active_update ( );
+        }
+
+        private void FixedUpdate ( ) {
+            active_fixedupdate ( );
+        }
+
+        private void LateUpdate ( ) {
+            active_lateupdate ( );
+        }
     }
 
 
@@ -352,6 +372,8 @@ namespace Game.Unit {
         public Vector2 direction;           // 현재 방향
         public Vector2 axis;                // 바라보고 있는 축
 
+        public float flying;                // 기본 높이 (고정)
+        public float current_flying;        // 현재 높이
 
 
         // 추가 스텟
@@ -420,5 +442,5 @@ namespace Game.Unit {
     public delegate void on_revive ( Unit unit );
     public delegate void on_dead ( Unit unit );
     public delegate void on_attack ( Unit source );
-    public delegate void on_damaged ( Unit source, Unit target, float amount );
+    public delegate void on_damaged ( Unit source, Unit target );
 }

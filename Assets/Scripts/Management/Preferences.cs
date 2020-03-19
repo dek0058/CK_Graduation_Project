@@ -45,15 +45,16 @@ namespace Game.Management {
         Water = 4,
         UI,
 
-        VFX = 9,
+        Unit_Collider = 8,
+        Unit_Collision = 9,
         
-        Object = 12,
-        Door,
+        Door = 13,
 
-        Unit = 15,
+        Path_Ground = 21,
+        Path_Air,
 
-        Ground = 27,
-        Cliff,
-        MapCollider,
+        Map_Ground = 27,
+        Map_Cliff,
+        Map_Collider,
     }
 }

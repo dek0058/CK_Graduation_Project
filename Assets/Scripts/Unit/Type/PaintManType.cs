@@ -26,19 +26,12 @@ namespace Game.Unit.Type {
         //
 
         // Hit
-        public const string Begin_Hit = "begin_hit";
-        public const string End_Hit = "end_hit";
+        public const string Action_Hit = "action_hit";
         public int hit_count;
 
-        public void begin_hit ( ) {
-            if ( schedules.ContainsKey ( Begin_Hit ) ) {
-                schedules[Begin_Hit]?.Invoke ( );
-            }
-        }
-
-        public void end_hit ( ) {
-            if ( schedules.ContainsKey ( End_Hit ) ) {
-                schedules[End_Hit]?.Invoke ( );
+        public void action_hit ( ) {
+            if ( schedules.ContainsKey ( Action_Hit ) ) {
+                schedules[Action_Hit]?.Invoke ( );
             }
         }
         //
