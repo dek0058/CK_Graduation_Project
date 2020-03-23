@@ -55,6 +55,6 @@ namespace Game.Management {
 
         Map_Ground = 27,
         Map_Cliff,
-        Map_Collider,
+        Map_Border,
     }
 }

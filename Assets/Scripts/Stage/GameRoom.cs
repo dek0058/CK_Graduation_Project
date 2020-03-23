@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 
 namespace Game.Stage {
-    using Game.Management;
-    using Game.User;
-    using Game.Obj;
+    using Management;
+    using User;
+    using Obj;
 
     public abstract class GameRoom : MonoBehaviour{
 
@@ -35,46 +35,32 @@ namespace Game.Stage {
             inactive ( );
         }
 
+        public virtual void save ( ) {
 
-        public virtual void active ( ) {
-            
+        }
+
+        public virtual void load ( ) {
+
         }
 
 
-        public virtual void inactive ( ) {
+        protected virtual void active ( ) {
+            GameDoor.State s = state == State.Clear ? GameDoor.State.Open : GameDoor.State.Close;
+            foreach ( var d in doors ) {
+                if ( d.state != GameDoor.State.Broken ) {
+                    d.set_state ( s );
+                }
+            }
+        }
+
+
+        protected virtual void inactive ( ) {
         
         }
 
 
-        public virtual void save ( ) {
-            
-        }
 
-        public virtual void load ( ) {
-            
-        }
-
-
-
-
-
-        protected void update ( ) {
-
-            switch ( state ) {
-                case State.Inactive:
-
-
-                    break;
-                case State.Active:
-                    
-                    
-
-                    break;
-                case State.Clear:
-                    
-
-                    break;
-            }
+        protected virtual void update ( ) {
         }
 
 
@@ -84,6 +70,19 @@ namespace Game.Stage {
         public virtual void confirm ( ) {
 
            
+        }
+
+        ////////////////////////////////////////////////////////////////////////////
+        ///                               Unity                                  ///
+        ////////////////////////////////////////////////////////////////////////////
+
+        private void Awake ( ) {
+            confirm ( );
+        }
+
+
+        private void Update ( ) {
+            update ( );
         }
     }
 }

@@ -1,0 +1,1210 @@
+fileFormatVersion: 2
+guid: 158cd5f286a414240a04577b785f47e7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -119807133207593387
+    second: Protagonist-IdleE_SpriteSheet_0
+  - first:
+      213: -2167749434696398274
+    second: Protagonist-IdleE_SpriteSheet_1
+  - first:
+      213: 4316362769093550025
+    second: Protagonist-IdleE_SpriteSheet_2
+  - first:
+      213: -3696782764348722140
+    second: Protagonist-IdleE_SpriteSheet_3
+  - first:
+      213: 8905549386475705878
+    second: Protagonist-IdleE_SpriteSheet_4
+  - first:
+      213: -481461538627349991
+    second: Protagonist-IdleE_SpriteSheet_5
+  - first:
+      213: -184355752426933601
+    second: Protagonist-IdleE_SpriteSheet_6
+  - first:
+      213: -4277306864213342322
+    second: Protagonist-IdleE_SpriteSheet_7
+  - first:
+      213: -2186252924754636575
+    second: Protagonist-IdleE_SpriteSheet_8
+  - first:
+      213: -467720547704287619
+    second: Protagonist-IdleE_SpriteSheet_9
+  - first:
+      213: 5236234430868940374
+    second: Protagonist-IdleE_SpriteSheet_10
+  - first:
+      213: 2749111421401656224
+    second: Protagonist-IdleE_SpriteSheet_11
+  - first:
+      213: 1580282923240218254
+    second: Protagonist-IdleE_SpriteSheet_12
+  - first:
+      213: -1990300051053959079
+    second: Protagonist-IdleE_SpriteSheet_13
+  - first:
+      213: -746033872405344816
+    second: Protagonist-IdleE_SpriteSheet_14
+  - first:
+      213: 5449504047180113452
+    second: Protagonist-IdleE_SpriteSheet_15
+  - first:
+      213: -4060918503741298899
+    second: Protagonist-IdleE_SpriteSheet_16
+  - first:
+      213: 9090336973976718428
+    second: Protagonist-IdleE_SpriteSheet_17
+  - first:
+      213: -6037660234782459247
+    second: Protagonist-IdleE_SpriteSheet_18
+  - first:
+      213: -7492648264855725792
+    second: Protagonist-IdleE_SpriteSheet_19
+  - first:
+      213: 5657859858233747616
+    second: Protagonist-IdleE_SpriteSheet_20
+  - first:
+      213: 1351902079480045685
+    second: Protagonist-IdleE_SpriteSheet_21
+  - first:
+      213: -6957480017040891288
+    second: Protagonist-IdleE_SpriteSheet_22
+  - first:
+      213: -1374957132714605393
+    second: Protagonist-IdleE_SpriteSheet_23
+  - first:
+      213: -7274283557269934953
+    second: Protagonist-IdleE_SpriteSheet_24
+  - first:
+      213: -4875131384704429791
+    second: Protagonist-IdleE_SpriteSheet_25
+  - first:
+      213: 7430807804725368827
+    second: Protagonist-IdleE_SpriteSheet_26
+  - first:
+      213: 7291943556370519985
+    second: Protagonist-IdleE_SpriteSheet_27
+  - first:
+      213: -2501893938719965790
+    second: Protagonist-IdleE_SpriteSheet_28
+  - first:
+      213: -5180521127802232944
+    second: Protagonist-IdleE_SpriteSheet_29
+  - first:
+      213: 2956136330050637249
+    second: Protagonist-IdleE_SpriteSheet_30
+  - first:
+      213: 1178382564347453286
+    second: Protagonist-IdleE_SpriteSheet_31
+  - first:
+      213: 8654698320488862294
+    second: Protagonist-IdleE_SpriteSheet_32
+  - first:
+      213: -6005451630953464830
+    second: Protagonist-IdleE_SpriteSheet_33
+  - first:
+      213: -1656994596422584551
+    second: Protagonist-IdleE_SpriteSheet_34
+  - first:
+      213: -5155594742018419412
+    second: Protagonist-IdleE_SpriteSheet_35
+  - first:
+      213: 8764301598892066082
+    second: Protagonist-IdleE_SpriteSheet_36
+  - first:
+      213: 7785461580305882570
+    second: Protagonist-IdleE_SpriteSheet_37
+  - first:
+      213: 4922394846397510439
+    second: Protagonist-IdleE_SpriteSheet_38
+  - first:
+      213: -2207550992575899322
+    second: Protagonist-IdleE_SpriteSheet_39
+  - first:
+      213: -8114846604482167044
+    second: Protagonist-IdleE_SpriteSheet_40
+  - first:
+      213: 5884484395527638525
+    second: Protagonist-IdleE_SpriteSheet_0
+  - first:
+      213: -7277694410680865727
+    second: Protagonist-IdleE_SpriteSheet_1
+  - first:
+      213: 8873715085385220210
+    second: Protagonist-IdleE_SpriteSheet_2
+  - first:
+      213: 6611471979781829485
+    second: Protagonist-IdleE_SpriteSheet_3
+  - first:
+      213: 1179821807324589601
+    second: Protagonist-IdleE_SpriteSheet_4
+  - first:
+      213: 712887871772664351
+    second: Protagonist-IdleE_SpriteSheet_5
+  - first:
+      213: -783166550716766578
+    second: Protagonist-IdleE_SpriteSheet_6
+  - first:
+      213: -8618218533583555842
+    second: Protagonist-IdleE_SpriteSheet_7
+  - first:
+      213: -4369981395705562812
+    second: Protagonist-IdleE_SpriteSheet_8
+  - first:
+      213: -453882565774670850
+    second: Protagonist-IdleE_SpriteSheet_9
+  - first:
+      213: -3113816690674336590
+    second: Protagonist-IdleE_SpriteSheet_10
+  - first:
+      213: 9196483672115953905
+    second: Protagonist-IdleE_SpriteSheet_11
+  - first:
+      213: -1157178702333113047
+    second: Protagonist-IdleE_SpriteSheet_12
+  - first:
+      213: -6173359655171341478
+    second: Protagonist-IdleE_SpriteSheet_13
+  - first:
+      213: -7696781966680315258
+    second: Protagonist-IdleE_SpriteSheet_14
+  - first:
+      213: -4412414652919927578
+    second: Protagonist-IdleE_SpriteSheet_15
+  - first:
+      213: -504145182219523152
+    second: Protagonist-IdleE_SpriteSheet_16
+  - first:
+      213: -4722555317846824643
+    second: Protagonist-IdleE_SpriteSheet_17
+  - first:
+      213: 435280424451579887
+    second: Protagonist-IdleE_SpriteSheet_18
+  - first:
+      213: 5613698173479784939
+    second: Protagonist-IdleE_SpriteSheet_19
+  - first:
+      213: 6221763687374416730
+    second: Protagonist-IdleE_SpriteSheet_20
+  - first:
+      213: 5626526401828075028
+    second: Protagonist-IdleE_SpriteSheet_21
+  - first:
+      213: -3873691059716248472
+    second: Protagonist-IdleE_SpriteSheet_22
+  - first:
+      213: -5254573761322001963
+    second: Protagonist-IdleE_SpriteSheet_23
+  - first:
+      213: 5582561037897595999
+    second: Protagonist-IdleE_SpriteSheet_24
+  - first:
+      213: -27929509133205877
+    second: Protagonist-IdleE_SpriteSheet_25
+  - first:
+      213: 3336888345656856290
+    second: Protagonist-IdleE_SpriteSheet_26
+  - first:
+      213: -2356255245239571777
+    second: Protagonist-IdleE_SpriteSheet_27
+  - first:
+      213: 4735435825273993502
+    second: Protagonist-IdleE_SpriteSheet_28
+  - first:
+      213: 3269267938549828276
+    second: Protagonist-IdleE_SpriteSheet_29
+  - first:
+      213: -7664474059216803263
+    second: Protagonist-IdleE_SpriteSheet_30
+  - first:
+      213: 1608317828734330270
+    second: Protagonist-IdleE_SpriteSheet_31
+  - first:
+      213: 6834809548438035512
+    second: Protagonist-IdleE_SpriteSheet_32
+  - first:
+      213: 4201798774745737825
+    second: Protagonist-IdleE_SpriteSheet_33
+  - first:
+      213: 5035709399544742486
+    second: Protagonist-IdleE_SpriteSheet_34
+  - first:
+      213: -5219967264468243454
+    second: Protagonist-IdleE_SpriteSheet_35
+  - first:
+      213: 7994099705389987991
+    second: Protagonist-IdleE_SpriteSheet_36
+  - first:
+      213: -7800312206880111834
+    second: Protagonist-IdleE_SpriteSheet_37
+  - first:
+      213: -4231069798882531909
+    second: Protagonist-IdleE_SpriteSheet_38
+  - first:
+      213: -2227776528477311586
+    second: Protagonist-IdleE_SpriteSheet_39
+  - first:
+      213: -2745223930654318350
+    second: Protagonist-IdleE_SpriteSheet_40
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 110
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1500
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfd01c16163e9a150800000000000000
+      internalID: 5884484395527638525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1500
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14c658b0e7f600b90800000000000000
+      internalID: -7277694410680865727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1500
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 270496eead4c52b70800000000000000
+      internalID: 8873715085385220210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1500
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d63385d8cbaa0cb50800000000000000
+      internalID: 6611471979781829485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1500
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12e67dbcea19f5010800000000000000
+      internalID: 1179821807324589601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1500
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f12a1b90ebfa4e900800000000000000
+      internalID: 712887871772664351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1500
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e862f88eb22a125f0800000000000000
+      internalID: -783166550716766578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1200
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef2701da7efe56880800000000000000
+      internalID: -8618218533583555842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1200
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44977e1e215ba53c0800000000000000
+      internalID: -4369981395705562812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1200
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef30241163c73b9f0800000000000000
+      internalID: -453882565774670850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1200
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bc7ca0b73089c4d0800000000000000
+      internalID: -3113816690674336590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1200
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f0c62bbc2970af70800000000000000
+      internalID: 9196483672115953905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1200
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92d89c9e910e0ffe0800000000000000
+      internalID: -1157178702333113047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1200
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a53c8caf912d35aa0800000000000000
+      internalID: -6173359655171341478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 900
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a2362a4998f2590800000000000000
+      internalID: -7696781966680315258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 900
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ecaafa4044f3c2c0800000000000000
+      internalID: -4412414652919927578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 900
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bba49ab0aae009f0800000000000000
+      internalID: -504145182219523152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 900
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d39ab97a5fc167eb0800000000000000
+      internalID: -4722555317846824643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 900
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fef1e156d3d6a0600800000000000000
+      internalID: 435280424451579887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 900
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be195820fbcd7ed40800000000000000
+      internalID: 5613698173479784939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 900
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b606efb15285650800000000000000
+      internalID: 6221763687374416730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 416b15ca3ff651e40800000000000000
+      internalID: 5626526401828075028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 600
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86ca1004182ed3ac0800000000000000
+      internalID: -3873691059716248472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 600
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d9505601010417b0800000000000000
+      internalID: -5254573761322001963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 600
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5c72d0bfad397d40800000000000000
+      internalID: 5582561037897595999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 600
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8e3d596246cc9ff0800000000000000
+      internalID: -27929509133205877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 600
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ee840255420f4e20800000000000000
+      internalID: 3336888345656856290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 600
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fba2853a656ec4fd0800000000000000
+      internalID: -2356255245239571777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e197d1e2bc5a7b140800000000000000
+      internalID: 4735435825273993502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 300
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ba06d86ed5ce5d20800000000000000
+      internalID: 3269267938549828276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 300
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14aaf26837152a590800000000000000
+      internalID: -7664474059216803263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 300
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9523a34b84e15610800000000000000
+      internalID: 1608317828734330270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 300
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83cd81a621f1ade50800000000000000
+      internalID: 6834809548438035512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 300
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16a246a39b9cf4a30800000000000000
+      internalID: 4201798774745737825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 300
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 652c5ffb40f62e540800000000000000
+      internalID: 5035709399544742486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20ce336fd63fe87b0800000000000000
+      internalID: -5219967264468243454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_36
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79833d6d35fb0fe60800000000000000
+      internalID: 7994099705389987991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_37
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62384cb2069bfb390800000000000000
+      internalID: -7800312206880111834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_38
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb529b16f683845c0800000000000000
+      internalID: -4231069798882531909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_39
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9d2825fc095511e0800000000000000
+      internalID: -2227776528477311586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protagonist-IdleE_SpriteSheet_40
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f0a270416107e9d0800000000000000
+      internalID: -2745223930654318350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

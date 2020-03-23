@@ -61,6 +61,35 @@ namespace Game.Obj {
         }
 
 
+        protected override void update ( ) {
+            base.update ( );
+
+            switch ( my_room.state ) {
+                case Stage.GameRoom.State.Inactive:
+
+                    break;
+                case Stage.GameRoom.State.Active: {
+                    if ( state != State.Close ) {
+                        set_state ( State.Close );
+                    }
+                }
+                break;
+                case Stage.GameRoom.State.Clear: {
+                    if ( state != State.Open ) {
+                        set_state ( State.Open );
+                    }
+                }
+                break;
+            }
+
+
+            if ( previous_state != state ) {
+                play_new_animation ( );
+            }
+            previous_state = state;
+        }
+
+
         protected override void confirm ( ) {
             base.confirm ( );
 
@@ -72,48 +101,12 @@ namespace Game.Obj {
         }
 
 
-
         public void set_animation ( AnimationReferenceAsset animation, bool loop, float timescale ) {
             sk_animation.state.SetAnimation ( 0, animation, loop ).TimeScale = timescale;
         }
 
         public void set_animation ( Spine.Animation animation, bool loop, float timescale ) {
             sk_animation.state.SetAnimation ( 0, animation, loop ).TimeScale = timescale;
-        }
-
-        ////////////////////////////////////////////////////////////////////////////
-        ///                               Unity                                  ///
-        ////////////////////////////////////////////////////////////////////////////
-
-        private void Awake ( ) {
-            confirm ( );
-
-        }
-
-
-        private void Update ( ) {
-
-            switch ( my_room.state ) {
-                case Stage.GameRoom.State.Inactive:
-
-                    break;
-                case Stage.GameRoom.State.Active: {
-                    if ( state != State.Close ) {
-                        set_state ( State.Close );
-                    }
-                } break;
-                case Stage.GameRoom.State.Clear: {
-                    if ( state != State.Open ) {
-                        set_state ( State.Open );
-                    }
-                } break;
-            }
-
-
-            if(previous_state != state) {
-                play_new_animation ( );
-            }
-            previous_state = state;
         }
     }
 }

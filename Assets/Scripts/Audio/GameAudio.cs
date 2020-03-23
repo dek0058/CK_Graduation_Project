@@ -55,10 +55,9 @@ namespace Game.Audio {
 
             source.PlayScheduled ( start_time );
             if(destroy) {
-                StartCoroutine ( destroy_object ( ) );
+                StartCoroutine ( Edestroy_object ( ) );
             }
         }
-
 
         public void confirm ( ) {
             if(source == null) {
@@ -71,7 +70,7 @@ namespace Game.Audio {
         }
 
 
-        private IEnumerator destroy_object ( ) {
+        private IEnumerator Edestroy_object ( ) {
             yield return new WaitUntil ( ( ) => envelope.state == ASREnvelope.State.Idle );
             Destroy ( gameObject );
         }
@@ -98,14 +97,6 @@ namespace Game.Audio {
                 for(int j = 0; j < channels; ++j ) {
                     data[i + j] *= (float)volum;
                 }
-            }
-        }
-
-        private void OnApplicationFocus ( bool focus ) {
-            if ( focus ) {
-                source.UnPause ( );
-            } else {
-                source.Pause ( );
             }
         }
     }

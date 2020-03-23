@@ -5,6 +5,7 @@ using System.Collections.Generic;
 namespace Game.Management {
     using JToolkit.Utility;
     using Audio;
+    using System.Collections;
 
     [RequireComponent ( typeof ( AudioSource ) )]
     public class SoundManager : Singleton<SoundManager> {
@@ -118,7 +119,12 @@ namespace Game.Management {
 
 
         public void on_music ( ) {
-            is_running = true;
+            StartCoroutine ( Emusic_on ( ) );
+        }
+
+
+        public void off_music ( ) {
+            StartCoroutine ( Emusic_off ( ) );
         }
 
 
@@ -175,6 +181,46 @@ namespace Game.Management {
         }
 
 
+
+        private IEnumerator Emusic_erasure ( float volum ) {
+            while ( main_audio.source.volume != volum ) {
+                main_audio.source.volume = Mathf.MoveTowards ( main_audio.source.volume, volum, Time.deltaTime );
+                yield return null;
+            }
+        }
+
+
+        private IEnumerator Emusic_on ( ) {
+            if ( is_running ) {
+                yield break;
+            }
+            is_running = true;
+            main_audio.source.volume = 0f;
+            main_audio.play ( AudioSettings.dspTime + Time.deltaTime, 0f, 1f );
+            yield return StartCoroutine ( Emusic_erasure ( 1f ) );
+            StartCoroutine ( Emusic_play ( ) );
+        }
+
+
+        private IEnumerator Emusic_off ( ) {
+            if ( !is_running ) {
+                yield break;
+            }
+            is_running = false;
+            yield return StartCoroutine ( Emusic_erasure ( 0f ) );
+            main_audio.source.Stop ( );
+        }
+
+
+        private IEnumerator Emusic_play ( ) {
+            while ( is_running ) {
+                if ( main_audio.state == ASREnvelope.State.Idle ) {
+                    main_audio.play ( AudioSettings.dspTime + Time.deltaTime, 0f, 1f );
+                }
+                yield return new WaitForEndOfFrame ( );
+            }
+        }
+
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
@@ -188,17 +234,6 @@ namespace Game.Management {
             GameAudio a = GetComponent<GameAudio> ( );
             if ( a == null ) {
                 gameObject.AddComponent<AudioSource> ( );
-            }
-        }
-
-
-        private void LateUpdate ( ) {
-            if(!is_running) {
-                return;
-            }
-
-            if(main_audio.state == ASREnvelope.State.Idle) {
-                main_audio.play ( AudioSettings.dspTime + Time.deltaTime, 0f, 1f );
             }
         }
 

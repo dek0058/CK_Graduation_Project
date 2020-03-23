@@ -56,9 +56,11 @@ namespace Game.Obj {
 
 
         protected virtual void transition ( Collider2D collision ) {
-            
         }
 
+
+        protected virtual void update ( ) {
+        }
 
         /// <summary>
         /// GameDoor를 검증합니다.
@@ -84,6 +86,14 @@ namespace Game.Obj {
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
+        private void Awake ( ) {
+            confirm ( );
+        }
+
+
+        private void Update ( ) {
+            update ( );
+        }
 
 
         private void OnTriggerEnter2D ( Collider2D collision ) {

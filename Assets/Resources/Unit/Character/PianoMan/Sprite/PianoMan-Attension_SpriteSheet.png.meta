@@ -1,0 +1,3007 @@
+fileFormatVersion: 2
+guid: b9ad5f96f95e4684ca8b8b1f494a4376
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3357855721173251181
+    second: PianoMan-Attension_SpriteSheet_0
+  - first:
+      213: -5063422798722059922
+    second: PianoMan-Attension_SpriteSheet_1
+  - first:
+      213: 3222948879705118918
+    second: PianoMan-Attension_SpriteSheet_2
+  - first:
+      213: -8233314368788144277
+    second: PianoMan-Attension_SpriteSheet_3
+  - first:
+      213: -876651270510101989
+    second: PianoMan-Attension_SpriteSheet_4
+  - first:
+      213: 69434483922658978
+    second: PianoMan-Attension_SpriteSheet_5
+  - first:
+      213: -7504474321656691894
+    second: PianoMan-Attension_SpriteSheet_6
+  - first:
+      213: 2264594541957985118
+    second: PianoMan-Attension_SpriteSheet_7
+  - first:
+      213: 5378560887771503201
+    second: PianoMan-Attension_SpriteSheet_8
+  - first:
+      213: 3780004161732435000
+    second: PianoMan-Attension_SpriteSheet_9
+  - first:
+      213: -3656528655351030360
+    second: PianoMan-Attension_SpriteSheet_10
+  - first:
+      213: -4788800679570992983
+    second: PianoMan-Attension_SpriteSheet_11
+  - first:
+      213: -1308648490232632455
+    second: PianoMan-Attension_SpriteSheet_12
+  - first:
+      213: -832256257649850332
+    second: PianoMan-Attension_SpriteSheet_13
+  - first:
+      213: -8461328439595726930
+    second: PianoMan-Attension_SpriteSheet_14
+  - first:
+      213: -1747095150219945831
+    second: PianoMan-Attension_SpriteSheet_15
+  - first:
+      213: 2831943684031756901
+    second: PianoMan-Attension_SpriteSheet_16
+  - first:
+      213: -8170587110326436187
+    second: PianoMan-Attension_SpriteSheet_17
+  - first:
+      213: -2475833644011792786
+    second: PianoMan-Attension_SpriteSheet_18
+  - first:
+      213: 6852972272003944886
+    second: PianoMan-Attension_SpriteSheet_19
+  - first:
+      213: 1869954637867010015
+    second: PianoMan-Attension_SpriteSheet_20
+  - first:
+      213: 5776546615596746527
+    second: PianoMan-Attension_SpriteSheet_21
+  - first:
+      213: 3666615598099920868
+    second: PianoMan-Attension_SpriteSheet_22
+  - first:
+      213: -3250285715481436694
+    second: PianoMan-Attension_SpriteSheet_23
+  - first:
+      213: -800465399996905000
+    second: PianoMan-Attension_SpriteSheet_24
+  - first:
+      213: 4413125704268464459
+    second: PianoMan-Attension_SpriteSheet_25
+  - first:
+      213: 3603978652679391965
+    second: PianoMan-Attension_SpriteSheet_26
+  - first:
+      213: -4053808201671230602
+    second: PianoMan-Attension_SpriteSheet_27
+  - first:
+      213: -3549986193551785809
+    second: PianoMan-Attension_SpriteSheet_28
+  - first:
+      213: 6017526389225977621
+    second: PianoMan-Attension_SpriteSheet_29
+  - first:
+      213: -28746614107682115
+    second: PianoMan-Attension_SpriteSheet_30
+  - first:
+      213: 8185144811915356622
+    second: PianoMan-Attension_SpriteSheet_31
+  - first:
+      213: 4868186489694720238
+    second: PianoMan-Attension_SpriteSheet_32
+  - first:
+      213: 3360864881267366204
+    second: PianoMan-Attension_SpriteSheet_33
+  - first:
+      213: -7978727244965684177
+    second: PianoMan-Attension_SpriteSheet_34
+  - first:
+      213: -7341574286310161765
+    second: PianoMan-Attension_SpriteSheet_35
+  - first:
+      213: -3117851017249483694
+    second: PianoMan-Attension_SpriteSheet_36
+  - first:
+      213: -3243312044462427975
+    second: PianoMan-Attension_SpriteSheet_37
+  - first:
+      213: 7825209698683630947
+    second: PianoMan-Attension_SpriteSheet_38
+  - first:
+      213: -7975038020898396131
+    second: PianoMan-Attension_SpriteSheet_39
+  - first:
+      213: 8547555166091243879
+    second: PianoMan-Attension_SpriteSheet_40
+  - first:
+      213: 4919295270533115214
+    second: PianoMan-Attension_SpriteSheet_41
+  - first:
+      213: -4934279615967139451
+    second: PianoMan-Attension_SpriteSheet_42
+  - first:
+      213: -207164272395864273
+    second: PianoMan-Attension_SpriteSheet_43
+  - first:
+      213: -2096898482014820469
+    second: PianoMan-Attension_SpriteSheet_44
+  - first:
+      213: -6567743798771132713
+    second: PianoMan-Attension_SpriteSheet_45
+  - first:
+      213: -6357880254798955031
+    second: PianoMan-Attension_SpriteSheet_46
+  - first:
+      213: -2954547995960250769
+    second: PianoMan-Attension_SpriteSheet_47
+  - first:
+      213: 6526095004529278191
+    second: PianoMan-Attension_SpriteSheet_48
+  - first:
+      213: 8493853902987621197
+    second: PianoMan-Attension_SpriteSheet_49
+  - first:
+      213: 2142822678547789526
+    second: PianoMan-Attension_SpriteSheet_50
+  - first:
+      213: -5773041474766507730
+    second: PianoMan-Attension_SpriteSheet_51
+  - first:
+      213: 1432823915159178671
+    second: PianoMan-Attension_SpriteSheet_52
+  - first:
+      213: -4430999333144895319
+    second: PianoMan-Attension_SpriteSheet_53
+  - first:
+      213: 7722178312523511449
+    second: PianoMan-Attension_SpriteSheet_54
+  - first:
+      213: -5187324284153780865
+    second: PianoMan-Attension_SpriteSheet_55
+  - first:
+      213: -7014851575979073147
+    second: PianoMan-Attension_SpriteSheet_56
+  - first:
+      213: -3340237739180847968
+    second: PianoMan-Attension_SpriteSheet_57
+  - first:
+      213: 4303613734056866092
+    second: PianoMan-Attension_SpriteSheet_58
+  - first:
+      213: 4185500277772105048
+    second: PianoMan-Attension_SpriteSheet_59
+  - first:
+      213: -1538056656173203144
+    second: PianoMan-Attension_SpriteSheet_60
+  - first:
+      213: -5059046953585028385
+    second: PianoMan-Attension_SpriteSheet_61
+  - first:
+      213: -2155498458488847671
+    second: PianoMan-Attension_SpriteSheet_62
+  - first:
+      213: -4400301263434019643
+    second: PianoMan-Attension_SpriteSheet_63
+  - first:
+      213: -1874275186769692233
+    second: PianoMan-Attension_SpriteSheet_64
+  - first:
+      213: 8811029021097749090
+    second: PianoMan-Attension_SpriteSheet_65
+  - first:
+      213: 1358613687780839569
+    second: PianoMan-Attension_SpriteSheet_66
+  - first:
+      213: -7149015338141082623
+    second: PianoMan-Attension_SpriteSheet_67
+  - first:
+      213: -8442917548672249071
+    second: PianoMan-Attension_SpriteSheet_68
+  - first:
+      213: 4663630696723173153
+    second: PianoMan-Attension_SpriteSheet_69
+  - first:
+      213: 6626193562619172234
+    second: PianoMan-Attension_SpriteSheet_70
+  - first:
+      213: 5055300892882518121
+    second: PianoMan-Attension_SpriteSheet_71
+  - first:
+      213: 6189223608849931906
+    second: PianoMan-Attension_SpriteSheet_72
+  - first:
+      213: 2925274782223593089
+    second: PianoMan-Attension_SpriteSheet_73
+  - first:
+      213: -2783077304656401953
+    second: PianoMan-Attension_SpriteSheet_74
+  - first:
+      213: 4917171651001051548
+    second: PianoMan-Attension_SpriteSheet_75
+  - first:
+      213: -1966430529848250948
+    second: PianoMan-Attension_SpriteSheet_76
+  - first:
+      213: 3342322079278494400
+    second: PianoMan-Attension_SpriteSheet_77
+  - first:
+      213: 2012100012852623617
+    second: PianoMan-Attension_SpriteSheet_78
+  - first:
+      213: 1271988218998892127
+    second: PianoMan-Attension_SpriteSheet_79
+  - first:
+      213: -3317692747868520532
+    second: PianoMan-Attension_SpriteSheet_80
+  - first:
+      213: 3539146866469508714
+    second: PianoMan-Attension_SpriteSheet_81
+  - first:
+      213: -327399069781116474
+    second: PianoMan-Attension_SpriteSheet_82
+  - first:
+      213: -3559307976274472183
+    second: PianoMan-Attension_SpriteSheet_83
+  - first:
+      213: -4692209187136264136
+    second: PianoMan-Attension_SpriteSheet_84
+  - first:
+      213: -2174617152725382061
+    second: PianoMan-Attension_SpriteSheet_85
+  - first:
+      213: 5634387002224823099
+    second: PianoMan-Attension_SpriteSheet_86
+  - first:
+      213: -605103774726497067
+    second: PianoMan-Attension_SpriteSheet_87
+  - first:
+      213: 9054478886040255973
+    second: PianoMan-Attension_SpriteSheet_88
+  - first:
+      213: 4353485858912298110
+    second: PianoMan-Attension_SpriteSheet_89
+  - first:
+      213: 3105984602029589529
+    second: PianoMan-Attension_SpriteSheet_90
+  - first:
+      213: 3996061123054082805
+    second: PianoMan-Attension_SpriteSheet_91
+  - first:
+      213: -2688379226313158322
+    second: PianoMan-Attension_SpriteSheet_92
+  - first:
+      213: 8847161143454977203
+    second: PianoMan-Attension_SpriteSheet_93
+  - first:
+      213: -6271722100333087880
+    second: PianoMan-Attension_SpriteSheet_94
+  - first:
+      213: -4939506039029970465
+    second: PianoMan-Attension_SpriteSheet_95
+  - first:
+      213: -4202498982624263936
+    second: PianoMan-Attension_SpriteSheet_96
+  - first:
+      213: 1903005893554108981
+    second: PianoMan-Attension_SpriteSheet_97
+  - first:
+      213: -452569176993040749
+    second: PianoMan-Attension_SpriteSheet_98
+  - first:
+      213: 6343530102230805294
+    second: PianoMan-Attension_SpriteSheet_99
+  - first:
+      213: 5872710517360533897
+    second: PianoMan-Attension_SpriteSheet_100
+  - first:
+      213: -5818139401797197828
+    second: PianoMan-Attension_SpriteSheet_101
+  - first:
+      213: -8647485455567223839
+    second: PianoMan-Attension_SpriteSheet_102
+  - first:
+      213: 5642598132023104105
+    second: PianoMan-Attension_SpriteSheet_103
+  - first:
+      213: -5035661653551126092
+    second: PianoMan-Attension_SpriteSheet_104
+  - first:
+      213: -3920018862917672798
+    second: PianoMan-Attension_SpriteSheet_105
+  - first:
+      213: -5982236512007059806
+    second: PianoMan-Attension_SpriteSheet_106
+  - first:
+      213: 6455089479065458165
+    second: PianoMan-Attension_SpriteSheet_107
+  - first:
+      213: -5227815660298585912
+    second: PianoMan-Attension_SpriteSheet_108
+  - first:
+      213: 5507856618906158839
+    second: PianoMan-Attension_SpriteSheet_109
+  - first:
+      213: 7003587341339609332
+    second: PianoMan-Attension_SpriteSheet_110
+  - first:
+      213: -8738112808470576935
+    second: PianoMan-Attension_SpriteSheet_111
+  - first:
+      213: -1441726354378582045
+    second: PianoMan-Attension_SpriteSheet_112
+  - first:
+      213: 2310719543188816502
+    second: PianoMan-Attension_SpriteSheet_113
+  - first:
+      213: 8654778675878753319
+    second: PianoMan-Attension_SpriteSheet_114
+  - first:
+      213: -1088989465030767305
+    second: PianoMan-Attension_SpriteSheet_115
+  - first:
+      213: 6818543024317394086
+    second: PianoMan-Attension_SpriteSheet_116
+  - first:
+      213: 3776447660592105591
+    second: PianoMan-Attension_SpriteSheet_117
+  - first:
+      213: -5513143110987715739
+    second: PianoMan-Attension_SpriteSheet_118
+  - first:
+      213: -4407701182263386947
+    second: PianoMan-Attension_SpriteSheet_119
+  - first:
+      213: 6466046071820662554
+    second: PianoMan-Attension_SpriteSheet_120
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4200
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b847423008661d0800000000000000
+      internalID: -3357855721173251181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 4200
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e61be8eaacb1bb9b0800000000000000
+      internalID: -5063422798722059922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 4200
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c811102ee63abc20800000000000000
+      internalID: 3222948879705118918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 4200
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6f534c14346dbd80800000000000000
+      internalID: -8233314368788144277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 4200
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1ab95d605285d3f0800000000000000
+      internalID: -876651270510101989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 4200
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a66f559b4ea6f000800000000000000
+      internalID: 69434483922658978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 4200
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a43cc976d50cad790800000000000000
+      internalID: -7504474321656691894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 4200
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e53b1b1dcb47d6f10800000000000000
+      internalID: 2264594541957985118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 3280
+        y: 4200
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16a1e6e61ac74aa40800000000000000
+      internalID: 5378560887771503201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 4200
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83c5f8df1c5457430800000000000000
+      internalID: 3780004161732435000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 4100
+        y: 4200
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8add3c2af86614dc0800000000000000
+      internalID: -3656528655351030360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3780
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a095027723ca8db0800000000000000
+      internalID: -4788800679570992983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 3780
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97b25d3b12fb6dde0800000000000000
+      internalID: -1308648490232632455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 3780
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4284fa8d75b3374f0800000000000000
+      internalID: -832256257649850332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 3780
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea78cfd3d92539a80800000000000000
+      internalID: -8461328439595726930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 3780
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9981556a73211c7e0800000000000000
+      internalID: -1747095150219945831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 3780
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56abf9eb6c51d4720800000000000000
+      internalID: 2831943684031756901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 3780
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ae7b92105e3c9e80800000000000000
+      internalID: -8170587110326436187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 3780
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6657b51b6214add0800000000000000
+      internalID: -2475833644011792786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 3280
+        y: 3780
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b1956809f5aa1f50800000000000000
+      internalID: 6852972272003944886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 3780
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd74820f5d963f910800000000000000
+      internalID: 1869954637867010015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 4100
+        y: 3780
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f17012b9a8a6a2050800000000000000
+      internalID: 5776546615596746527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3360
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e7f6acb57f62e230800000000000000
+      internalID: 3666615598099920868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 3360
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aedd33ecc5aa4e2d0800000000000000
+      internalID: -3250285715481436694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 3360
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d98132b5fc24e4f0800000000000000
+      internalID: -800465399996905000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 3360
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b41411042729e3d30800000000000000
+      internalID: 4413125704268464459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 3360
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddacb0b6d77e30230800000000000000
+      internalID: 3603978652679391965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 3360
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67b32d72beafdb7c0800000000000000
+      internalID: -4053808201671230602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 3360
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa00ec79d5aebbec0800000000000000
+      internalID: -3549986193551785809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 3360
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5177a586e5c828350800000000000000
+      internalID: 6017526389225977621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 3280
+        y: 3360
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbacd955b1fd99ff0800000000000000
+      internalID: -28746614107682115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 3360
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec9a855f6d9779170800000000000000
+      internalID: 8185144811915356622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 4100
+        y: 3360
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee01c92d1d54f8340800000000000000
+      internalID: 4868186489694720238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2940
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c39d60a8dc034ae20800000000000000
+      internalID: 3360864881267366204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 2940
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2cd61408ddd54190800000000000000
+      internalID: -7978727244965684177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 2940
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b92475c751d7d1a90800000000000000
+      internalID: -7341574286310161765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_36
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 2940
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2541146d40b2bb4d0800000000000000
+      internalID: -3117851017249483694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_37
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 2940
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b0321e11e07df2d0800000000000000
+      internalID: -3243312044462427975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_38
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 2940
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 365bafed2cab89c60800000000000000
+      internalID: 7825209698683630947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_39
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 2940
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d18ed1e6c29f25190800000000000000
+      internalID: -7975038020898396131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_40
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 2940
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7617cecf2240f9670800000000000000
+      internalID: 8547555166091243879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_41
+      rect:
+        serializedVersion: 2
+        x: 3280
+        y: 2940
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4da2692cf8d44440800000000000000
+      internalID: 4919295270533115214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_42
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 2940
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 589e3db05dae58bb0800000000000000
+      internalID: -4934279615967139451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_43
+      rect:
+        serializedVersion: 2
+        x: 4100
+        y: 2940
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2731bd1131002df0800000000000000
+      internalID: -207164272395864273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2520
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b876371c0f156e2e0800000000000000
+      internalID: -2096898482014820469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_45
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 2520
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d6d87affcfaad4a0800000000000000
+      internalID: -6567743798771132713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_46
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 2520
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9edfc30089544c7a0800000000000000
+      internalID: -6357880254798955031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_47
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 2520
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6e62f460465ff6d0800000000000000
+      internalID: -2954547995960250769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_48
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 2520
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fec3b6374d8519a50800000000000000
+      internalID: 6526095004529278191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_49
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 2520
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4374a55f1b30e570800000000000000
+      internalID: 8493853902987621197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_50
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 2520
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d6fd7b7fd5dcbd10800000000000000
+      internalID: 2142822678547789526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_51
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 2520
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e21f1f69d5902efa0800000000000000
+      internalID: -5773041474766507730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_52
+      rect:
+        serializedVersion: 2
+        x: 3280
+        y: 2520
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fad4fb862c962e310800000000000000
+      internalID: 1432823915159178671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_53
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 2520
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a0e7eb359de182c0800000000000000
+      internalID: -4430999333144895319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_54
+      rect:
+        serializedVersion: 2
+        x: 4100
+        y: 2520
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 996703ae240ba2b60800000000000000
+      internalID: 7722178312523511449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2100
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f75a1441c0ce208b0800000000000000
+      internalID: -5187324284153780865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_56
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 2100
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 581adad68ad36ae90800000000000000
+      internalID: -7014851575979073147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_57
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 2100
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ac85ca397715a1d0800000000000000
+      internalID: -3340237739180847968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_58
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 2100
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c21b3fcb3e189bb30800000000000000
+      internalID: 4303613734056866092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_59
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 2100
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 855b7efa352e51a30800000000000000
+      internalID: 4185500277772105048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_60
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 2100
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8310f54ce99b7aae0800000000000000
+      internalID: -1538056656173203144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_61
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 2100
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd2da858997aac9b0800000000000000
+      internalID: -5059046953585028385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_62
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 2100
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c2ced382912612e0800000000000000
+      internalID: -2155498458488847671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_63
+      rect:
+        serializedVersion: 2
+        x: 3280
+        y: 2100
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cc0050905dfee2c0800000000000000
+      internalID: -4400301263434019643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_64
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 2100
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b97341e5ac3df5e0800000000000000
+      internalID: -1874275186769692233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_65
+      rect:
+        serializedVersion: 2
+        x: 4100
+        y: 2100
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26a603c3630174a70800000000000000
+      internalID: 8811029021097749090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_66
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1680
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 190192763f3cad210800000000000000
+      internalID: 1358613687780839569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_67
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 1680
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10c18445d6899cc90800000000000000
+      internalID: -7149015338141082623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_68
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 1680
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1139a73d83bb4da80800000000000000
+      internalID: -8442917548672249071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_69
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 1680
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12fcac1e86b88b040800000000000000
+      internalID: 4663630696723173153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_70
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 1680
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8555e820f7f4fb50800000000000000
+      internalID: 6626193562619172234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_71
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 1680
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9604af0c069082640800000000000000
+      internalID: 5055300892882518121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_72
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 1680
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28e16f0941a84e550800000000000000
+      internalID: 6189223608849931906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_73
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 1680
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18e68d86ae9a89820800000000000000
+      internalID: 2925274782223593089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_74
+      rect:
+        serializedVersion: 2
+        x: 3280
+        y: 1680
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd9e081dfe58069d0800000000000000
+      internalID: -2783077304656401953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_75
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 1680
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c99e985709d4d3440800000000000000
+      internalID: 4917171651001051548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_76
+      rect:
+        serializedVersion: 2
+        x: 4100
+        y: 1680
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbd69e80ad5d5b4e0800000000000000
+      internalID: -1966430529848250948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_77
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1260
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c2f6540930526e20800000000000000
+      internalID: 3342322079278494400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_78
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 1260
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 109b3a61d4a6ceb10800000000000000
+      internalID: 2012100012852623617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_79
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 1260
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5629efbb8207a110800000000000000
+      internalID: 1271988218998892127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_80
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 1260
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caf3861160035f1d0800000000000000
+      internalID: -3317692747868520532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_81
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 1260
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a661ad7e2539d1130800000000000000
+      internalID: 3539146866469508714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_82
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 1260
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c937e9d748d47bf0800000000000000
+      internalID: -327399069781116474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_83
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 1260
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90312fbe04cca9ec0800000000000000
+      internalID: -3559307976274472183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_84
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 1260
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8382becca9ce1eeb0800000000000000
+      internalID: -4692209187136264136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_85
+      rect:
+        serializedVersion: 2
+        x: 3280
+        y: 1260
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35c0551a83532d1e0800000000000000
+      internalID: -2174617152725382061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_86
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 1260
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3b40b2502d513e40800000000000000
+      internalID: 5634387002224823099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_87
+      rect:
+        serializedVersion: 2
+        x: 4100
+        y: 1260
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dcdd27a25d3a97f0800000000000000
+      internalID: -605103774726497067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_88
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 840
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ed34bcf298f7ad70800000000000000
+      internalID: 9054478886040255973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_89
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 840
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e74672ba250ba6c30800000000000000
+      internalID: 4353485858912298110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_90
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 840
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9148ec11a8caa1b20800000000000000
+      internalID: 3105984602029589529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_91
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 840
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fa136c5b6cd47730800000000000000
+      internalID: 3996061123054082805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_92
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 840
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e41901a5655f0bad0800000000000000
+      internalID: -2688379226313158322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_93
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 840
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bcc54a8f2e67ca70800000000000000
+      internalID: 8847161143454977203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_94
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 840
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 873fdaf8afd56f8a0800000000000000
+      internalID: -6271722100333087880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_95
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 840
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd9c8b99d69537bb0800000000000000
+      internalID: -4939506039029970465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_96
+      rect:
+        serializedVersion: 2
+        x: 3280
+        y: 840
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0018dbbe079bda5c0800000000000000
+      internalID: -4202498982624263936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_97
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 840
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53a74c217c5d86a10800000000000000
+      internalID: 1903005893554108981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_98
+      rect:
+        serializedVersion: 2
+        x: 4100
+        y: 840
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396f9093bb628b9f0800000000000000
+      internalID: -452569176993040749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_99
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 420
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2be67db40fb80850800000000000000
+      internalID: 6343530102230805294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_100
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 420
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 981a9ffb91f008150800000000000000
+      internalID: 5872710517360533897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_101
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 420
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff9c263a01d14fa0800000000000000
+      internalID: -5818139401797197828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_102
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 420
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e30f846bc5fdf780800000000000000
+      internalID: -8647485455567223839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_103
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 420
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9621585fa198e4e40800000000000000
+      internalID: 5642598132023104105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_104
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 420
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b9670bf76cbd1ab0800000000000000
+      internalID: -5035661653551126092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_105
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 420
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a026f20d9b4999c0800000000000000
+      internalID: -3920018862917672798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_106
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 420
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a6827b6693dafca0800000000000000
+      internalID: -5982236512007059806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_107
+      rect:
+        serializedVersion: 2
+        x: 3280
+        y: 420
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f5de014ea5159950800000000000000
+      internalID: 6455089479065458165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_108
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 420
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c8bda8ea511377b0800000000000000
+      internalID: -5227815660298585912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_109
+      rect:
+        serializedVersion: 2
+        x: 4100
+        y: 420
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f68fabb966df6c40800000000000000
+      internalID: 5507856618906158839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_110
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f848f1949db13160800000000000000
+      internalID: 7003587341339609332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_111
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 0
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d002db72bcfbb680800000000000000
+      internalID: -8738112808470576935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_112
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 0
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e712ffe485fdfbe0800000000000000
+      internalID: -1441726354378582045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_113
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 0
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 672825b8e23511020800000000000000
+      internalID: 2310719543188816502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_114
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 0
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 724f069c953fb1870800000000000000
+      internalID: 8654778675878753319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_115
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 0
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73dc2bce9d123e0f0800000000000000
+      internalID: -1088989465030767305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_116
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 0
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ace72221c450ae50800000000000000
+      internalID: 6818543024317394086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_117
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 0
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 778827a8323a86430800000000000000
+      internalID: 3776447660592105591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_118
+      rect:
+        serializedVersion: 2
+        x: 3280
+        y: 0
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56b6fa9ec816d73b0800000000000000
+      internalID: -5513143110987715739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_119
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 0
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbc1f13b023b4d2c0800000000000000
+      internalID: -4407701182263386947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PianoMan-Attension_SpriteSheet_120
+      rect:
+        serializedVersion: 2
+        x: 4100
+        y: 0
+        width: 410
+        height: 420
+      alignment: 9
+      pivot: {x: 0.5, y: 0.255022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a173e2cc4a20cb950800000000000000
+      internalID: 6466046071820662554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

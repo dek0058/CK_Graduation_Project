@@ -8,8 +8,8 @@ namespace Game.Stage {
     public class GameStage : MonoBehaviour {
 
         public Dictionary<string, GameRoom> rooms = new Dictionary<string, GameRoom> ( );
-        public GameRoom start_room;
 
+        public GameRoom start_room;
         public GameRoom current_room;
 
 
@@ -25,15 +25,8 @@ namespace Game.Stage {
 
 
         public void initialize ( ) {
-            foreach(var room in rooms.Values) {
-                if(room == start_room) {
-                    room.active ( );
-                } else {
-                    room.inactive ( );
-                }
-            }
-
             current_room = start_room;
+            current_room.join ( );
         }
 
 

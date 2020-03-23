@@ -150,6 +150,7 @@ namespace Game.Unit.Character {
             GameObject missile_prefab = ResourceLoader.instance.get_prefab ( ResourceLoader.Resource.Melody_Missile ) as  GameObject;
             GameObject missile = Instantiate ( missile_prefab, missile_transform.position, Quaternion.identity );
             UMelodyMissile unit = missile.GetComponent<UMelodyMissile> ( );
+            unit.player = player;
             unit.rotate ( angle );
             return missile;
         }

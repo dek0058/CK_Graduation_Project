@@ -24,6 +24,7 @@ namespace Game.Management {
         private const string Path_Game_Audio = "Audio/Prefab/GameAudio";
 
         //Clip
+        private const string Path_Stage1_Joy_Music = "Audio/Music/OST - Inconsolable"; // Temporary
         private const string Path_Stage1_Boss_Music = "Audio/Music/The Moon Over the Lake Composed by Hemio - New age piano";
         #endregion
 
@@ -49,6 +50,7 @@ namespace Game.Management {
             Game_Audio,
 
             // Clip
+            Stage1_Joy_Music,
             Stage1_Boss_Music,
             //
         }
@@ -161,6 +163,7 @@ namespace Game.Management {
                 case Resource.Game_Audio:           { path = Path_Game_Audio;           } break;
 
                 //Clip
+                case Resource.Stage1_Joy_Music: { path = Path_Stage1_Joy_Music; } break;
                 case Resource.Stage1_Boss_Music:    { path = Path_Stage1_Boss_Music;    } break;
             }
             return path;
