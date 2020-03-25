@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace JToolkit.Utility {
     public class CSVReader {
 
-        private static string _splite_return = @",(?=(?:[^""]*""[^""]*"")*(?![^""]*""";
+        private static string _splite_return = @",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))";
         private static string _line_splite_return = @"\r\n|\n\r|\n|\r";
         private static char[] _trim_chars = { '\"' };
 
@@ -27,7 +27,7 @@ namespace JToolkit.Utility {
                 }
 
                 var entry = new Dictionary<string, object> ( );
-                for(var j = 0; j < header.Length; i++ ) {
+                for(var j = 0; j < header.Length; j++ ) {
                     string value = values[j];
                     value = value.TrimStart ( _trim_chars ).TrimEnd ( _trim_chars ).Replace ( "\\", "" );
                     value = value.Replace ( "<br>", "\n" );
