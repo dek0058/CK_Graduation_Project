@@ -1,0 +1,703 @@
+fileFormatVersion: 2
+guid: 505df29b7ef02ea4c92b6957ab9a493f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4017715044442245099
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_0
+  - first:
+      213: -4891356769413302347
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_1
+  - first:
+      213: 6855013614339361500
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_2
+  - first:
+      213: -4161906737244749300
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_3
+  - first:
+      213: 8138925920234564924
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_4
+  - first:
+      213: -6354941017008601169
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_5
+  - first:
+      213: 238935338355836846
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_6
+  - first:
+      213: -334456207962059341
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_7
+  - first:
+      213: 1564399255805542128
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_8
+  - first:
+      213: 4176479928514276561
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_9
+  - first:
+      213: -2080817330149493711
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_10
+  - first:
+      213: 477777644839543524
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_11
+  - first:
+      213: -8233867273922946741
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_12
+  - first:
+      213: -9213857140771786002
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_13
+  - first:
+      213: 7968719156868258233
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_14
+  - first:
+      213: -1011849547855899024
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_15
+  - first:
+      213: 6245370840569070847
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_16
+  - first:
+      213: -7420246432464953032
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_17
+  - first:
+      213: -1215511571501997035
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_18
+  - first:
+      213: -4815426148829967906
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_19
+  - first:
+      213: -6462117071607426052
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_20
+  - first:
+      213: 1690234927164836259
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_21
+  - first:
+      213: 3575468173735108831
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_22
+  - first:
+      213: -7040599917860010443
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_23
+  - first:
+      213: -4861479975896182546
+    second: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_24
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 110
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1200
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be709b0db8ac1c730800000000000000
+      internalID: 4017715044442245099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1200
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b7fa690fe86e1cb0800000000000000
+      internalID: -4891356769413302347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1200
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cda0a251096e12f50800000000000000
+      internalID: 6855013614339361500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1200
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c02c83a8fdfed36c0800000000000000
+      internalID: -4161906737244749300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1200
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3decc8a00643f070800000000000000
+      internalID: 8138925920234564924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 900
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa784a0a0d6bec7a0800000000000000
+      internalID: -6354941017008601169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 900
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea7ccfe9c6ed05300800000000000000
+      internalID: 238935338355836846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 900
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bd4f73d9d5cb5bf0800000000000000
+      internalID: -334456207962059341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 900
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0febc29a5dcd5b510800000000000000
+      internalID: 1564399255805542128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 900
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dc64a6fd56d5f930800000000000000
+      internalID: 4176479928514276561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13476f1b9a37f13e0800000000000000
+      internalID: -2080817330149493711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 600
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e2a8429c3861a600800000000000000
+      internalID: 477777644839543524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 600
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b49db1ad65d6bbd80800000000000000
+      internalID: -8233867273922946741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 600
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee2f9116fbdc12080800000000000000
+      internalID: -9213857140771786002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 600
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b99bf36ad3969e60800000000000000
+      internalID: 7968719156868258233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 076d8ed723035f1f0800000000000000
+      internalID: -1011849547855899024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 300
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff4c3baa0b30ca650800000000000000
+      internalID: 6245370840569070847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 300
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 831211f0f2df50990800000000000000
+      internalID: -7420246432464953032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 300
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5142f307aa2a12fe0800000000000000
+      internalID: -1215511571501997035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 300
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed9ccdc4e6b2c2db0800000000000000
+      internalID: -4815426148829967906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf31ad9d2c2f156a0800000000000000
+      internalID: -6462117071607426052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a94e9406bbe47710800000000000000
+      internalID: 1690234927164836259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd022314c5d9e9130800000000000000
+      internalID: 3575468173735108831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5364f4a6da3ca4e90800000000000000
+      internalID: -7040599917860010443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cypress(NoneHP)-Protagonist_AttackN_SpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee0980a18bd888cb0800000000000000
+      internalID: -4861479975896182546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

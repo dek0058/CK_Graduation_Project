@@ -17,13 +17,13 @@ namespace Game.Unit.Character {
         public enum AnimatorParameter {
             Angle,
             Run,
-            //Attack,
+            Attack,
         }
 
         readonly private EnumDictionary<AnimatorParameter, int> parameter_hash = new EnumDictionary<AnimatorParameter, int> {
             { AnimatorParameter.Angle, Animator.StringToHash("Angle") },
             { AnimatorParameter.Run, Animator.StringToHash("Run") },
-            //{ AnimatorParameter.Attack, Animator.StringToHash("Attack") },
+            { AnimatorParameter.Attack, Animator.StringToHash("Attack") },
         };
 
 
@@ -37,7 +37,7 @@ namespace Game.Unit.Character {
         public void attack ( ) {
             if(get_animator_state(0).IsTag(state_tag[AnimatorTag.Attack])) {        // 이미 공격에 성공했으므로
                 active_attack ( );
-                //get_animator ( ).ResetTrigger ( parameter_hash[AnimatorParameter.Attack] );
+                get_animator ( ).ResetTrigger ( parameter_hash[AnimatorParameter.Attack] );
                 unit_order.set_order ( Order_Id.Attack, false );
                 return;
             }
@@ -46,7 +46,7 @@ namespace Game.Unit.Character {
                 return;
             }
 
-            //get_animator ( ).SetTrigger ( parameter_hash[AnimatorParameter.Attack] );
+            get_animator ( ).SetTrigger ( parameter_hash[AnimatorParameter.Attack] );
             StartCoroutine ( Eattack_cooltime ( ) );
         }
 
@@ -109,7 +109,7 @@ namespace Game.Unit.Character {
             base.active_update ( );
 
             if ( unit_order.get_order ( Order_Id.Attack ) ) {
-                //attack ( );
+                attack ( );
             }
         }
 
