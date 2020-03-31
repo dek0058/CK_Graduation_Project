@@ -2,7 +2,8 @@
 using System.Collections;
 
 namespace Game.Unit {
-    using Game.Management;
+    using Management;
+    using JToolkit.Utility;
 
     public class MovementSystem : MonoBehaviour {
 
@@ -13,16 +14,22 @@ namespace Game.Unit {
 
         public PathType path_type = PathType.Ground;
         
-        [HideInInspector]
-        public new Collider2D collider;
-        [HideInInspector]
-        public new Rigidbody2D rigidbody;
-        [HideInInspector]
+        public Collider2D shadow_collider;
+        public Rigidbody2D rigidbody2d;
         public Unit unit;
+
+        [SerializeField]
+        private GameObject path_obj;
+        [SerializeField]
+        private Collider2D path_collider;
 
         private Vector2 next_velocity = Vector2.zero;
 
-        
+        public KdTree<Unit> collisions = new KdTree<Unit> ( );
+        public event shadow_collision_enter event_collision_enter;
+        public event shadow_collision_exit event_collision_exit;
+
+
 
         public bool is_grounded {
             get; private set;
@@ -34,7 +41,7 @@ namespace Game.Unit {
         /// </summary>
         /// <param name="target">이동할 좌표</param>
         public void set_position ( Vector3 target ) {
-            rigidbody.MovePosition ( target );
+            rigidbody2d.MovePosition ( target );
         }
 
 
@@ -56,17 +63,17 @@ namespace Game.Unit {
 
         public void set_path_type ( PathType type ) {
             path_type = type;
-            gameObject.layer = (int)path_type;
+            path_obj.layer = (int)path_type;
         }
 
 
         private void update_movement ( ) {
             if(next_velocity == Vector2.zero) {
-                rigidbody.velocity = Vector2.zero;
+                rigidbody2d.velocity = Vector2.zero;
                 return;
             }
 
-            rigidbody.velocity = next_velocity * unit.unit_status.rhythm;
+            rigidbody2d.velocity = next_velocity * unit.unit_status.rhythm;
             next_velocity = Vector3.zero;
         }
 
@@ -102,22 +109,30 @@ namespace Game.Unit {
             is_grounded = result;
         }
 
-
         /// <summary>
         /// MovementSystem class를 검증합니다.
         /// </summary>
         public void confirm ( ) {
 
-            if ( collider == null ) {
-                collider = GetComponent<Collider2D> ( );
+            if ( shadow_collider == null ) {
+                shadow_collider = GetComponent<Collider2D> ( );
             }
+
 
             if ( unit == null ) {
                 unit = GetComponentInParent<Unit> ( );
             }
 
-            if ( rigidbody == null ) {
-                rigidbody = GetComponentInParent<Rigidbody2D> ( );
+            if ( rigidbody2d == null ) {
+                rigidbody2d = GetComponentInParent<Rigidbody2D> ( );
+            }
+
+            if( path_obj == null) {
+                path_obj = transform.GetChild ( 0 ).gameObject;
+            }
+
+            if ( path_obj != null && path_collider == null ) {
+                path_collider = path_obj.GetComponent<Collider2D> ( );
             }
 
             set_path_type ( path_type );
@@ -152,7 +167,18 @@ namespace Game.Unit {
         ////////////////////////////////////////////////////////////////////////////
 
         private void Update ( ) {
-            if ( gameObject.layer != (int)path_type ) {    // Layer 조정
+#if false
+            if ( shadow_collider is CapsuleCollider2D ) {
+                CapsuleCollider2D shadow = shadow_collider as CapsuleCollider2D;
+                CapsuleCollider2D path = path_collider as CapsuleCollider2D;
+                path.isTrigger = false;
+                path.direction = shadow.direction;
+                path.offset = shadow.offset;
+                path.size = shadow.size * 0.99f;
+            }
+#endif
+
+            if ( path_obj.layer != (int)path_type ) {    // Layer 조정
                 set_path_type ( path_type );
             }
         }
@@ -162,5 +188,29 @@ namespace Game.Unit {
             update_flying ( );
             update_ground ( );
         }
+
+        private void OnTriggerEnter2D ( Collider2D collision ) {
+            Unit unit = collision.GetComponentInParent<Unit> ( );
+            if(unit != null) {
+                collisions.Add ( unit );
+            }
+            event_collision_enter?.Invoke ( collision );
+        }
+
+        private void OnTriggerExit2D ( Collider2D collision ) {
+            Unit unit = collision.GetComponentInParent<Unit> ( );
+            if ( unit != null ) {
+                for(int i = 0; i < collisions.Count; ++i ) {
+                    if(collisions[i] == unit) {
+                        collisions.RemoveAt(i); break;
+                    }
+                }
+            }
+
+            event_collision_exit?.Invoke ( collision );
+        }
     }
+
+    public delegate void shadow_collision_enter ( Collider2D collision );
+    public delegate void shadow_collision_exit ( Collider2D collision );
 }

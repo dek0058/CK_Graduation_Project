@@ -34,6 +34,7 @@ namespace Game.Unit.Missile {
             base.confirm ( );
 
             my_type = unit_type as MelodyMissileType;
+            movement_system.event_collision_enter += my_type.on_collision;
         }
 
 

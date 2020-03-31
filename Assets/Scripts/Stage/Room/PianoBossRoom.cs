@@ -41,9 +41,6 @@ namespace Game.Stage.Room {
             SoundManager.instance.on_music ( );
             sfx.stop ( );
             ai.reset ( );
-
-            CameraManager.instance.game_camera.cv_camera.Follow =
-                    CameraManager.instance.game_camera.source.transform;
         }
 
 
@@ -52,15 +49,6 @@ namespace Game.Stage.Room {
  
             // HACK
             if(state == State.Active) {
-
-                float dist = Vector2.Distance ( boss.get_position(),
-                    CameraManager.instance.game_camera.source.get_position ( ) ) * 0.5f;
-                float angle = JToolkit.Math.Angle.target_to_angle ( boss.get_position ( ),
-                    CameraManager.instance.game_camera.source.get_position ( ) ) * Mathf.Rad2Deg - 90f;
-                Vector2 location = JToolkit.Math.Polar.location ( dist, angle );
-
-                CameraManager.instance.game_camera.camera_point.transform.position =
-                    (Vector2)boss.get_position ( ) + location;
 
                 if ( !sfx.audio_list[0].source.isPlaying ) {
                     return;

@@ -10,6 +10,8 @@ namespace Game.Unit {
 
         public Player player;
         public Unit owner = null;
+        public MovementSystem movement_system = null;
+        public UnitType unit_type = null;
 
         public UnitData unit_data = null;
         public UnitModel unit_model = new UnitModel();
@@ -20,12 +22,6 @@ namespace Game.Unit {
         public event on_attack event_attack    = null;
         public event on_damaged event_damaged  = null;
 
-
-        [HideInInspector]
-        public MovementSystem movement_system = null;
-
-        [HideInInspector]
-        public UnitType unit_type = null;
 
         [HideInInspector]
         public UnitOrder unit_order = null;
@@ -168,7 +164,11 @@ namespace Game.Unit {
 
             if( unit_type  == null) {
                 unit_type = gameObject.GetComponentInChildren<UnitType> ( );
+                unit_type.unit = this;
+            } else if(unit_type != null && unit_type.unit == null) {
+                unit_type.unit = this;
             }
+           
 
             if( unit_order == null) {
                 unit_order = new UnitOrder ( );
@@ -317,6 +317,11 @@ namespace Game.Unit {
             return get_animator_state ( layer ).fullPathHash == hash;
         }
 
+
+        public void destroy ( ) {
+            movement_system.collisions.Clear ( );
+            Destroy ( gameObject );
+        }
 
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///

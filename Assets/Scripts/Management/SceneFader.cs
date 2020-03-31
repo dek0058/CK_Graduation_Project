@@ -21,6 +21,7 @@ namespace Game.Management {
 
         private Stack<CanvasGroup> group_stack = new Stack<CanvasGroup> ( );
 
+        [Range(0.1f, 10f)]
         public float fade_duration = 0.5f;
 
         private bool do_fading = false;

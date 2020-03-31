@@ -6,7 +6,8 @@ namespace Game.Unit.Character {
     using JToolkit.Math;
     using Game.Unit;
     using Game.Unit.Type;
-    using Game.Management;
+    using Management;
+    using Item;
     using JToolkit.Testing;
 
     public class UProtagonist : Unit {
@@ -28,9 +29,10 @@ namespace Game.Unit.Character {
 
 
         private ProtagonistType my_type;
+        [SerializeField] private Item weapon;
 
-        public Transform weapon_pivot;
 
+        /// <summary> 공격을 하는 중인가 아닌가? </summary>
         private bool do_attack = false;
 
 
@@ -47,6 +49,7 @@ namespace Game.Unit.Character {
             }
 
             get_animator ( ).SetTrigger ( parameter_hash[AnimatorParameter.Attack] );
+            weapon.GetComponent<IEquipmentItem> ( ).action ( EquipmentAction.Attack );
             StartCoroutine ( Eattack_cooltime ( ) );
         }
 
@@ -145,16 +148,12 @@ namespace Game.Unit.Character {
             my_type.attacked_units.Clear ( );
             unit_order.set_active ( UnitOrder.Active.Rotate, true );
 
-            
-
-            // - HACK
-           //weapon_pivot.gameObject.SetActive ( true );
-            // - 
-
             float damage = unit_status.damage + unit_status.add_damage + unit_status.rate_damage;
             float angle = 90f;
             float range = 1f;
             LayerMask layer = 1 << (int)GameLayer.Unit_Collider;
+
+            
 
             while ( my_type.do_attack ) {
                 if ( !get_animator_nextstate ( 0 ).IsTag ( state_tag[AnimatorTag.Attack] ) &&
@@ -174,11 +173,6 @@ namespace Game.Unit.Character {
             }
 
             unit_order.set_active ( UnitOrder.Active.Rotate, false );
-
-            // - HACK
-            //weapon_pivot.gameObject.SetActive ( false );
-            // - 
-
         }
 
 

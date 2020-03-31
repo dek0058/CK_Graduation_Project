@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2893c257cfb6b1a4eb005a8a69e4ada1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unit: {fileID: 0}
 --- !u!58 &9024707955804965658
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -123,6 +124,53 @@ SortingGroup:
   m_SortingLayerID: -1375113253
   m_SortingLayer: 2
   m_SortingOrder: 0
+--- !u!1 &4895066796929377792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 800320472016085835}
+  - component: {fileID: 8723264778353572467}
+  m_Layer: 22
+  m_Name: Path
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &800320472016085835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895066796929377792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6662824684401444131}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &8723264778353572467
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895066796929377792}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.83916, y: 0.30969}
+  m_Direction: 1
 --- !u!1 &5312166627831149866
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +310,7 @@ GameObject:
   - component: {fileID: 6995356237631622199}
   - component: {fileID: 6057577273601538695}
   - component: {fileID: 121766855085987717}
-  m_Layer: 22
+  m_Layer: 10
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +327,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.176904, y: 0.176904, z: 0.176904}
-  m_Children: []
+  m_Children:
+  - {fileID: 800320472016085835}
   m_Father: {fileID: 5312166628597922219}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -347,9 +396,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path_type: 22
-  collider: {fileID: 9024707955804965658}
-  rigidbody: {fileID: 0}
+  shadow_collider: {fileID: 0}
+  rigidbody2d: {fileID: 0}
   unit: {fileID: 0}
+  path_obj: {fileID: 0}
+  path_collider: {fileID: 0}
 --- !u!210 &6057577273601538695
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -371,9 +422,9 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.023714537, y: 0.04150032}
-  m_Size: {x: 0.56285703, y: 0.24700078}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.84, y: 0.31}
   m_Direction: 1

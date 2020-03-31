@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Camera
   - GameCamera
+  - SubCamera
+  - CameraPoint
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - Unit Collider
   - Unit Collision
-  - 
+  - Unit Shadow
   - 
   - 
   - Door

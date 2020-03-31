@@ -2,14 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Equipment {
-    public class Equipment : MonoBehaviour {
+namespace Game.Item {
+    using Unit;
 
-        public EquipmentStatus status = new EquipmentStatus ( );
+    public class Item : MonoBehaviour {
 
-        public void confirm ( ) {
- 
+        public enum ItemType {
+            Normal,
+            Consumable,
+            Equipment,
         }
+        public ItemType item_type;
+
+        public Unit owner;
+
+
+
+        public event on_use event_use;
+
+
+
+
+
+        public virtual void confirm ( ) {
+            
+        }
+
 
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
@@ -20,13 +38,5 @@ namespace Game.Equipment {
         }
     }
 
-    [System.Serializable]
-    public class EquipmentStatus {
-        public float life;
-        public float damage;
-        public float armor;
-        public float mspeed;
-        public float aspeed;
-    }
-
+    public delegate void on_use ( );
 }

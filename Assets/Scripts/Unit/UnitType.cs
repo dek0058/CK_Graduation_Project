@@ -7,8 +7,8 @@ using System.Collections.Generic;
 namespace Game.Unit {
     public abstract class UnitType : MonoBehaviour {
 
+        public Unit unit;
         public Dictionary<string, UnityEvent> schedules = new Dictionary<string, UnityEvent> ( );
-
         private List<DamageInfo> damage_list = new List<DamageInfo> ( );
 
         /// <summary>

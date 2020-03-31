@@ -46,8 +46,10 @@ namespace Game.Management {
         UI,
 
         Unit_Collider = 8,
-        Unit_Collision = 9,
-        
+        Unit_Collision,
+        Unit_Shadow,
+
+
         Door = 13,
 
         Path_Ground = 21,

@@ -26,6 +26,13 @@ namespace Game.User {
         public UnitOrder player_order = null;
 
 
+        private Vector2 axis = new Vector2();
+        private float releas_both_input_time = 0f;
+        [SerializeField, Range(1f, 10f)]
+        private float releas_input_time_speed = 5f;
+        private const float Releas_Both_Input_Time = 0.56f;
+
+
         public static Player create ( Team team, bool local = false ) {
             GameObject obj = new GameObject ( "Player ", typeof(Player) );
             Player p = obj.GetComponent<Player> ( );
@@ -43,16 +50,68 @@ namespace Game.User {
                 return;
             }
             // 이동
-            Vector2 axis = new Vector2 (
-                Singleton<PlayerInput>.instance.horizontal.value,
-                Singleton<PlayerInput>.instance.vertical.value
-            );
+            float x = Singleton<PlayerInput>.instance.horizontal.value;
+            float y = Singleton<PlayerInput>.instance.vertical.value;
+            bool is_both_receiving = Singleton<PlayerInput>.instance.horizontal.receiving_input && Singleton<PlayerInput>.instance.vertical.receiving_input;
+            bool is_receiving = Singleton<PlayerInput>.instance.horizontal.receiving_input || Singleton<PlayerInput>.instance.vertical.receiving_input;
 
-            bool flag = Singleton<PlayerInput>.instance.horizontal.receiving_input || Singleton<PlayerInput>.instance.vertical.receiving_input;
+
+            float time = Time.deltaTime * releas_input_time_speed;
+            if ( is_both_receiving ) {
+                releas_both_input_time = Releas_Both_Input_Time;
+                axis.x = x;
+                axis.y = y;
+
+            } else if(is_receiving) {
+                if(releas_both_input_time > 0f) {
+                    
+                    releas_both_input_time = releas_both_input_time - time > 0f ? releas_both_input_time - time : 0f;
+                    if ( x == 0f ) {
+                        axis.x = axis.x != 0 ? Mathf.MoveTowards ( axis.x, 0f, time ) : 0f;
+                    } else {
+                        axis.x = x;
+                    }
+                    if ( y == 0f ) {
+                        axis.y = axis.y != 0 ? Mathf.MoveTowards ( axis.y, 0f, time ) : 0f;
+                    } else {
+                        axis.y = y;
+                    }
+                } else {
+                    axis.x = x;
+                    axis.y = y;
+                }
+
+            } else if( !is_receiving ) {
+                if( releas_both_input_time > 0f ) {
+                    axis.x = axis.x != 0 ? Mathf.MoveTowards ( axis.x, 0f, time ) : 0f;
+                    axis.y = axis.y != 0 ? Mathf.MoveTowards ( axis.y, 0f, time ) : 0f;
+                    if ( axis.x == 0 && axis.y == 0 ) {
+                        releas_both_input_time = 0f;
+                    }
+                } else {
+                    axis.x = x;
+                    axis.y = y;
+                }
+            }
+
+            // 이동 조정
+            Vector2 temp_axis = axis;
+            if ( temp_axis.x > 0f ) {
+                temp_axis.x = 1f;
+            } else if ( temp_axis.x < 0f ) {
+                temp_axis.x = -1f;
+            }
+            if ( temp_axis.y > 0f ) {
+                temp_axis.y = 1f;
+            } else if ( temp_axis.y < 0f ) {
+                temp_axis.y = -1f;
+            }
+
+
             // 이동 키를 누르고 있으므로 유닛에게 이동 명령을 알림
-            unit.set_order ( Order_Id.Move, flag );
-            player_order.set_order ( Order_Id.Move, flag );
-            unit.move ( axis );
+            unit.set_order ( Order_Id.Move, is_receiving );
+            player_order.set_order ( Order_Id.Move, is_receiving );
+            unit.move ( temp_axis );
 
             // 키보드 회전
             if ( !(Mathf.Approximately ( axis.x, 0f ) && Mathf.Approximately ( axis.y, 0f )) ) {
