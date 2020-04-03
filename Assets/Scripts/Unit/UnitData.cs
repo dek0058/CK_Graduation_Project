@@ -14,6 +14,7 @@ namespace Game.Unit {
         public float rspeed;            // 회전속도
         public float damage;            // 공격력
         public float armor;             // 방어력
+        public float atime;             // 공격 쿨타임
 
         // TODO : 추가 스텟 AND 추가해야할 능력부여
     }
