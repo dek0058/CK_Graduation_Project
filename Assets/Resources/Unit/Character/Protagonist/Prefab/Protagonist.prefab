@@ -98,7 +98,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 251035276fa089f429ba12579edd209c, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aae585c8be1eac41b4d8f65666d8cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unit: {fileID: 0}
   do_attack: 0
   attacked_units: []
 --- !u!70 &1308047336599342862
@@ -425,6 +426,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   owner: {fileID: 0}
+  movement_system: {fileID: 0}
+  unit_type: {fileID: 0}
   unit_data: {fileID: 0}
   unit_model:
     parent: {fileID: 6408371237550207038}
@@ -449,8 +452,6 @@ MonoBehaviour:
     axis: {x: 0, y: 0}
     flying: 0
     current_flying: 0
-  movement_system: {fileID: 0}
-  unit_type: {fileID: 0}
   weapon: {fileID: 0}
 --- !u!1 &7487215934793907795
 GameObject:

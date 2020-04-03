@@ -28,9 +28,6 @@ namespace Game.Stage.Room {
                 SoundManager.instance.off_music ( );
                 sfx.play ( ResourceLoader.instance.get_prefab ( ResourceLoader.Resource.Stage1_Boss_Music ) as AudioClip, 1f, 0f, 0f );
                 ai.start ( );
-
-                CameraManager.instance.game_camera.cv_camera.Follow =
-                    CameraManager.instance.game_camera.camera_point;
             }
         }
 

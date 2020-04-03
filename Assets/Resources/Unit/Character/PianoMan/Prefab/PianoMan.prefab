@@ -101,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   owner: {fileID: 0}
+  movement_system: {fileID: 0}
+  unit_type: {fileID: 0}
   unit_data: {fileID: 0}
   unit_model:
     parent: {fileID: 1782690326122063466}
@@ -125,8 +127,6 @@ MonoBehaviour:
     axis: {x: 0, y: 0}
     flying: 0
     current_flying: 0
-  movement_system: {fileID: 0}
-  unit_type: {fileID: 0}
   missile_transform: {fileID: 6379377556001677308}
   target: {fileID: 0}
 --- !u!1 &2201163544722496922
@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5572ef66c7e635c4eaa01f6be5d73b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unit: {fileID: 0}
 --- !u!95 &3090429605729053480
 Animator:
   serializedVersion: 3
@@ -297,7 +298,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c101555f3d7d1e84bbc18ee388105d78, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0

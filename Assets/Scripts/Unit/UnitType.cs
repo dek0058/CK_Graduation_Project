@@ -30,6 +30,11 @@ namespace Game.Unit {
             if(damage_list.Count == 0) {
                 return null;
             }
+            DamageInfo[] a = damage_list.Where ( dmg =>  dmg.type == type ).ToArray ( );
+            Debug.Log ( type );
+            foreach ( var item in a ) {
+                Debug.Log ( item.type );
+            }
             return damage_list.Where ( dmg => dmg.type == type ).ToArray ( );
         }
 
@@ -61,6 +66,7 @@ namespace Game.Unit {
             schedules.Add ( key, uevent );
         }
     }
+
 
     public struct DamageInfo {
         public enum Type {  // 데미지 종류

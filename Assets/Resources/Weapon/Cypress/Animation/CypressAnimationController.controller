@@ -107,7 +107,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: NoneHP_Attack
-  m_Speed: 0.5
+  m_Speed: 0.4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1756316347465508378}
@@ -348,7 +348,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FullHP_Attack
-  m_Speed: 0.5
+  m_Speed: 0.4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1959196932157962532}
@@ -376,7 +376,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SparselyHP_Attack
-  m_Speed: 0.5
+  m_Speed: 0.4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5868031300047773829}

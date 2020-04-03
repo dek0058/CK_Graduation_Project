@@ -8,6 +8,7 @@ namespace Game.Stage {
 
     public abstract class GameRoom : MonoBehaviour{
 
+        public PolygonCollider2D confiner_area;
 
         /// <summary>
         /// Room의 상태
@@ -61,6 +62,7 @@ namespace Game.Stage {
 
 
         protected virtual void update ( ) {
+            
         }
 
 
@@ -69,6 +71,9 @@ namespace Game.Stage {
         /// </summary>
         public virtual void confirm ( ) {
 
+            if( confiner_area  == null) {
+                confiner_area = GetComponent<PolygonCollider2D> ( );
+            }
            
         }
 

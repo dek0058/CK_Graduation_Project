@@ -56,12 +56,9 @@ namespace Game.Unit.Character {
 
         public void on_damage ( float damage, float angle, float radius, LayerMask layer) {
             Collider2D[] colliders = Physics2D.OverlapCircleAll ( get_position ( ), radius, layer );
-
             Vector2 unit_target = new Vector2 ( -get_position ( ).x, get_position ( ).y );
-
             foreach ( var col in colliders ) {
-
-                Unit unit = col.GetComponent<Unit> ( );
+                Unit unit = col.GetComponentInParent<Unit> ( );
                 if ( unit == null || my_type.attacked_units.Contains ( unit ) ) {
                     continue;
                 }
@@ -152,7 +149,6 @@ namespace Game.Unit.Character {
             float angle = 90f;
             float range = 1f;
             LayerMask layer = 1 << (int)GameLayer.Unit_Collider;
-
             
 
             while ( my_type.do_attack ) {

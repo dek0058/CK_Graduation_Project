@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 
 namespace Game.Unit.Character {
     using JToolkit.Utility;
@@ -10,13 +8,8 @@ namespace Game.Unit.Character {
     using Game.Management;
     using Game.Unit;
     using Game.Unit.Type;
-    using JToolkit.Testing;
 
     public class UPaintMan : Unit {
-
-        public const float weak_duration = 5f;
-        public const int weak_count = 3;
-
         public enum AnimatorParameter {
             Walk,
             Weak,
@@ -42,9 +35,9 @@ namespace Game.Unit.Character {
         private PaintManType my_type;
 
         private bool do_attack = false;
-        private bool do_weaked = false;
 
-        private Obj.WaterBottle bottle = null;
+        private int weak_hit = 0;
+        private bool do_weaked = false;
 
 
         public void attack ( ) {
@@ -85,7 +78,7 @@ namespace Game.Unit.Character {
 
 
         public void weak ( ) {
-            StartCoroutine ( Eweaked_condition ( weak_duration ) );
+            StartCoroutine ( Eweaked_condition ( PaintManType.Weak_Duration ) );
         }
 
 
@@ -124,18 +117,16 @@ namespace Game.Unit.Character {
 
 
         private void damaged ( Unit source, Unit target ) {
-            get_animator ( ).SetTrigger ( parameter_hash[AnimatorParameter.Hit] );
-            
+            if ( !do_weaked && ++weak_hit >= PaintManType.Weak_Count ) {
+                weak ( );
+            } else {
+                get_animator ( ).SetTrigger ( parameter_hash[AnimatorParameter.Hit] );
+            }
+
             if(source != null) {
                 float angle = (Angle.target_to_angle ( source.get_position ( ), get_position ( ) ) * Mathf.Rad2Deg) - 90f;
                 Vector2 force = Polar.location ( 5f, angle );
                 movement_system.add_force ( force );
-            }
-
-            // HACK
-            if( bottle != null) {
-                bottle.switch_on = true;
-                unit_status.is_dead = true;
             }
         }
 
@@ -148,9 +139,8 @@ namespace Game.Unit.Character {
             my_type?.add ( PaintManType.Action_Attack, action_attack );
             my_type?.add ( PaintManType.Action_Attack_Stop, action_attack_stop );
 
-            my_type?.add ( PaintManType.Action_Hit, begin_hit );
-
             event_damaged += damaged;
+
         }
 
 
@@ -178,10 +168,6 @@ namespace Game.Unit.Character {
 
         protected override void active_lateupdate ( ) {
             base.active_lateupdate ( );
-
-            if ( !do_weaked && my_type.hit_count > weak_count ) {
-                weak ( );
-            }
         }
 
 
@@ -194,14 +180,6 @@ namespace Game.Unit.Character {
         private void action_attack_stop ( ) {
             my_type.do_attack = false;
         }
-
-
-        private void begin_hit ( ) {
-            if ( !do_weaked ) {
-                ++my_type.hit_count;
-            }
-        }
-
 
         // IEnumerator
 
@@ -250,8 +228,7 @@ namespace Game.Unit.Character {
             }
 
             get_animator ( ).SetBool ( parameter_hash[AnimatorParameter.Weak], false );
-            my_type.hit_count = 0;
-            do_weaked = false;
+            weak_hit = 0; do_weaked = false;
         }
 
 
@@ -279,31 +256,5 @@ namespace Game.Unit.Character {
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
-
-
-        private void OnTriggerEnter2D ( Collider2D collision ) {
-            if(this.bottle != null) {
-                return;
-            }
-
-            Obj.WaterBottle bottle = collision.GetComponent<Obj.WaterBottle> ( );
-            if(bottle == null) {
-                return;
-            }
-            this.bottle = bottle;
-        }
-
-
-        private void OnTriggerExit2D ( Collider2D collision ) {
-            if ( this.bottle == null) {
-                return;
-            }
-
-            Obj.WaterBottle bottle = collision.GetComponent<Obj.WaterBottle> ( );
-            if ( bottle == null || this.bottle != bottle) {
-                return;
-            }
-            this.bottle = null;
-        }
     }
 }

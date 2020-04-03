@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace Game.Unit.Type {
     public class PaintManType : UnitType {
+        
 
-       
         // Attack
         public const string Action_Attack = "action_attack";
         public const string Action_Attack_Stop = "action_attack_stop";
@@ -26,14 +26,8 @@ namespace Game.Unit.Type {
         //
 
         // Hit
-        public const string Action_Hit = "action_hit";
-        public int hit_count;
-
-        public void action_hit ( ) {
-            if ( schedules.ContainsKey ( Action_Hit ) ) {
-                schedules[Action_Hit]?.Invoke ( );
-            }
-        }
+        public const float Weak_Duration = 5f;
+        public const int Weak_Count = 3;
         //
     }
 }

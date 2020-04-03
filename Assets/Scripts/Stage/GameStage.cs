@@ -27,6 +27,7 @@ namespace Game.Stage {
         public void initialize ( ) {
             current_room = start_room;
             current_room.join ( );
+            PlayerManager.instance.game_camera.cv_confiner.m_BoundingShape2D = current_room.confiner_area;
         }
 
 
@@ -78,6 +79,10 @@ namespace Game.Stage {
             current_room = room;
             current_room.join ( );
             unit.movement_system.set_position ( position );
+
+            if(unit.player == PlayerManager.instance.local_player) {
+                PlayerManager.instance.game_camera.cv_confiner.m_BoundingShape2D = current_room.confiner_area;
+            }
 
             yield return StartCoroutine ( SceneFader.Efade_in ( ) );
 

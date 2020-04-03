@@ -136,12 +136,12 @@ namespace Game.Unit {
             event_damaged?.Invoke ( source, this );
 
             float armor = unit_status.armor + unit_status.add_armor + unit_status.rate_armor;
-            float life = unit_status.current_hp;
             float melee = DamageInfo.damage ( DamageInfo.Type.Melee, unit_type.get_damage_to_value ( DamageInfo.Type.Melee ), armor );
-            float spell = DamageInfo.damage ( DamageInfo.Type.Spell, unit_type.get_damage_to_value ( DamageInfo.Type.Melee ), armor );
-            float universal = DamageInfo.damage ( DamageInfo.Type.Universal, unit_type.get_damage_to_value ( DamageInfo.Type.Melee ), armor );
+            float spell = DamageInfo.damage ( DamageInfo.Type.Spell, unit_type.get_damage_to_value ( DamageInfo.Type.Spell ), armor );
+            float universal = DamageInfo.damage ( DamageInfo.Type.Universal, unit_type.get_damage_to_value ( DamageInfo.Type.Universal ), armor );
             float result = melee + spell + universal;
             unit_status.current_hp -= result;
+            unit_type.damage_clear ( );
         }
 
 

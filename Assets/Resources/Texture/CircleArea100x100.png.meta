@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 77c1eef9ebc63144ebbbafa52bd80103
+guid: 44cec3b784233194fbacffddd74887f9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -50,7 +50,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -73,7 +73,47 @@ TextureImporter:
   spriteSheet:
     serializedVersion: 2
     sprites: []
-    outline: []
+    outline:
+    - - {x: 32, y: -41}
+      - {x: 33, y: -41}
+      - {x: 41, y: -33}
+      - {x: 41, y: -32}
+      - {x: 46, y: -27}
+      - {x: 49, y: -20}
+      - {x: 50, y: -15}
+      - {x: 50, y: 15}
+      - {x: 49, y: 20}
+      - {x: 46, y: 27}
+      - {x: 41, y: 32}
+      - {x: 41, y: 33}
+      - {x: 33, y: 41}
+      - {x: 32, y: 41}
+      - {x: 27, y: 46}
+      - {x: 20, y: 49}
+      - {x: 15, y: 50}
+      - {x: -17, y: 50}
+      - {x: -20, y: 49}
+      - {x: -27, y: 46}
+      - {x: -32, y: 41}
+      - {x: -33, y: 41}
+      - {x: -41, y: 33}
+      - {x: -41, y: 32}
+      - {x: -46, y: 27}
+      - {x: -49, y: 20}
+      - {x: -50, y: 15}
+      - {x: -50, y: -15}
+      - {x: -49, y: -20}
+      - {x: -46, y: -27}
+      - {x: -41, y: -32}
+      - {x: -41, y: -33}
+      - {x: -33, y: -41}
+      - {x: -32, y: -41}
+      - {x: -27, y: -46}
+      - {x: -20, y: -49}
+      - {x: -15, y: -50}
+      - {x: 15, y: -50}
+      - {x: 20, y: -49}
+      - {x: 27, y: -46}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
