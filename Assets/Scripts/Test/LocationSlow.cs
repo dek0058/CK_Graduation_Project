@@ -5,11 +5,11 @@ using Game.Unit;
 
 class LocationSlow : MonoBehaviour {
 
-    private List<Unit> units = new List<Unit> ( );
+    private List<UUnit> units = new List<UUnit> ( );
 
 
     private void OnTriggerEnter2D ( Collider2D collision ) {
-        Unit unit = collision.GetComponentInParent<Unit> ( );
+        UUnit unit = collision.GetComponentInParent<UUnit> ( );
         if(unit == null) {
             return;
         }
@@ -19,7 +19,7 @@ class LocationSlow : MonoBehaviour {
     }
 
     private void OnTriggerExit2D ( Collider2D collision ) {
-        Unit unit = collision.GetComponentInParent<Unit> ( );
+        UUnit unit = collision.GetComponentInParent<UUnit> ( );
         if ( unit == null ) {
             return;
         }

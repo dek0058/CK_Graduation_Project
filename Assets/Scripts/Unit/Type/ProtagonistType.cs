@@ -10,7 +10,7 @@ namespace Game.Unit.Type {
         public const string Action_Attack_Stop = "action_attack_stop";
 
         public bool do_attack = false;
-        public List<Unit> attacked_units = new List<Unit> ( );
+        public List<UUnit> attacked_units = new List<UUnit> ( );
         public void action_attack ( ) {
             if ( schedules.ContainsKey ( Action_Attack ) ) {
                 schedules[Action_Attack]?.Invoke ( );

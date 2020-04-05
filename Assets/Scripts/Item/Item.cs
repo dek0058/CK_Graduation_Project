@@ -14,7 +14,7 @@ namespace Game.Item {
         }
         public ItemType item_type;
 
-        public Unit owner;
+        public UUnit owner;
 
 
 

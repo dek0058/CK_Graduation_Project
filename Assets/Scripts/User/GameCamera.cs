@@ -11,6 +11,9 @@ namespace Game.User {
 
         public Transform camera_point;
 
+        public PolygonCollider2D confiner_area;
+        public Transform confiner_transform;
+
         CinemachinePixelPerfect a;
 
         /// <summary>

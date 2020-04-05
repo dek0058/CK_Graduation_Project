@@ -1,12 +1,24 @@
 ﻿using UnityEngine;
+using System;
 
 namespace Game.Management {
     using JToolkit.Utility;
     public class Preferences : Singleton<Preferences> {
 
 
+        public GameResolution game_resolution = new GameResolution ( );
+
+        public event Action event_resolution_change;
 
 
+        public void set_resolution ( GameResolutionType type ) {
+            game_resolution.set ( type );
+            event_resolution_change?.Invoke ( );
+        }
+
+        public void set_fullscreen ( bool value ) {
+            game_resolution.fullscreen ( value );
+        }
 
 
         ////////////////////////////////////////////////////////////////////////////

@@ -9,7 +9,7 @@ namespace Game.Unit.Character {
     using Game.Unit;
     using Game.Unit.Type;
 
-    public class UPaintMan : Unit {
+    public class UPaintMan : UUnit {
         public enum AnimatorParameter {
             Walk,
             Weak,
@@ -59,7 +59,7 @@ namespace Game.Unit.Character {
         private void on_damage ( float damage, float radius, LayerMask layer) {
             Collider2D[] colliders = Physics2D.OverlapCircleAll ( get_position ( ), radius, layer );
             foreach(var col in colliders) {
-                Unit unit = col.GetComponentInParent<Unit> ( );
+                UUnit unit = col.GetComponentInParent<UUnit> ( );
                 if (unit == null || my_type.attacked_units.Contains(unit)) {
                     continue;
                 }
@@ -116,7 +116,7 @@ namespace Game.Unit.Character {
         }
 
 
-        private void damaged ( Unit source, Unit target ) {
+        private void damaged ( UUnit source, UUnit target ) {
             if ( !do_weaked && ++weak_hit >= PaintManType.Weak_Count ) {
                 weak ( );
             } else {

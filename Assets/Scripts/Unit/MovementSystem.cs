@@ -16,7 +16,7 @@ namespace Game.Unit {
         
         public Collider2D shadow_collider;
         public Rigidbody2D rigidbody2d;
-        public Unit unit;
+        public UUnit unit;
 
         [SerializeField]
         private GameObject path_obj;
@@ -25,7 +25,7 @@ namespace Game.Unit {
 
         private Vector2 next_velocity = Vector2.zero;
 
-        public KdTree<Unit> collisions = new KdTree<Unit> ( );
+        public KdTree<UUnit> collisions = new KdTree<UUnit> ( );
         public event shadow_collision_enter event_collision_enter;
         public event shadow_collision_exit event_collision_exit;
 
@@ -120,7 +120,7 @@ namespace Game.Unit {
 
 
             if ( unit == null ) {
-                unit = GetComponentInParent<Unit> ( );
+                unit = GetComponentInParent<UUnit> ( );
             }
 
             if ( rigidbody2d == null ) {
@@ -190,7 +190,7 @@ namespace Game.Unit {
         }
 
         private void OnTriggerEnter2D ( Collider2D collision ) {
-            Unit unit = collision.GetComponentInParent<Unit> ( );
+            UUnit unit = collision.GetComponentInParent<UUnit> ( );
             if(unit != null) {
                 collisions.Add ( unit );
             }
@@ -198,7 +198,7 @@ namespace Game.Unit {
         }
 
         private void OnTriggerExit2D ( Collider2D collision ) {
-            Unit unit = collision.GetComponentInParent<Unit> ( );
+            UUnit unit = collision.GetComponentInParent<UUnit> ( );
             if ( unit != null ) {
                 for(int i = 0; i < collisions.Count; ++i ) {
                     if(collisions[i] == unit) {

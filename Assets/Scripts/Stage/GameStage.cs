@@ -26,13 +26,19 @@ namespace Game.Stage {
 
         public void initialize ( ) {
             current_room = start_room;
-            current_room.join ( );
-            PlayerManager.instance.game_camera.cv_confiner.m_BoundingShape2D = current_room.confiner_area;
+            current_room.join ( PlayerManager.instance.local_player.unit );
         }
 
 
-        public void transition_room ( GameRoom room, Unit unit, Vector3 position ) {
-            StartCoroutine ( Etransition_room ( room, unit, position ) );
+        public void transition_room ( GameRoom room, UUnit unit, Vector3 position ) {
+            if(unit.player.is_local) {
+                StartCoroutine ( Etransition_room ( room, unit, position ) );
+            } else {
+                current_room.quit ( unit );
+                current_room = room;
+                current_room.join ( unit );
+                unit.movement_system.set_position ( position );
+            }
         }
 
 
@@ -65,7 +71,7 @@ namespace Game.Stage {
         }
 
 
-        private System.Collections.IEnumerator Etransition_room ( GameRoom room, Unit unit, Vector3 position ) {
+        private System.Collections.IEnumerator Etransition_room ( GameRoom room, UUnit unit, Vector3 position ) {
             if(do_transtion) {  // 이미 방전환 중이므로
                 yield break;
             }
@@ -74,15 +80,12 @@ namespace Game.Stage {
 
             yield return StartCoroutine ( SceneFader.Efade_out ( SceneFader.FadeType.Blank ) );
 
-
-            current_room.quit ( );
+            
+            current_room.quit ( unit );
             current_room = room;
-            current_room.join ( );
+            current_room.join ( unit );
             unit.movement_system.set_position ( position );
 
-            if(unit.player == PlayerManager.instance.local_player) {
-                PlayerManager.instance.game_camera.cv_confiner.m_BoundingShape2D = current_room.confiner_area;
-            }
 
             yield return StartCoroutine ( SceneFader.Efade_in ( ) );
 

@@ -43,7 +43,7 @@ namespace Game.Obj {
             LayerMask mask = collision.gameObject.layer;
             if( mask == (int)GameLayer.Path_Ground || mask == (int)GameLayer.Path_Air ) {
                 // HACK
-                Unit unit = collision.GetComponentInParent<Unit> ( );
+                UUnit unit = collision.GetComponentInParent<UUnit> ( );
                 Player player = unit.player;
 
                 if ( unit == null ) {
@@ -63,25 +63,6 @@ namespace Game.Obj {
 
         protected override void update ( ) {
             base.update ( );
-
-            switch ( my_room.state ) {
-                case Stage.GameRoom.State.Inactive:
-
-                    break;
-                case Stage.GameRoom.State.Active: {
-                    if ( state != State.Close ) {
-                        set_state ( State.Close );
-                    }
-                }
-                break;
-                case Stage.GameRoom.State.Clear: {
-                    if ( state != State.Open ) {
-                        set_state ( State.Open );
-                    }
-                }
-                break;
-            }
-
 
             if ( previous_state != state ) {
                 play_new_animation ( );

@@ -12,7 +12,7 @@ namespace Game.Unit.Missile {
     using Game.Unit;
     using Game.Unit.Type;
 
-    public class UMelodyMissile : Unit {
+    public class UMelodyMissile : UUnit {
 
 
         private MelodyMissileType my_type;

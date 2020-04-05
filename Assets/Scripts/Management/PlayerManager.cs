@@ -9,9 +9,7 @@ namespace Game.Management {
     public class PlayerManager : Singleton<PlayerManager> {
 
         public List<Player> players = new List<Player> ( );
-
         public Player local_player = null;
-
         public GameCamera game_camera;
 
 

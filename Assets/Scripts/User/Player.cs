@@ -22,7 +22,7 @@ namespace Game.User {
         }
 
         [Header("Control Unit")]
-        public Unit unit = null;
+        public UUnit unit = null;
         public UnitOrder player_order = null;
 
 

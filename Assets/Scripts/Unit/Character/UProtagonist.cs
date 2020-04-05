@@ -10,7 +10,7 @@ namespace Game.Unit.Character {
     using Item;
     using JToolkit.Testing;
 
-    public class UProtagonist : Unit {
+    public class UProtagonist : UUnit {
 
         /// <summary>
         /// Protagonist가 가진 Animator Paramter
@@ -58,7 +58,7 @@ namespace Game.Unit.Character {
             Collider2D[] colliders = Physics2D.OverlapCircleAll ( get_position ( ), radius, layer );
             Vector2 unit_target = new Vector2 ( -get_position ( ).x, get_position ( ).y );
             foreach ( var col in colliders ) {
-                Unit unit = col.GetComponentInParent<Unit> ( );
+                UUnit unit = col.GetComponentInParent<UUnit> ( );
                 if ( unit == null || my_type.attacked_units.Contains ( unit ) ) {
                     continue;
                 }

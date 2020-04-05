@@ -9,7 +9,7 @@ namespace Game.Unit.Character {
     using Game.Unit.Missile;
     using Game.Management;
 
-    public class UPianoMan : Unit {
+    public class UPianoMan : UUnit {
 
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Game.Unit.Character {
         private Transform missile_transform = null;
 
         [Header ( "테스트용(HACK)" )]
-        public Unit target;
+        public UUnit target;
 
 
         /// <summary>

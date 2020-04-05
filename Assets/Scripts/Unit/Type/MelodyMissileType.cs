@@ -8,7 +8,7 @@ namespace Game.Unit.Type {
 
 
         public void on_collision ( Collider2D collision ) {
-            Unit target = collision.GetComponentInParent<Unit> ( );
+            UUnit target = collision.GetComponentInParent<UUnit> ( );
             if( target == null) {
                 if ( collision.gameObject.layer == (int)GameLayer.Map_Border ||
                     collision.gameObject.layer == (int)GameLayer.Door) {

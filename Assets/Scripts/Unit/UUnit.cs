@@ -5,11 +5,11 @@ namespace Game.Unit {
     using JToolkit.Utility;
     using User;
 
-    public abstract class Unit : MonoBehaviour {
+    public abstract class UUnit : MonoBehaviour {
         public readonly int Animation_Speed_Hash = Animator.StringToHash ( "Aspeed" );
 
         public Player player;
-        public Unit owner = null;
+        public UUnit owner = null;
         public MovementSystem movement_system = null;
         public UnitType unit_type = null;
 
@@ -123,7 +123,7 @@ namespace Game.Unit {
         }
 
 
-        public void damage ( DamageInfo.Type type, float amount, Unit source = null ) {
+        public void damage ( DamageInfo.Type type, float amount, UUnit source = null ) {
             if( unit_status.is_invincible || unit_status.is_dead) {   // 무적이거나 죽었을 경우 데미지를 받지 않는다...
                 return;
             }
@@ -444,8 +444,8 @@ namespace Game.Unit {
     }
 
 
-    public delegate void on_revive ( Unit unit );
-    public delegate void on_dead ( Unit unit );
-    public delegate void on_attack ( Unit source );
-    public delegate void on_damaged ( Unit source, Unit target );
+    public delegate void on_revive ( UUnit unit );
+    public delegate void on_dead ( UUnit unit );
+    public delegate void on_attack ( UUnit source );
+    public delegate void on_damaged ( UUnit source, UUnit target );
 }

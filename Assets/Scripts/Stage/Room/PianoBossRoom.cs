@@ -20,15 +20,10 @@ namespace Game.Stage.Room {
         protected override void active ( ) {
             base.active ( );
 
-            if(state == State.Inactive) {
-                state = State.Active;
-            }
-
-            if(state == State.Active) {
-                SoundManager.instance.off_music ( );
-                sfx.play ( ResourceLoader.instance.get_prefab ( ResourceLoader.Resource.Stage1_Boss_Music ) as AudioClip, 1f, 0f, 0f );
-                ai.start ( );
-            }
+            // HACK : 테스트 기능
+            SoundManager.instance.off_music ( );
+            sfx.play ( ResourceLoader.instance.get_prefab ( ResourceLoader.Resource.Stage1_Boss_Music ) as AudioClip, 1f, 0f, 0f );
+            ai.start ( );
         }
 
 
@@ -45,7 +40,7 @@ namespace Game.Stage.Room {
             base.update ( );
  
             // HACK
-            if(state == State.Active) {
+            if(is_active) {
 
                 if ( !sfx.audio_list[0].source.isPlaying ) {
                     return;
