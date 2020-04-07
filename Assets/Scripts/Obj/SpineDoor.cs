@@ -34,7 +34,6 @@ namespace Game.Obj {
                     open ( );
                     break;
             }
-
             set_animation ( next, false, timescale );
         }
 
@@ -51,7 +50,7 @@ namespace Game.Obj {
                 }
 
                 if ( player != null ) {
-                    StageManager.instance.current_stage.transition_room ( next_room, unit, teleport_transform.position );
+                    GameManager.instance.current_stage.transition_room ( next_room, unit, teleport_transform.position );
 
                 } else {
                     unit.movement_system.set_position ( teleport_transform.position );
@@ -81,6 +80,13 @@ namespace Game.Obj {
             previous_state = state;
         }
 
+        protected override void initialize ( ) {
+            base.initialize ( );
+
+            play_new_animation ( );
+        }
+
+
 
         public void set_animation ( AnimationReferenceAsset animation, bool loop, float timescale ) {
             sk_animation.state.SetAnimation ( 0, animation, loop ).TimeScale = timescale;
@@ -89,5 +95,6 @@ namespace Game.Obj {
         public void set_animation ( Spine.Animation animation, bool loop, float timescale ) {
             sk_animation.state.SetAnimation ( 0, animation, loop ).TimeScale = timescale;
         }
+        
     }
 }

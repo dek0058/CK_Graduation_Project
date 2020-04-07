@@ -27,38 +27,10 @@ namespace Game.Management {
             players.Add ( create ( Player.Team.Npc ) );     // NPC 플레이어 생성
         }
 
-        public void confirm ( ) {
+        public void initialize ( ) {
             if(local_player == null) {
                 local_player = create ( Player.Team.User, true );
             }
-
-
-
-            /*
-            Screen.width / height = 해상도 가져올 수 있음
-            World Position -> 스크린 포지션으로
-
-            Vector2 world_area = new Vector2(Screen.width/2, Screen.height/2);
-            Vector3 screen_area = Camera.main.WorldToScreenPoint(world_area);
-            
-            카메라.position.x + screen_area.x  
-            카메라.position.y + screen_area.y  = = = > A
-
-            카메라.position.x - screen_area.x  
-            카메라.position.y + screen_area.y  = = = > B
-
-            카메라.position.x - screen_area.x  
-            카메라.position.y - screen_area.y  = = = > C
-
-            카메라.position.x + screen_area.x  
-            카메라.position.y - screen_area.y  = = = > D
-
-            B ㅡㅡㅡㅡㅡㅡㅡ A
-            |               |
-            |               |
-            |               |
-            C ㅡㅡㅡㅡㅡㅡㅡ D
-            */
         }
 
         ////////////////////////////////////////////////////////////////////////////

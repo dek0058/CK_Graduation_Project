@@ -101,9 +101,5 @@ namespace Game.Stage {
         private void Awake ( ) {
             confirm ( );
         }
-
-        private void Start ( ) {
-            initialize ( );
-        }
     }
 }

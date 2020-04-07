@@ -83,11 +83,19 @@ namespace Game.Obj {
         }
 
 
+        protected virtual void initialize ( ) {
+        }
+
+
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
         private void Awake ( ) {
             confirm ( );
+        }
+
+        private void Start ( ) {
+            initialize ( );
         }
 
 

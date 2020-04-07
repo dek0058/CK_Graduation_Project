@@ -41,12 +41,13 @@ namespace Game.Management {
 
 
         private void confirm ( ) {
-            string name = SceneManager.GetActiveScene ( ).name;
-
-            foreach (var item in scene_names) {
-                if(item.Value == name ) {
-                    current = (SceneType)item.Key;
-                    break;
+            if ( current == SceneType.None ) {  // 현재 Scene 찾기
+                string name = SceneManager.GetActiveScene ( ).name;
+                foreach ( var item in scene_names ) {
+                    if ( item.Value == name ) {
+                        current = (SceneType)item.Key;
+                        break;
+                    }
                 }
             }
         }
@@ -59,6 +60,10 @@ namespace Game.Management {
             do_transition = true;
 
             yield return StartCoroutine ( SceneFader.Efade_out ( SceneFader.FadeType.Blank ) );
+
+            // TODO : 씬이 넘어가기 전 준비단계
+            ResourceLoader.instance.initialize ( );
+
 
             yield return StartCoroutine ( Eload_scene ( scene ) );
 
@@ -91,7 +96,6 @@ namespace Game.Management {
 
         public IEnumerator Eload_resource ( SceneType scene ) {
             ResourceLoader loader = ResourceLoader.instance;
-            loader.initialize ( );
 
             // HACK : 나중에 수정하도록 하겠음
             //          게임 씬과 그 외 씬의 로딩 전이는 연출이 달라져야함.
@@ -105,29 +109,23 @@ namespace Game.Management {
                 } break;
                 case SceneType.Game_StageJoy: {
                     PlayerManager.instance.load ( );
-                    StageManager.instance.current_stage.load_resource ( );
+                    GameManager.instance.current_stage.load_resource ( );
                 } break;
             }
 
             loader.load ( );
-
             while(!loader.is_complete) {
                 float current = loader.current;
                 float max = loader.max;
                 // TODO : 프로그래스 바는 여기서
                 yield return null;
             }
-
             yield return StartCoroutine ( SceneFader.Efade_in ( ) );
         }
 
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
-
-        private void Awake ( ) {
-            current = SceneType.None;
-        }
 
         private void OnEnable ( ) {
             if ( instance == null ) {
@@ -139,6 +137,7 @@ namespace Game.Management {
             }
 
             if(instance == this) {
+                confirm ( );
                 DontDestroyOnLoad ( gameObject );
             }
         }
