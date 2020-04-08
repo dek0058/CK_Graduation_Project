@@ -2727,9 +2727,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90a4478c1f4a3d24181333694fb360a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unit: {fileID: 0}
   do_attack: 0
   attacked_units: []
-  hit_count: 0
 --- !u!1 &473763194
 GameObject:
   m_ObjectHideFlags: 0
@@ -2792,8 +2792,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f27b21f0b358742a695210f14f8117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 2
+  confiner_area: {fileID: 0}
   doors: []
+  players: []
+  is_active: 0
 --- !u!1 &474627663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3206,7 +3208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &557517033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3222,6 +3224,7 @@ MonoBehaviour:
   players:
   - {fileID: 2001940382}
   local_player: {fileID: 0}
+  game_camera: {fileID: 0}
 --- !u!4 &557517034
 Transform:
   m_ObjectHideFlags: 0
@@ -4184,8 +4187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c6d7443deedce48b4b9f99a57ea419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
+  confiner_area: {fileID: 0}
   doors: []
+  players: []
+  is_active: 0
   sfx: {fileID: 1570668658}
   boss: {fileID: 554780324}
   ai: {fileID: 155197229}
@@ -4339,6 +4344,7 @@ MonoBehaviour:
   team: 2
   local: 0
   unit: {fileID: 0}
+  releas_input_time_speed: 5
 --- !u!4 &1049182194
 Transform:
   m_ObjectHideFlags: 0
@@ -5826,6 +5832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1360842331}
   - component: {fileID: 1360842330}
+  - component: {fileID: 1360842332}
   m_Layer: 0
   m_Name: UnitManager(Singleton)
   m_TagString: Untagged
@@ -5846,6 +5853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit_data: []
+  val: {fileID: 1360842332}
 --- !u!4 &1360842331
 Transform:
   m_ObjectHideFlags: 0
@@ -5860,6 +5868,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1360842332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360842329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5fe101e88e58d84e85547c1d5cc6a24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1397397021
 GameObject:
   m_ObjectHideFlags: 0
@@ -9646,8 +9666,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f27b21f0b358742a695210f14f8117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 2
+  confiner_area: {fileID: 0}
   doors: []
+  players: []
+  is_active: 0
 --- !u!1 &1665592081
 GameObject:
   m_ObjectHideFlags: 0
@@ -15011,6 +15033,7 @@ MonoBehaviour:
   team: 0
   local: 1
   unit: {fileID: 31684656}
+  releas_input_time_speed: 5
 --- !u!4 &2001940383
 Transform:
   m_ObjectHideFlags: 0
@@ -16353,8 +16376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0aa9e3b5610d174a9ef28d82a771524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
-  current_stage: {fileID: 172920005}
 --- !u!4 &2017327637
 Transform:
   m_ObjectHideFlags: 0
@@ -21428,10 +21449,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bfca1d104e9f5343bd43f1d57ff5d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grey_camera: {fileID: 0}
   cv_camera: {fileID: 1452454165}
+  cv_confiner: {fileID: 0}
   camera_point: {fileID: 65743875}
-  source: {fileID: 31684656}
-  target: {fileID: 554780324}
+  confiner_area: {fileID: 0}
+  confiner_transform: {fileID: 0}
 --- !u!1 &2077871778
 GameObject:
   m_ObjectHideFlags: 0
@@ -26738,7 +26761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &1782690325948009765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27023,9 +27046,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path_type: 21
-  collider: {fileID: 0}
-  rigidbody: {fileID: 0}
+  shadow_collider: {fileID: 0}
+  rigidbody2d: {fileID: 0}
   unit: {fileID: 0}
+  path_obj: {fileID: 0}
+  path_collider: {fileID: 0}
 --- !u!1001 &3052736061254267433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27120,6 +27145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1049182193}
   owner: {fileID: 0}
+  movement_system: {fileID: 0}
+  unit_type: {fileID: 0}
   unit_data: {fileID: 0}
   unit_model:
     parent: {fileID: 1768376622040128541}
@@ -27144,8 +27171,6 @@ MonoBehaviour:
     axis: {x: 0, y: 0}
     flying: 0
     current_flying: 0
-  movement_system: {fileID: 0}
-  unit_type: {fileID: 0}
 --- !u!212 &8052028067182174624
 SpriteRenderer:
   m_ObjectHideFlags: 0
