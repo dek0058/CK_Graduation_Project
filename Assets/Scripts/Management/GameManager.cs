@@ -8,9 +8,10 @@ namespace Game.Management {
 
     public class GameManager : Singleton<GameManager> {
 
-        public int level;
-        public GameStage current_stage;
+        public Transform allocation_area;
 
+        public GameStage current_stage;
+        public GameInitializer game_initializer;
 
 
         public void load_resource ( ) {
@@ -20,11 +21,19 @@ namespace Game.Management {
 
 
         public void confirm ( ) {
-            
+
+            if ( allocation_area == null ) {
+                allocation_area = GameObject.FindGameObjectWithTag ( "AllocationArea" ).transform;
+            }
+
+            if( game_initializer  == null) {
+                game_initializer = new GameInitializer ( );
+            }
         }
 
 
         public void initialize ( ) {
+            game_initializer.initialize ( );
             PlayerManager.instance.initialize ( );
             current_stage.initialize ( );
         }

@@ -4,6 +4,8 @@ using System.Collections;
 namespace Game.Unit {
     using JToolkit.Utility;
     using User;
+    using Management;
+    using System.Reflection;
 
     public abstract class UUnit : MonoBehaviour {
         public readonly int Animation_Speed_Hash = Animator.StringToHash ( "Aspeed" );
@@ -42,6 +44,24 @@ namespace Game.Unit {
             {AnimatorTag.Attack, "Attack" },
             {AnimatorTag.Dead, "Dead" },
         };
+
+
+
+        /// <summary>
+        /// 유닛을 생성합니다.
+        /// </summary>
+        /// <param name="position">생성할 좌표</param>
+        /// <param name="angle">각도</param>
+        public static T create<T> ( Vector2 position, float angle = 0f ) {
+            GameObject prefab = ResourceLoader.instance.get_unit ( typeof(T).Name );
+            if(prefab == null) {
+                return default ( T );
+            }
+            GameObject obj = Instantiate ( prefab, position, Quaternion.identity );
+            T unit = obj.GetComponent<T> ( );
+            (unit as UUnit).unit_status.angle = angle;
+            return unit;
+        }
 
 
 
@@ -150,6 +170,9 @@ namespace Game.Unit {
         /// </summary>
         public virtual void confirm ( ) {
 
+
+            
+
             // UnitModel 검증
             if ( unit_model.parent == null ) {
                 unit_model.parent = transform.Find ( "Model" );
@@ -232,7 +255,7 @@ namespace Game.Unit {
 
 
 
-        protected virtual void active_update ( ) {      
+        protected virtual void active_update ( ) {     
         }
 
 

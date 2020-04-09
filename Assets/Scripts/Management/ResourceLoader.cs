@@ -14,10 +14,11 @@ namespace Game.Management {
         #endregion
 
         #region Unit
-        private const string Path_Protagonist = "Unit/Character/Protagonist/Prefab/Protagonist";
-        private const string Path_Piano_Man = "Unit/Character/PianoMan/Prefab/PianoMan";
+        private const string Path_Protagonist = "Unit/Character/Protagonist/Protagonist";
+        private const string Path_Piano_Man = "Unit/Character/PianoMan/PianoMan";
+        private const string Path_Paint_Man = "Unit/Character/PaintMan/PaintMan";
 
-        private const string Path_Melody_Missile = "Unit/Missile/MelodyMissile/Prefab/MelodyMissile";
+        private const string Path_Melody_Missile = "Unit/Missile/MelodyMissile/MelodyMissile";
         #endregion
 
         #region Auido
@@ -32,6 +33,8 @@ namespace Game.Management {
         /// Resource 종류
         /// </summary>
         public enum Resource {
+            None = 0,
+
             // Management
             Canvas_Blank,
             Canvas_Loading,
@@ -40,6 +43,7 @@ namespace Game.Management {
             // Character
             Protagonist,
             Piano_Man,
+            Paint_Man,
 
             // Missile
             Melody_Missile,
@@ -55,6 +59,15 @@ namespace Game.Management {
             //
         }
         private EnumDictionary<Resource, PrefabData> prefabs = new EnumDictionary<Resource, PrefabData> ( );
+        private EnumDictionary<Resource, string> prefabs_name = new EnumDictionary<Resource, string> ( ) {
+            // Characters
+            {Resource.Protagonist, "UProtagonist" },
+            {Resource.Piano_Man, "UPianoMan" },
+            {Resource.Paint_Man, "UPaintMan" },
+
+            // Missiles
+            {Resource.Melody_Missile, "UMelodyMissile" },
+        };
         
 
         private struct PrefabData {
@@ -119,6 +132,10 @@ namespace Game.Management {
 
 
         public Object get_prefab ( Resource res ) {
+            if(res == Resource.None) {
+                return null;
+            }
+
             if ( !prefabs.ContainsKey ( res ) ) {
                 PrefabData data = create_data ( res );
                 prefabs.Add ( res, data );
@@ -133,6 +150,18 @@ namespace Game.Management {
                 return data.obj;
             }
             return obj;
+        }
+
+
+        public GameObject get_unit ( string prefab_name ) {
+            Resource res = Resource.None;
+            foreach(var name in prefabs_name) {
+                if(name.Value.Equals(prefab_name)) {
+                    res = (Resource)name.Key;
+                    break;
+                }
+            }
+            return get_prefab ( res ) as GameObject;
         }
 
 
@@ -154,6 +183,7 @@ namespace Game.Management {
                 // Character
                 case Resource.Protagonist:          { path = Path_Protagonist;          } break;
                 case Resource.Piano_Man:            { path = Path_Piano_Man;            } break;
+                case Resource.Paint_Man:            { path = Path_Paint_Man;            } break;
 
                 // Missile
                 case Resource.Melody_Missile:       { path = Path_Melody_Missile;       } break;

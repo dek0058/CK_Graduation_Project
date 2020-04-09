@@ -7,6 +7,7 @@ TagManager:
   - GameCamera
   - SubCamera
   - CameraPoint
+  - AllocationArea
   layers:
   - Default
   - TransparentFX
