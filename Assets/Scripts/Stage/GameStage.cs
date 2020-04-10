@@ -20,7 +20,13 @@ namespace Game.Stage {
         public virtual void load_resource ( ) { // 게임씬에서 필요한 프리펩 로드
             ResourceLoader.instance.add ( ResourceLoader.Resource.Protagonist );
             ResourceLoader.instance.add ( ResourceLoader.Resource.Piano_Man );
-            ResourceLoader.instance.add ( ResourceLoader.Resource.Melody_Missile );
+
+            ResourceLoader.instance.add ( ResourceLoader.Resource.BlueNote1 );
+            ResourceLoader.instance.add ( ResourceLoader.Resource.BlueNote2 );
+            ResourceLoader.instance.add ( ResourceLoader.Resource.BlueNote3 );
+            ResourceLoader.instance.add ( ResourceLoader.Resource.RedNote1 );
+            ResourceLoader.instance.add ( ResourceLoader.Resource.RedNote2 );
+            ResourceLoader.instance.add ( ResourceLoader.Resource.RedNote3 );
         }
 
 

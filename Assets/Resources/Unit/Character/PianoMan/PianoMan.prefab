@@ -1,37 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1782690326122063467
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1782690326122063466}
-  m_Layer: 0
-  m_Name: Model
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1782690326122063466
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782690326122063467}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6379377556001677308}
-  - {fileID: 1093208185727184130}
-  m_Father: {fileID: 1782690327510641386}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1782690327510641384
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,8 +29,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1093208185727184130}
   - {fileID: 7578606610005681911}
-  - {fileID: 1782690326122063466}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -78,7 +46,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 300
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -101,13 +69,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   owner: {fileID: 0}
-  movement_system: {fileID: 0}
-  unit_type: {fileID: 0}
+  movement_system: {fileID: 1180235587307857845}
+  unit_type: {fileID: 7589847848932475568}
   unit_data: {fileID: 0}
-  unit_model:
-    parent: {fileID: 1782690326122063466}
-    transform: {fileID: 0}
-    animator: {fileID: 0}
   unit_status:
     is_dead: 0
     is_invincible: 0
@@ -127,8 +91,37 @@ MonoBehaviour:
     axis: {x: 0, y: 0}
     flying: 0
     current_flying: 0
-  missile_transform: {fileID: 6379377556001677308}
   target: {fileID: 0}
+--- !u!1 &1884171711820035964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1907637292843164950}
+  m_Layer: 8
+  m_Name: Chest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1907637292843164950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884171711820035964}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1093208185727184130}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2201163544722496922
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,8 +202,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 561632980647639126}
-  m_Father: {fileID: 1782690326122063466}
-  m_RootOrder: 1
+  - {fileID: 1907637292843164950}
+  m_Father: {fileID: 1782690327510641386}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2085006151719292997
 SpriteRenderer:
@@ -287,6 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!95 &3090429605729053480
 Animator:
   serializedVersion: 3
@@ -319,8 +314,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.6315116}
-  m_Size: {x: 1.0013846, y: 1.5815966}
+  m_Offset: {x: 0, y: 1.229502}
+  m_Size: {x: 1.0013846, y: 2.3856158}
   m_Direction: 0
 --- !u!1 &4509032275861876991
 GameObject:
@@ -402,7 +397,7 @@ Transform:
   m_Children:
   - {fileID: 7625373718578239066}
   m_Father: {fileID: 1782690327510641386}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4681893309793943607
 SpriteRenderer:
@@ -473,6 +468,7 @@ MonoBehaviour:
   unit: {fileID: 1468784564999683379}
   path_obj: {fileID: 4509032275861876991}
   path_collider: {fileID: 6567525577648621924}
+  collisions: []
 --- !u!70 &2441288067243349531
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -500,33 +496,3 @@ SortingGroup:
   m_SortingLayerID: -1375113253
   m_SortingLayer: 2
   m_SortingOrder: -1
---- !u!1 &5342131205864182615
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6379377556001677308}
-  m_Layer: 0
-  m_Name: Missile Position
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6379377556001677308
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5342131205864182615}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.292, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1782690326122063466}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

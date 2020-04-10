@@ -24,8 +24,6 @@ namespace Game.Unit.Character {
         };
 
         private PianoManType my_type;
-        [SerializeField]
-        private Transform missile_transform = null;
 
         [Header ( "테스트용(HACK)" )]
         public UUnit target;
@@ -53,7 +51,7 @@ namespace Game.Unit.Character {
         /// </summary>
         public void attack_guidedmissile ( ) {
             float angle = Angle.target_to_angle ( get_position ( ), target.get_position ( ) ) * Mathf.Rad2Deg - 90f;
-            create_missile ( angle );
+            create_blue_missile ( get_attech_point ( AttechmentPoint.Chest ).position, angle );
         }
 
 
@@ -72,9 +70,9 @@ namespace Game.Unit.Character {
             for(int i = 0; i < 4; ++i ) {
                 for(int j = 0; j < 2; ++j ) {
                     if(j % 2 == 0) {
-                        create_missile ( angle - 5f );
+                        create_blue_missile ( get_attech_point ( AttechmentPoint.Chest ).position, angle - 5f );
                     } else {
-                        create_missile ( angle + 5f );
+                        create_blue_missile ( get_attech_point ( AttechmentPoint.Chest ).position, angle + 5f );
                     }
                 }
                 angle += 90;
@@ -89,7 +87,7 @@ namespace Game.Unit.Character {
         protected override void active_rotate ( ) {
             float y = get_rotation ( ).y;
             float gap = Mathf.DeltaAngle ( y, unit_status.look_at );
-            unit_model.transform.Rotate ( 0f, gap * unit_status.rspeed * Time.fixedDeltaTime, 0f );
+            unit_type.transform.Rotate ( 0f, gap * unit_status.rspeed * Time.fixedDeltaTime, 0f );
             unit_status.angle = get_rotation ( ).y;
         }
 
@@ -103,35 +101,6 @@ namespace Game.Unit.Character {
 
         protected override void active_update ( ) {
             base.active_update ( );
-
-
-            if ( Input.GetKeyDown ( KeyCode.Alpha1 ) ) {
-                attention ( );
-            }
-
-            if ( Input.GetKeyDown ( KeyCode.Alpha2 ) ) {
-                attack ( );
-            }
-
-            if ( Input.GetKeyDown ( KeyCode.Alpha3 ) ) {
-                attack_guidedmissile ( );
-            }
-
-            if ( Input.GetKeyDown ( KeyCode.Alpha4 ) ) {
-                attack_randommissile ( );
-            }
-
-            if ( Input.GetKeyDown ( KeyCode.Alpha5 ) ) {
-                attack_tripplemissile ( );
-            }
-
-            if ( Input.GetKeyDown ( KeyCode.Alpha6 ) ) {
-                attack_cornermissile ( );
-            }
-
-            if ( Input.GetKeyDown ( KeyCode.Alpha7 ) ) {
-                attack_scattermissile ( );
-            }
         }
 
 
@@ -144,14 +113,40 @@ namespace Game.Unit.Character {
             base.active_lateupdate ( );
         }
 
+        /// <summary>
+        /// Blue Note 미사일을 생성합니다.
+        /// </summary>
+        private UUnit create_blue_missile ( Vector2 position, float angle ) {
+            int rand = Random.Range ( 1, 4 );
+            UUnit missile = null;
+            switch ( rand ) {
+                case 1: { missile = create<UBlueNote1> ( position, angle ); } break;
+                case 2: { missile = create<UBlueNote2> ( position, angle ); } break;
+                case 3: { missile = create<UBlueNote3> ( position, angle ); } break;
+            }
+            if ( missile != null ) {
+                missile.player = player;
+                missile.owner = this;
+            }
+            return missile;
+        }
 
 
-        public GameObject create_missile ( float angle ) {
-            GameObject missile_prefab = ResourceLoader.instance.get_prefab ( ResourceLoader.Resource.Melody_Missile ) as  GameObject;
-            GameObject missile = Instantiate ( missile_prefab, missile_transform.position, Quaternion.identity );
-            UMelodyMissile unit = missile.GetComponent<UMelodyMissile> ( );
-            unit.player = player;
-            unit.rotate ( angle );
+        /// <summary>
+        /// Red Note 미사일을 생성합니다.
+        /// </summary>
+        private UUnit create_red_missile ( Vector2 position, float angle ) {
+            int rand = Random.Range ( 1, 4 );
+            UUnit missile = null;
+            switch ( rand ) {
+                case 1: { missile = create<URedNote1> ( position, angle ); } break;
+                case 2: { missile = create<URedNote2> ( position, angle ); } break;
+                case 3: { missile = create<URedNote3> ( position, angle ); } break;
+            }
+            if ( missile != null ) {
+                missile.player = player;
+                missile.owner = this;
+            }
             return missile;
         }
 
@@ -168,7 +163,7 @@ namespace Game.Unit.Character {
                 time += Time.deltaTime;
                 if(time >= 0.1f) {
                     for ( int i = 0; i < 4; i++ ) {
-                        create_missile ( angle - (i * 90f) );
+                        create_blue_missile ( get_attech_point ( AttechmentPoint.Chest ).position, angle - (i * 90f) );
                     }
 
                     angle -= delta;
@@ -192,7 +187,7 @@ namespace Game.Unit.Character {
             while(loop) {
                 time += Time.deltaTime;
                 if ( time >= 0.33f ) {
-                    create_missile ( Random.Range ( 0f, 360f ) );
+                    create_blue_missile ( get_attech_point ( AttechmentPoint.Chest ).position, Random.Range ( 0f, 360f ) );
                     time = 0f;
                     if ( ++count >= tick ) {
                         loop = false; continue;
@@ -209,15 +204,14 @@ namespace Game.Unit.Character {
             float angle = Angle.target_to_angle ( get_position ( ), target.get_position ( ) ) * Mathf.Rad2Deg - 90f;
             float delta = 15f;
 
-            // 빨간색
-            create_missile ( angle );
+            create_red_missile ( get_attech_point ( AttechmentPoint.Chest ).position, angle );
 
             float time = -0.33f;
             bool loop = true;
             while ( loop ) {
                 time += Time.deltaTime;
                 if ( time >= 0.33f ) {
-                    create_missile ( angle - delta );
+                    create_blue_missile ( get_attech_point ( AttechmentPoint.Chest ).position, angle - delta );
                     delta -= 15f;
                     time = 0f;
                     if ( ++count >= tick ) {
@@ -235,13 +229,13 @@ namespace Game.Unit.Character {
             float angle = Angle.target_to_angle ( get_position ( ), target.get_position ( ) ) * Mathf.Rad2Deg - 85f;
             float delta = 270f / tick;
 
-            create_missile ( angle );
+            create_red_missile ( get_attech_point ( AttechmentPoint.Chest ).position, angle );
             angle -= delta;
 
             //float time = 0f;
             bool loop = true;
             while ( loop ) {
-                create_missile ( angle );
+                create_blue_missile ( get_attech_point ( AttechmentPoint.Chest ).position, angle );
                 angle -= delta;
                 if ( ++count >= tick ) {
                     loop = false; continue;

@@ -71,7 +71,7 @@ namespace Game.Unit.Character {
                 unit.damage ( DamageInfo.Type.Melee, damage, this );
 
                 float angle = (Angle.target_to_angle ( get_position ( ), unit.get_position ( ) ) * Mathf.Rad2Deg) - 90f;
-                Vector2 force = Polar.location ( 3f, angle );
+                Vector2 force = Polar.location ( 150f, angle );
                 unit.movement_system.add_force ( force );
             }
         }
@@ -125,7 +125,7 @@ namespace Game.Unit.Character {
 
             if(source != null) {
                 float angle = (Angle.target_to_angle ( source.get_position ( ), get_position ( ) ) * Mathf.Rad2Deg) - 90f;
-                Vector2 force = Polar.location ( 5f, angle );
+                Vector2 force = Polar.location ( 150f, angle );
                 movement_system.add_force ( force );
             }
         }

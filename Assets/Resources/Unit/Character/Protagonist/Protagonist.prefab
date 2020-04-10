@@ -33,7 +33,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2745874977480668778}
-  m_Father: {fileID: 6408371237550207038}
+  - {fileID: 1505907403848617005}
+  m_Father: {fileID: 6408371239409073342}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7595139523582544858
@@ -119,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
+  animator: {fileID: 0}
   do_attack: 0
   attacked_units: []
 --- !u!70 &1308047336599342862
@@ -148,6 +150,36 @@ SortingGroup:
   m_SortingLayerID: -1375113253
   m_SortingLayer: 2
   m_SortingOrder: 0
+--- !u!1 &4222542885494157926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1505907403848617005}
+  m_Layer: 8
+  m_Name: Chest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1505907403848617005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4222542885494157926}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.655, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 410236242247880472}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5069077853271644927
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +213,7 @@ Transform:
   m_Children:
   - {fileID: 5609499931737332540}
   m_Father: {fileID: 6408371239409073342}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7619313100241062543
 SpriteRenderer:
@@ -263,6 +295,7 @@ MonoBehaviour:
   unit: {fileID: 517165101770134852}
   path_obj: {fileID: 7487215934793907795}
   path_collider: {fileID: 3941826081916513091}
+  collisions: []
 --- !u!70 &5106357149587227353
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -326,37 +359,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.4800682}
   m_Size: {x: 0.30654806, y: 0.5795939}
   m_Direction: 0
---- !u!1 &6408371237550207039
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6408371237550207038}
-  m_Layer: 0
-  m_Name: Model
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6408371237550207038
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6408371237550207039}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 410236242247880472}
-  m_Father: {fileID: 6408371239409073342}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6408371239409073340
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,8 +388,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 410236242247880472}
   - {fileID: 2389220300546888178}
-  - {fileID: 6408371237550207038}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -403,7 +405,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 150
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -426,20 +428,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   owner: {fileID: 0}
-  movement_system: {fileID: 0}
-  unit_type: {fileID: 0}
+  movement_system: {fileID: 8871113957007205995}
+  unit_type: {fileID: 724316419717969778}
   unit_data: {fileID: 0}
-  unit_model:
-    parent: {fileID: 6408371237550207038}
-    transform: {fileID: 410236242247880472}
-    animator: {fileID: 7244050776058793866}
   unit_status:
     is_dead: 0
     is_invincible: 1
     current_hp: 10
     max_hp: 10
     rhythm: 1
-    mspeed: 3
+    mspeed: 150
     aspeed: 1
     rspeed: 7
     damage: 1

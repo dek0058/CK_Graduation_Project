@@ -16,10 +16,9 @@ namespace Game.Unit {
         public UnitType unit_type = null;
 
         public UnitData unit_data = null;
-        public UnitModel unit_model = new UnitModel();
         public UnitStatus unit_status = new UnitStatus();
 
-        public event on_dead event_revive      = null;
+        public event on_revive event_revive      = null;
         public event on_dead event_dead        = null;
         public event on_attack event_attack    = null;
         public event on_damaged event_damaged  = null;
@@ -36,14 +35,25 @@ namespace Game.Unit {
             Attack,
             Dead,
         }
-
         readonly public EnumDictionary<AnimatorTag, string> state_tag = new EnumDictionary<AnimatorTag, string> {
-            {AnimatorTag.Default, "" },
-            {AnimatorTag.Idle, "Idle" },
-            {AnimatorTag.Movement, "Movement" },
-            {AnimatorTag.Attack, "Attack" },
-            {AnimatorTag.Dead, "Dead" },
+            { AnimatorTag.Default,   "" },
+            { AnimatorTag.Idle,      "Idle" },
+            { AnimatorTag.Movement,  "Movement" },
+            { AnimatorTag.Attack,    "Attack" },
+            { AnimatorTag.Dead,      "Dead" },
         };
+
+        public enum AttechmentPoint {
+            Origin = 0,
+            Chest,
+            Head,
+        }
+        readonly public EnumDictionary<AttechmentPoint, string> attech_point_name = new EnumDictionary<AttechmentPoint, string> {
+            { AttechmentPoint.Origin, "Origin" },
+            { AttechmentPoint.Chest, "Chest" },
+            { AttechmentPoint.Head, "Head" },
+        };
+        private EnumDictionary<AttechmentPoint, Transform> attech_point_transform = new EnumDictionary<AttechmentPoint, Transform> ( );
 
 
 
@@ -59,7 +69,8 @@ namespace Game.Unit {
             }
             GameObject obj = Instantiate ( prefab, position, Quaternion.identity );
             T unit = obj.GetComponent<T> ( );
-            (unit as UUnit).unit_status.angle = angle;
+            
+            (unit as UUnit).rotate ( angle );
             return unit;
         }
 
@@ -76,14 +87,14 @@ namespace Game.Unit {
         /// Unit을 즉시 회전 시킵니다.
         /// </summary>
         public void rotate ( Vector3 target ) {
-            unit_model.transform.eulerAngles = target;
+            unit_type.transform.eulerAngles = target;
         }
 
         /// <summary>
         /// Unit을 즉시 목표 값으로 회전 시킵니다.
         /// </summary>
         public void rotate ( float x, float y, float z ) {
-            unit_model.transform.Rotate ( x, y, z );
+            unit_type.transform.Rotate ( x, y, z );
         }
 
 
@@ -110,7 +121,7 @@ namespace Game.Unit {
         /// </summary>
         /// <param name="name">애니메이션 이름</param>
         public void set_animation ( string name, int layer = 0 ) {
-            unit_model.animator.Play ( name, layer );
+            unit_type.animator.Play ( name, layer );
         }
 
         /// <summary>
@@ -118,7 +129,7 @@ namespace Game.Unit {
         /// </summary>
         /// <param name="hash">애니메이션 값</param>
         public void set_animation ( int hash, int layer = 0 ) {
-            unit_model.animator.Play ( hash, layer );
+            unit_type.animator.Play ( hash, layer );
         }
 
 
@@ -142,10 +153,16 @@ namespace Game.Unit {
             unit_status.is_dead = false;
         }
 
-
-        public void damage ( DamageInfo.Type type, float amount, UUnit source = null ) {
+        /// <summary>
+        /// 유닛에게 피해를 입힙니다.
+        /// </summary>
+        /// <param name="type">피해 속성</param>
+        /// <param name="amount">피해양</param>
+        /// <param name="source">피해를 준 유닛</param>
+        /// <returns>피해 성공 여부</returns>
+        public bool damage ( DamageInfo.Type type, float amount, UUnit source = null ) {
             if( unit_status.is_invincible || unit_status.is_dead) {   // 무적이거나 죽었을 경우 데미지를 받지 않는다...
-                return;
+                return false;
             }
 
             if(amount < 0f) {   // 데미지는 마이너스가 될 수 없으므로...
@@ -162,6 +179,7 @@ namespace Game.Unit {
             float result = melee + spell + universal;
             unit_status.current_hp -= result;
             unit_type.damage_clear ( );
+            return true;
         }
 
 
@@ -170,22 +188,7 @@ namespace Game.Unit {
         /// </summary>
         public virtual void confirm ( ) {
 
-
-            
-
-            // UnitModel 검증
-            if ( unit_model.parent == null ) {
-                unit_model.parent = transform.Find ( "Model" );
-            }
-
-            if ( unit_model.transform == null ) {
-                unit_model.transform = unit_model.parent.GetChild ( 0 );
-                unit_model.animator = unit_model.transform?.GetComponent<Animator> ( );
-            }
-
-            
-
-            if( unit_type  == null) {
+            if( unit_type == null) {
                 unit_type = gameObject.GetComponentInChildren<UnitType> ( );
                 unit_type.unit = this;
             } else if(unit_type != null && unit_type.unit == null) {
@@ -197,11 +200,29 @@ namespace Game.Unit {
                 unit_order = new UnitOrder ( );
             }
 
-            if ( movement_system == null ) {
-                movement_system = GetComponentInChildren<MovementSystem> ( );
-                movement_system.confirm ( );
+
+            if ( !attech_point_transform.ContainsKey ( AttechmentPoint.Origin ) ) {
+                attech_point_transform.Add ( AttechmentPoint.Origin, unit_type.transform );
+            }
+            if ( !attech_point_transform.ContainsKey ( AttechmentPoint.Chest ) ) {
+                Transform chest = unit_type.transform.Find ( attech_point_name[AttechmentPoint.Chest] );
+                if(chest != null) {
+                    attech_point_transform.Add ( AttechmentPoint.Chest, chest );
+                }
+            }
+            if ( !attech_point_transform.ContainsKey ( AttechmentPoint.Head ) ) {
+                Transform head = unit_type.transform.Find ( attech_point_name[AttechmentPoint.Head] );
+                if ( head != null ) {
+                    attech_point_transform.Add ( AttechmentPoint.Head, head );
+                }
             }
 
+
+            if ( movement_system == null ) {
+                movement_system = GetComponentInChildren<MovementSystem> ( );
+            }
+
+            movement_system.confirm ( );
             // TODO : 추가 검증
         }
 
@@ -210,7 +231,7 @@ namespace Game.Unit {
         /// 유닛 회전을 갱신합니다.
         /// </summary>
         protected virtual void active_rotate ( ) {  // Fixed Update
-            float y = unit_model.transform.eulerAngles.y;
+            float y = unit_type.transform.eulerAngles.y;
             float gap = Mathf.DeltaAngle ( y, unit_status.look_at );
             float rspeed = 0f;
 
@@ -225,8 +246,8 @@ namespace Game.Unit {
                 rspeed *= 0.5f;
             }
 
-            unit_model.transform.Rotate ( 0f, rspeed, 0f );
-            unit_status.angle = unit_model.transform.eulerAngles.y;
+            unit_type.transform.Rotate ( 0f, rspeed, 0f );
+            unit_status.angle = unit_type.transform.eulerAngles.y;
         }
 
 
@@ -301,17 +322,26 @@ namespace Game.Unit {
 
 
         public Vector3 get_position ( ) {
-            return unit_model.transform.position;
+            return unit_type.transform.position;
         }
 
 
         public Vector3 get_rotation ( ) {
-            return unit_model.transform.eulerAngles;
+            return unit_type.transform.eulerAngles;
         }
 
 
         public Animator get_animator ( ) {
-            return unit_model.animator;
+            return unit_type.animator;
+        }
+
+
+        public Transform get_attech_point ( AttechmentPoint point ) {
+            if(attech_point_transform.ContainsKey(point)) {
+                return attech_point_transform[point];
+            } else {
+                return attech_point_transform[AttechmentPoint.Origin];
+            }
         }
 
 
@@ -448,27 +478,29 @@ namespace Game.Unit {
         // TODO : 추가할 스텟들
     }
 
+    /// <summary>
+    /// 소생하였을 때 이벤트
+    /// </summary>
+    /// <param name="unit">살아난 유닛</param>
+    public delegate void on_revive ( UUnit unit );
 
     /// <summary>
-    /// Unit에 포함된 모델 객체의 속성들을 나타냅니다.
+    /// 죽었을 때 이벤트
     /// </summary>
-    [System.Serializable]
-    public class UnitModel {
-        public Transform parent;
-        public Transform transform;
-        public Animator animator;
-
-        public UnitModel ( ) => (parent, transform, animator) = (null, null, null);
-        public UnitModel ( Transform parent, Transform transform ) {
-            this.parent = parent;
-            this.transform = transform;
-            animator = transform?.GetComponent<Animator> ( );
-        }
-    }
-
-
-    public delegate void on_revive ( UUnit unit );
+    /// <param name="unit">죽은 유닛</param>
     public delegate void on_dead ( UUnit unit );
+
+    /// <summary>
+    /// 유닛이 공격을 시작했을 때 이벤트
+    /// </summary>
+    /// <param name="source">공격한 유닛</param>
     public delegate void on_attack ( UUnit source );
+
+    /// <summary>
+    /// 유닛이 피해를 받는 중일 때 이벤트
+    /// </summary>
+    /// <param name="source">피해를 입힌 유닛</param>
+    /// <param name="target">피해를 받는 유닛</param>
     public delegate void on_damaged ( UUnit source, UUnit target );
+
 }

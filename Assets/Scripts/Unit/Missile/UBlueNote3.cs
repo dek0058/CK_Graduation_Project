@@ -1,25 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.Unit.Missile {
-    using JToolkit.Utility;
     using JToolkit.Math;
     using Game.Unit;
     using Game.Unit.Type;
 
-    public class UMelodyMissile : UUnit {
-
+    public class UBlueNote3 : UUnit {
 
         private MelodyMissileType my_type;
 
 
         protected override void active_rotate ( ) {
             unit_status.angle = unit_status.look_at;
+            my_type.transform.localEulerAngles = new Vector3 ( 0f, 0f, unit_status.angle - 180f );
         }
 
 
@@ -34,6 +27,7 @@ namespace Game.Unit.Missile {
             base.confirm ( );
 
             my_type = unit_type as MelodyMissileType;
+
             movement_system.event_collision_enter += my_type.on_collision;
         }
 

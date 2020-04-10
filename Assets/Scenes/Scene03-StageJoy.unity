@@ -2788,6 +2788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players:
   - {fileID: 2001940382}
+  - {fileID: 1049182193}
   local_player: {fileID: 2001940382}
   game_camera: {fileID: 2047012152}
 --- !u!4 &557517034
@@ -4876,7 +4877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98a3cad29e2c154ab63546a55871b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 1
+  state: 0
   my_room: {fileID: 0}
   next_room: {fileID: 473763197}
   teleport_transform: {fileID: 0}
@@ -23611,6 +23612,16 @@ PrefabInstance:
       propertyPath: unit_data
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 517165101770134852, guid: b75d5cfef6262e848b19dc1e70f80c9a,
+        type: 3}
+      propertyPath: unit_status.is_invincible
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 517165101770134852, guid: b75d5cfef6262e848b19dc1e70f80c9a,
+        type: 3}
+      propertyPath: unit_status.mspeed
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 1067220479538525547, guid: b75d5cfef6262e848b19dc1e70f80c9a,
         type: 3}
       propertyPath: m_Layer
@@ -23680,6 +23691,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -122.98457
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505907403848617005, guid: b75d5cfef6262e848b19dc1e70f80c9a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1517108707191926175, guid: b75d5cfef6262e848b19dc1e70f80c9a,
         type: 3}
@@ -24884,5 +24900,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1049182193}
+    - target: {fileID: 7511368857334492393, guid: 9f4579bef6043f94882829f1e8928b57,
+        type: 3}
+      propertyPath: unit_status.mspeed
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f4579bef6043f94882829f1e8928b57, type: 3}

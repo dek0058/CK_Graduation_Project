@@ -108,7 +108,7 @@ namespace Game.Management {
                 case SceneType.Menu: { 
                 } break;
                 case SceneType.Game_StageJoy: {
-                    PlayerManager.instance.load ( );
+                    //PlayerManager.instance.load ( );
                     GameManager.instance.current_stage.load_resource ( );
                 } break;
             }

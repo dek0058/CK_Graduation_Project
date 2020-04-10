@@ -8,27 +8,6 @@ namespace Game.Management {
 
     public class ResourceLoader : Singleton<ResourceLoader> {
 
-        #region Management
-        private const string Path_Canvas_Blank = "Prefab/Management/SceneFader/Canvas_Blank";
-        private const string Path_Canvas_Loading = "Prefab/Management/SceneFader/Canvas_Loading";
-        #endregion
-
-        #region Unit
-        private const string Path_Protagonist = "Unit/Character/Protagonist/Protagonist";
-        private const string Path_Piano_Man = "Unit/Character/PianoMan/PianoMan";
-        private const string Path_Paint_Man = "Unit/Character/PaintMan/PaintMan";
-
-        private const string Path_Melody_Missile = "Unit/Missile/MelodyMissile/MelodyMissile";
-        #endregion
-
-        #region Auido
-        private const string Path_Game_Audio = "Audio/Prefab/GameAudio";
-
-        //Clip
-        private const string Path_Stage1_Joy_Music = "Audio/Music/OST - Inconsolable"; // Temporary
-        private const string Path_Stage1_Boss_Music = "Audio/Music/The Moon Over the Lake Composed by Hemio - New age piano";
-        #endregion
-
         /// <summary>
         /// Resource 종류
         /// </summary>
@@ -46,7 +25,12 @@ namespace Game.Management {
             Paint_Man,
 
             // Missile
-            Melody_Missile,
+            BlueNote1,
+            BlueNote2,
+            BlueNote3,
+            RedNote1,
+            RedNote2,
+            RedNote3,
             //
 
             // Audio
@@ -59,6 +43,30 @@ namespace Game.Management {
             //
         }
         private EnumDictionary<Resource, PrefabData> prefabs = new EnumDictionary<Resource, PrefabData> ( );
+
+        private EnumDictionary<Resource, string> paths = new EnumDictionary<Resource, string> {
+            {Resource.None, "none" },
+
+            {Resource.Canvas_Blank, "Prefab/Management/SceneFader/Canvas_Blank" },
+            {Resource.Canvas_Loading, "Prefab/Management/SceneFader/Canvas_Loading" },
+
+            {Resource.Protagonist, "Unit/Character/Protagonist/Protagonist" },
+            {Resource.Piano_Man, "Unit/Character/PianoMan/PianoMan" },
+            {Resource.Paint_Man, "Unit/Character/PaintMan/PaintMan" },
+
+            {Resource.BlueNote1, "Unit/Missile/MelodyMissile/BlueNote1_Missile" },
+            {Resource.BlueNote2, "Unit/Missile/MelodyMissile/BlueNote2_Missile" },
+            {Resource.BlueNote3, "Unit/Missile/MelodyMissile/BlueNote3_Missile" },
+            {Resource.RedNote1, "Unit/Missile/MelodyMissile/RedNote1_Missile" },
+            {Resource.RedNote2, "Unit/Missile/MelodyMissile/RedNote2_Missile" },
+            {Resource.RedNote3, "Unit/Missile/MelodyMissile/RedNote3_Missile" },
+
+            {Resource.Game_Audio, "Audio/Prefab/GameAudio" },
+
+            {Resource.Stage1_Joy_Music, "Audio/Music/OST - Inconsolable" }, // Temporary
+            {Resource.Stage1_Boss_Music, "Audio/Music/The Moon Over the Lake Composed by Hemio - New age piano" },
+        };
+
         private EnumDictionary<Resource, string> prefabs_name = new EnumDictionary<Resource, string> ( ) {
             // Characters
             {Resource.Protagonist, "UProtagonist" },
@@ -66,7 +74,12 @@ namespace Game.Management {
             {Resource.Paint_Man, "UPaintMan" },
 
             // Missiles
-            {Resource.Melody_Missile, "UMelodyMissile" },
+            {Resource.BlueNote1, "UBlueNote1" },
+            {Resource.BlueNote2, "UBlueNote2" },
+            {Resource.BlueNote3, "UBlueNote3" },
+            {Resource.RedNote1, "URedNote1" },
+            {Resource.RedNote2, "URedNote2" },
+            {Resource.RedNote3, "URedNote3" },
         };
         
 
@@ -116,7 +129,7 @@ namespace Game.Management {
             }
             PrefabData data = new PrefabData ( );
             data.type = res;
-            data.path = get_path ( res );
+            data.path = paths[res];
             data.obj = null;
             load_queue.Enqueue ( data );
             max_resource_index++;
@@ -167,37 +180,11 @@ namespace Game.Management {
 
         private PrefabData create_data ( Resource res ) {
             PrefabData data = new PrefabData ( );
-            data.obj = Resources.Load ( get_path ( res ) );
+            data.obj = Resources.Load ( paths[res] );
             return data;
         }
 
-
-        public string get_path ( Resource res ) {
-            string path = "none";
-            switch ( res ) {
-                // Management
-                case Resource.Canvas_Blank:         { path = Path_Canvas_Blank;         } break;
-                case Resource.Canvas_Loading:       { path = Path_Canvas_Loading;       } break;
-
-                // Unit
-                // Character
-                case Resource.Protagonist:          { path = Path_Protagonist;          } break;
-                case Resource.Piano_Man:            { path = Path_Piano_Man;            } break;
-                case Resource.Paint_Man:            { path = Path_Paint_Man;            } break;
-
-                // Missile
-                case Resource.Melody_Missile:       { path = Path_Melody_Missile;       } break;
-                //
-
-                // Audio
-                case Resource.Game_Audio:           { path = Path_Game_Audio;           } break;
-
-                //Clip
-                case Resource.Stage1_Joy_Music: { path = Path_Stage1_Joy_Music; } break;
-                case Resource.Stage1_Boss_Music:    { path = Path_Stage1_Boss_Music;    } break;
-            }
-            return path;
-        }
+        
 
 
         private IEnumerator Erequest_prefab ( ) {

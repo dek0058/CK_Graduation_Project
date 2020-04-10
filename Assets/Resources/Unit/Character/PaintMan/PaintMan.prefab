@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 3419774032626527867}
   m_Father: {fileID: 4035211480128865563}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4669096472484262950
 SpriteRenderer:
@@ -104,6 +104,7 @@ MonoBehaviour:
   unit: {fileID: 7511368857334492393}
   path_obj: {fileID: 3419774032626527866}
   path_collider: {fileID: 3419774032626527864}
+  collisions: []
 --- !u!70 &6414985850705012579
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -131,6 +132,36 @@ SortingGroup:
   m_SortingLayerID: -1375113253
   m_SortingLayer: 2
   m_SortingOrder: -1
+--- !u!1 &1265334690812303175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6275362450687775367}
+  m_Layer: 8
+  m_Name: Chest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6275362450687775367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265334690812303175}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3419774033977934685}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3419774032229359299
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +291,8 @@ Transform:
   m_LocalScale: {x: 0.476, y: 0.476, z: 0.476}
   m_Children:
   - {fileID: 3419774032229359296}
-  m_Father: {fileID: 4035211480359291291}
+  - {fileID: 6275362450687775367}
+  m_Father: {fileID: 4035211480128865563}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3419774033977934684
@@ -390,6 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
+  animator: {fileID: 0}
   do_attack: 0
   attacked_units: []
 --- !u!70 &3419774033977934683
@@ -437,8 +470,8 @@ Transform:
   m_LocalPosition: {x: 5.5, y: 2.274, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 3419774033977934685}
   - {fileID: 4172134264553304568}
-  - {fileID: 4035211480359291291}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -454,7 +487,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 150
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -477,13 +510,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   owner: {fileID: 0}
-  movement_system: {fileID: 0}
-  unit_type: {fileID: 0}
+  movement_system: {fileID: 674238626905714575}
+  unit_type: {fileID: 3419774033977934680}
   unit_data: {fileID: 0}
-  unit_model:
-    parent: {fileID: 4035211480359291291}
-    transform: {fileID: 3419774033977934685}
-    animator: {fileID: 3419774033977934686}
   unit_status:
     is_dead: 0
     is_invincible: 0
@@ -503,34 +532,3 @@ MonoBehaviour:
     axis: {x: 0, y: 0}
     flying: 0
     current_flying: 0
---- !u!1 &4035211480359291290
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4035211480359291291}
-  m_Layer: 0
-  m_Name: Model
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4035211480359291291
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4035211480359291290}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 3419774033977934685}
-  m_Father: {fileID: 4035211480128865563}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -8,6 +8,8 @@ namespace Game.Unit {
     public abstract class UnitType : MonoBehaviour {
 
         public UUnit unit;
+        public Animator animator;
+
         public Dictionary<string, UnityEvent> schedules = new Dictionary<string, UnityEvent> ( );
         private List<DamageInfo> damage_list = new List<DamageInfo> ( );
 
@@ -30,11 +32,6 @@ namespace Game.Unit {
             if(damage_list.Count == 0) {
                 return null;
             }
-            DamageInfo[] a = damage_list.Where ( dmg =>  dmg.type == type ).ToArray ( );
-            Debug.Log ( type );
-            foreach ( var item in a ) {
-                Debug.Log ( item.type );
-            }
             return damage_list.Where ( dmg => dmg.type == type ).ToArray ( );
         }
 
@@ -45,6 +42,9 @@ namespace Game.Unit {
         public float get_damage_to_value ( DamageInfo.Type type ) {
             float dmg = 0f;
             DamageInfo[] info = get_damage ( type );
+            if(info == null) {
+                return dmg;
+            }
             for ( int i = 0; i < info.Length; ++i ) {
                 dmg += info[i].amount;
             }
@@ -64,6 +64,22 @@ namespace Game.Unit {
             uevent.AddListener ( callback );
             
             schedules.Add ( key, uevent );
+        }
+
+
+
+        public void confirm ( ) {
+            if(animator == null) {
+                animator = GetComponent<Animator> ( );
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////
+        ///                               Unity                                  ///
+        ////////////////////////////////////////////////////////////////////////////
+
+        private void Awake ( ) {
+            confirm ( );
         }
     }
 

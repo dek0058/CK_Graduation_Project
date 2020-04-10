@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Game.Unit {
     using Management;
@@ -25,10 +26,9 @@ namespace Game.Unit {
 
         private Vector2 next_velocity = Vector2.zero;
 
-        public KdTree<UUnit> collisions = new KdTree<UUnit> ( );
+        public List<UUnit> collisions = new List<UUnit> ( );
         public event shadow_collision_enter event_collision_enter;
         public event shadow_collision_exit event_collision_exit;
-
 
 
         public bool is_grounded {
@@ -61,6 +61,14 @@ namespace Game.Unit {
         }
 
 
+        public void lerp_flying ( float dist, float speed ) {
+            if(speed <= 0f) {
+                return;
+            }
+            StartCoroutine ( Elerp_flying ( dist, speed ) );
+        }
+
+
         public void set_path_type ( PathType type ) {
             path_type = type;
             path_obj.layer = (int)path_type;
@@ -73,7 +81,7 @@ namespace Game.Unit {
                 return;
             }
 
-            rigidbody2d.velocity = next_velocity * unit.unit_status.rhythm;
+            rigidbody2d.velocity = next_velocity * Time.fixedDeltaTime * unit.unit_status.rhythm;
             next_velocity = Vector3.zero;
         }
 
@@ -84,10 +92,10 @@ namespace Game.Unit {
             if(flying < 0f) {
                 flying = 0f;
             }
-            unit.unit_model.transform.localPosition = new Vector3 ( 0f, flying, 0f );
+            unit.unit_type.transform.localPosition = new Vector3 ( 0f, flying, 0f );
 
             if( cur > 0f) {
-                unit.unit_status.current_flying += Physics2D.gravity.y * Time.fixedDeltaTime;
+                unit.unit_status.current_flying += Physics2D.gravity.y * Time.fixedDeltaTime * unit.unit_status.rhythm;
             } else if( cur < 0f ) {
                 unit.unit_status.current_flying = 0f;
             }
@@ -145,22 +153,57 @@ namespace Game.Unit {
             float y = force.y >= 0f ? 1f : -1f;
             float force_x = Mathf.Abs ( force.x );
             float force_y = Mathf.Abs ( force.y );
-            float friction = 0.88f;
-            bool loop = true;
+            Vector2 normal = new Vector2 ( force_x, force_y ).normalized;
 
+            bool loop = true;
             while(loop) {
                 if ( force_x < 0.001f && force_y < 0.001f ) {
                     loop = false;
                     continue;
                 }
 
-                force_x = force_x * friction;
-                force_y = force_y * friction;
+                force_x = force_x - (rigidbody2d.mass * Time.fixedDeltaTime * unit.unit_status.rhythm * normal.x);
+                force_y = force_y - (rigidbody2d.mass * Time.fixedDeltaTime * unit.unit_status.rhythm * normal.y);
+                if(force_x < 0f) {
+                    force_x = 0f;
+                }
+                if(force_y < 0f) {
+                    force_y = 0f;
+                }
                 move ( new Vector2 ( force_x * x, force_y * y ) );
                 yield return new WaitForFixedUpdate ( );
             }
         }
 
+
+        private float lerp_flying_dist;
+        private float lerp_flying_speed;
+        private float lerp_flying_previous_position;
+        private float lerp_flying_time;
+        private bool do_lerp_flying = false;
+        private IEnumerator Elerp_flying ( float dist, float speed ) {
+            lerp_flying_dist = dist;
+            lerp_flying_speed = speed;
+            lerp_flying_previous_position = unit.get_attech_point ( UUnit.AttechmentPoint.Origin ).localPosition.y;
+            lerp_flying_time = 0f;
+            if ( do_lerp_flying ) {
+                yield break;
+            }
+            do_lerp_flying = true;
+            while(do_lerp_flying) {
+                lerp_flying_time += Time.fixedDeltaTime * lerp_flying_speed * unit.unit_status.rhythm;
+                if(lerp_flying_time > 1f) {
+                    lerp_flying_time = 1f;
+                }
+                unit.unit_status.flying = Mathf.Lerp ( lerp_flying_previous_position, lerp_flying_dist, lerp_flying_time );
+                if (lerp_flying_time == 1f) {
+                    break;
+                }
+                yield return new WaitForFixedUpdate ( );
+            }
+
+            do_lerp_flying = false;
+        }
 
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
@@ -192,7 +235,9 @@ namespace Game.Unit {
         private void OnTriggerEnter2D ( Collider2D collision ) {
             UUnit unit = collision.GetComponentInParent<UUnit> ( );
             if(unit != null) {
-                collisions.Add ( unit );
+                if ( !collisions.Contains ( unit ) ) {
+                    collisions.Add ( unit );
+                }
             }
             event_collision_enter?.Invoke ( collision );
         }
@@ -200,10 +245,8 @@ namespace Game.Unit {
         private void OnTriggerExit2D ( Collider2D collision ) {
             UUnit unit = collision.GetComponentInParent<UUnit> ( );
             if ( unit != null ) {
-                for(int i = 0; i < collisions.Count; ++i ) {
-                    if(collisions[i] == unit) {
-                        collisions.RemoveAt(i); break;
-                    }
+                if( collisions.Contains ( unit ) ) {
+                    collisions.Remove ( unit );
                 }
             }
 
