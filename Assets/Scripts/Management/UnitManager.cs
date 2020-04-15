@@ -23,7 +23,7 @@ namespace Game.Management
         }
 
         public List<EnumDictionary<DataType, object>> data_table = null;
-        public Dictionary<int, UnitData> u_data = new Dictionary<int, UnitData>();
+        public Dictionary<int, UnitTableData> u_data = new Dictionary<int, UnitTableData>();
         public TableWWW val;
 
         private void Start()
@@ -41,7 +41,7 @@ namespace Game.Management
 
             if (Application.internetReachability != NetworkReachability.NotReachable)
             {
-                val.Req<UnitData>(UnitData.GetGoogleSheetGID(), u_data, (a_bSuccess) =>
+                val.Req<UnitTableData>(UnitTableData.GetGoogleSheetGID(), u_data, (a_bSuccess) =>
                  {
                      if (a_bSuccess)
                      {
@@ -83,15 +83,15 @@ namespace Game.Management
                      {
                          UnitData unit_data = Resources.Load<UnitData>("UnitData/U_" + data_table[i][DataType.Nickname]);
                          if (u_data == null) continue;
-                         unit_data.id = Convert.ToUInt32(data_table[i][DataType.Id]);
-                         unit_data.nickname = Convert.ToString(data_table[i][DataType.Nickname]);
-                         unit_data.hp = Convert.ToSingle(data_table[i][DataType.Hp]);
-                         unit_data.mspeed = Convert.ToUInt32(data_table[i][DataType.Mspeed]);
-                         unit_data.aspeed = Convert.ToUInt32(data_table[i][DataType.Aspeed]);
-                         unit_data.rspeed = Convert.ToUInt32(data_table[i][DataType.Rspeed]);
-                         unit_data.damage = Convert.ToUInt32(data_table[i][DataType.Damage]);
-                         unit_data.armor = Convert.ToUInt32(data_table[i][DataType.Armor]);
-                         unit_data.atime = Convert.ToUInt32(data_table[i][DataType.Atime]);
+                         unit_data.unit_table_data.id = Convert.ToUInt32(data_table[i][DataType.Id]);
+                         unit_data.unit_table_data.nickname = Convert.ToString(data_table[i][DataType.Nickname]);
+                         unit_data.unit_table_data.hp = Convert.ToSingle(data_table[i][DataType.Hp]);
+                         unit_data.unit_table_data.mspeed = Convert.ToUInt32(data_table[i][DataType.Mspeed]);
+                         unit_data.unit_table_data.aspeed = Convert.ToUInt32(data_table[i][DataType.Aspeed]);
+                         unit_data.unit_table_data.rspeed = Convert.ToUInt32(data_table[i][DataType.Rspeed]);
+                         unit_data.unit_table_data.damage = Convert.ToUInt32(data_table[i][DataType.Damage]);
+                         unit_data.unit_table_data.armor = Convert.ToUInt32(data_table[i][DataType.Armor]);
+                         unit_data.unit_table_data.atime = Convert.ToUInt32(data_table[i][DataType.Atime]);
                      }
                      #endif
                  });

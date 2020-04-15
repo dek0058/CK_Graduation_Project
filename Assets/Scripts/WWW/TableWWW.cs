@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using System;
 
 public class TableWWW : MonoBehaviour
@@ -17,85 +18,88 @@ public class TableWWW : MonoBehaviour
     {
         bool bResult = true;
         string url = string.Format(strURLBase, TableKey, a_nTableID);
+        
+        UnityWebRequest www = new UnityWebRequest();
 
-        WWW www = new WWW(url);
-
-        while (www.isDone == false)
+        using (www = UnityWebRequest.Get(url))
         {
-            yield return null;
-        }
+            yield return www.SendWebRequest();
 
-        if (string.IsNullOrEmpty(www.error) == false)
-        {
-            if (a_fpOnResponse != null)
+            if (www.isNetworkError || www.isHttpError)
             {
-                Debug.LogError("net error");
-                a_fpOnResponse(false);
-                yield break;
-            }
-        }
-
-        string d = www.text;
-
-        try
-        {
-            // 필요없는 문자열 제거
-            int nStart = d.IndexOf("(");
-            int nEnd = d.IndexOf(");");
-            ++nStart;
-            
-            string data = d.Substring(nStart, nEnd - nStart);
-            // 실제 값 파싱
-            List<string> liValueName = new List<string>(); // 변수명
-            List<List<string>> liValues = new List<List<string>>(); // 변수값
-
-            var mapParsed = MiniJSON.Json.Deserialize(data) as Dictionary<string, object>;
-            //Debug.Log(mapParsed);
-            var map = (Dictionary<string, object>)mapParsed["table"];
-            var liName = (List<object>)map["cols"];
-            var liVal = (List<object>)map["rows"];
-            
-            // 임시 캐싱 : 테이블명
-            for (int i = 0; i < liName.Count; ++i)
-            {
-                var m1 = (Dictionary<string, object>)liName[i];
-                liValueName.Add((string)m1["label"]);
-            }
-
-            // 임시 캐싱 : 각 로우의 값들
-            for (int i = 0; i < liVal.Count; ++i)
-            {
-                var m2 = (Dictionary<string, object>)liVal[i];
-                var li = (List<object>)m2["c"];
-
-                liValues.Add(new List<string>());
-
-                for (int j = 0; j < li.Count; ++j)
+                Debug.Log(www.error);
+                if (a_fpOnResponse != null)
                 {
-                    var v = (Dictionary<string, object>)li[j];
-                    liValues[i].Add(v["v"].ToString());
+                    Debug.LogError("net error");
+                    a_fpOnResponse(false);
+                    yield break;
                 }
             }
-
-            // 캐싱한 값으로부터 클래스 생성
-            int nValCount = liValues.Count;
-
-            for (int i = 0; i < nValCount; ++i)
+            else
             {
-                T val = (T)GetInstance(typeof(T).FullName, liValues[i].ToArray());
-                a_refContainer.Add(int.Parse(liValues[i][0]), val);
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e.Message);
-            Debug.LogError("Table Value error");
-            bResult = false;
-        }
+                string dt = www.downloadHandler.text;
 
-        if (a_fpOnResponse != null)
-        {
-            a_fpOnResponse(bResult);
+                try
+                {
+                    // 필요없는 문자열 제거
+                    int nStart = dt.IndexOf("(");
+                    int nEnd = dt.IndexOf(");");
+                    ++nStart;
+
+                    string data = dt.Substring(nStart, nEnd - nStart);
+                    // 실제 값 파싱
+                    List<string> liValueName = new List<string>(); // 변수명
+                    List<List<string>> liValues = new List<List<string>>(); // 변수값
+
+                    var mapParsed = MiniJSON.Json.Deserialize(data) as Dictionary<string, object>;
+                    //Debug.Log(mapParsed);
+                    var map = (Dictionary<string, object>)mapParsed["table"];
+                    var liName = (List<object>)map["cols"];
+                    var liVal = (List<object>)map["rows"];
+
+                    // 임시 캐싱 : 테이블명
+                    for (int i = 0; i < liName.Count; ++i)
+                    {
+                        var m1 = (Dictionary<string, object>)liName[i];
+                        liValueName.Add((string)m1["label"]);
+                    }
+
+                    // 임시 캐싱 : 각 로우의 값들
+                    for (int i = 0; i < liVal.Count; ++i)
+                    {
+                        var m2 = (Dictionary<string, object>)liVal[i];
+                        var li = (List<object>)m2["c"];
+
+                        liValues.Add(new List<string>());
+
+                        for (int j = 0; j < li.Count; ++j)
+                        {
+                            var v = (Dictionary<string, object>)li[j];
+                            liValues[i].Add(v["v"].ToString());
+                        }
+                    }
+
+                    // 캐싱한 값으로부터 클래스 생성
+                    int nValCount = liValues.Count;
+
+                    for (int i = 0; i < nValCount; ++i)
+                    {
+                        T val = (T)GetInstance(typeof(T).FullName, liValues[i].ToArray());
+                        a_refContainer.Add(int.Parse(liValues[i][0]), val);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e.Message);
+                    Debug.LogError("Table Value error");
+                    bResult = false;
+                }
+
+                if (a_fpOnResponse != null)
+                {
+                    a_fpOnResponse(bResult);
+                }
+            }
         }
     }
     

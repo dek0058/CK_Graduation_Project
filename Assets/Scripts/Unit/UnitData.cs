@@ -1,9 +1,17 @@
 ﻿using UnityEngine;
 
-namespace Game.Unit {
+namespace Game.Unit
+{
 
     [CreateAssetMenu(fileName = "NewUnitData", menuName = "Unit/Data")]
-    public class UnitData : ScriptableObject {
+    public class UnitData : ScriptableObject
+    {
+        public UnitTableData unit_table_data;
+    }
+
+    [System.Serializable]
+    public struct UnitTableData
+    {
         public static int GetGoogleSheetGID() { return 2079198335; }
 
         public uint id;                 // 고유 ID
@@ -19,7 +27,7 @@ namespace Game.Unit {
 
         // TODO : 추가 스텟 AND 추가해야할 능력부여
 
-        public UnitData(string _id, string _nickname, string _hp ,string _mspeed, string _aspeed, string _rspeed, string _damage, string _armor, string _atime)
+        public UnitTableData(string _id, string _nickname, string _hp, string _mspeed, string _aspeed, string _rspeed, string _damage, string _armor, string _atime)
         {
             id = uint.Parse(_id);
             nickname = _nickname;
