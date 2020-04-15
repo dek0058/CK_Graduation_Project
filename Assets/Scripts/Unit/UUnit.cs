@@ -62,7 +62,7 @@ namespace Game.Unit {
         /// </summary>
         /// <param name="position">생성할 좌표</param>
         /// <param name="angle">각도</param>
-        public static T create<T> ( Vector2 position, float angle = 0f ) {
+        private static T create<T> ( Vector2 position, float angle = 0f ) {
             GameObject prefab = ResourceLoader.instance.get_unit ( typeof(T).Name );
             if(prefab == null) {
                 return default ( T );
@@ -71,6 +71,19 @@ namespace Game.Unit {
             T unit = obj.GetComponent<T> ( );
             
             (unit as UUnit).rotate ( angle );
+            return unit;
+        }
+
+        public static T create<T> ( Vector2 position, Player player, float angle = 0f ) {
+            T unit = create<T> ( position, angle );
+            (unit as UUnit).player = player;
+            return unit;
+        }
+
+        public static T create<T> ( Vector2 position, Player player, UUnit owner, float angle = 0f ) {
+            T unit = create<T> ( position, angle );
+            (unit as UUnit).player = player;
+            (unit as UUnit).owner = owner;
             return unit;
         }
 

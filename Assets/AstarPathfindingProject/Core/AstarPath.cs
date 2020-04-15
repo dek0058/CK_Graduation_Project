@@ -1,3 +1,5 @@
+//#define GAME_DEBUG
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -1279,7 +1281,9 @@ public class AstarPath : VersionedMonoBehaviour {
 		};
 
 		pathProcessor.OnPathPostSearch += path => {
+#if GAME_DEBUG
 			LogPathResults(path);
+#endif
 			var tmp = OnPathPostSearch;
 			if (tmp != null) tmp(path);
 		};
@@ -1435,7 +1439,7 @@ public class AstarPath : VersionedMonoBehaviour {
 		active = null;
 	}
 
-	#region ScanMethods
+#region ScanMethods
 
 	/// <summary>
 	/// Floodfills starting from the specified node.
@@ -1803,7 +1807,7 @@ public class AstarPath : VersionedMonoBehaviour {
 		}
 	}
 
-	#endregion
+#endregion
 
 	private static int waitForPathDepth = 0;
 

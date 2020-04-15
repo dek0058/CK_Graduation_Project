@@ -33,6 +33,9 @@ namespace Game.Management {
             RedNote3,
             //
 
+            // Weapon
+            Cypress_Weapon,
+
             // Audio
             // GameObject
             Game_Audio,
@@ -60,6 +63,8 @@ namespace Game.Management {
             {Resource.RedNote1, "Unit/Missile/MelodyMissile/RedNote1_Missile" },
             {Resource.RedNote2, "Unit/Missile/MelodyMissile/RedNote2_Missile" },
             {Resource.RedNote3, "Unit/Missile/MelodyMissile/RedNote3_Missile" },
+
+            {Resource.Cypress_Weapon, "Weapon/Cypress/Cypress" },
 
             {Resource.Game_Audio, "Audio/Prefab/GameAudio" },
 

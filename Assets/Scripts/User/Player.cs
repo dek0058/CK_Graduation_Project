@@ -32,14 +32,49 @@ namespace Game.User {
         private float releas_input_time_speed = 5f;
         private const float Releas_Both_Input_Time = 0.56f;
 
+        private int alliance = 0;
 
+        /// <summary>
+        /// 플레이어를 생성합니다.
+        /// </summary>
+        /// <param name="local">플레이 중인 사용자인지</param>
         public static Player create ( Team team, bool local = false ) {
             GameObject obj = new GameObject ( "Player ", typeof(Player) );
             Player p = obj.GetComponent<Player> ( );
             p.team = team;
             p.local = local;
+            p.alliance |= 1 << (int)team;
             return p;
         }
+
+
+        public void set_alliance ( Team team, bool value ) {
+            if ( value ) {
+                alliance |= 1 << (int)team;
+            } else {
+                alliance &= ~(1 << (int)team);
+            }
+        }
+
+
+        /// <summary>
+        /// 목표 플레이어가 동맹 플레이어인지 확인합니다.
+        /// </summary>
+        /// <param name="p">목표 플레이어</param>
+        public bool is_alliance ( Player p ) {
+            int bit = (alliance >> (int)team) & 1;
+            return bit == 1 ? true : false;
+        }
+
+        /// <summary>
+        /// 목표 플레이어가 적 플레이어인지 확인합니다.
+        /// </summary>
+        /// <param name="p">목표 플레이어</param>
+        public bool is_enemy ( Player p ) {
+            int bit = (alliance >> (int)team) & 1;
+            return bit == 1 ? false : true;
+        }
+
 
 
         /// <summary>

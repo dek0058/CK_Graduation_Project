@@ -21,6 +21,8 @@ namespace Game.Stage {
             ResourceLoader.instance.add ( ResourceLoader.Resource.Protagonist );
             ResourceLoader.instance.add ( ResourceLoader.Resource.Piano_Man );
 
+            ResourceLoader.instance.add ( ResourceLoader.Resource.Cypress_Weapon );
+
             ResourceLoader.instance.add ( ResourceLoader.Resource.BlueNote1 );
             ResourceLoader.instance.add ( ResourceLoader.Resource.BlueNote2 );
             ResourceLoader.instance.add ( ResourceLoader.Resource.BlueNote3 );

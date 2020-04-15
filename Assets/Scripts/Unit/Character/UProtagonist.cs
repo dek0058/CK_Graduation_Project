@@ -49,7 +49,7 @@ namespace Game.Unit.Character {
             }
 
             get_animator ( ).SetTrigger ( parameter_hash[AnimatorParameter.Attack] );
-            weapon.GetComponent<IEquipmentItem> ( ).action ( EquipmentAction.Attack );
+            weapon?.GetComponent<IEquipmentItem> ( ).action ( EquipmentAction.Attack );
             StartCoroutine ( Eattack_cooltime ( ) );
         }
 

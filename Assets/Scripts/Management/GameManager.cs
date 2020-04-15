@@ -33,8 +33,8 @@ namespace Game.Management {
 
 
         public void initialize ( ) {
-            game_initializer.initialize ( );
             PlayerManager.instance.initialize ( );
+            game_initializer.initialize ( );
             current_stage.initialize ( );
         }
 

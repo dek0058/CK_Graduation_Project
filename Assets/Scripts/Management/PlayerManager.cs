@@ -15,22 +15,20 @@ namespace Game.Management {
 
         public Player create ( Player.Team team, bool local = false ) {
             Player p = Player.create ( team, local );
+            p.transform.SetParent ( transform );
             players.Add ( p );
             string count = players.Count.ToString ( );
             p.name += local ? count + "(Local)" : count;
             return p;
         }
 
-
-        public void load ( ) {
-            players.Add ( create ( Player.Team.Enemy ) );   // Enemy 플레이어 생성
-            players.Add ( create ( Player.Team.Npc ) );     // NPC 플레이어 생성
-        }
-
         public void initialize ( ) {
             if(local_player == null) {
                 local_player = create ( Player.Team.User, true );
             }
+
+            create ( Player.Team.Enemy );   // Enemy 플레이어 생성
+            create ( Player.Team.Npc );     // NPC 플레이어 생성
         }
 
         ////////////////////////////////////////////////////////////////////////////
@@ -49,7 +47,10 @@ namespace Game.Management {
 
 
         private void LateUpdate ( ) {
-            game_camera.camera_point.position = local_player.unit.get_position();
+            // HACK
+            if ( local_player != null && local_player.unit != null ) {
+                game_camera.camera_point.position = local_player.unit.get_position ( );
+            }
         }
 
 

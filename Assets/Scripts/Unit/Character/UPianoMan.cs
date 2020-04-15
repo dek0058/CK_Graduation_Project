@@ -120,9 +120,9 @@ namespace Game.Unit.Character {
             int rand = Random.Range ( 1, 4 );
             UUnit missile = null;
             switch ( rand ) {
-                case 1: { missile = create<UBlueNote1> ( position, angle ); } break;
-                case 2: { missile = create<UBlueNote2> ( position, angle ); } break;
-                case 3: { missile = create<UBlueNote3> ( position, angle ); } break;
+                case 1: { missile = create<UBlueNote1> ( position, player, this, angle ); } break;
+                case 2: { missile = create<UBlueNote2> ( position, player, this, angle ); } break;
+                case 3: { missile = create<UBlueNote3> ( position, player, this, angle ); } break;
             }
             if ( missile != null ) {
                 missile.player = player;
@@ -139,9 +139,9 @@ namespace Game.Unit.Character {
             int rand = Random.Range ( 1, 4 );
             UUnit missile = null;
             switch ( rand ) {
-                case 1: { missile = create<URedNote1> ( position, angle ); } break;
-                case 2: { missile = create<URedNote2> ( position, angle ); } break;
-                case 3: { missile = create<URedNote3> ( position, angle ); } break;
+                case 1: { missile = create<URedNote1> ( position, player, this, angle ); } break;
+                case 2: { missile = create<URedNote2> ( position, player, this, angle ); } break;
+                case 3: { missile = create<URedNote3> ( position, player, this, angle ); } break;
             }
             if ( missile != null ) {
                 missile.player = player;
