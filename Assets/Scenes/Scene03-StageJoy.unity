@@ -149,8 +149,8 @@ Transform:
   m_LocalPosition: {x: -6.24, y: 0.07, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_Father: {fileID: 2114912579}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!331 &47075733
 SpriteMask:
@@ -23343,6 +23343,7 @@ Transform:
   m_Children:
   - {fileID: 474627664}
   - {fileID: 1537625884}
+  - {fileID: 47075732}
   m_Father: {fileID: 2047012151}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23353,7 +23354,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114912578}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46f52bea43842344faad70cf8ef9ef38, type: 3}
   m_Name: 
