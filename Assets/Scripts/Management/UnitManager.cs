@@ -78,23 +78,23 @@ namespace Game.Management
                             });
                          }
                      }
-                     #if UNITY_EDITOR
-                     for (int i = 0; i < data_table.Count; i++)
-                     {
-                         UnitData unit_data = Resources.Load<UnitData>("UnitData/U_" + data_table[i][DataType.Nickname]);
-                         if (u_data == null) continue;
-                         unit_data.unit_table_data.id = Convert.ToUInt32(data_table[i][DataType.Id]);
-                         unit_data.unit_table_data.nickname = Convert.ToString(data_table[i][DataType.Nickname]);
-                         unit_data.unit_table_data.hp = Convert.ToSingle(data_table[i][DataType.Hp]);
-                         unit_data.unit_table_data.mspeed = Convert.ToUInt32(data_table[i][DataType.Mspeed]);
-                         unit_data.unit_table_data.aspeed = Convert.ToUInt32(data_table[i][DataType.Aspeed]);
-                         unit_data.unit_table_data.rspeed = Convert.ToUInt32(data_table[i][DataType.Rspeed]);
-                         unit_data.unit_table_data.damage = Convert.ToUInt32(data_table[i][DataType.Damage]);
-                         unit_data.unit_table_data.armor = Convert.ToUInt32(data_table[i][DataType.Armor]);
-                         unit_data.unit_table_data.atime = Convert.ToUInt32(data_table[i][DataType.Atime]);
-                     }
-                     #endif
-                 });
+
+#if UNITY_EDITOR
+                     for ( int i = 0; i < data_table.Count; i++ ) {
+                             UnitData unit_data = Resources.Load<UnitData> ( "UnitData/U_" + data_table[i][DataType.Nickname] );
+                             if ( u_data == null ) continue;
+                             unit_data.unit_table_data.id = Convert.ToUInt32 ( data_table[i][DataType.Id] );
+                             unit_data.unit_table_data.nickname = Convert.ToString ( data_table[i][DataType.Nickname] );
+                             unit_data.unit_table_data.hp = Convert.ToSingle ( data_table[i][DataType.Hp] );
+                             unit_data.unit_table_data.mspeed = Convert.ToUInt32 ( data_table[i][DataType.Mspeed] );
+                             unit_data.unit_table_data.aspeed = Convert.ToUInt32 ( data_table[i][DataType.Aspeed] );
+                             unit_data.unit_table_data.rspeed = Convert.ToUInt32 ( data_table[i][DataType.Rspeed] );
+                             unit_data.unit_table_data.damage = Convert.ToUInt32 ( data_table[i][DataType.Damage] );
+                             unit_data.unit_table_data.armor = Convert.ToUInt32 ( data_table[i][DataType.Armor] );
+                             unit_data.unit_table_data.atime = Convert.ToUInt32 ( data_table[i][DataType.Atime] );
+                         }
+#endif
+                 } );
             }
         }
 

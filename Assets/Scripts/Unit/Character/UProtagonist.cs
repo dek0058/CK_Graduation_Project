@@ -29,7 +29,7 @@ namespace Game.Unit.Character {
 
 
         private ProtagonistType my_type;
-        [SerializeField] private Item weapon;
+        [SerializeField] private Item weapon = null;
 
 
         /// <summary> 공격을 하는 중인가 아닌가? </summary>
@@ -49,7 +49,7 @@ namespace Game.Unit.Character {
             }
 
             get_animator ( ).SetTrigger ( parameter_hash[AnimatorParameter.Attack] );
-            weapon?.GetComponent<IEquipmentItem> ( ).action ( EquipmentAction.Attack );
+            weapon?.GetComponent<IEquipmentItem> ( ).action ( EquipmentAction.Attack ); // HACK
             StartCoroutine ( Eattack_cooltime ( ) );
         }
 

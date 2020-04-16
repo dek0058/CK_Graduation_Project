@@ -5,7 +5,7 @@ using UnityEngine;
 public class TestMode : MonoBehaviour
 {
     [SerializeField]
-    private GameObject console;
+    private GameObject console = null;
     
     void Update()
     {

@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 669f0088d746cac4d8529c139ddefc5d, type: 3}
-  m_Name: U_PaintMan
+  m_Name: U_NoteMan
   m_EditorClassIdentifier: 
-  id: 1
-  nickname: PaintMan
-  hp: 10
-  mspeed: 3
-  aspeed: 1
-  rspeed: 10
-  damage: 1
-  armor: 0
-  atime: 1
+  unit_table_data:
+    id: 1
+    nickname: NoteMan
+    hp: 0
+    mspeed: 1
+    aspeed: 0
+    rspeed: 10
+    damage: 0
+    armor: 0
+    atime: 0

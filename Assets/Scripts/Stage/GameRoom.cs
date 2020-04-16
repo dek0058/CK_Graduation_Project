@@ -16,8 +16,12 @@ namespace Game.Stage {
 
         public bool is_active = false;
 
+        // 마지막으로 입장한 유닛
+        protected UUnit last_enter_unit;
 
         public void join ( UUnit unit ) {
+            last_enter_unit = unit;
+
             if ( unit.player.team == Player.Team.User ) {   // 들어온 유닛이
                 if ( !players.Contains ( unit.player ) ) {  // 플레이어 인지 체크 
                     players.Add ( unit.player );

@@ -13,6 +13,9 @@ namespace Game.Management {
         public GameStage current_stage;
         public GameInitializer game_initializer;
 
+        public GlobalLight gb_light;
+        public GamePostProcessing post_processing;
+
 
         public void load_resource ( ) {
             // TODO : 추가 리소스들

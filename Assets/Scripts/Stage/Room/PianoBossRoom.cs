@@ -21,6 +21,15 @@ namespace Game.Stage.Room {
             base.active ( );
 
             // HACK : 테스트 기능
+            boss.target = last_enter_unit;
+            User.Player player = null;
+            foreach( var p in PlayerManager.instance.players) {
+                if(p.team == User.Player.Team.Enemy) {
+                    player = p;
+                    break;
+                }
+            }
+            boss.player = player;
             SoundManager.instance.off_music ( );
             sfx.play ( ResourceLoader.instance.get_prefab ( ResourceLoader.Resource.Stage1_Boss_Music ) as AudioClip, 1f, 0f, 0f );
             ai.start ( );

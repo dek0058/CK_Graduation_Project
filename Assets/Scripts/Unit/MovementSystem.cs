@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -23,6 +24,8 @@ namespace Game.Unit {
         private GameObject path_obj;
         [SerializeField]
         private Collider2D path_collider;
+        [SerializeField]
+        private Light2D shadow_light;
 
         private Vector2 next_velocity = Vector2.zero;
 
@@ -143,6 +146,10 @@ namespace Game.Unit {
                 path_collider = path_obj.GetComponent<Collider2D> ( );
             }
 
+            if ( shadow_light == null ) {
+                shadow_light = GetComponent<Light2D> ( );
+            }
+
             set_path_type ( path_type );
             is_grounded = true;
         }
@@ -223,6 +230,10 @@ namespace Game.Unit {
 
             if ( path_obj.layer != (int)path_type ) {    // Layer 조정
                 set_path_type ( path_type );
+            }
+
+            if ( shadow_light != null ) {
+                shadow_light.intensity = GameManager.instance.gb_light.shadow_intensity;
             }
         }
 

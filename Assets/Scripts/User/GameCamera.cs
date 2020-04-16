@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using Cinemachine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 namespace Game.User {
+    using Management;
+
     public class GameCamera : MonoBehaviour {
 
         public GreyCamera grey_camera;
@@ -14,7 +17,13 @@ namespace Game.User {
         public PolygonCollider2D confiner_area;
         public Transform confiner_transform;
 
-        CinemachinePixelPerfect a;
+        public PixelPerfectCamera pixel_perfect_camera;
+
+
+        private void pixel_perfect_adjust ( ) {
+            pixel_perfect_camera.refResolutionX = Screen.width;
+            pixel_perfect_camera.refResolutionY = Screen.height;
+        }
 
         /// <summary>
         /// Game Camera를 검증합니다.
@@ -36,6 +45,11 @@ namespace Game.User {
                 camera_point = GameObject.FindGameObjectWithTag ( "CameraPoint" ).transform;
             }
 
+            if ( pixel_perfect_camera == null ) {
+                pixel_perfect_camera = Camera.main.GetComponent<PixelPerfectCamera> ( );
+                Preferences.instance.event_resolution_change += pixel_perfect_adjust;
+            }
+
             cv_camera.Follow = camera_point;
         }
 
@@ -45,6 +59,10 @@ namespace Game.User {
 
         private void Awake ( ) {
             confirm ( );
+        }
+
+        private void LateUpdate ( ) {
+            cv_camera.m_Lens.OrthographicSize = Camera.main.orthographicSize;
         }
     }
 }

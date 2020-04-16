@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Experimental.Rendering.Universal;
 
 namespace Game.User {
+    using Management;
+
     public class GreyCamera : MonoBehaviour {
         public Camera sub_camera;
         public Transform target;
         public Transform grey_area;
+        public PixelPerfectCamera pixel_perfect_camera;
 
         private RenderTexture render_target;
 
@@ -31,6 +35,12 @@ namespace Game.User {
         private bool do_fading = false;
         public bool is_fading {
             get => do_fading;
+        }
+
+
+        private void pixel_perfect_adjust ( ) {
+            pixel_perfect_camera.refResolutionX = Screen.width;
+            pixel_perfect_camera.refResolutionY = Screen.height;
         }
 
 
@@ -73,6 +83,11 @@ namespace Game.User {
 
             if ( grey_group == null ) {
                 grey_group = grey_group.GetComponentInChildren<CanvasGroup> ( );
+            }
+
+            if ( pixel_perfect_camera == null ) {
+                pixel_perfect_camera = sub_camera.GetComponent<PixelPerfectCamera> ( );
+                Preferences.instance.event_resolution_change += pixel_perfect_adjust;
             }
         }
 
