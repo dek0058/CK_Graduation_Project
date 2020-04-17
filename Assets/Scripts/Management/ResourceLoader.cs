@@ -40,10 +40,12 @@ namespace Game.Management {
             // GameObject
             Game_Audio,
 
-            // Clip
+            // Music
             Stage1_Joy_Music,
             Stage1_Boss_Music,
-            //
+            // SFX
+            Stage1_Beat01_SFX,
+            Stage1_Beat02_SFX,
         }
         private EnumDictionary<Resource, PrefabData> prefabs = new EnumDictionary<Resource, PrefabData> ( );
 
@@ -70,6 +72,9 @@ namespace Game.Management {
 
             {Resource.Stage1_Joy_Music, "Audio/Music/OST - Inconsolable" }, // Temporary
             {Resource.Stage1_Boss_Music, "Audio/Music/The Moon Over the Lake Composed by Hemio - New age piano" },
+
+            {Resource.Stage1_Beat01_SFX, "Audio/SFX/test" }, // Temporary
+            {Resource.Stage1_Beat02_SFX, "Audio/SFX/test2" }, // Temporary
         };
 
         private EnumDictionary<Resource, string> prefabs_name = new EnumDictionary<Resource, string> ( ) {
