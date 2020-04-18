@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Petal_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: 331c94a215033f64f82ab5eb5a2bf27f,
+  m_Shader: {fileID: -6465566751694194690, guid: 2d2d0e4f8b0fdcd4b9a924baa597eab9,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -39,7 +39,8 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     m_Colors:
-    - Color_2E5B7011: {r: 1.3505688, g: 0.6306901, b: 1.2932333, a: 1}
+    - Color_2E5B7011: {r: 1.1486983, g: 0.73426604, b: 1.1216701, a: 1}
+    - Color_DF8C5183: {r: 2.670157, g: 0.6927295, b: 2.018236, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

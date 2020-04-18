@@ -44,8 +44,37 @@ namespace Game.Management {
             Stage1_Joy_Music,
             Stage1_Boss_Music,
             // SFX
-            Stage1_Beat01_SFX,
-            Stage1_Beat02_SFX,
+            Stage1_Piano_Do_SFX,
+            Stage1_Piano_Re_SFX,
+            Stage1_Piano_Mi_SFX,
+            Stage1_Piano_Pa_SFX,
+            Stage1_Piano_Sol_SFX,
+            Stage1_Piano_Ra_SFX,
+            Stage1_Piano_Si_SFX,
+
+            Stage1_Drum_Do_SFX,
+            Stage1_Drum_Re_SFX,
+            Stage1_Drum_Mi_SFX,
+            Stage1_Drum_Pa_SFX,
+            Stage1_Drum_Sol_SFX,
+            Stage1_Drum_Ra_SFX,
+            Stage1_Drum_Si_SFX,
+
+            Stage1_Guitar_Do_SFX,
+            Stage1_Guitar_Re_SFX,
+            Stage1_Guitar_Mi_SFX,
+            Stage1_Guitar_Pa_SFX,
+            Stage1_Guitar_Sol_SFX,
+            Stage1_Guitar_Ra_SFX,
+            Stage1_Guitar_Si_SFX,
+
+            Stage1_Bass_Do_SFX,
+            Stage1_Bass_Re_SFX,
+            Stage1_Bass_Mi_SFX,
+            Stage1_Bass_Pa_SFX,
+            Stage1_Bass_Sol_SFX,
+            Stage1_Bass_Ra_SFX,
+            Stage1_Bass_Si_SFX,
         }
         private EnumDictionary<Resource, PrefabData> prefabs = new EnumDictionary<Resource, PrefabData> ( );
 
@@ -73,8 +102,37 @@ namespace Game.Management {
             {Resource.Stage1_Joy_Music, "Audio/Music/OST - Inconsolable" }, // Temporary
             {Resource.Stage1_Boss_Music, "Audio/Music/The Moon Over the Lake Composed by Hemio - New age piano" },
 
-            {Resource.Stage1_Beat01_SFX, "Audio/SFX/test" }, // Temporary
-            {Resource.Stage1_Beat02_SFX, "Audio/SFX/test2" }, // Temporary
+            {Resource.Stage1_Piano_Do_SFX, "Audio/SFX/Beat/Piano/piaon_Do" }, // Temporary
+            {Resource.Stage1_Piano_Re_SFX, "Audio/SFX/Beat/Piano/piaon_Re" }, // Temporary
+            {Resource.Stage1_Piano_Mi_SFX, "Audio/SFX/Beat/Piano/piaon_Mi" }, // Temporary
+            {Resource.Stage1_Piano_Pa_SFX, "Audio/SFX/Beat/Piano/piaon_Pa" }, // Temporary
+            {Resource.Stage1_Piano_Sol_SFX, "Audio/SFX/Beat/Piano/piaon_Sol" }, // Temporary
+            {Resource.Stage1_Piano_Ra_SFX, "Audio/SFX/Beat/Piano/piaon_Ra" }, // Temporary
+            {Resource.Stage1_Piano_Si_SFX, "Audio/SFX/Beat/Piano/piaon_Si" }, // Temporary
+
+            {Resource.Stage1_Drum_Do_SFX, "Audio/SFX/Beat/Drum/drum_Do" }, // Temporary
+            {Resource.Stage1_Drum_Re_SFX, "Audio/SFX/Beat/Drum/drum_Re" }, // Temporary
+            {Resource.Stage1_Drum_Mi_SFX, "Audio/SFX/Beat/Drum/drum_Mi" }, // Temporary
+            {Resource.Stage1_Drum_Pa_SFX, "Audio/SFX/Beat/Drum/drum_Pa" }, // Temporary
+            {Resource.Stage1_Drum_Sol_SFX, "Audio/SFX/Beat/Drum/drum_Sol" }, // Temporary
+            {Resource.Stage1_Drum_Ra_SFX, "Audio/SFX/Beat/Drum/drum_Ra" }, // Temporary
+            {Resource.Stage1_Drum_Si_SFX, "Audio/SFX/Beat/Drum/drum_Si" }, // Temporary
+
+            {Resource.Stage1_Guitar_Do_SFX, "Audio/SFX/Beat/Guitar/guitar_Do" }, // Temporary
+            {Resource.Stage1_Guitar_Re_SFX, "Audio/SFX/Beat/Guitar/guitar_Re" }, // Temporary
+            {Resource.Stage1_Guitar_Mi_SFX, "Audio/SFX/Beat/Guitar/guitar_Mi" }, // Temporary
+            {Resource.Stage1_Guitar_Pa_SFX, "Audio/SFX/Beat/Guitar/guitar_Pa" }, // Temporary
+            {Resource.Stage1_Guitar_Sol_SFX, "Audio/SFX/Beat/Guitar/guitar_Sol" }, // Temporary
+            {Resource.Stage1_Guitar_Ra_SFX, "Audio/SFX/Beat/Guitar/guitar_Ra" }, // Temporary
+            {Resource.Stage1_Guitar_Si_SFX, "Audio/SFX/Beat/Guitar/guitar_Si" }, // Temporary
+
+            {Resource.Stage1_Bass_Do_SFX, "Audio/SFX/Beat/Bass/bass_Do" }, // Temporary
+            {Resource.Stage1_Bass_Re_SFX, "Audio/SFX/Beat/Bass/bass_Re" }, // Temporary
+            {Resource.Stage1_Bass_Mi_SFX, "Audio/SFX/Beat/Bass/bass_Mi" }, // Temporary
+            {Resource.Stage1_Bass_Pa_SFX, "Audio/SFX/Beat/Bass/bass_Pa" }, // Temporary
+            {Resource.Stage1_Bass_Sol_SFX, "Audio/SFX/Beat/Bass/bass_Sol" }, // Temporary
+            {Resource.Stage1_Bass_Ra_SFX, "Audio/SFX/Beat/Bass/bass_Ra" }, // Temporary
+            {Resource.Stage1_Bass_Si_SFX, "Audio/SFX/Beat/Bass/bass_Si" }, // Temporary
         };
 
         private EnumDictionary<Resource, string> prefabs_name = new EnumDictionary<Resource, string> ( ) {

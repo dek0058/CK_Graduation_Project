@@ -80,11 +80,12 @@ namespace Game.User
             }
 
             if (canvas_transform != null)
+            {
                 color_transform.SetParent(canvas_transform);
-
-            Vector2 screen_point = sub_camera.WorldToScreenPoint(grey_area.position);
-            Vector2 to_ui_point = screen_point - new Vector2(Screen.currentResolution.width / 2, Screen.currentResolution.height / 2);
-            mask_transform.anchoredPosition = to_ui_point;
+                Vector2 screen_point = sub_camera.WorldToScreenPoint(grey_area.position);
+                Vector2 to_ui_point = screen_point - new Vector2(Screen.currentResolution.width / 2, Screen.currentResolution.height / 2);
+                mask_transform.anchoredPosition = to_ui_point;
+            }
 
             if (mask_transform != null)
             {
