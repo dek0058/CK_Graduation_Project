@@ -137,17 +137,23 @@ namespace Game.User {
             if(target == null) {
                 return;
             }
-
-            grey_area.position = target.position;
         }
 
         private void LateUpdate ( ) {
+            if ( target != null ) {
+                grey_area.position = target.position;
+            }
+
             color_transform.SetParent ( canvas_transform );
             Vector2 screen_point = sub_camera.WorldToScreenPoint ( grey_area.position );
             Vector2 to_ui_point = screen_point - new Vector2 ( Screen.currentResolution.width / 2, Screen.currentResolution.height / 2 );
             mask_transform.anchoredPosition = to_ui_point;
-            mask_transform.localScale = grey_area.localScale;
             color_transform.SetParent ( mask_transform );
+
+            float pixel_per_unit = grey_area.GetComponent<SpriteMask> ( ).sprite.pixelsPerUnit;
+            mask_transform.sizeDelta = grey_area.localScale * pixel_per_unit;
+
+            
         }
     }
 }

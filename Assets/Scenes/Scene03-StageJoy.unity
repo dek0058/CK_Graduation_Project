@@ -189,6 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 47075732}
   - component: {fileID: 47075733}
+  - component: {fileID: 47075734}
   m_Layer: 0
   m_Name: GreyArea
   m_TagString: Untagged
@@ -204,8 +205,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47075731}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.23, y: 24.59, z: 0}
-  m_LocalScale: {x: 7.08, y: 5.4869995, z: 2.36}
+  m_LocalPosition: {x: -4.21, y: -5.62, z: 0}
+  m_LocalScale: {x: 9.3084, y: 9.3084, z: 9.3084}
   m_Children: []
   m_Father: {fileID: 2114912579}
   m_RootOrder: 2
@@ -259,6 +260,22 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!58 &47075734
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47075731}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &65743874
 GameObject:
   m_ObjectHideFlags: 0
@@ -20344,7 +20361,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 89, y: 89}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1822072876
 MonoBehaviour:
@@ -20620,8 +20637,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2007639237
-  m_SortingLayer: 1
+  m_SortingLayerID: -209415645
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c8cda019847ced848b3518df6af82b8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
