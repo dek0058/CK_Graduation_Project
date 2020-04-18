@@ -19,6 +19,7 @@ namespace Game.User {
         private float releas_input_time_speed = 5f;
         private const float Releas_Both_Input_Time = 0.56f;
 
+        private bool do_purgatory_wait = false;
         private bool do_purgatory = false;
         public bool is_purgatory {
             get => do_purgatory;
@@ -126,10 +127,12 @@ namespace Game.User {
             }
 
             if(Singleton<PlayerInput>.instance.purgatory.down) {
-                if ( !is_purgatory ) {
-                    active_purgatory_area ( );
-                } else {
-                    inactive_purgatory_area ( );
+                if ( !PlayerManager.instance.game_camera.grey_camera.is_cancel ) {
+                    if ( !is_purgatory ) {
+                        active_purgatory_area ( );
+                    } else {
+                        inactive_purgatory_area ( );
+                    }
                 }
             }
 
@@ -154,6 +157,9 @@ namespace Game.User {
             if ( player_order == null ) {
                 player_order = new UnitOrder ( );
             }
+
+            //HACK
+            //ShaderBlackBoard.instance.range = 0f;
         }
 
         protected override void update ( ) {
@@ -163,21 +169,100 @@ namespace Game.User {
 
 
         private IEnumerator Eactive_purgatory ( ) {
-            if (do_purgatory) {
+            if ( do_purgatory_wait ) {
                 yield break;
             }
+            do_purgatory_wait = true;
             do_purgatory = true;
-            PlayerManager.instance.game_camera.grey_camera.active ( );
-            
             unit.game_space = GameSpace.Both;
-            while(do_purgatory) {
+            // Hack
+            PlayerManager.instance.game_camera.grey_camera.fade_duration = 1f;
+            PlayerManager.instance.game_camera.grey_camera.active ( );
 
-                yield return new WaitForEndOfFrame();
+
+
+            /*
+            PlayerManager.instance.game_camera.grey_camera.grey_area.SetParent ( unit.transform );
+            PlayerManager.instance.game_camera.grey_camera.grey_area.localScale = new Vector2 ( 0.001f, 0.001f );
+
+            float max = 0.15f;
+            float range = 0f;
+            float scale = 0.001f;
+            float time = 0f;
+            */
+
+            float minX = 0.001f;
+            float maxX = 12.38803f;
+            float scaleX = minX;
+
+            float minY = 0.001f;
+            float maxY = 6.659164f;
+            float scaleY = minY;
+
+            float time = 0f;
+            PlayerManager.instance.game_camera.grey_camera.grey_area.localScale = new Vector2 ( minX, minY );
+
+            while (do_purgatory) {
+
+                time += Time.deltaTime;
+                if(time > 1f) {
+                    time = 1f;
+                }
+                scaleX = Mathf.Lerp ( minX, maxX, time );
+                scaleY = Mathf.Lerp ( minY, maxY, time );
+                PlayerManager.instance.game_camera.grey_camera.grey_area.localScale = new Vector2 ( scaleX, scaleY );
+
+                /*
+                ShaderBlackBoard.instance.set_position ( unit.get_position() );
+
+                time += Time.deltaTime;
+                if(time > 1f) {
+                    time = 1f;
+                }
+                range = Mathf.Lerp ( 0f, max, time );
+                scale = Mathf.Lerp ( 0.001f, 13.17637f, time );
+
+                ShaderBlackBoard.instance.set_range ( range );
+                PlayerManager.instance.game_camera.grey_camera.grey_area.localPosition = new Vector2 ( 0f, unit.unit_type.transform.localPosition.y );
+                PlayerManager.instance.game_camera.grey_camera.grey_area.localScale = new Vector2 ( scale, scale );
+                */
+
+                yield return null;
             }
-            unit.game_space = GameSpace.Origin;
 
+            PlayerManager.instance.game_camera.grey_camera.fade_duration = 1f;
             PlayerManager.instance.game_camera.grey_camera.inactive ( );
-            do_purgatory = false;
+            maxX = PlayerManager.instance.game_camera.grey_camera.grey_area.localScale.x;
+            maxY = PlayerManager.instance.game_camera.grey_camera.grey_area.localScale.y;
+
+            time = 0f;
+            while ( PlayerManager.instance.game_camera.grey_camera.is_fading ) {
+                time += Time.deltaTime;
+                if ( time > 1f ) {
+                    time = 1f;
+                }
+                scaleX = Mathf.Lerp ( maxX, minX, time );
+                scaleY = Mathf.Lerp ( maxY, minY, time );
+                PlayerManager.instance.game_camera.grey_camera.grey_area.localScale = new Vector2 ( scaleX, scaleY );
+
+                yield return null;
+            }
+
+            /*
+            while(ShaderBlackBoard.instance.range > 0f) {
+                ShaderBlackBoard.instance.set_position ( unit.get_position ( ) );
+                range = Mathf.MoveTowards ( range, 0f, Time.deltaTime );
+                ShaderBlackBoard.instance.set_range ( range );
+                PlayerManager.instance.game_camera.grey_camera.grey_area.localPosition = new Vector2 ( 0f, unit.unit_type.transform.localPosition.y );
+                yield return null;
+            }*/
+
+            //PlayerManager.instance.game_camera.grey_camera.grey_area.SetParent ( null );
+            
+
+
+            unit.game_space = GameSpace.Origin;
+            do_purgatory_wait = false;
         }
     }
 }
