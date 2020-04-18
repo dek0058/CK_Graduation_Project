@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TestSunLightingMat
-  m_Shader: {fileID: -6465566751694194690, guid: 331c94a215033f64f82ab5eb5a2bf27f,
+  m_Name: SunLightMat
+  m_Shader: {fileID: -6465566751694194690, guid: 2d2d0e4f8b0fdcd4b9a924baa597eab9,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -25,7 +25,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f6b884b4c7bcbbd429bca30086d47e93, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -39,7 +39,7 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     m_Colors:
-    - Color_2E5B7011: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 0.36862746}
+    - Color_DF8C5183: {r: 2, g: 2, b: 2, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
