@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//#define 라상목
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Experimental.Rendering.Universal;
@@ -61,13 +63,14 @@ namespace Game.User
 
             grey_image.texture = render_target;
             color_image.texture = render_target;
-
+#if 라상목
             RenderPipelineManager.beginCameraRendering += (_, sub_camera) =>
             {
                 OnPreRender();
             };
+#endif
         }
-
+#if 라상목
         private void OnPreRender()
         {
             if (target != null)
@@ -89,18 +92,19 @@ namespace Game.User
                 mask_transform.sizeDelta = grey_area.localScale * pixel_per_unit;
             }
         }
+#endif
 
         public void active()
         {
             grey_area.gameObject.SetActive(true);
-            StartCoroutine(Efade_out());
+            //StartCoroutine(Efade_out());
         }
 
 
         public void inactive()
         {
             grey_area.gameObject.SetActive(false);
-            StartCoroutine(Efade_in());
+            //StartCoroutine(Efade_in());
         }
 
 
@@ -177,14 +181,6 @@ namespace Game.User
             initialize();
             grey_group.gameObject.SetActive(false);
             grey_area.gameObject.SetActive(false);
-        }
-
-        private void FixedUpdate()
-        {
-            if (target == null)
-            {
-                return;
-            }
         }
     }
 }

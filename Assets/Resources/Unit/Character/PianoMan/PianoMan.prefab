@@ -91,6 +91,7 @@ MonoBehaviour:
     axis: {x: 0, y: 0}
     flying: 0
     current_flying: 0
+  gp: 0
   target: {fileID: 0}
 --- !u!1 &1884171711820035964
 GameObject:
@@ -224,7 +225,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 381f3b18d7d1eb04eb3e0c0e8f154edc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
