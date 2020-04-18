@@ -10,22 +10,26 @@ namespace Game.Unit {
     public class MovementSystem : MonoBehaviour {
 
         public enum PathType {
-            Ground = GameLayer.Path_Ground,
-            Air = GameLayer.Path_Air,
+            Origin_Ground = GameLayer.Origin_Path_Ground,
+            Origin_Air = GameLayer.Origin_Path_Air,
+            Purgatory_Ground = GameLayer.Purgatory_Path_Ground,
+            Purgatory_Air = GameLayer.Purgatory_Path_Air,
         }
 
-        public PathType path_type = PathType.Ground;
+        public PathType path_type = PathType.Origin_Ground;
         
         public Collider2D shadow_collider;
         public Rigidbody2D rigidbody2d;
         public UUnit unit;
 
+        // Shadow Object & Lighting
         [SerializeField]
         private GameObject path_obj;
         [SerializeField]
         private Collider2D path_collider;
         [SerializeField]
         private Light2D shadow_light;
+        //
 
         private Vector2 next_velocity = Vector2.zero;
 
@@ -35,6 +39,9 @@ namespace Game.Unit {
 
 
         public bool is_grounded {
+            get; private set;
+        }
+        public bool is_path_grounded {
             get; private set;
         }
 
@@ -107,13 +114,20 @@ namespace Game.Unit {
 
         private void update_ground ( ) {
             int mask = 0;
-            mask |= 1 << (int)GameLayer.Map_Ground;
-            mask |= 1 << (int)GameLayer.Map_Cliff;
+
+            if ( path_type == PathType.Origin_Ground || path_type == PathType.Origin_Air ) {
+                mask |= 1 << (int)GameLayer.Origin_Map_Ground;
+                mask |= 1 << (int)GameLayer.Origin_Map_Cliff;
+            } else if ( path_type == PathType.Purgatory_Ground || path_type == PathType.Purgatory_Air ) {
+                mask |= 1 << (int)GameLayer.Purgatory_Map_Ground;
+                mask |= 1 << (int)GameLayer.Purgatory_Map_Cliff;
+            }
+
             Collider2D[] colliders = Physics2D.OverlapPointAll ( transform.position, mask );
 
             bool result = false;
             for ( int i = 0; i < colliders.Length; ++i ) {
-                if ( colliders[i].gameObject.layer == (int)GameLayer.Map_Ground ) {
+                if ( colliders[i].gameObject.layer == (int)GameLayer.Origin_Map_Ground ) {
                     result = true; break;
                 }
             }
@@ -227,6 +241,13 @@ namespace Game.Unit {
                 path.size = shadow.size * 0.99f;
             }
 #endif
+
+            switch ( path_type ) {
+                case PathType.Origin_Ground:    is_path_grounded = true;    break;
+                case PathType.Origin_Air:       is_path_grounded = false;   break;
+                case PathType.Purgatory_Ground: is_path_grounded = true;    break;
+                case PathType.Purgatory_Air:    is_path_grounded = false;   break;
+            }
 
             if ( path_obj.layer != (int)path_type ) {    // Layer 조정
                 set_path_type ( path_type );

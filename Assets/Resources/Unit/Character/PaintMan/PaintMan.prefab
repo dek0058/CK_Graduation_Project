@@ -53,6 +53,7 @@ MonoBehaviour:
   unit: {fileID: 7511368857334492393}
   path_obj: {fileID: 3419774032626527866}
   path_collider: {fileID: 3419774032626527864}
+  shadow_light: {fileID: 0}
   collisions: []
 --- !u!70 &6414985850705012579
 CapsuleCollider2D:
@@ -64,7 +65,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -79,7 +80,7 @@ SortingGroup:
   m_GameObject: {fileID: 674238626905714574}
   m_Enabled: 1
   m_SortingLayerID: -1375113253
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -1
 --- !u!114 &8926332556262181421
 MonoBehaviour:
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.33
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: c524aa77239284f3
   m_LightCookieSprite: {fileID: 21300000, guid: 587e2dadb55b44b44876b812ec988056,
     type: 3}
   m_UseNormalMap: 0
@@ -398,7 +399,7 @@ SortingGroup:
   m_GameObject: {fileID: 3419774033977934672}
   m_Enabled: 1
   m_SortingLayerID: -1375113253
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
 --- !u!114 &3419774033977934680
 MonoBehaviour:

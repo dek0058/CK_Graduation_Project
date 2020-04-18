@@ -14,9 +14,17 @@ namespace Game.Unit.Type {
         public void on_collision ( Collider2D collision ) {
             UUnit target = collision.GetComponentInParent<UUnit> ( );
             if( target == null) {
-                if ( collision.gameObject.layer == (int)GameLayer.Map_Border ||
-                    collision.gameObject.layer == (int)GameLayer.Door) {
-                    unit.destroy ( );
+
+                if(unit.game_space == GameSpace.Origin) {
+                    if ( collision.gameObject.layer == (int)GameLayer.Origin_Map_Border ||
+                        collision.gameObject.layer == (int)GameLayer.Origin_Door ) {
+                        unit.destroy ( );
+                    }
+                } else {
+                    if ( collision.gameObject.layer == (int)GameLayer.Purgatory_Map_Border ||
+                    collision.gameObject.layer == (int)GameLayer.Purgatory_Door ) {
+                        unit.destroy ( );
+                    }
                 }
             }
         }

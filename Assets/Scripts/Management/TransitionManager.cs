@@ -36,7 +36,7 @@ namespace Game.Management {
 
 
         public void load_scene ( SceneType scene ) {
-            StartCoroutine ( load_scenes_in_order ( scene ) );
+            StartCoroutine ( Eload_scenes_in_order ( scene ) );
         }
 
 
@@ -51,9 +51,9 @@ namespace Game.Management {
                 }
             }
         }
+        
 
-
-        private IEnumerator load_scenes_in_order ( SceneType scene ) {
+        private IEnumerator Eload_scenes_in_order ( SceneType scene ) {
             if(do_transition) {
                 yield break;
             }

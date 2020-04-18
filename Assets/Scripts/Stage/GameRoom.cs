@@ -16,6 +16,12 @@ namespace Game.Stage {
 
         public bool is_active = false;
 
+        [Header("Confiner Area")]
+        [SerializeField]
+        private Vector2 confiner_box_right = Vector2.zero;
+        [SerializeField]
+        private Vector2 confiner_box_left = Vector2.zero;
+
         // 마지막으로 입장한 유닛
         protected UUnit last_enter_unit;
 
@@ -66,33 +72,42 @@ namespace Game.Stage {
 
         public void set_confiner_area ( ) {
             Vector2 cam_point = Camera.main.ViewportToWorldPoint ( new Vector2 ( 0, 0 ) );
-            Vector2 confiner_point = confiner_area.GetPath ( 0 )[0];
 
             float cam_x = Mathf.Abs ( cam_point.x );
             float cam_y = Mathf.Abs ( cam_point.y );
-            float confiner_x = Mathf.Abs ( confiner_point.x );
-            float confiner_y = Mathf.Abs ( confiner_point.y );
 
-            float temp_x = 0f;
-            float temp_y = 0f;
+            Vector2 right = Vector2.zero;
+            Vector2 left = Vector2.zero;
 
-            if (cam_x > confiner_x) {
-                temp_x = 0f;
+            if ( cam_x > confiner_box_right.x ) {
+                right.x = 0f;
             } else {
-                temp_x = confiner_x - cam_x;   
+                right.x = confiner_box_right.x - cam_x;
             }
 
-            if ( cam_y > confiner_y ) {
-                temp_y = 0f;
+            if ( cam_y > confiner_box_right.y ) {
+                right.y = 0f;
             } else {
-                temp_y = confiner_y - cam_y;
+                right.y = confiner_box_right.y - cam_y;
+            }
+
+            if (cam_x > confiner_box_left.x) {
+                left.x = 0f;
+            } else {
+                left.x = confiner_box_left.x - cam_x;
+            }
+
+            if(cam_y > confiner_box_left.y) {
+                left.y = 0f;
+            } else {
+                left.y = confiner_box_left.y - cam_y;
             }
 
             Vector2[] points = new Vector2[] { 
-                new Vector2(-temp_x, -temp_y),
-                new Vector2(temp_x, -temp_y),
-                new Vector2(temp_x, temp_y),
-                new Vector2(-temp_x, temp_y),
+                new Vector2(-right.x, -right.y),
+                new Vector2(left.x, -right.y),
+                new Vector2(left.x, left.y),
+                new Vector2(-right.x, left.y),
             };
 
             PlayerManager.instance.game_camera.confiner_area.points = points;

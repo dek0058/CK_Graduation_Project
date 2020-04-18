@@ -13,16 +13,18 @@ namespace Game.Management {
         public DataSettings data_settings = new DataSettings();
 
 
-        public InputAxis horizontal = new InputAxis ( KeyCode.D, KeyCode.A, Xbox_Controller_Axes.Left_Stick_Horizontal );
-        public InputAxis vertical = new InputAxis ( KeyCode.W, KeyCode.S, Xbox_Controller_Axes.Left_Stick_Vertical );
+        public InputAxis horizontal = new InputAxis ( KeyCode.RightArrow, KeyCode.LeftArrow, Xbox_Controller_Axes.Left_Stick_Horizontal );
+        public InputAxis vertical = new InputAxis ( KeyCode.UpArrow, KeyCode.DownArrow, Xbox_Controller_Axes.Left_Stick_Vertical );
 
-        public InputButton attack = new InputButton ( KeyCode.Space, _Xbox_Controller_Buttons.Left_Bumper );
+        public InputButton attack = new InputButton ( KeyCode.Space, Xbox_Controller_Buttons.Left_Bumper );
+        public InputButton purgatory = new InputButton ( KeyCode.X, Xbox_Controller_Buttons.X );
 
         protected override void get_inpts ( bool _fixed_update_happened ) {
             horizontal.get ( input_type );
             vertical.get ( input_type );
-
+            
             attack.get ( _fixed_update_happened, input_type );
+            purgatory.get ( _fixed_update_happened, input_type );
         }
 
 
@@ -33,6 +35,7 @@ namespace Game.Management {
             gain_control ( vertical );
 
             gain_control ( attack );
+            gain_control ( purgatory );
         }
 
 
@@ -43,6 +46,7 @@ namespace Game.Management {
             release_control ( vertical, _reset_values );
 
             release_control ( attack, _reset_values );
+            release_control ( purgatory, _reset_values );
 
         }
 

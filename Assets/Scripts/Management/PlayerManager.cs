@@ -9,7 +9,7 @@ namespace Game.Management {
     public class PlayerManager : Singleton<PlayerManager> {
 
         public List<Player> players = new List<Player> ( );
-        public Player local_player = null;
+        public LocalPlayer local_player = null;
         public GameCamera game_camera;
 
 
@@ -24,7 +24,7 @@ namespace Game.Management {
 
         public void initialize ( ) {
             if(local_player == null) {
-                local_player = create ( Player.Team.User, true );
+                local_player = create ( Player.Team.User, true ) as LocalPlayer;
             }
 
             create ( Player.Team.Enemy );   // Enemy 플레이어 생성

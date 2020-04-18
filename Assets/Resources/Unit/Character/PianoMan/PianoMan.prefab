@@ -243,7 +243,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1375113253
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -3357855721173251181, guid: b9ad5f96f95e4684ca8b8b1f494a4376,
     type: 3}
@@ -266,7 +266,7 @@ SortingGroup:
   m_GameObject: {fileID: 2780874097803556402}
   m_Enabled: 1
   m_SortingLayerID: -1375113253
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
 --- !u!114 &7589847848932475568
 MonoBehaviour:
@@ -417,6 +417,7 @@ MonoBehaviour:
   unit: {fileID: 1468784564999683379}
   path_obj: {fileID: 4509032275861876991}
   path_collider: {fileID: 6567525577648621924}
+  shadow_light: {fileID: 0}
   collisions: []
 --- !u!70 &2441288067243349531
 CapsuleCollider2D:
@@ -443,7 +444,7 @@ SortingGroup:
   m_GameObject: {fileID: 5183875197663332673}
   m_Enabled: 1
   m_SortingLayerID: -1375113253
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -1
 --- !u!114 &3356272303119792196
 MonoBehaviour:
@@ -463,7 +464,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.33
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 239284f3c524aa77
   m_LightCookieSprite: {fileID: 21300000, guid: 587e2dadb55b44b44876b812ec988056,
     type: 3}
   m_UseNormalMap: 0

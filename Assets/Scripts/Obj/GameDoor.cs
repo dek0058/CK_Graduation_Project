@@ -7,7 +7,7 @@ namespace Game.Obj {
     using Game.Management;
     using Game.Unit;
 
-    public class GameDoor : MonoBehaviour {
+    public class GameDoor : MonoBehaviour, IGameSpace {
 
         public enum State {
             Close = 0,
@@ -26,6 +26,18 @@ namespace Game.Obj {
 
         public Collider2D block_collider;
         public Collider2D trigger_collider;
+
+        [SerializeField]
+        private GameSpace gp;
+        public GameSpace game_space {
+            get => gp;
+            set {
+                gp = value;
+                GameLayer layer = gp == GameSpace.Purgatory || gp == GameSpace.Both ? 
+                    GameLayer.Purgatory_Door : GameLayer.Origin_Door;
+                gameObject.layer = (int)layer;
+            }
+        }
 
 
         public void set_state ( State state ) {
@@ -80,6 +92,8 @@ namespace Game.Obj {
                     teleport_transform = obj.transform;
                 }
             }
+
+            game_space = gp;
         }
 
 

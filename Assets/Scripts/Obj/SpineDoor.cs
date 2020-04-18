@@ -39,8 +39,15 @@ namespace Game.Obj {
 
 
         protected override void transition ( Collider2D collision ) {
-            LayerMask mask = collision.gameObject.layer;
-            if( mask == (int)GameLayer.Path_Ground || mask == (int)GameLayer.Path_Air ) {
+            LayerMask target_layer = collision.gameObject.layer;
+            bool flag = false;
+            if(game_space == GameSpace.Origin) {
+                flag = target_layer == (int)GameLayer.Origin_Path_Ground || target_layer == (int)GameLayer.Origin_Path_Air;
+            } else {
+                flag = target_layer == (int)GameLayer.Purgatory_Path_Ground || target_layer == (int)GameLayer.Purgatory_Path_Ground;
+            }
+
+            if( flag ) {
                 // HACK
                 UUnit unit = collision.GetComponentInParent<UUnit> ( );
                 Player player = unit.player;

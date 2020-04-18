@@ -149,7 +149,19 @@ namespace Game.Unit.Character {
             float angle = 90f;
             float range = 1f;
             LayerMask layer = 1 << (int)GameLayer.Unit_Collider;
-            
+            switch ( game_space ) {
+                case GameSpace.Origin:
+                    layer |= 1 << (int)GameLayer.Origin_Unit_Collider;
+                    break;
+                case GameSpace.Purgatory:
+                    layer |= 1 << (int)GameLayer.Purgatory_Unit_Collider;
+                    break;
+                case GameSpace.Both:
+                    layer |= 1 << (int)GameLayer.Origin_Unit_Collider;
+                    layer |= 1 << (int)GameLayer.Purgatory_Unit_Collider;
+                    break;
+            }
+
 
             while ( my_type.do_attack ) {
                 if ( !get_animator_nextstate ( 0 ).IsTag ( state_tag[AnimatorTag.Attack] ) &&

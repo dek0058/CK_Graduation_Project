@@ -5,9 +5,8 @@ namespace Game.Unit {
     using JToolkit.Utility;
     using User;
     using Management;
-    using System.Reflection;
 
-    public abstract class UUnit : MonoBehaviour {
+    public abstract class UUnit : MonoBehaviour, IGameSpace {
         public readonly int Animation_Speed_Hash = Animator.StringToHash ( "Aspeed" );
 
         public Player player;
@@ -47,13 +46,60 @@ namespace Game.Unit {
             Origin = 0,
             Chest,
             Head,
+
+            Collision
         }
         readonly public EnumDictionary<AttechmentPoint, string> attech_point_name = new EnumDictionary<AttechmentPoint, string> {
             { AttechmentPoint.Origin, "Origin" },
             { AttechmentPoint.Chest, "Chest" },
             { AttechmentPoint.Head, "Head" },
+            { AttechmentPoint.Collision, "Collision" },
         };
         private EnumDictionary<AttechmentPoint, Transform> attech_point_transform = new EnumDictionary<AttechmentPoint, Transform> ( );
+
+        [SerializeField]
+        private GameSpace gp;
+        public GameSpace game_space {
+            get => gp;
+            set {
+                gp = value;
+
+                GameLayer collider = GameLayer.Origin_Unit_Collider;
+                GameLayer collision = GameLayer.Origin_Unit_Collider;
+                GameLayer shadow = GameLayer.Origin_Unit_Shadow;
+                MovementSystem.PathType path = MovementSystem.PathType.Origin_Ground;
+
+                switch ( gp ) {
+                    case GameSpace.Origin:
+                        collider = GameLayer.Origin_Unit_Collider;
+                        collision = GameLayer.Origin_Unit_Collision;
+                        shadow = GameLayer.Origin_Unit_Shadow;
+                        path = movement_system.is_path_grounded ?
+                                MovementSystem.PathType.Origin_Ground : MovementSystem.PathType.Origin_Air;
+                        break;
+                    case GameSpace.Purgatory:
+                        collider = GameLayer.Purgatory_Unit_Collider;
+                        collision = GameLayer.Purgatory_Unit_Collision;
+                        shadow = GameLayer.Purgatory_Unit_Shadow;
+                        path = movement_system.is_path_grounded ?
+                                MovementSystem.PathType.Purgatory_Ground : MovementSystem.PathType.Purgatory_Air;
+                        break;
+                    case GameSpace.Both:
+                        collider = GameLayer.Unit_Collider;
+                        collision = GameLayer.Unit_Collision;
+                        shadow = GameLayer.Purgatory_Unit_Shadow;
+                        path = movement_system.is_path_grounded ?
+                                MovementSystem.PathType.Purgatory_Ground : MovementSystem.PathType.Purgatory_Air;
+                        break;
+                }
+
+                attech_point_transform[AttechmentPoint.Origin].gameObject.layer = (int)collider;
+                attech_point_transform[AttechmentPoint.Collision].gameObject.layer = (int)collision;
+                movement_system.gameObject.layer = (int)shadow;
+                movement_system.set_path_type ( path );
+            }
+        }
+
 
 
 
@@ -229,6 +275,12 @@ namespace Game.Unit {
                     attech_point_transform.Add ( AttechmentPoint.Head, head );
                 }
             }
+            if ( !attech_point_transform.ContainsKey ( AttechmentPoint.Collision ) ) {
+                Transform collision = unit_type.transform.Find ( attech_point_name[AttechmentPoint.Collision] );
+                if ( collision != null ) {
+                    attech_point_transform.Add ( AttechmentPoint.Collision, collision );
+                }
+            }
 
 
             if ( movement_system == null ) {
@@ -236,6 +288,9 @@ namespace Game.Unit {
             }
 
             movement_system.confirm ( );
+
+            game_space = gp;
+
             // TODO : 추가 검증
         }
 

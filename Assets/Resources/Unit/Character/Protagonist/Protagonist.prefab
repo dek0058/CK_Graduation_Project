@@ -148,7 +148,7 @@ SortingGroup:
   m_GameObject: {fileID: 2428487699621397250}
   m_Enabled: 1
   m_SortingLayerID: -1375113253
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
 --- !u!1 &4222542885494157926
 GameObject:
@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1505907403848617005}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ SortingGroup:
   m_GameObject: {fileID: 5069077853271644927}
   m_Enabled: 1
   m_SortingLayerID: -1375113253
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -1
 --- !u!114 &8871113957007205995
 MonoBehaviour:
@@ -244,6 +244,7 @@ MonoBehaviour:
   unit: {fileID: 517165101770134852}
   path_obj: {fileID: 7487215934793907795}
   path_collider: {fileID: 3941826081916513091}
+  shadow_light: {fileID: 0}
   collisions: []
 --- !u!70 &5106357149587227353
 CapsuleCollider2D:
@@ -279,7 +280,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.33
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 239284f3c524aa77
   m_LightCookieSprite: {fileID: 21300000, guid: 587e2dadb55b44b44876b812ec988056,
     type: 3}
   m_UseNormalMap: 0
@@ -361,7 +362,7 @@ GameObject:
   - component: {fileID: 6408371239409073342}
   - component: {fileID: 6408371239409073343}
   - component: {fileID: 517165101770134852}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Protagonist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,6 +442,7 @@ MonoBehaviour:
     axis: {x: 0, y: 0}
     flying: 0
     current_flying: 0
+  gp: 0
   weapon: {fileID: 0}
 --- !u!1 &7487215934793907795
 GameObject:

@@ -6,12 +6,12 @@ namespace JToolkit.BasisComponent {
     using JToolkit.Utility;
 
     public abstract class Input : Singleton<Input> {
-        public enum _Input_Type {
+        public enum Input_Type {
             Mouse_And_Keyboard,
             Controller,
         }
 
-        public enum _Xbox_Controller_Buttons {
+        public enum Xbox_Controller_Buttons {
             None,
             A,
             B,
@@ -40,7 +40,7 @@ namespace JToolkit.BasisComponent {
         [Serializable]
         public class InputButton {
             public KeyCode key;
-            public _Xbox_Controller_Buttons controller_buttons;
+            public Xbox_Controller_Buttons controller_buttons;
             public bool down {
                 get; protected set;
             }
@@ -65,25 +65,25 @@ namespace JToolkit.BasisComponent {
             private float m_last_click_time = 0f;
             private float m_click_time_from_last_click = 0f;
 
-            protected static readonly EnumDictionary<_Xbox_Controller_Buttons, string> buttons_to_name = new EnumDictionary<_Xbox_Controller_Buttons, string> {
-                {_Xbox_Controller_Buttons.A, "A"},
-                {_Xbox_Controller_Buttons.B, "B"},
-                {_Xbox_Controller_Buttons.X, "X"},
-                {_Xbox_Controller_Buttons.Y, "Y"},
-                {_Xbox_Controller_Buttons.Left_Stick, "Leftstick"},
-                {_Xbox_Controller_Buttons.Right_Stick, "Rightstick"},
-                {_Xbox_Controller_Buttons.View, "View"},
-                {_Xbox_Controller_Buttons.Menu, "Menu"},
-                {_Xbox_Controller_Buttons.Left_Bumper, "Left Bumper"},
-                {_Xbox_Controller_Buttons.Right_Bumper, "Right Bumper"},
+            protected static readonly EnumDictionary<Xbox_Controller_Buttons, string> buttons_to_name = new EnumDictionary<Xbox_Controller_Buttons, string> {
+                {Xbox_Controller_Buttons.A, "A"},
+                {Xbox_Controller_Buttons.B, "B"},
+                {Xbox_Controller_Buttons.X, "X"},
+                {Xbox_Controller_Buttons.Y, "Y"},
+                {Xbox_Controller_Buttons.Left_Stick, "Leftstick"},
+                {Xbox_Controller_Buttons.Right_Stick, "Rightstick"},
+                {Xbox_Controller_Buttons.View, "View"},
+                {Xbox_Controller_Buttons.Menu, "Menu"},
+                {Xbox_Controller_Buttons.Left_Bumper, "Left Bumper"},
+                {Xbox_Controller_Buttons.Right_Bumper, "Right Bumper"},
             };
 
-            public InputButton ( KeyCode key, _Xbox_Controller_Buttons controller_button ) {
+            public InputButton ( KeyCode key, Xbox_Controller_Buttons controller_button ) {
                 this.key = key;
                 this.controller_buttons = controller_button;
             }
 
-            public void get ( bool fixedUpdate_happened, _Input_Type input_type ) {
+            public void get ( bool fixedUpdate_happened, Input_Type input_type ) {
                 if ( !m_enabled ) {
                     down = false;
                     held = false;
@@ -96,7 +96,7 @@ namespace JToolkit.BasisComponent {
                 }
 
                 switch ( input_type ) {
-                    case _Input_Type.Controller:
+                    case Input_Type.Controller:
                         if ( fixedUpdate_happened ) {
                             down = UnityEngine.Input.GetButtonDown ( buttons_to_name[controller_buttons] );
                             held = UnityEngine.Input.GetButton ( buttons_to_name[controller_buttons] );
@@ -115,7 +115,7 @@ namespace JToolkit.BasisComponent {
                             m_after_fixed_update_up |= up;
                         }
                         break;
-                    case _Input_Type.Mouse_And_Keyboard:
+                    case Input_Type.Mouse_And_Keyboard:
                         if ( fixedUpdate_happened ) {
                             down = UnityEngine.Input.GetKeyDown ( key );
                             held = UnityEngine.Input.GetKey ( key );
@@ -227,7 +227,7 @@ namespace JToolkit.BasisComponent {
                 this.controller_axis = controller_axis;
             }
 
-            public void get ( _Input_Type input_type ) {
+            public void get ( Input_Type input_type ) {
                 if ( !m_enabled ) {
                     value = 0f;
                     return;
@@ -239,15 +239,15 @@ namespace JToolkit.BasisComponent {
 
                 bool positive_held = false;
                 bool negative_held = false;
-
+                //Debug.Log ( positive + ", " + negative );
 
                 switch ( input_type ) {
-                    case _Input_Type.Controller:
+                    case Input_Type.Controller:
                         float value = UnityEngine.Input.GetAxisRaw ( k_axis_to_name[controller_axis] );
                         positive_held = value > Single.Epsilon;
                         negative_held = value < -Single.Epsilon;
                         break;
-                    case _Input_Type.Mouse_And_Keyboard:
+                    case Input_Type.Mouse_And_Keyboard:
                         positive_held = UnityEngine.Input.GetKey ( positive );
                         negative_held = UnityEngine.Input.GetKey ( negative );
                         break;
@@ -305,7 +305,7 @@ namespace JToolkit.BasisComponent {
             }
         }
 
-        public _Input_Type input_type = _Input_Type.Mouse_And_Keyboard;
+        public Input_Type input_type = Input_Type.Mouse_And_Keyboard;
         private bool fixed_update_happened;
 
         protected abstract void get_inpts ( bool fixed_update_happened );

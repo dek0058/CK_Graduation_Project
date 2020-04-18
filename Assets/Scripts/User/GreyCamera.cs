@@ -133,16 +133,6 @@ namespace Game.User {
             grey_area.gameObject.SetActive ( false );
         }
 
-        private void Update ( ) {
-            if ( Input.GetKeyDown ( KeyCode.B ) ) {
-                if ( grey_group.isActiveAndEnabled ) {
-                    inactive ( );
-                } else {
-                    active ( );
-                }
-            }
-        }
-
         private void FixedUpdate ( ) {
             if(target == null) {
                 return;

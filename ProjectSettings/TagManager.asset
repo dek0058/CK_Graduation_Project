@@ -20,34 +20,40 @@ TagManager:
   - Unit Collider
   - Unit Collision
   - Unit Shadow
+  - (Origin)Unit Collider
+  - (Origin)Unit Collision
+  - (Origin)Unit Shadow
+  - (Purgatory)Unit Collider
+  - (Purgatory)Unit Collision
+  - (Purgatory)Unit Shadow
+  - (Origin)Path Ground
+  - (Origin)Path Air
+  - (Purgatory)Path Ground
+  - (Purgatory)Path Air
+  - (Origin)Door
+  - (Purgatory)Door
   - 
   - 
-  - Door
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - Path Ground
-  - Path Air
-  - 
-  - 
-  - 
-  - 
-  - Map Ground
-  - Map Cliff
-  - Map Border
-  - 
+  - (Origin)Map Ground
+  - (Origin)Map Cliff
+  - (Origin)Map Border
+  - (Purgatory)Map Ground
+  - (Purgatory)Map Cliff
+  - (Purgatory)Map Border
   - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: BackLayer
-    uniqueID: 807270455
+  - name: Origin
+    uniqueID: 2007639237
+    locked: 0
+  - name: Purgatory
+    uniqueID: 4085551651
     locked: 0
   - name: ForeLayer
     uniqueID: 2919854043
+    locked: 0
+  - name: Panorama
+    uniqueID: 4251375107
     locked: 0
