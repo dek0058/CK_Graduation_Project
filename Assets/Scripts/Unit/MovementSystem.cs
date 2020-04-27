@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using System.Collections;
 using System.Collections.Generic;
@@ -80,59 +81,13 @@ namespace Game.Unit {
 
 
         public void set_path_type ( PathType type ) {
+            if(path_obj == null) {
+                return;
+            }
             path_type = type;
             path_obj.layer = (int)path_type;
         }
 
-
-        private void update_movement ( ) {
-            if(next_velocity == Vector2.zero) {
-                rigidbody2d.velocity = Vector2.zero;
-                return;
-            }
-
-            rigidbody2d.velocity = next_velocity * Time.fixedDeltaTime * unit.unit_status.rhythm;
-            next_velocity = Vector3.zero;
-        }
-
-
-        private void update_flying ( ) {
-            float cur = unit.unit_status.current_flying;
-            float flying = unit.unit_status.flying + cur;
-            if(flying < 0f) {
-                flying = 0f;
-            }
-            unit.unit_type.transform.localPosition = new Vector3 ( 0f, flying, 0f );
-
-            if( cur > 0f) {
-                unit.unit_status.current_flying += Physics2D.gravity.y * Time.fixedDeltaTime * unit.unit_status.rhythm;
-            } else if( cur < 0f ) {
-                unit.unit_status.current_flying = 0f;
-            }
-        }
-
-
-        private void update_ground ( ) {
-            int mask = 0;
-
-            if ( path_type == PathType.Origin_Ground || path_type == PathType.Origin_Air ) {
-                mask |= 1 << (int)GameLayer.Origin_Map_Ground;
-                mask |= 1 << (int)GameLayer.Origin_Map_Cliff;
-            } else if ( path_type == PathType.Purgatory_Ground || path_type == PathType.Purgatory_Air ) {
-                mask |= 1 << (int)GameLayer.Purgatory_Map_Ground;
-                mask |= 1 << (int)GameLayer.Purgatory_Map_Cliff;
-            }
-
-            Collider2D[] colliders = Physics2D.OverlapPointAll ( transform.position, mask );
-
-            bool result = false;
-            for ( int i = 0; i < colliders.Length; ++i ) {
-                if ( colliders[i].gameObject.layer == (int)GameLayer.Origin_Map_Ground ) {
-                    result = true; break;
-                }
-            }
-            is_grounded = result;
-        }
 
         /// <summary>
         /// MovementSystem class를 검증합니다.
@@ -152,12 +107,75 @@ namespace Game.Unit {
                 rigidbody2d = GetComponentInParent<Rigidbody2D> ( );
             }
 
-            if( path_obj == null) {
-                path_obj = transform.GetChild ( 0 ).gameObject;
+            if ( path_obj == null ) {
+                if ( transform.childCount > 0 ) {
+                    path_obj = transform.GetChild ( 0 ).gameObject;
+                }
             }
 
-            if ( path_obj != null && path_collider == null ) {
-                path_collider = path_obj.GetComponent<Collider2D> ( );
+            if ( path_obj != null ) {
+                if ( path_collider == null ) {
+                    path_collider = path_obj.GetComponent<Collider2D> ( );
+                }
+
+                switch ( shadow_collider ) {
+                    case BoxCollider2D box when shadow_collider is BoxCollider2D: {
+                        if ( path_collider == null ) {
+                            path_collider = path_obj.AddComponent<BoxCollider2D> ( );
+                        } else if ( !(path_collider is BoxCollider2D) ) {
+                            DestroyImmediate ( path_collider );
+                            path_collider = path_obj.AddComponent<BoxCollider2D> ( );
+                        }
+                        BoxCollider2D path = path_collider as BoxCollider2D;
+                        path.size = box.size * 0.99f;
+
+                    }
+                    break;
+                    case CapsuleCollider2D capsule when shadow_collider is CapsuleCollider2D: {
+                        if ( path_collider == null ) {
+                            path_collider = path_obj.AddComponent<CapsuleCollider2D> ( );
+                        } else if ( !(path_collider is CapsuleCollider2D) ) {
+                            DestroyImmediate ( path_collider );
+                            path_collider = path_obj.AddComponent<CapsuleCollider2D> ( );
+                        }
+                        CapsuleCollider2D path = path_collider as CapsuleCollider2D;
+                        path.direction = capsule.direction;
+                        path.size = capsule.size * 0.99f;
+
+                    }
+                    break;
+                    case CircleCollider2D circle when shadow_collider is CircleCollider2D: {
+                        if ( path_collider == null ) {
+                            path_collider = path_obj.AddComponent<CircleCollider2D> ( );
+                        } else if ( !(path_collider is CircleCollider2D) ) {
+                            DestroyImmediate ( path_collider );
+                            path_collider = path_obj.AddComponent<CircleCollider2D> ( );
+                        }
+                        CircleCollider2D path = path_collider as CircleCollider2D;
+                        path.radius = circle.radius * 0.99f;
+
+                    }
+                    break;
+                    case PolygonCollider2D polygon when shadow_collider is PolygonCollider2D: {
+                        if ( path_collider == null ) {
+                            path_collider = path_obj.AddComponent<PolygonCollider2D> ( );
+                        } else if ( !(path_collider is PolygonCollider2D) ) {
+                            DestroyImmediate ( path_collider );
+                            path_collider = path_obj.AddComponent<PolygonCollider2D> ( );
+                        }
+
+                        PolygonCollider2D path = path_collider as PolygonCollider2D;
+                        Vector2[] points = polygon.points;
+                        for ( int i = 0; i < points.Length; ++i ) {
+                            points[i] *= 0.99f;
+                        }
+                        path.points = points;
+
+                    }
+                    break;
+                }
+                path_collider.isTrigger = false;
+                path_collider.offset = shadow_collider.offset;
             }
 
             if ( shadow_light == null ) {
@@ -166,6 +184,82 @@ namespace Game.Unit {
 
             set_path_type ( path_type );
             is_grounded = true;
+        }
+
+
+        private void update_layer ( ) {
+            switch ( path_type ) {
+                case PathType.Origin_Ground: is_path_grounded = true; break;
+                case PathType.Origin_Air: is_path_grounded = false; break;
+                case PathType.Purgatory_Ground: is_path_grounded = true; break;
+                case PathType.Purgatory_Air: is_path_grounded = false; break;
+            }
+
+            if ( path_obj == null ) {
+                return;
+            }
+
+            if ( path_obj.layer != (int)path_type ) {    // Layer 조정
+                set_path_type ( path_type );
+            }
+        }
+
+
+        private void update_shadow ( ) {
+            if(shadow_light == null) {
+                return;
+            }
+            shadow_light.intensity = GameManager.instance.gb_light.shadow_intensity;
+        }
+
+
+        private void update_movement ( ) {  // Fixed
+            if(next_velocity == Vector2.zero) {
+                rigidbody2d.velocity = Vector2.zero;
+                return;
+            }
+
+            rigidbody2d.velocity = next_velocity * Time.fixedDeltaTime * unit.unit_status.rhythm;
+            next_velocity = Vector3.zero;
+        }
+
+
+        private void update_flying ( ) {    // Fixed
+            float cur = unit.unit_status.current_flying;
+            float flying = unit.unit_status.flying + cur;
+            if(flying < 0f) {
+                flying = 0f;
+            }
+            unit.unit_type.transform.localPosition = new Vector3 ( 0f, flying, 0f );
+
+            if( cur > 0f) {
+                unit.unit_status.current_flying += Physics2D.gravity.y * Time.fixedDeltaTime * unit.unit_status.rhythm;
+            } else if( cur < 0f ) {
+                unit.unit_status.current_flying = 0f;
+            }
+        }
+
+
+        private void update_ground ( ) {    // Fixed
+            int mask = 0;
+
+            if ( path_type == PathType.Origin_Ground || path_type == PathType.Origin_Air ) {
+                mask |= 1 << (int)GameLayer.Origin_Map_Ground;
+                mask |= 1 << (int)GameLayer.Origin_Map_Cliff;
+            } else if ( path_type == PathType.Purgatory_Ground || path_type == PathType.Purgatory_Air ) {
+                mask |= 1 << (int)GameLayer.Purgatory_Map_Ground;
+                mask |= 1 << (int)GameLayer.Purgatory_Map_Cliff;
+            }
+
+            Collider2D[] colliders = Physics2D.OverlapPointAll ( transform.position, mask );
+
+            bool result = false;
+            for ( int i = 0; i < colliders.Length; ++i ) {
+                if ( colliders[i].gameObject.layer == (int)GameLayer.Origin_Map_Ground ) {
+                    result = true; break;
+                }
+            }
+            is_grounded = result;
         }
 
 
@@ -231,31 +325,8 @@ namespace Game.Unit {
         ////////////////////////////////////////////////////////////////////////////
 
         private void Update ( ) {
-#if false
-            if ( shadow_collider is CapsuleCollider2D ) {
-                CapsuleCollider2D shadow = shadow_collider as CapsuleCollider2D;
-                CapsuleCollider2D path = path_collider as CapsuleCollider2D;
-                path.isTrigger = false;
-                path.direction = shadow.direction;
-                path.offset = shadow.offset;
-                path.size = shadow.size * 0.99f;
-            }
-#endif
-
-            switch ( path_type ) {
-                case PathType.Origin_Ground:    is_path_grounded = true;    break;
-                case PathType.Origin_Air:       is_path_grounded = false;   break;
-                case PathType.Purgatory_Ground: is_path_grounded = true;    break;
-                case PathType.Purgatory_Air:    is_path_grounded = false;   break;
-            }
-
-            if ( path_obj.layer != (int)path_type ) {    // Layer 조정
-                set_path_type ( path_type );
-            }
-
-            if ( shadow_light != null ) {
-                shadow_light.intensity = GameManager.instance.gb_light.shadow_intensity;
-            }
+            update_layer ( );
+            update_shadow ( );
         }
 
         private void FixedUpdate ( ) {

@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - GameCamera
-  - SubCamera
   - CameraPoint
   - AllocationArea
   layers:
@@ -45,11 +44,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Origin
-    uniqueID: 2007639237
-    locked: 0
   - name: Purgatory
     uniqueID: 4085551651
+    locked: 0
+  - name: Origin
+    uniqueID: 2007639237
     locked: 0
   - name: ForeLayer
     uniqueID: 2919854043

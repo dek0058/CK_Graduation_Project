@@ -117,6 +117,7 @@ namespace Game.Unit.Character {
 
 
         private void damaged ( UUnit source, UUnit target ) {
+            /*
             if ( !do_weaked && ++weak_hit >= PaintManType.Weak_Count ) {
                 weak ( );
             } else {
@@ -128,6 +129,8 @@ namespace Game.Unit.Character {
                 Vector2 force = Polar.location ( 150f, angle );
                 movement_system.add_force ( force );
             }
+            */
+
         }
 
 
@@ -139,7 +142,7 @@ namespace Game.Unit.Character {
             my_type?.add ( PaintManType.Action_Attack, action_attack );
             my_type?.add ( PaintManType.Action_Attack_Stop, action_attack_stop );
 
-            event_damaged += damaged;
+            //event_damaged += damaged;
 
         }
 

@@ -47,6 +47,10 @@ namespace Game.User {
         /// </summary>
         /// <param name="p">목표 플레이어</param>
         public bool is_alliance ( Player p ) {
+            if ( p == null ) {
+                return false;
+            }
+
             int bit = (alliance >> (int)team) & 1;
             return bit == 1 ? true : false;
         }
@@ -56,6 +60,10 @@ namespace Game.User {
         /// </summary>
         /// <param name="p">목표 플레이어</param>
         public bool is_enemy ( Player p ) {
+            if(p == null) {
+                return true;
+            }
+
             int bit = (alliance >> (int)team) & 1;
             return bit == 1 ? false : true;
         }

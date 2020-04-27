@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5157b45fb5a9f9949aef94c74afc3703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path_type: 21
+  path_type: 18
   shadow_collider: {fileID: 6414985850705012579}
   rigidbody2d: {fileID: 4035211480128865562}
   unit: {fileID: 7511368857334492393}
@@ -170,7 +170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3419774032229359296
 Transform:
   m_ObjectHideFlags: 0
@@ -284,6 +284,7 @@ Transform:
   m_Children:
   - {fileID: 3419774032229359296}
   - {fileID: 6275362450687775367}
+  - {fileID: 5612450399445652892}
   m_Father: {fileID: 4035211480128865563}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -504,6 +505,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   movement_system: {fileID: 674238626905714575}
   unit_type: {fileID: 3419774033977934680}
+  sfx: {fileID: 768936164463821099}
   unit_data: {fileID: 0}
   unit_status:
     is_dead: 0
@@ -511,7 +513,7 @@ MonoBehaviour:
     current_hp: 10
     max_hp: 10
     rhythm: 1
-    mspeed: 3
+    mspeed: 150
     aspeed: 1
     rspeed: 10
     damage: 1
@@ -525,3 +527,48 @@ MonoBehaviour:
     flying: 0
     current_flying: 0
   gp: 0
+--- !u!1 &6824593253675816646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5612450399445652892}
+  - component: {fileID: 768936164463821099}
+  m_Layer: 8
+  m_Name: Sfx Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5612450399445652892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6824593253675816646}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3419774033977934685}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &768936164463821099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6824593253675816646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8d95635448f164fb5f10b725634486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio_list: []
+  index: 1

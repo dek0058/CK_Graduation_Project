@@ -17,7 +17,9 @@ namespace Game {
 
                 UUnit unit = UUnit.create<Unit.Character.UProtagonist> ( start_position, PlayerManager.instance.local_player );
                 PlayerManager.instance.local_player.unit = unit;
-                PlayerManager.instance.game_camera.grey_camera.target = unit.transform;
+
+                // HACK
+                TestGaugeUI.instance.target = unit.transform;
             }
         }
 

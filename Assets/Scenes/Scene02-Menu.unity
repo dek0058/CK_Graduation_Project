@@ -6068,7 +6068,7 @@ MonoBehaviour:
   music_group: {fileID: 4132360519419836715, guid: 19e31a354a9d5ff48b36562504078dd1,
     type: 2}
   sfx_volum: 1
-  music_volum: 1
+  music_volum: 0.8
   sfx_mute: 0
   music_mute: 0
   sfx_index: 5

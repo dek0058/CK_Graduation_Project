@@ -7,8 +7,6 @@ namespace Game.User {
 
     public class GameCamera : MonoBehaviour {
 
-        public GreyCamera grey_camera;
-        
         public CinemachineVirtualCamera cv_camera;
         public CinemachineConfiner cv_confiner;
 
@@ -29,10 +27,6 @@ namespace Game.User {
         /// Game Camera를 검증합니다.
         /// </summary>
         public void confirm ( ) {
-            if(grey_camera == null) {
-                grey_camera = GetComponentInChildren<GreyCamera> ( );
-            }
-
             if(cv_camera == null) {
                 cv_camera = transform.GetComponentInChildren<CinemachineVirtualCamera> ( );
             }

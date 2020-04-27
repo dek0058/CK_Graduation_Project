@@ -52,6 +52,7 @@ MonoBehaviour:
   unit: {fileID: 0}
   path_obj: {fileID: 0}
   path_collider: {fileID: 0}
+  shadow_light: {fileID: 0}
   collisions: []
 --- !u!210 &1341970230694867864
 SortingGroup:
@@ -62,7 +63,7 @@ SortingGroup:
   m_GameObject: {fileID: 1341970230694867941}
   m_Enabled: 1
   m_SortingLayerID: -1375113253
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -1
 --- !u!70 &1341970230694867943
 CapsuleCollider2D:
@@ -110,7 +111,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.119999886, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2184862008363801859}
   m_Father: {fileID: 1341970231675021641}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -132,7 +134,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ed50332f9e542974f8451f811abfe3fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -203,7 +205,7 @@ SortingGroup:
   m_GameObject: {fileID: 1341970230758353669}
   m_Enabled: 1
   m_SortingLayerID: -1375113253
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
 --- !u!1 &1341970230936034339
 GameObject:
@@ -278,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341970231675021654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.538, y: -3.304, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1341970230758353670}
@@ -323,6 +325,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   movement_system: {fileID: 1341970230694867865}
   unit_type: {fileID: 1341970230758353721}
+  sfx: {fileID: 8639087656030611671}
   unit_data: {fileID: 0}
   unit_status:
     is_dead: 0
@@ -343,3 +346,49 @@ MonoBehaviour:
     axis: {x: 0, y: 0}
     flying: 0.171
     current_flying: 0
+  gp: 0
+--- !u!1 &5526209843257897722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2184862008363801859}
+  - component: {fileID: 8639087656030611671}
+  m_Layer: 8
+  m_Name: Sfx Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2184862008363801859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5526209843257897722}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1341970230758353670}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8639087656030611671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5526209843257897722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8d95635448f164fb5f10b725634486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio_list: []
+  index: 1

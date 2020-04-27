@@ -31,6 +31,9 @@ namespace Game.Management {
             RedNote1,
             RedNote2,
             RedNote3,
+
+            // Product
+            Beatbox_Platform,
             //
 
             // Weapon
@@ -43,6 +46,7 @@ namespace Game.Management {
             // Music
             Stage1_Joy_Music,
             Stage1_Boss_Music,
+
             // SFX
             Stage1_Piano_Do_SFX,
             Stage1_Piano_Re_SFX,
@@ -81,13 +85,17 @@ namespace Game.Management {
         private EnumDictionary<Resource, string> paths = new EnumDictionary<Resource, string> {
             {Resource.None, "none" },
 
+            // Management
             {Resource.Canvas_Blank, "Prefab/Management/SceneFader/Canvas_Blank" },
             {Resource.Canvas_Loading, "Prefab/Management/SceneFader/Canvas_Loading" },
 
+            // Unit
+            // Character
             {Resource.Protagonist, "Unit/Character/Protagonist/Protagonist" },
             {Resource.Piano_Man, "Unit/Character/PianoMan/PianoMan" },
             {Resource.Paint_Man, "Unit/Character/PaintMan/PaintMan" },
 
+            // Missile
             {Resource.BlueNote1, "Unit/Missile/MelodyMissile/BlueNote1_Missile" },
             {Resource.BlueNote2, "Unit/Missile/MelodyMissile/BlueNote2_Missile" },
             {Resource.BlueNote3, "Unit/Missile/MelodyMissile/BlueNote3_Missile" },
@@ -95,13 +103,20 @@ namespace Game.Management {
             {Resource.RedNote2, "Unit/Missile/MelodyMissile/RedNote2_Missile" },
             {Resource.RedNote3, "Unit/Missile/MelodyMissile/RedNote3_Missile" },
 
+            // Product
+            {Resource.Beatbox_Platform, "Unit/Product/BeatboxPuzzle/Beatbox Platform" },
+
+            // Weapon
             {Resource.Cypress_Weapon, "Weapon/Cypress/Cypress" },
 
+            // Audio
             {Resource.Game_Audio, "Audio/Prefab/GameAudio" },
 
+            // Music
             {Resource.Stage1_Joy_Music, "Audio/Music/OST - Inconsolable" }, // Temporary
             {Resource.Stage1_Boss_Music, "Audio/Music/The Moon Over the Lake Composed by Hemio - New age piano" },
 
+            // SFX
             {Resource.Stage1_Piano_Do_SFX, "Audio/SFX/Beat/Piano/piaon_Do" }, // Temporary
             {Resource.Stage1_Piano_Re_SFX, "Audio/SFX/Beat/Piano/piaon_Re" }, // Temporary
             {Resource.Stage1_Piano_Mi_SFX, "Audio/SFX/Beat/Piano/piaon_Mi" }, // Temporary
@@ -225,6 +240,28 @@ namespace Game.Management {
 
             Object obj = prefabs[res].obj;
             if( obj == null) {  // 예외처리 : 만약 키값은 존재하는데 내용물이 없을 경우
+                PrefabData data = create_data ( res );
+                prefabs.Remove ( res );
+                prefabs.Add ( res, data );
+                return data.obj;
+            }
+            return obj;
+        }
+
+        public Object get_prefab ( int index ) {
+            Resource res = (Resource)index;
+            if ( res == Resource.None ) {
+                return null;
+            }
+
+            if ( !prefabs.ContainsKey ( res ) ) {
+                PrefabData data = create_data ( res );
+                prefabs.Add ( res, data );
+                return data.obj;
+            }
+
+            Object obj = prefabs[res].obj;
+            if ( obj == null ) {  // 예외처리 : 만약 키값은 존재하는데 내용물이 없을 경우
                 PrefabData data = create_data ( res );
                 prefabs.Remove ( res );
                 prefabs.Add ( res, data );

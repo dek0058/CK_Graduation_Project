@@ -8,7 +8,7 @@ namespace Game.Unit.Character {
     using Game.Unit.Type;
     using Management;
     using Item;
-    using JToolkit.Testing;
+    using Obj;
 
     public class UProtagonist : UUnit {
 
@@ -62,9 +62,11 @@ namespace Game.Unit.Character {
                 if ( unit == null || my_type.attacked_units.Contains ( unit ) ) {
                     continue;
                 }
-                if ( unit.player.team == player.team ) {
+
+                if(!player.is_enemy(unit.player)) {
                     continue;
                 }
+
 
                 Vector2 position = unit.get_position ( );
                 Vector2 ang_target = new Vector2 ( -position.x, position.y );

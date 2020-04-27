@@ -5,6 +5,7 @@ namespace Game.Unit {
     using JToolkit.Utility;
     using User;
     using Management;
+    using Audio;
 
     public abstract class UUnit : MonoBehaviour, IGameSpace {
         public readonly int Animation_Speed_Hash = Animator.StringToHash ( "Aspeed" );
@@ -13,6 +14,7 @@ namespace Game.Unit {
         public UUnit owner = null;
         public MovementSystem movement_system = null;
         public UnitType unit_type = null;
+        public SfxAudio sfx = null;
 
         public UnitData unit_data = null;
         public UnitStatus unit_status = new UnitStatus();
@@ -94,7 +96,9 @@ namespace Game.Unit {
                 }
 
                 attech_point_transform[AttechmentPoint.Origin].gameObject.layer = (int)collider;
-                attech_point_transform[AttechmentPoint.Collision].gameObject.layer = (int)collision;
+                if ( attech_point_transform.ContainsKey ( AttechmentPoint.Collision ) ) {
+                    attech_point_transform[AttechmentPoint.Collision].gameObject.layer = (int)collision;
+                }
                 movement_system.gameObject.layer = (int)shadow;
                 movement_system.set_path_type ( path );
             }
@@ -252,6 +256,10 @@ namespace Game.Unit {
                 unit_type.unit = this;
             } else if(unit_type != null && unit_type.unit == null) {
                 unit_type.unit = this;
+            }
+
+            if ( sfx == null ) {
+                sfx = transform.GetComponentInChildren<SfxAudio> ( );
             }
            
 

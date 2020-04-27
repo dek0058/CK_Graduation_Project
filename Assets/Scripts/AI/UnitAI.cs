@@ -17,17 +17,15 @@ namespace Game.AI {
         public UUnit unit;
 
 
-        public bool is_active {
-            get; protected set;   
-        }
+        public bool is_active;
 
 
-        public void active ( ) {
+        public virtual void active ( ) {
             StartCoroutine ( Edispatch ( ) );
         }
 
 
-        public void inactive ( ) {
+        public virtual void inactive ( ) {
             is_active = false;
         }
 
@@ -40,7 +38,7 @@ namespace Game.AI {
         }
 
 
-        public void confirm ( ) {
+        public virtual void confirm ( ) {
             if(seeker == null) {
                 seeker = GetComponent<Seeker> ( );
             }
@@ -96,6 +94,7 @@ namespace Game.AI {
         }
 
         private void Update ( ) {
+            /*
             if(Input.GetKeyDown(KeyCode.P)) {
                 if(is_active) {
                     inactive ( );
@@ -103,6 +102,7 @@ namespace Game.AI {
                     active ( );
                 }
             }
+            */
         }
     }
 }

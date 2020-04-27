@@ -30,7 +30,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.171, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3654273071264575513}
   m_Father: {fileID: 5856297229257055084}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ed50332f9e542974f8451f811abfe3fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,8 +124,53 @@ SortingGroup:
   m_GameObject: {fileID: 1047071618928377935}
   m_Enabled: 1
   m_SortingLayerID: -1375113253
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
+--- !u!1 &3959336579471478108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3654273071264575513}
+  - component: {fileID: 6974550106563019894}
+  m_Layer: 8
+  m_Name: Sfx Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3654273071264575513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3959336579471478108}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1047071618928377921}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6974550106563019894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3959336579471478108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8d95635448f164fb5f10b725634486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio_list: []
+  index: 1
 --- !u!1 &5856297229257055086
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5856297229257055086}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.865, y: -3.304, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1047071618928377921}
@@ -196,6 +242,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   movement_system: {fileID: 8784652901699251952}
   unit_type: {fileID: 1047071618928377920}
+  sfx: {fileID: 6974550106563019894}
   unit_data: {fileID: 0}
   unit_status:
     is_dead: 0
@@ -216,6 +263,7 @@ MonoBehaviour:
     axis: {x: 0, y: 0}
     flying: 0.171
     current_flying: 0
+  gp: 0
 --- !u!1 &6562837000598258887
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +363,7 @@ MonoBehaviour:
   unit: {fileID: 0}
   path_obj: {fileID: 0}
   path_collider: {fileID: 0}
+  shadow_light: {fileID: 0}
   collisions: []
 --- !u!210 &5543353097176504384
 SortingGroup:
@@ -325,7 +374,7 @@ SortingGroup:
   m_GameObject: {fileID: 7845940293098665625}
   m_Enabled: 1
   m_SortingLayerID: -1375113253
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -1
 --- !u!70 &1823322766152758594
 CapsuleCollider2D:

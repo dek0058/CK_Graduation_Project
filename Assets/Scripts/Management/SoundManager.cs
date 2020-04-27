@@ -170,14 +170,17 @@ namespace Game.Management {
                 }
             }
 
+            // HACK
+            on_music ( );
+        }
+
+
+        private void initialize ( ) {
             set_sfx_volum ( sfx_volum );
             set_music_volum ( music_volum );
 
             set_sfx_mute ( sfx_mute );
             set_music_mute ( music_mute );
-
-            // HACK
-            on_music ( );
         }
 
 
@@ -235,6 +238,10 @@ namespace Game.Management {
             if ( a == null ) {
                 gameObject.AddComponent<AudioSource> ( );
             }
+        }
+
+        private void Start ( ) {
+            initialize ( );
         }
 
 

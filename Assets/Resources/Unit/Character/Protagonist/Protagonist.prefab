@@ -34,6 +34,7 @@ Transform:
   m_Children:
   - {fileID: 2745874977480668778}
   - {fileID: 1505907403848617005}
+  - {fileID: 6721940444006626778}
   m_Father: {fileID: 6408371239409073342}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -55,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 381f3b18d7d1eb04eb3e0c0e8f154edc, type: 2}
+  - {fileID: 2100000, guid: ed50332f9e542974f8451f811abfe3fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -150,6 +151,51 @@ SortingGroup:
   m_SortingLayerID: -1375113253
   m_SortingLayer: 3
   m_SortingOrder: 0
+--- !u!1 &2585074408325499551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6721940444006626778}
+  - component: {fileID: 981992238184262309}
+  m_Layer: 8
+  m_Name: Sfx Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6721940444006626778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585074408325499551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 410236242247880472}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &981992238184262309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585074408325499551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8d95635448f164fb5f10b725634486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio_list: []
+  index: 1
 --- !u!1 &4222542885494157926
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5157b45fb5a9f9949aef94c74afc3703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path_type: 21
+  path_type: 17
   shadow_collider: {fileID: 5106357149587227353}
   rigidbody2d: {fileID: 6408371239409073343}
   unit: {fileID: 517165101770134852}
@@ -422,6 +468,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   movement_system: {fileID: 8871113957007205995}
   unit_type: {fileID: 724316419717969778}
+  sfx: {fileID: 981992238184262309}
   unit_data: {fileID: 0}
   unit_status:
     is_dead: 0

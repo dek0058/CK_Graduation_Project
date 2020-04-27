@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1297052883315936741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1160566714310327220}
+  - component: {fileID: 791591026338083079}
+  m_Layer: 8
+  m_Name: Sfx Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1160566714310327220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297052883315936741}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5483415689806769764}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &791591026338083079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297052883315936741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8d95635448f164fb5f10b725634486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio_list: []
+  index: 1
 --- !u!1 &5483415688375488872
 GameObject:
   m_ObjectHideFlags: 0
@@ -52,6 +97,7 @@ MonoBehaviour:
   unit: {fileID: 0}
   path_obj: {fileID: 0}
   path_collider: {fileID: 0}
+  shadow_light: {fileID: 0}
   collisions: []
 --- !u!210 &5483415688375488877
 SortingGroup:
@@ -62,7 +108,7 @@ SortingGroup:
   m_GameObject: {fileID: 5483415688375488872}
   m_Enabled: 1
   m_SortingLayerID: -1375113253
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -1
 --- !u!70 &5483415688375488874
 CapsuleCollider2D:
@@ -153,7 +199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5483415689783059310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.865, y: -4.58, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5483415689806769764}
@@ -198,6 +244,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   movement_system: {fileID: 5483415688375488875}
   unit_type: {fileID: 5483415689806769769}
+  sfx: {fileID: 791591026338083079}
   unit_data: {fileID: 0}
   unit_status:
     is_dead: 0
@@ -218,6 +265,7 @@ MonoBehaviour:
     axis: {x: 0, y: 0}
     flying: 0.171
     current_flying: 0
+  gp: 0
 --- !u!1 &5483415689806769765
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +296,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.119999886, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1160566714310327220}
   m_Father: {fileID: 5483415689783059283}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -270,7 +319,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ed50332f9e542974f8451f811abfe3fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -341,5 +390,5 @@ SortingGroup:
   m_GameObject: {fileID: 5483415689806769765}
   m_Enabled: 1
   m_SortingLayerID: -1375113253
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
