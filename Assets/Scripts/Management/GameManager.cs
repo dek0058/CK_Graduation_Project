@@ -13,7 +13,6 @@ namespace Game.Management {
         public GameStage current_stage;
         public GameInitializer game_initializer;
 
-        public GlobalLight gb_light;
         public GamePostProcessing post_processing;
 
 
