@@ -11,7 +11,7 @@ namespace Game.User {
 
         [Header ( "Control Unit" )]
         public UUnit unit = null;
-        public UnitOrder player_order = null;
+        public BitLayer layer = new BitLayer ( );
 
         private Vector2 axis = new Vector2 ( );
         private float releas_both_input_time = 0f;
@@ -108,8 +108,10 @@ namespace Game.User {
 
 
             // 이동 키를 누르고 있으므로 유닛에게 이동 명령을 알림
-            unit.set_order ( Order_Id.Move, is_receiving );
-            player_order.set_order ( Order_Id.Move, is_receiving );
+            if( is_receiving ) {
+                unit.unit_order.set ( OrderId.Move );
+            }
+            layer.set ( (int)UnitOrderProperties.Properties.Movement, is_receiving );
             unit.move ( temp_axis );
 
             // 키보드 회전
@@ -120,10 +122,10 @@ namespace Game.User {
 
 
             if ( Singleton<PlayerInput>.instance.attack.down ) {
-                unit.set_order ( Order_Id.Attack, true );
-                player_order.set_order ( Order_Id.Attack, true );
+                unit.unit_order.set ( OrderId.Attack );
+                layer.set ( (int)UnitOrderProperties.Properties.Attack, true );
             } else if ( !Singleton<PlayerInput>.instance.attack.held ) {
-                player_order.set_order ( Order_Id.Attack, false );
+                layer.set ( (int)UnitOrderProperties.Properties.Attack, false );
             }
 
             if ( Singleton<PlayerInput>.instance.purgatory.down ) {
@@ -135,8 +137,8 @@ namespace Game.User {
             }
 
 
-            if ( player_order.layer == 0 ) {
-                unit.set_order ( Order_Id.Stop, true );
+            if ( layer.current == 0 ) {
+                unit.unit_order.set ( OrderId.Stop );
             }
 
 
@@ -152,9 +154,6 @@ namespace Game.User {
 
         public override void confirm ( ) {
             base.confirm ( );
-            if ( player_order == null ) {
-                player_order = new UnitOrder ( );
-            }
 
             //HACK
             //ShaderBlackBoard.instance.range = 0f;

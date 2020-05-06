@@ -20,24 +20,17 @@ namespace Game.Management {
 
             // Unit
             // Character
-            Protagonist,
-            Piano_Man,
-            Paint_Man,
+            Roa,
 
             // Missile
-            BlueNote1,
-            BlueNote2,
-            BlueNote3,
-            RedNote1,
-            RedNote2,
-            RedNote3,
+
 
             // Product
             Beatbox_Platform,
             //
 
             // Weapon
-            Cypress_Weapon,
+
 
             // Audio
             // GameObject
@@ -91,23 +84,17 @@ namespace Game.Management {
 
             // Unit
             // Character
-            {Resource.Protagonist, "Unit/Character/Protagonist/Protagonist" },
-            {Resource.Piano_Man, "Unit/Character/PianoMan/PianoMan" },
-            {Resource.Paint_Man, "Unit/Character/PaintMan/PaintMan" },
+            {Resource.Roa, "Unit/Character/Roa/Roa"},
+
 
             // Missile
-            {Resource.BlueNote1, "Unit/Missile/MelodyMissile/BlueNote1_Missile" },
-            {Resource.BlueNote2, "Unit/Missile/MelodyMissile/BlueNote2_Missile" },
-            {Resource.BlueNote3, "Unit/Missile/MelodyMissile/BlueNote3_Missile" },
-            {Resource.RedNote1, "Unit/Missile/MelodyMissile/RedNote1_Missile" },
-            {Resource.RedNote2, "Unit/Missile/MelodyMissile/RedNote2_Missile" },
-            {Resource.RedNote3, "Unit/Missile/MelodyMissile/RedNote3_Missile" },
+
 
             // Product
             {Resource.Beatbox_Platform, "Unit/Product/BeatboxPuzzle/Beatbox Platform" },
 
             // Weapon
-            {Resource.Cypress_Weapon, "Weapon/Cypress/Cypress" },
+
 
             // Audio
             {Resource.Game_Audio, "Audio/Prefab/GameAudio" },
@@ -152,17 +139,11 @@ namespace Game.Management {
 
         private EnumDictionary<Resource, string> prefabs_name = new EnumDictionary<Resource, string> ( ) {
             // Characters
-            {Resource.Protagonist, "UProtagonist" },
-            {Resource.Piano_Man, "UPianoMan" },
-            {Resource.Paint_Man, "UPaintMan" },
+            {Resource.Roa, typeof(Unit.Character.URoa).Name},
+
 
             // Missiles
-            {Resource.BlueNote1, "UBlueNote1" },
-            {Resource.BlueNote2, "UBlueNote2" },
-            {Resource.BlueNote3, "UBlueNote3" },
-            {Resource.RedNote1, "URedNote1" },
-            {Resource.RedNote2, "URedNote2" },
-            {Resource.RedNote3, "URedNote3" },
+
         };
         
 

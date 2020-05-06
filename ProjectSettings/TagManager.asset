@@ -41,18 +41,18 @@ TagManager:
   - (Purgatory)Map Border
   - 
   m_SortingLayers:
+  - name: Cliff
+    uniqueID: 2501216103
+    locked: 0
+  - name: Origin Ground
+    uniqueID: 1285863855
+    locked: 0
+  - name: Purgatory Ground
+    uniqueID: 2289719839
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Purgatory
-    uniqueID: 4085551651
-    locked: 0
-  - name: Origin
-    uniqueID: 2007639237
-    locked: 0
-  - name: ForeLayer
-    uniqueID: 2919854043
-    locked: 0
-  - name: Panorama
-    uniqueID: 4251375107
+  - name: Forword
+    uniqueID: 2270184469
     locked: 0

@@ -11,7 +11,7 @@ namespace Game.Unit.Character {
     using Obj;
 
     public class UProtagonist : UUnit {
-
+        /*
         /// <summary>
         /// Protagonist가 가진 Animator Paramter
         /// </summary>
@@ -40,7 +40,7 @@ namespace Game.Unit.Character {
             if(get_animator_state(0).IsTag(state_tag[AnimatorTag.Attack])) {        // 이미 공격에 성공했으므로
                 active_attack ( );
                 get_animator ( ).ResetTrigger ( parameter_hash[AnimatorParameter.Attack] );
-                unit_order.set_order ( Order_Id.Attack, false );
+                unit_order.set_order ( OrderId.Attack, false );
                 return;
             }
 
@@ -94,7 +94,7 @@ namespace Game.Unit.Character {
                 base.active_move ( );
             }
 
-            get_animator ( ).SetBool ( parameter_hash[AnimatorParameter.Run], unit_order.get_order ( Order_Id.Move ) );
+            get_animator ( ).SetBool ( parameter_hash[AnimatorParameter.Run], unit_order.get_order ( OrderId.Move ) );
         }
 
 
@@ -110,7 +110,7 @@ namespace Game.Unit.Character {
         protected override void active_update ( ) {
             base.active_update ( );
 
-            if ( unit_order.get_order ( Order_Id.Attack ) ) {
+            if ( unit_order.get_order ( OrderId.Attack ) ) {
                 attack ( );
             }
         }
@@ -196,7 +196,7 @@ namespace Game.Unit.Character {
             float speed = unit_status.aspeed > 0f ? unit_status.aspeed : 0.001f;
             float aspeed = speed + (unit_status.add_aspeed + unit_status.rate_aspeed);
             float result = aspeed > 0f ? aspeed : 0.001f;
-            float cooltime = unit_status.attack_cooltime / result;
+            float cooltime = unit_status.atime / result;
             while ( do_attack ) {
                 if ( time >= cooltime ) {
                     do_attack = false;
@@ -211,5 +211,7 @@ namespace Game.Unit.Character {
         ////////////////////////////////////////////////////////////////////////////
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
+     */
     }
+
 }

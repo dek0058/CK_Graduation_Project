@@ -23,7 +23,7 @@ namespace Game.Management {
 
         public void set_mask_position ( Vector2 position ) {
             this.mask_position = position;
-            Shader.SetGlobalVector ( "_GreyPos", position );
+            Shader.SetGlobalVector ( "_MaskPos", position );
         }
 
         public void set_grey_alpha ( float a ) {

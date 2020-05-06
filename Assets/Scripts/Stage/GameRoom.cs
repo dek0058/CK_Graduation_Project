@@ -11,10 +11,8 @@ namespace Game.Stage {
 
         public PolygonCollider2D confiner_area;
 
-        public List<GameDoor> doors = new List<GameDoor> ( );
-        public List<Player> players = new List<Player> ( );
 
-        public bool is_active = false;
+
 
         [Header("Confiner Area")]
         [SerializeField]
@@ -22,24 +20,8 @@ namespace Game.Stage {
         [SerializeField]
         private Vector2 confiner_box_left = Vector2.zero;
 
-        // 마지막으로 입장한 유닛
-        protected UUnit last_enter_unit;
 
         public void join ( UUnit unit ) {
-            last_enter_unit = unit;
-
-            if ( unit.player.team == Player.Team.User ) {   // 들어온 유닛이
-                if ( !players.Contains ( unit.player ) ) {  // 플레이어 인지 체크 
-                    players.Add ( unit.player );
-                }
-            }
-            
-            if(!is_active) {
-                if(players.Count > 0) { // 플레이어 라면 활성화 시킴
-                    active ( );
-                }
-            }
-            
             if ( unit.player.is_local ) {
                 Preferences.instance.event_resolution_change += set_confiner_area;
                 set_confiner_area ( );
@@ -49,13 +31,7 @@ namespace Game.Stage {
 
 
         public void quit ( UUnit unit ) {
-            if(unit.player.team == Player.Team.User) {
-                if(players.Contains(unit.player)) {
-                    players.Remove ( unit.player );
-                }
-            }
-
-            inactive ( );
+            
 
             if(unit.player.is_local) {
                 Preferences.instance.event_resolution_change -= set_confiner_area;
@@ -69,6 +45,7 @@ namespace Game.Stage {
         public virtual void load ( ) {
 
         }
+
 
         public void set_confiner_area ( ) {
             Vector2 cam_point = Camera.main.ViewportToWorldPoint ( new Vector2 ( 0, 0 ) );
@@ -116,14 +93,13 @@ namespace Game.Stage {
 
 
         protected virtual void active ( ) {
-            is_active = true;
+
         }
 
 
         protected virtual void inactive ( ) {
-            is_active = false;
-        }
 
+        }
 
 
         protected virtual void update ( ) {
@@ -135,11 +111,9 @@ namespace Game.Stage {
         /// Room을 검증합니다.
         /// </summary>
         public virtual void confirm ( ) {
-
             if( confiner_area  == null) {
                 confiner_area = GetComponent<PolygonCollider2D> ( );
             }
-           
         }
 
         ////////////////////////////////////////////////////////////////////////////

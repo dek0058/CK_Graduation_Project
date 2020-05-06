@@ -6,9 +6,16 @@ namespace Game.Unit {
     using User;
     using Management;
     using Audio;
+    using Ability;
 
     public abstract class UUnit : MonoBehaviour, IGameSpace {
-        public readonly int Animation_Speed_Hash = Animator.StringToHash ( "Aspeed" );
+        public readonly int Animation_ASpeed_Hash = Animator.StringToHash ( "Aspeed" );
+        public readonly int Animation_Angle_Hash = Animator.StringToHash("Angle");
+
+        [HideInInspector]
+        public uint id;
+        [HideInInspector]
+        public string nickname;
 
         public Player player;
         public UUnit owner = null;
@@ -18,16 +25,20 @@ namespace Game.Unit {
 
         public UnitData unit_data = null;
         public UnitStatus unit_status = new UnitStatus();
+        public UnitOrderProperties unit_order_properties = new UnitOrderProperties ( );
 
-        public event on_revive event_revive      = null;
+        public UnitOrder unit_order = new UnitOrder ( );
+        public AbilityCaster ability_caster = new AbilityCaster ( );
+
+
+        public event on_revive event_revive    = null;
         public event on_dead event_dead        = null;
         public event on_attack event_attack    = null;
         public event on_damaged event_damaged  = null;
 
 
-        [HideInInspector]
-        public UnitOrder unit_order = null;
-
+        
+        
 
         public enum AnimatorTag {
             Default = 0,
@@ -36,7 +47,7 @@ namespace Game.Unit {
             Attack,
             Dead,
         }
-        readonly public EnumDictionary<AnimatorTag, string> state_tag = new EnumDictionary<AnimatorTag, string> {
+        readonly protected EnumDictionary<AnimatorTag, string> state_tag = new EnumDictionary<AnimatorTag, string> {
             { AnimatorTag.Default,   "" },
             { AnimatorTag.Idle,      "Idle" },
             { AnimatorTag.Movement,  "Movement" },
@@ -51,13 +62,13 @@ namespace Game.Unit {
 
             Collision
         }
-        readonly public EnumDictionary<AttechmentPoint, string> attech_point_name = new EnumDictionary<AttechmentPoint, string> {
+        readonly protected EnumDictionary<AttechmentPoint, string> attech_point_name = new EnumDictionary<AttechmentPoint, string> {
             { AttechmentPoint.Origin, "Origin" },
             { AttechmentPoint.Chest, "Chest" },
             { AttechmentPoint.Head, "Head" },
             { AttechmentPoint.Collision, "Collision" },
         };
-        private EnumDictionary<AttechmentPoint, Transform> attech_point_transform = new EnumDictionary<AttechmentPoint, Transform> ( );
+        protected EnumDictionary<AttechmentPoint, Transform> attech_point_transform = new EnumDictionary<AttechmentPoint, Transform> ( );
 
         [SerializeField]
         private GameSpace gp;
@@ -123,13 +134,11 @@ namespace Game.Unit {
             (unit as UUnit).rotate ( angle );
             return unit;
         }
-
         public static T create<T> ( Vector2 position, Player player, float angle = 0f ) {
             T unit = create<T> ( position, angle );
             (unit as UUnit).player = player;
             return unit;
         }
-
         public static T create<T> ( Vector2 position, Player player, UUnit owner, float angle = 0f ) {
             T unit = create<T> ( position, angle );
             (unit as UUnit).player = player;
@@ -137,6 +146,74 @@ namespace Game.Unit {
             return unit;
         }
 
+
+        /// <summary>
+        /// Unit class를 검증합니다.
+        /// </summary>
+        public virtual void confirm ( ) {
+            
+            if(unit_data != null) {
+                UnitTableData ud = unit_data.unit_table_data;
+                id = ud.id;
+                nickname = ud.nickname;
+
+                unit_status.max_hp = ud.hp;
+                unit_status.current_hp = ud.hp;
+
+                unit_status.mspeed = ud.mspeed;
+                unit_status.aspeed = ud.aspeed;
+
+                unit_status.damage = ud.damage;
+                unit_status.armor = ud.armor;
+                unit_status.atime = ud.atime;
+                
+                unit_status.flying = ud.flying;
+            }
+
+
+            if( unit_type == null) {
+                unit_type = gameObject.GetComponentInChildren<UnitType> ( );
+                unit_type.unit = this;
+            } else if(unit_type != null && unit_type.unit == null) {
+                unit_type.unit = this;
+            }
+
+            if ( sfx == null ) {
+                sfx = transform.GetComponentInChildren<SfxAudio> ( );
+            }
+        
+
+            if ( !attech_point_transform.ContainsKey ( AttechmentPoint.Origin ) ) {
+                attech_point_transform.Add ( AttechmentPoint.Origin, unit_type.transform );
+            }
+            if ( !attech_point_transform.ContainsKey ( AttechmentPoint.Chest ) ) {
+                Transform chest = unit_type.transform.Find ( attech_point_name[AttechmentPoint.Chest] );
+                if(chest != null) {
+                    attech_point_transform.Add ( AttechmentPoint.Chest, chest );
+                }
+            }
+            if ( !attech_point_transform.ContainsKey ( AttechmentPoint.Head ) ) {
+                Transform head = unit_type.transform.Find ( attech_point_name[AttechmentPoint.Head] );
+                if ( head != null ) {
+                    attech_point_transform.Add ( AttechmentPoint.Head, head );
+                }
+            }
+            if ( !attech_point_transform.ContainsKey ( AttechmentPoint.Collision ) ) {
+                Transform collision = unit_type.transform.Find ( attech_point_name[AttechmentPoint.Collision] );
+                if ( collision != null ) {
+                    attech_point_transform.Add ( AttechmentPoint.Collision, collision );
+                }
+            }
+
+
+            if ( movement_system == null ) {
+                movement_system = GetComponentInChildren<MovementSystem> ( );
+            }
+            movement_system.confirm ( );
+
+            game_space = gp;
+            unit_order_properties.full ( );
+        }
 
 
         /// <summary>
@@ -196,26 +273,6 @@ namespace Game.Unit {
         }
 
 
-        public virtual void load_data ( Object data ) {
-            // TODO : 불러올 유닛 능력치 데이터들
-        }
-
-
-        public virtual void save_data ( Object data ) {
-            // TODO : 저장할 유닛의 능력치 데이터들
-        }
-
-
-        public void active_attack ( ) {
-            event_attack?.Invoke ( this );
-        }
-
-
-        public void revive ( float life ) {
-            unit_status.current_hp = life >= 1f ? life : 1f;
-            unit_status.is_dead = false;
-        }
-
         /// <summary>
         /// 유닛에게 피해를 입힙니다.
         /// </summary>
@@ -246,60 +303,18 @@ namespace Game.Unit {
         }
 
 
+        public void revive ( float life ) {
+            unit_status.current_hp = life >= 1f ? life : 1f;
+            unit_status.is_dead = false;
+            active_alive();
+        }
+
+
         /// <summary>
-        /// Unit class를 검증합니다.
-        /// </summary>
-        public virtual void confirm ( ) {
-
-            if( unit_type == null) {
-                unit_type = gameObject.GetComponentInChildren<UnitType> ( );
-                unit_type.unit = this;
-            } else if(unit_type != null && unit_type.unit == null) {
-                unit_type.unit = this;
-            }
-
-            if ( sfx == null ) {
-                sfx = transform.GetComponentInChildren<SfxAudio> ( );
-            }
-           
-
-            if( unit_order == null) {
-                unit_order = new UnitOrder ( );
-            }
-
-
-            if ( !attech_point_transform.ContainsKey ( AttechmentPoint.Origin ) ) {
-                attech_point_transform.Add ( AttechmentPoint.Origin, unit_type.transform );
-            }
-            if ( !attech_point_transform.ContainsKey ( AttechmentPoint.Chest ) ) {
-                Transform chest = unit_type.transform.Find ( attech_point_name[AttechmentPoint.Chest] );
-                if(chest != null) {
-                    attech_point_transform.Add ( AttechmentPoint.Chest, chest );
-                }
-            }
-            if ( !attech_point_transform.ContainsKey ( AttechmentPoint.Head ) ) {
-                Transform head = unit_type.transform.Find ( attech_point_name[AttechmentPoint.Head] );
-                if ( head != null ) {
-                    attech_point_transform.Add ( AttechmentPoint.Head, head );
-                }
-            }
-            if ( !attech_point_transform.ContainsKey ( AttechmentPoint.Collision ) ) {
-                Transform collision = unit_type.transform.Find ( attech_point_name[AttechmentPoint.Collision] );
-                if ( collision != null ) {
-                    attech_point_transform.Add ( AttechmentPoint.Collision, collision );
-                }
-            }
-
-
-            if ( movement_system == null ) {
-                movement_system = GetComponentInChildren<MovementSystem> ( );
-            }
-
-            movement_system.confirm ( );
-
-            game_space = gp;
-
-            // TODO : 추가 검증
+        /// 유닛이 공격을 시작했을 때 이벤트
+        /// </summary>       
+        protected void active_attack ( ) {
+            event_attack?.Invoke ( this );
         }
 
 
@@ -307,23 +322,7 @@ namespace Game.Unit {
         /// 유닛 회전을 갱신합니다.
         /// </summary>
         protected virtual void active_rotate ( ) {  // Fixed Update
-            float y = unit_type.transform.eulerAngles.y;
-            float gap = Mathf.DeltaAngle ( y, unit_status.look_at );
-            float rspeed = 0f;
-
-            if ( gap > 1f ) {
-                rspeed = unit_status.rspeed * Time.fixedDeltaTime;
-            } else if ( gap < -1f ) {
-                rspeed = -unit_status.rspeed * Time.fixedDeltaTime;
-            }
-
-            // 보정
-            while ( Mathf.Abs ( gap ) < Mathf.Abs ( rspeed ) ) {
-                rspeed *= 0.5f;
-            }
-
-            unit_type.transform.Rotate ( 0f, rspeed, 0f );
-            unit_status.angle = unit_type.transform.eulerAngles.y;
+            unit_status.angle = unit_status.look_at;
         }
 
 
@@ -332,10 +331,13 @@ namespace Game.Unit {
         /// </summary>
         protected virtual void active_move ( ) {    // Fixed Update
             unit_status.direction = unit_status.input;
-            movement_system.move ( (unit_status.direction / unit_status.direction.magnitude) * unit_status.mspeed );
+            movement_system.move ( (unit_status.direction / unit_status.direction.magnitude) * unit_status.rhythm * unit_status.mspeed );
         }
 
 
+        /// <summary>
+        /// 유닛이 죽었을때 이벤트
+        /// </summary>
         protected virtual void active_dead ( ) {    // Late Update
             unit_status.is_dead = true;
             if(unit_status.current_hp > 0f) {
@@ -346,22 +348,26 @@ namespace Game.Unit {
         }
 
 
+        /// <summary>
+        /// 유닛이 살아났을때 이벤트
+        /// </summary>
         protected virtual void active_alive ( ) {   // Late Update
             event_revive?.Invoke ( this );
         }
 
 
 
-        protected virtual void active_update ( ) {     
+        protected virtual void active_update ( ) {
+            unit_order.update ( );
         }
 
 
         protected virtual void active_fixedupdate ( ) {
-            if ( !unit_order.get_active ( UnitOrder.Active.Rotate ) ) {
+            if(unit_order_properties.get(UnitOrderProperties.Properties.Rotation)) {
                 active_rotate ( );
             }
-
-            if ( !unit_order.get_active ( UnitOrder.Active.Move ) ) {
+            
+            if(unit_order_properties.get(UnitOrderProperties.Properties.Movement)) {
                 active_move ( );
             }
         }
@@ -372,28 +378,18 @@ namespace Game.Unit {
                 unit_status.is_dead ) {
                 active_dead ( );
                 return;
-            } else if ( !unit_status.is_dead ) {
-                if ( get_animator ( ) != null ) {
-                    if ( get_animator_state ( 0 ).IsTag ( state_tag[AnimatorTag.Dead] ) ) {
-                        active_alive ( );
-                    }
-                }
             }
 
-            if ( unit_order.get_order ( Order_Id.Stop ) ) {
+
+            OrderId order_id = unit_order.execute();
+            if( order_id == OrderId.Stop || order_id == OrderId.None) {
                 unit_status.look_at = unit_status.angle;
-                unit_order.set_order ( Order_Id.Stop, false );
             }
+
 
             if(get_animator() != null) {
-                get_animator ( ).SetFloat ( Animation_Speed_Hash, unit_status.rhythm );
+                get_animator ( ).SetFloat ( Animation_ASpeed_Hash, unit_status.rhythm );
             }
-        }
-
-
-
-        public void set_order ( Order_Id id, bool value ) {
-            unit_order.set_order ( id, value );
         }
 
 
@@ -472,111 +468,4 @@ namespace Game.Unit {
             active_lateupdate ( );
         }
     }
-
-
-    /// <summary>
-    /// Unit이 가진 능력치를 나타냅니다.
-    /// </summary>
-    [System.Serializable]
-    public class UnitStatus {
-        public bool is_dead;
-        public bool is_invincible;
-
-        public float current_hp;            // 현재 체력       
-        public float max_hp;                // 최대 체력
-
-        public float rhythm;                // 유닛 속도
-        public float mspeed;                // 이동 속도
-        public float aspeed;                // 공격 속도
-        public float rspeed;                // 회전 속도
-
-
-        public float damage;                // 공격력
-        public float armor;                 // 방어력
-        public float attack_cooltime;       // 공격 쿨타임
-
-
-
-        // 현재 상태 값
-
-        public float angle;                 // 유닛의 각도
-        public float look_at;               // 바라볼 각도
-
-        public Vector2 input;               // 바라봐야 할 방향
-        public Vector2 direction;           // 현재 방향
-        public Vector2 axis;                // 바라보고 있는 축
-
-        public float flying;                // 기본 높이 (고정)
-        public float current_flying;        // 현재 높이
-
-
-        // 추가 스텟
-
-        public float add_hp {               // 추가증가 체력
-            get; private set;
-        }
-        public float rate_hp {              // 비율증가 체력
-            get; private set;
-        }
-
-
-        public float add_mspeed {           // 추가증가 이동속도
-            get; private set;
-        }
-        public float rate_mspeed {          // 비율증가 이동속도
-            get; private set;
-        }
-
-
-        public float add_aspeed {           // 추가증가 공격속도
-            get; private set;
-        }
-        public float rate_aspeed {          // 비율증가 공격속도
-            get; private set;
-        }
-
-        
-        public float add_damage {           // 추가증가 공격력
-            get; private set;
-        }
-        public float rate_damage {          // 비율 증가 공격력
-            get; private set;
-        }
-
-
-        public float add_armor {            // 추가증가 방어력
-            get; private set;
-        }
-        public float rate_armor {           // 비율증가 방어력
-            get; private set;
-        }
-
-        // TODO : 추가할 스텟들
-    }
-
-    /// <summary>
-    /// 소생하였을 때 이벤트
-    /// </summary>
-    /// <param name="unit">살아난 유닛</param>
-    public delegate void on_revive ( UUnit unit );
-
-    /// <summary>
-    /// 죽었을 때 이벤트
-    /// </summary>
-    /// <param name="unit">죽은 유닛</param>
-    public delegate void on_dead ( UUnit unit );
-
-    /// <summary>
-    /// 유닛이 공격을 시작했을 때 이벤트
-    /// </summary>
-    /// <param name="source">공격한 유닛</param>
-    public delegate void on_attack ( UUnit source );
-
-    /// <summary>
-    /// 유닛이 피해를 받는 중일 때 이벤트
-    /// </summary>
-    /// <param name="source">피해를 입힌 유닛</param>
-    /// <param name="target">피해를 받는 유닛</param>
-    public delegate void on_damaged ( UUnit source, UUnit target );
-
 }

@@ -53,4 +53,4 @@ Physics2DSettings:
   m_ColliderAsleepColor: {r: 0.5686275, g: 0.95686275, b: 0.54509807, a: 0.36078432}
   m_ColliderContactColor: {r: 1, g: 0, b: 1, a: 0.6862745}
   m_ColliderAABBColor: {r: 1, g: 1, b: 0, a: 0.2509804}
-  m_LayerCollisionMatrix: ffffbf7fffffbf7fffffbf7fffffffffffffbf7fffffbf7fffffffffffffffffff498081ff928001ff24e181ff098081ff128001ff24a001ff418081ff828001ff048183ff00828dff008089ff0088f1ff0080c1ff248081c8048081ffffffffffffffffff008181ff008201ff008601ff008801ff008801ff009881c84dff43
+  m_LayerCollisionMatrix: ffffbf7fffffbf7fffffbf7fffffffffffffbf7fffffbf7fffffffffffffffffff498081ff928001ff24e181ff098081ff128001ff24a001ff418081ff828001ff048183ff00808dff008089ff0080f1ff0080c1ff248081c8048081ffffffffffffffffff008181ff008201ff008601ff008801ff008801ff009881c84dff43

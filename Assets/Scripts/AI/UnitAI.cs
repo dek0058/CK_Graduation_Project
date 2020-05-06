@@ -52,6 +52,8 @@ namespace Game.AI {
 
 
         private IEnumerator Edispatch ( ) {
+            yield break;
+            /*
             if( is_active ) {
                 yield break;
             }
@@ -68,20 +70,20 @@ namespace Game.AI {
                         Vector2 direction = (path.vectorPath[1] - unit.transform.position).normalized;
                         float dist = Vector2.Distance ( unit.transform.position, target.position );
                         if(limit_distance >= dist) {
-                            unit.set_order ( Order_Id.Move, false );
+                            unit.set_order ( OrderId.Move, false );
                         } else {
-                            unit.set_order ( Order_Id.Move, true );
+                            unit.set_order ( OrderId.Move, true );
                             unit.move ( direction );
                         }
                     } else {
-                        unit.set_order ( Order_Id.Move, false );
+                        unit.set_order ( OrderId.Move, false );
                     }
                 }
                 yield return new WaitForEndOfFrame ( );
             }
 
-            unit.set_order ( Order_Id.Move, false );
-
+            unit.set_order ( OrderId.Move, false );
+            */
         }
 
         ////////////////////////////////////////////////////////////////////////////

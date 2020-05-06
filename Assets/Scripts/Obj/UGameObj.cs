@@ -25,11 +25,6 @@ namespace Game.Obj {
         }
 
 
-        protected virtual void collision_event ( Collider2D collision ) {
-            
-        }
-
-
         public virtual void confirm ( ) {
 
             if ( renderer2D == null ) {
@@ -55,11 +50,6 @@ namespace Game.Obj {
 
         private void Start ( ) {
             initialize ( );
-        }
-
-
-        private void OnTriggerEnter2D ( Collider2D collision ) {
-            collision_event ( collision );
         }
     }
 }

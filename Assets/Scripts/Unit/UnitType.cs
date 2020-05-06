@@ -68,7 +68,7 @@ namespace Game.Unit {
 
 
 
-        public void confirm ( ) {
+        public virtual void confirm ( ) {
             if(animator == null) {
                 animator = GetComponent<Animator> ( );
             }
