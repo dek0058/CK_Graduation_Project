@@ -13,6 +13,8 @@ public class MeshColliderGenerator : MonoBehaviour {
     public List<MeshCollider> mc_targets = new List<MeshCollider> ( );
     public List<MeshFilter> m_targets = new List<MeshFilter> ( );
 
+    public List<GameObject> m_obj_targets = new List<GameObject> ( );
+
     public void simplify ( ) {
         if(mesh == null) {
             mesh = new Mesh ( );
@@ -65,6 +67,15 @@ public class MeshColliderGenerator : MonoBehaviour {
     public void clear ( ) {
         mesh = new Mesh ( );
         mesh_collider.sharedMesh = mesh;
+    }
+
+    private void OnValidate ( ) {
+        if(m_obj_targets.Count > 0) {
+            for(int i = 0; i < m_obj_targets.Count; ++i ) {
+                m_targets.Add ( m_obj_targets[i].GetComponentInChildren<MeshFilter> ( ) );
+            }
+            m_obj_targets.Clear ( );
+        }
     }
 }
 
