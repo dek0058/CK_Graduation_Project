@@ -7,6 +7,9 @@ TagManager:
   - GameCamera
   - CameraPoint
   - AllocationArea
+  - EditorTile
+  - eraser
+  - sub
   layers:
   - Default
   - TransparentFX
@@ -16,29 +19,29 @@ TagManager:
   - UI
   - 
   - 
-  - Unit Collider
-  - Unit Collision
-  - Unit Shadow
-  - (Origin)Unit Collider
-  - (Origin)Unit Collision
-  - (Origin)Unit Shadow
-  - (Purgatory)Unit Collider
-  - (Purgatory)Unit Collision
-  - (Purgatory)Unit Shadow
-  - (Origin)Path Ground
-  - (Origin)Path Air
-  - (Purgatory)Path Ground
-  - (Purgatory)Path Air
-  - (Origin)Door
-  - (Purgatory)Door
+  - Mask
+  - Unit_Both
+  - Unit_Origin
+  - Unit_Purgatory
+  - Field_Both
+  - Field_Origin
+  - Field_Purgatory
   - 
   - 
-  - (Origin)Map Ground
-  - (Origin)Map Cliff
-  - (Origin)Map Border
-  - (Purgatory)Map Ground
-  - (Purgatory)Map Cliff
-  - (Purgatory)Map Border
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   m_SortingLayers:
   - name: Cliff

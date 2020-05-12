@@ -22,11 +22,11 @@ namespace Game.Stage {
 
 
         public void join ( UUnit unit ) {
-            if ( unit.player.is_local ) {
-                Preferences.instance.event_resolution_change += set_confiner_area;
-                set_confiner_area ( );
-                PlayerManager.instance.game_camera.confiner_transform.position = confiner_area.transform.position;
-            }
+            //if ( unit.player.is_local ) {
+            //    Preferences.instance.event_resolution_change += set_confiner_area;
+            //    set_confiner_area ( );
+            //    PlayerManager.instance.game_camera.confiner_transform.position = confiner_area.transform.position;
+            //}
         }
 
 
@@ -87,8 +87,8 @@ namespace Game.Stage {
                 new Vector2(-right.x, left.y),
             };
 
-            PlayerManager.instance.game_camera.confiner_area.points = points;
-            PlayerManager.instance.game_camera.cv_confiner.InvalidatePathCache ( );
+            //PlayerManager.instance.game_camera.confiner_area.points = points;
+            //PlayerManager.instance.game_camera.cv_confiner.InvalidatePathCache ( );
         }
 
 

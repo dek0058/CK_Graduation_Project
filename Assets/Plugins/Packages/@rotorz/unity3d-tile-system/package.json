@@ -1,0 +1,69 @@
+{
+  "_from": "github:rotorz/unity3d-tile-system#semver:^1.0.1",
+  "_id": "@rotorz/unity3d-tile-system@1.0.3",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/@rotorz/unity3d-tile-system",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "@rotorz/unity3d-tile-system@github:rotorz/unity3d-tile-system#semver:^1.0.1",
+    "name": "@rotorz/unity3d-tile-system",
+    "escapedName": "@rotorz%2funity3d-tile-system",
+    "scope": "@rotorz",
+    "rawSpec": "github:rotorz/unity3d-tile-system#semver:^1.0.1",
+    "saveSpec": "github:rotorz/unity3d-tile-system#semver:^1.0.1",
+    "fetchSpec": null,
+    "gitRange": "^1.0.1",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "github:rotorz/unity3d-tile-system#f3aa183394d6c5d58d744e34e93c0e5ad5fec874",
+  "_spec": "@rotorz/unity3d-tile-system@github:rotorz/unity3d-tile-system#semver:^1.0.1",
+  "_where": "D:\\Pixellore\\Subterrain 2\\Subterrain2",
+  "author": {
+    "name": "Rotorz Limited"
+  },
+  "bugs": {
+    "url": "https://github.com/rotorz/unity3d-tile-system/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@rotorz/dotnet-exception-utils": "github:rotorz/dotnet-exception-utils#semver:^1.0.3",
+    "@rotorz/dotnet-json": "github:rotorz/dotnet-json#semver:^1.0.1",
+    "@rotorz/unity3d-custom-popup": "github:rotorz/unity3d-custom-popup#semver:^1.0.1",
+    "@rotorz/unity3d-editor-menu": "github:rotorz/unity3d-editor-menu#semver:^1.0.1",
+    "@rotorz/unity3d-localized-strings": "github:rotorz/unity3d-localized-strings#semver:^1.0.1",
+    "@rotorz/unity3d-package-utils": "github:rotorz/unity3d-package-utils#semver:^1.0.1",
+    "@rotorz/unity3d-reorderable-list": "github:rotorz/unity3d-reorderable-list#semver:^1.0.2",
+    "@rotorz/unity3d-utils": "github:rotorz/unity3d-utils#semver:^1.0.1"
+  },
+  "deprecated": false,
+  "description": "A tile system extension for the Unity game engine supporting 2D and 3D tiles.",
+  "devDependencies": {
+    "fs-extra": "^4.0.2",
+    "github-wiki-from-markdown-book": "^1.0.0",
+    "glob": "^7.1.2",
+    "nunjucks": "^3.0.1"
+  },
+  "homepage": "https://github.com/rotorz/unity3d-tile-system#readme",
+  "keywords": [
+    "unity3d",
+    "unity3d-package"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@rotorz/unity3d-tile-system",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rotorz/unity3d-tile-system.git"
+  },
+  "scripts": {
+    "build-wiki-output": "github-wiki-from-markdown-book build",
+    "clean-wiki-output": "github-wiki-from-markdown-book clean",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.3"
+}

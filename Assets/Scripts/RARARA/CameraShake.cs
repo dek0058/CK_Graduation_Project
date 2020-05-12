@@ -5,7 +5,7 @@ using JToolkit.Utility;
 using Game.Management;
 
 public class CameraShake : Singleton<CameraShake>
-{
+{/*
     private CinemachineBasicMultiChannelPerlin virtalCameraNoise;
     private CinemachineVirtualCamera virtalCam;
 
@@ -52,4 +52,5 @@ public class CameraShake : Singleton<CameraShake>
         virtalCameraNoise.m_AmplitudeGain = 0;
         virtalCameraNoise.m_FrequencyGain = 0;
     }
+    */
 }

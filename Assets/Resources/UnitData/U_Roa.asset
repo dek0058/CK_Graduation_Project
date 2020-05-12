@@ -16,8 +16,9 @@ MonoBehaviour:
     id: 1
     nickname: "\uB85C\uC544"
     hp: 10
-    mspeed: 300
+    mspeed: 100
     aspeed: 1
+    rspeed: 500
     damage: 1
     armor: 0
     atime: 1

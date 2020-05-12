@@ -10,7 +10,6 @@ namespace Game.Management {
 
         public List<Player> players = new List<Player> ( );
         public LocalPlayer local_player = null;
-        public GameCamera game_camera;
 
 
         public Player create ( Player.Team team, bool local = false ) {
@@ -49,7 +48,7 @@ namespace Game.Management {
         private void LateUpdate ( ) {
             // HACK
             if ( local_player != null && local_player.unit != null ) {
-                game_camera.camera_point.position = local_player.unit.get_position ( );
+                //game_camera.camera_point.position = local_player.unit.get_position ( );
             }
         }
 

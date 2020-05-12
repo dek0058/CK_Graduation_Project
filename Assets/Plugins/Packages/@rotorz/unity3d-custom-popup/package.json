@@ -1,0 +1,54 @@
+{
+  "_from": "github:rotorz/unity3d-custom-popup#semver:^1.0.1",
+  "_id": "@rotorz/unity3d-custom-popup@1.0.1",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/@rotorz/unity3d-custom-popup",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "@rotorz/unity3d-custom-popup@github:rotorz/unity3d-custom-popup#semver:^1.0.1",
+    "name": "@rotorz/unity3d-custom-popup",
+    "escapedName": "@rotorz%2funity3d-custom-popup",
+    "scope": "@rotorz",
+    "rawSpec": "github:rotorz/unity3d-custom-popup#semver:^1.0.1",
+    "saveSpec": "github:rotorz/unity3d-custom-popup#semver:^1.0.1",
+    "fetchSpec": null,
+    "gitRange": "^1.0.1",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "/@rotorz/unity3d-tile-system"
+  ],
+  "_resolved": "github:rotorz/unity3d-custom-popup#98189c552770ddedc33736222f17656e6d5acb6f",
+  "_spec": "@rotorz/unity3d-custom-popup@github:rotorz/unity3d-custom-popup#semver:^1.0.1",
+  "_where": "D:\\Pixellore\\Subterrain 2\\Subterrain2\\node_modules\\@rotorz\\unity3d-tile-system",
+  "author": {
+    "name": "Rotorz Limited"
+  },
+  "bugs": {
+    "url": "https://github.com/rotorz/unity3d-custom-popup/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@rotorz/unity3d-editor-menu": "github:rotorz/unity3d-editor-menu#semver:^1.0.1"
+  },
+  "deprecated": false,
+  "description": "Custom popup control for Unity editor interfaces that defers popup menu construction until shown. This is good for situations where the popup is relatively expensive to construct.",
+  "homepage": "https://github.com/rotorz/unity3d-custom-popup#readme",
+  "keywords": [
+    "unity3d",
+    "unity3d-package"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@rotorz/unity3d-custom-popup",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rotorz/unity3d-custom-popup.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.1"
+}

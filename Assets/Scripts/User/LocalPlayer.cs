@@ -155,6 +155,7 @@ namespace Game.User {
         public override void confirm ( ) {
             base.confirm ( );
 
+            releas_input_time_speed = 8f;
             //HACK
             //ShaderBlackBoard.instance.range = 0f;
         }

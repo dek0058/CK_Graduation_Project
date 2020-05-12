@@ -1,8 +1,5 @@
-﻿
-using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 namespace Game.Unit {
     using Management;
@@ -10,58 +7,43 @@ namespace Game.Unit {
 
     public class MovementSystem : MonoBehaviour {
 
-        public enum PathType {
-            Origin_Ground = GameLayer.Origin_Path_Ground,
-            Origin_Air = GameLayer.Origin_Path_Air,
-            Purgatory_Ground = GameLayer.Purgatory_Path_Ground,
-            Purgatory_Air = GameLayer.Purgatory_Path_Air,
-        }
-
-        public PathType path_type = PathType.Origin_Ground;
-        
-        public Collider2D shadow_collider;
-        public Rigidbody2D rigidbody2d;
         public UUnit unit;
+        public new Rigidbody rigidbody;
 
-        // Shadow Object & Lighting
-        [SerializeField]
-        private GameObject path_obj;
-        [SerializeField]
-        private Collider2D path_collider;
-        //
+        private Vector3 next_velocity = Vector3.zero;
+        private float fixedtimescale = 0f;
+        private float flying = 0f;
+        private float airborn = 0f;
 
-        private Vector2 next_velocity = Vector2.zero;
-
-        public List<UUnit> collisions = new List<UUnit> ( );
-        public event shadow_collision_enter event_collision_enter;
-        public event shadow_collision_exit event_collision_exit;
-
-
+        private bool grounded;
         public bool is_grounded {
-            get; private set;
-        }
-        public bool is_path_grounded {
-            get; private set;
+            get => grounded;
         }
 
-
-        /// <summary>
-        /// 객체를 목표좌표로 즉시 이동시킵니다.
-        /// </summary>
-        /// <param name="target">이동할 좌표</param>
-        public void set_position ( Vector3 target ) {
-            rigidbody2d.MovePosition ( target );
+        public bool is_flying {
+            get => flying > 0f;    
         }
+
+        [SerializeField]
+        private float radius;
 
 
         /// <summary>
         /// 객체에게 속도를 부여합니다.
         /// </summary>
         /// <param name="velocity">속도</param>
-        public void move ( Vector2 velocity ) {
+        public void move ( Vector3 velocity ) {
             velocity.x = float.IsNaN(velocity.x) ? 0f : velocity.x;
             velocity.y = float.IsNaN ( velocity.y ) ? 0f : velocity.y;
+            velocity.z = float.IsNaN ( velocity.z ) ? 0f : velocity.z;
             next_velocity += velocity;
+        }
+
+
+        public void move ( Vector2 velocity ) {
+            velocity.x = float.IsNaN ( velocity.x ) ? 0f : velocity.x;
+            velocity.y = float.IsNaN ( velocity.y ) ? 0f : velocity.y;
+            next_velocity += new Vector3(velocity.x, 0f, velocity.y);
         }
 
 
@@ -78,174 +60,61 @@ namespace Game.Unit {
         }
 
 
-        public void set_path_type ( PathType type ) {
-            if(path_obj == null) {
-                return;
-            }
-            path_type = type;
-            path_obj.layer = (int)path_type;
-        }
-
 
         /// <summary>
         /// MovementSystem class를 검증합니다.
         /// </summary>
         public void confirm ( ) {
-
-            if ( shadow_collider == null ) {
-                shadow_collider = GetComponent<Collider2D> ( );
+            if( unit == null) {
+                unit = GetComponent<UUnit> ( );
             }
 
-
-            if ( unit == null ) {
-                unit = GetComponentInParent<UUnit> ( );
+            if(rigidbody == null) {
+                rigidbody = GetComponent<Rigidbody> ( );
             }
 
-            if ( rigidbody2d == null ) {
-                rigidbody2d = GetComponentInParent<Rigidbody2D> ( );
-            }
-
-            if ( path_obj == null ) {
-                if ( transform.childCount > 0 ) {
-                    path_obj = transform.GetChild ( 0 ).gameObject;
-                }
-            }
-
-            if ( path_obj != null ) {
-                if ( path_collider == null ) {
-                    path_collider = path_obj.GetComponent<Collider2D> ( );
-                }
-
-                switch ( shadow_collider ) {
-                    case BoxCollider2D box when shadow_collider is BoxCollider2D: {
-                        if ( path_collider == null ) {
-                            path_collider = path_obj.AddComponent<BoxCollider2D> ( );
-                        } else if ( !(path_collider is BoxCollider2D) ) {
-                            DestroyImmediate ( path_collider );
-                            path_collider = path_obj.AddComponent<BoxCollider2D> ( );
-                        }
-                        BoxCollider2D path = path_collider as BoxCollider2D;
-                        path.size = box.size * 0.99f;
-
-                    }
-                    break;
-                    case CapsuleCollider2D capsule when shadow_collider is CapsuleCollider2D: {
-                        if ( path_collider == null ) {
-                            path_collider = path_obj.AddComponent<CapsuleCollider2D> ( );
-                        } else if ( !(path_collider is CapsuleCollider2D) ) {
-                            DestroyImmediate ( path_collider );
-                            path_collider = path_obj.AddComponent<CapsuleCollider2D> ( );
-                        }
-                        CapsuleCollider2D path = path_collider as CapsuleCollider2D;
-                        path.direction = capsule.direction;
-                        path.size = capsule.size * 0.99f;
-
-                    }
-                    break;
-                    case CircleCollider2D circle when shadow_collider is CircleCollider2D: {
-                        if ( path_collider == null ) {
-                            path_collider = path_obj.AddComponent<CircleCollider2D> ( );
-                        } else if ( !(path_collider is CircleCollider2D) ) {
-                            DestroyImmediate ( path_collider );
-                            path_collider = path_obj.AddComponent<CircleCollider2D> ( );
-                        }
-                        CircleCollider2D path = path_collider as CircleCollider2D;
-                        path.radius = circle.radius * 0.99f;
-
-                    }
-                    break;
-                    case PolygonCollider2D polygon when shadow_collider is PolygonCollider2D: {
-                        if ( path_collider == null ) {
-                            path_collider = path_obj.AddComponent<PolygonCollider2D> ( );
-                        } else if ( !(path_collider is PolygonCollider2D) ) {
-                            DestroyImmediate ( path_collider );
-                            path_collider = path_obj.AddComponent<PolygonCollider2D> ( );
-                        }
-
-                        PolygonCollider2D path = path_collider as PolygonCollider2D;
-                        Vector2[] points = polygon.points;
-                        for ( int i = 0; i < points.Length; ++i ) {
-                            points[i] *= 0.99f;
-                        }
-                        path.points = points;
-
-                    }
-                    break;
-                }
-                path_collider.isTrigger = false;
-                path_collider.offset = shadow_collider.offset;
-            }
-
-            set_path_type ( path_type );
-            is_grounded = true;
+            flying = unit.unit_status.flying;
+            airborn = unit.unit_status.airborn;
+            transform.position = new Vector3 ( transform.position.x, GameManager.instance.world_Y_position + flying + airborn, transform.position.z );
         }
 
 
-        private void update_layer ( ) {
-            switch ( path_type ) {
-                case PathType.Origin_Ground: is_path_grounded = true; break;
-                case PathType.Origin_Air: is_path_grounded = false; break;
-                case PathType.Purgatory_Ground: is_path_grounded = true; break;
-                case PathType.Purgatory_Air: is_path_grounded = false; break;
-            }
-
-            if ( path_obj == null ) {
-                return;
-            }
-
-            if ( path_obj.layer != (int)path_type ) {    // Layer 조정
-                set_path_type ( path_type );
-            }
-        }
-
-
-        private void update_movement ( ) {  // Fixed
-            if(next_velocity == Vector2.zero) {
-                rigidbody2d.velocity = Vector2.zero;
-                return;
-            }
-
-            rigidbody2d.velocity = next_velocity * Time.fixedDeltaTime * unit.unit_status.rhythm;
+        public void update_movement ( ) {  // Fixed
+            rigidbody.velocity = next_velocity * fixedtimescale;
             next_velocity = Vector3.zero;
         }
 
 
-        private void update_flying ( ) {    // Fixed
-            float cur = unit.unit_status.current_flying;
-            float flying = unit.unit_status.flying + cur;
-            if(flying < 0f) {
-                flying = 0f;
-            }
-            unit.unit_type.transform.localPosition = new Vector3 ( 0f, flying, 0f );
+        private void update_airborn ( ) {    // Fixed
+            float amount = flying + airborn;
+            float true_flying = transform.position.y - amount;
+            Vector3 position = transform.position + new Vector3(0f, amount, 0f);
 
-            if( cur > 0f) {
-                unit.unit_status.current_flying += Physics2D.gravity.y * Time.fixedDeltaTime * unit.unit_status.rhythm;
-            } else if( cur < 0f ) {
-                unit.unit_status.current_flying = 0f;
+            if(!Mathf.Approximately(true_flying, GameManager.instance.world_Y_position)) {  // Y값 보정
+                transform.position = new Vector3 ( transform.position.x, GameManager.instance.world_Y_position + amount, transform.position.z );
+            }
+
+            rigidbody.MovePosition ( position );
+
+            if( amount > 0f) {
+                unit.unit_status.airborn += Physics.gravity.y * fixedtimescale;
+            } else if( amount < 0f ) {
+                unit.unit_status.airborn = 0f;
             }
         }
 
 
-        private void update_ground ( ) {    // Fixed
-            int mask = 0;
+        public void update_grounded ( ) {   // Update
+            Vector3 origin = transform.position + Vector3.up;
+            RaycastHit hit;
+            LayerMask layer = 1 << (int)GameLayer.Field_Both;
 
-            if ( path_type == PathType.Origin_Ground || path_type == PathType.Origin_Air ) {
-                mask |= 1 << (int)GameLayer.Origin_Map_Ground;
-                mask |= 1 << (int)GameLayer.Origin_Map_Cliff;
-            } else if ( path_type == PathType.Purgatory_Ground || path_type == PathType.Purgatory_Air ) {
-                mask |= 1 << (int)GameLayer.Purgatory_Map_Ground;
-                mask |= 1 << (int)GameLayer.Purgatory_Map_Cliff;
+            bool collision = Physics.SphereCast ( origin, radius, Vector3.down, out hit, Mathf.Infinity, layer );
+            if(collision ) {
+                grounded = true;
+            } else {
+                grounded = false;
             }
-
-            Collider2D[] colliders = Physics2D.OverlapPointAll ( transform.position, mask );
-
-            bool result = false;
-            for ( int i = 0; i < colliders.Length; ++i ) {
-                if ( colliders[i].gameObject.layer == (int)GameLayer.Origin_Map_Ground ) {
-                    result = true; break;
-                }
-            }
-            is_grounded = result;
         }
 
 
@@ -263,8 +132,8 @@ namespace Game.Unit {
                     continue;
                 }
 
-                force_x = force_x - (rigidbody2d.mass * Time.fixedDeltaTime * unit.unit_status.rhythm * normal.x);
-                force_y = force_y - (rigidbody2d.mass * Time.fixedDeltaTime * unit.unit_status.rhythm * normal.y);
+                force_x = force_x - (rigidbody.mass * Time.fixedDeltaTime * unit.unit_status.rhythm * normal.x);
+                force_y = force_y - (rigidbody.mass * Time.fixedDeltaTime * unit.unit_status.rhythm * normal.y);
                 if(force_x < 0f) {
                     force_x = 0f;
                 }
@@ -311,37 +180,37 @@ namespace Game.Unit {
         ////////////////////////////////////////////////////////////////////////////
 
         private void Update ( ) {
-            update_layer ( );
+           if(unit == null) {
+                confirm ( );
+                if(unit == null) {
+                    Debug.LogError ( "유닛을 찾을 수 없어 GameObject를 삭제합니다." );
+                    Destroy ( gameObject );
+                }
+                return;
+            }
+            
+            flying = unit.unit_status.flying;
+            airborn = unit.unit_status.airborn;
+
+            update_grounded ( );
         }
 
         private void FixedUpdate ( ) {
+            if(unit == null) {
+                return;
+            }
+            fixedtimescale = Time.fixedDeltaTime * unit.unit_status.rhythm;
             update_movement ( );
-            update_flying ( );
-            update_ground ( );
+            update_airborn ( );
         }
 
-        private void OnTriggerEnter2D ( Collider2D collision ) {
-            UUnit unit = collision.GetComponentInParent<UUnit> ( );
-            if(unit != null) {
-                if ( !collisions.Contains ( unit ) ) {
-                    collisions.Add ( unit );
-                }
-            }
-            event_collision_enter?.Invoke ( collision );
-        }
 
-        private void OnTriggerExit2D ( Collider2D collision ) {
-            UUnit unit = collision.GetComponentInParent<UUnit> ( );
-            if ( unit != null ) {
-                if( collisions.Contains ( unit ) ) {
-                    collisions.Remove ( unit );
-                }
-            }
-
-            event_collision_exit?.Invoke ( collision );
+        // Editor Mode
+#if UNITY_EDITOR
+        private void OnDrawGizmosSelected ( ) {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere ( transform.position, radius );
         }
+#endif
     }
-
-    public delegate void shadow_collision_enter ( Collider2D collision );
-    public delegate void shadow_collision_exit ( Collider2D collision );
 }

@@ -1,0 +1,54 @@
+{
+  "_from": "github:rotorz/dotnet-localized-strings#semver:^1.0.1",
+  "_id": "@rotorz/dotnet-localized-strings@1.0.1",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/@rotorz/dotnet-localized-strings",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "@rotorz/dotnet-localized-strings@github:rotorz/dotnet-localized-strings#semver:^1.0.1",
+    "name": "@rotorz/dotnet-localized-strings",
+    "escapedName": "@rotorz%2fdotnet-localized-strings",
+    "scope": "@rotorz",
+    "rawSpec": "github:rotorz/dotnet-localized-strings#semver:^1.0.1",
+    "saveSpec": "github:rotorz/dotnet-localized-strings#semver:^1.0.1",
+    "fetchSpec": null,
+    "gitRange": "^1.0.1",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "/@rotorz/unity3d-localized-strings"
+  ],
+  "_resolved": "github:rotorz/dotnet-localized-strings#df30a38f62085eab916fa3444860585e44ffb779",
+  "_spec": "@rotorz/dotnet-localized-strings@github:rotorz/dotnet-localized-strings#semver:^1.0.1",
+  "_where": "D:\\Pixellore\\Subterrain 2\\Subterrain2\\node_modules\\@rotorz\\unity3d-localized-strings",
+  "author": {
+    "name": "Rotorz Limited"
+  },
+  "bugs": {
+    "url": "https://github.com/rotorz/dotnet-localized-strings/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@rotorz/dotnet-exception-utils": "github:rotorz/dotnet-exception-utils#semver:^1.0.3"
+  },
+  "deprecated": false,
+  "description": "A lightweight localization framework built on top of the NGettext library in .NET. This framework is intended to be used with gettext style tooling although it is possible to provide alternative implementations of the interfaces exposed by this framework.",
+  "homepage": "https://github.com/rotorz/dotnet-localized-strings#readme",
+  "keywords": [
+    "unity3d",
+    "unity3d-package"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@rotorz/dotnet-localized-strings",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rotorz/dotnet-localized-strings.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.1"
+}

@@ -9,9 +9,8 @@ namespace Game.Unit {
     using Ability;
 
     public abstract class UUnit : MonoBehaviour, IGameSpace {
-        public readonly int Animation_ASpeed_Hash = Animator.StringToHash ( "Aspeed" );
-        public readonly int Animation_Angle_Hash = Animator.StringToHash("Angle");
-
+        
+        
         [HideInInspector]
         public uint id;
         [HideInInspector]
@@ -36,16 +35,15 @@ namespace Game.Unit {
         public event on_attack event_attack    = null;
         public event on_damaged event_damaged  = null;
 
+        private float fixedtimescale = 0f;
 
-        
-        
 
         public enum AnimatorTag {
             Default = 0,
-            Idle,
-            Movement,
-            Attack,
-            Dead,
+            Idle,       // 0
+            Movement,   // 1
+            Attack,     // 2
+            Dead,       // 3
         }
         readonly protected EnumDictionary<AnimatorTag, string> state_tag = new EnumDictionary<AnimatorTag, string> {
             { AnimatorTag.Default,   "" },
@@ -54,19 +52,26 @@ namespace Game.Unit {
             { AnimatorTag.Attack,    "Attack" },
             { AnimatorTag.Dead,      "Dead" },
         };
+        public enum AnimatorParameter {
+            Aspeed,
+            OrderId,
+            Action,
+        }
+        readonly protected EnumDictionary<AnimatorParameter, int> state_para = new EnumDictionary<AnimatorParameter, int> {
+            { AnimatorParameter.Aspeed, Animator.StringToHash ( "Aspeed" ) },
+            { AnimatorParameter.OrderId, Animator.StringToHash ( "OrderId" ) },
+            { AnimatorParameter.Action, Animator.StringToHash ( "Action" ) },
+        };
 
         public enum AttechmentPoint {
             Origin = 0,
             Chest,
             Head,
-
-            Collision
         }
         readonly protected EnumDictionary<AttechmentPoint, string> attech_point_name = new EnumDictionary<AttechmentPoint, string> {
             { AttechmentPoint.Origin, "Origin" },
             { AttechmentPoint.Chest, "Chest" },
             { AttechmentPoint.Head, "Head" },
-            { AttechmentPoint.Collision, "Collision" },
         };
         protected EnumDictionary<AttechmentPoint, Transform> attech_point_transform = new EnumDictionary<AttechmentPoint, Transform> ( );
 
@@ -76,42 +81,6 @@ namespace Game.Unit {
             get => gp;
             set {
                 gp = value;
-
-                GameLayer collider = GameLayer.Origin_Unit_Collider;
-                GameLayer collision = GameLayer.Origin_Unit_Collider;
-                GameLayer shadow = GameLayer.Origin_Unit_Shadow;
-                MovementSystem.PathType path = MovementSystem.PathType.Origin_Ground;
-
-                switch ( gp ) {
-                    case GameSpace.Origin:
-                        collider = GameLayer.Origin_Unit_Collider;
-                        collision = GameLayer.Origin_Unit_Collision;
-                        shadow = GameLayer.Origin_Unit_Shadow;
-                        path = movement_system.is_path_grounded ?
-                                MovementSystem.PathType.Origin_Ground : MovementSystem.PathType.Origin_Air;
-                        break;
-                    case GameSpace.Purgatory:
-                        collider = GameLayer.Purgatory_Unit_Collider;
-                        collision = GameLayer.Purgatory_Unit_Collision;
-                        shadow = GameLayer.Purgatory_Unit_Shadow;
-                        path = movement_system.is_path_grounded ?
-                                MovementSystem.PathType.Purgatory_Ground : MovementSystem.PathType.Purgatory_Air;
-                        break;
-                    case GameSpace.Both:
-                        collider = GameLayer.Unit_Collider;
-                        collision = GameLayer.Unit_Collision;
-                        shadow = GameLayer.Purgatory_Unit_Shadow;
-                        path = movement_system.is_path_grounded ?
-                                MovementSystem.PathType.Purgatory_Ground : MovementSystem.PathType.Purgatory_Air;
-                        break;
-                }
-
-                attech_point_transform[AttechmentPoint.Origin].gameObject.layer = (int)collider;
-                if ( attech_point_transform.ContainsKey ( AttechmentPoint.Collision ) ) {
-                    attech_point_transform[AttechmentPoint.Collision].gameObject.layer = (int)collision;
-                }
-                movement_system.gameObject.layer = (int)shadow;
-                movement_system.set_path_type ( path );
             }
         }
 
@@ -123,7 +92,7 @@ namespace Game.Unit {
         /// </summary>
         /// <param name="position">생성할 좌표</param>
         /// <param name="angle">각도</param>
-        private static T create<T> ( Vector2 position, float angle = 0f ) {
+        private static T create<T> ( Vector3 position, float angle = 0f ) {
             GameObject prefab = ResourceLoader.instance.get_unit ( typeof(T).Name );
             if(prefab == null) {
                 return default ( T );
@@ -134,12 +103,12 @@ namespace Game.Unit {
             (unit as UUnit).rotate ( angle );
             return unit;
         }
-        public static T create<T> ( Vector2 position, Player player, float angle = 0f ) {
+        public static T create<T> ( Vector3 position, Player player, float angle = 0f ) {
             T unit = create<T> ( position, angle );
             (unit as UUnit).player = player;
             return unit;
         }
-        public static T create<T> ( Vector2 position, Player player, UUnit owner, float angle = 0f ) {
+        public static T create<T> ( Vector3 position, Player player, UUnit owner, float angle = 0f ) {
             T unit = create<T> ( position, angle );
             (unit as UUnit).player = player;
             (unit as UUnit).owner = owner;
@@ -162,6 +131,7 @@ namespace Game.Unit {
 
                 unit_status.mspeed = ud.mspeed;
                 unit_status.aspeed = ud.aspeed;
+                unit_status.rspeed = ud.rspeed;
 
                 unit_status.damage = ud.damage;
                 unit_status.armor = ud.armor;
@@ -172,7 +142,7 @@ namespace Game.Unit {
 
 
             if( unit_type == null) {
-                unit_type = gameObject.GetComponentInChildren<UnitType> ( );
+                unit_type = gameObject.GetComponent<UnitType> ( );
                 unit_type.unit = this;
             } else if(unit_type != null && unit_type.unit == null) {
                 unit_type.unit = this;
@@ -198,16 +168,10 @@ namespace Game.Unit {
                     attech_point_transform.Add ( AttechmentPoint.Head, head );
                 }
             }
-            if ( !attech_point_transform.ContainsKey ( AttechmentPoint.Collision ) ) {
-                Transform collision = unit_type.transform.Find ( attech_point_name[AttechmentPoint.Collision] );
-                if ( collision != null ) {
-                    attech_point_transform.Add ( AttechmentPoint.Collision, collision );
-                }
-            }
 
 
             if ( movement_system == null ) {
-                movement_system = GetComponentInChildren<MovementSystem> ( );
+                movement_system = GetComponent<MovementSystem> ( );
             }
             movement_system.confirm ( );
 
@@ -243,7 +207,7 @@ namespace Game.Unit {
         /// </summary>
         /// <param name="target">이동할 좌표</param>
         public void position ( Vector3 target ) {
-            movement_system.set_position ( target );
+            transform.position = target;
         }
 
 
@@ -264,12 +228,14 @@ namespace Game.Unit {
             unit_type.animator.Play ( name, layer );
         }
 
+
         /// <summary>
-        /// 특정 애니메이션을 실행시킵니다.
+        /// 애니메이션을 실행시킵니다.
         /// </summary>
-        /// <param name="hash">애니메이션 값</param>
-        public void set_animation ( int hash, int layer = 0 ) {
-            unit_type.animator.Play ( hash, layer );
+        /// <param name="id">애니메이션 ID</param>
+        public void action_animation ( int id ) {
+            unit_type.animator.SetInteger ( state_para[AnimatorParameter.OrderId], id );
+            unit_type.animator.SetTrigger ( state_para[AnimatorParameter.Action] );
         }
 
 
@@ -322,7 +288,23 @@ namespace Game.Unit {
         /// 유닛 회전을 갱신합니다.
         /// </summary>
         protected virtual void active_rotate ( ) {  // Fixed Update
-            unit_status.angle = unit_status.look_at;
+            float y = unit_type.transform.eulerAngles.y;
+            float gap = Mathf.DeltaAngle ( y, unit_status.look_at );
+            float rspeed = 0f;
+
+            if ( gap > 1f ) {
+                rspeed = unit_status.rspeed * fixedtimescale;
+            } else if ( gap < -1f ) {
+                rspeed = -unit_status.rspeed * fixedtimescale;
+            }
+
+            // 보정
+            while ( Mathf.Abs ( gap ) < Mathf.Abs ( rspeed ) ) {
+                rspeed *= 0.5f;
+            }
+
+            unit_type.transform.Rotate ( 0f, rspeed, 0f );
+            unit_status.angle = unit_type.transform.eulerAngles.y;
         }
 
 
@@ -330,8 +312,10 @@ namespace Game.Unit {
         /// 유닛 이동을 갱신합니다.
         /// </summary>
         protected virtual void active_move ( ) {    // Fixed Update
+            float speed = unit_status.rhythm * unit_status.mspeed;
             unit_status.direction = unit_status.input;
-            movement_system.move ( (unit_status.direction / unit_status.direction.magnitude) * unit_status.rhythm * unit_status.mspeed );
+
+            movement_system.move ( (unit_status.direction / unit_status.direction.magnitude) * speed );
         }
 
 
@@ -359,11 +343,25 @@ namespace Game.Unit {
 
         protected virtual void active_update ( ) {
             unit_order.update ( );
+
+            if(get_animator() != null) {
+                get_animator ( ).SetFloat ( state_para[AnimatorParameter.Aspeed], unit_status.rhythm );
+            }
+
+            OrderId order_id = unit_order.execute ( );
+            if ( order_id == OrderId.Stop || order_id == OrderId.None ) {
+                unit_status.look_at = unit_status.angle;
+                if ( get_animator ( ).GetInteger ( state_para[AnimatorParameter.OrderId] ) != 0 ) {
+                    action_animation ( 0 );
+                }
+            }
         }
 
 
         protected virtual void active_fixedupdate ( ) {
-            if(unit_order_properties.get(UnitOrderProperties.Properties.Rotation)) {
+            fixedtimescale = Time.fixedDeltaTime * unit_status.rhythm;
+
+            if (unit_order_properties.get(UnitOrderProperties.Properties.Rotation)) {
                 active_rotate ( );
             }
             
@@ -378,17 +376,6 @@ namespace Game.Unit {
                 unit_status.is_dead ) {
                 active_dead ( );
                 return;
-            }
-
-
-            OrderId order_id = unit_order.execute();
-            if( order_id == OrderId.Stop || order_id == OrderId.None) {
-                unit_status.look_at = unit_status.angle;
-            }
-
-
-            if(get_animator() != null) {
-                get_animator ( ).SetFloat ( Animation_ASpeed_Hash, unit_status.rhythm );
             }
         }
 
@@ -444,7 +431,6 @@ namespace Game.Unit {
 
 
         public void destroy ( ) {
-            movement_system.collisions.Clear ( );
             Destroy ( gameObject );
         }
 

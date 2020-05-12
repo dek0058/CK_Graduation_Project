@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 2f8f7af656bcc6745969d7e2105cffd7
+timeCreated: 1447224416
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - MakerGen: {fileID: 100032, guid: a5294b287cca8f8499be75da9c531395, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

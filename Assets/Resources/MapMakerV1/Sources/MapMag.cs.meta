@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: ad5eca58a06b7434caa9320214708be8
+timeCreated: 1447228353
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - textureTest: {instanceID: 0}
+  - titleTexture: {fileID: 2800000, guid: 7a3e37175b5235245a17a6b4d3cd518a, type: 3}
+  - earserTexture: {fileID: 2800000, guid: 2b2d8616facdfd54da929816d4b97df6, type: 3}
+  - tile: {fileID: 193896, guid: fce30303ca63df24684d65b40ebd5a51, type: 2}
+  - eraserObj: {fileID: 133528, guid: 2fb29ffa85dd9074789982d3c2224856, type: 2}
+  - selectPrefab: {instanceID: 0}
+  - myTR: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

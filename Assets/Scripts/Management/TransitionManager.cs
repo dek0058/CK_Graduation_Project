@@ -108,10 +108,10 @@ namespace Game.Management {
                 case SceneType.Menu: { 
                 } break;
                 case SceneType.Game_StageJoy: {
-                   // GameManager.instance.current_stage.load_resource ( );
+                   //GameManager.instance.current_stage.load_resource ( );
                 } break;
             }
-            /*
+            
             loader.load ( );
             while(!loader.is_complete) {
                 float current = loader.current;
@@ -119,7 +119,7 @@ namespace Game.Management {
                 // TODO : 프로그래스 바는 여기서
                 yield return null;
             }
-            */
+            
             yield return StartCoroutine ( SceneFader.Efade_in ( ) );
         }
 

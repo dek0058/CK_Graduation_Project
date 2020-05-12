@@ -1,0 +1,63 @@
+{
+  "_from": "github:rotorz/unity3d-localized-strings#semver:^1.0.1",
+  "_id": "@rotorz/unity3d-localized-strings@1.0.3",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/@rotorz/unity3d-localized-strings",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "@rotorz/unity3d-localized-strings@github:rotorz/unity3d-localized-strings#semver:^1.0.1",
+    "name": "@rotorz/unity3d-localized-strings",
+    "escapedName": "@rotorz%2funity3d-localized-strings",
+    "scope": "@rotorz",
+    "rawSpec": "github:rotorz/unity3d-localized-strings#semver:^1.0.1",
+    "saveSpec": "github:rotorz/unity3d-localized-strings#semver:^1.0.1",
+    "fetchSpec": null,
+    "gitRange": "^1.0.1",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "/@rotorz/unity3d-tile-system"
+  ],
+  "_resolved": "github:rotorz/unity3d-localized-strings#91e604843ccbbf5f53338bcb2a7e380959d0af77",
+  "_spec": "@rotorz/unity3d-localized-strings@github:rotorz/unity3d-localized-strings#semver:^1.0.1",
+  "_where": "D:\\Pixellore\\Subterrain 2\\Subterrain2\\node_modules\\@rotorz\\unity3d-tile-system",
+  "author": {
+    "name": "Rotorz Limited"
+  },
+  "bin": {
+    "extract-strings": "./scripts/extract-strings.js"
+  },
+  "bugs": {
+    "url": "https://github.com/rotorz/unity3d-localized-strings/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@rotorz/dotnet-exception-utils": "github:rotorz/dotnet-exception-utils#semver:^1.0.3",
+    "@rotorz/dotnet-localized-strings": "github:rotorz/dotnet-localized-strings#semver:^1.0.1",
+    "@rotorz/dotnet-type-utils": "github:rotorz/dotnet-type-utils#semver:^1.0.2",
+    "@rotorz/unity3d-package-utils": "github:rotorz/unity3d-package-utils#semver:^1.0.1",
+    "commander": "^2.18.0",
+    "glob": "^7.1.3",
+    "js-yaml": "^3.12.0"
+  },
+  "deprecated": false,
+  "description": "A lightweight localization framework for Unity editor scripts.",
+  "homepage": "https://github.com/rotorz/unity3d-localized-strings#readme",
+  "keywords": [
+    "unity3d",
+    "unity3d-package"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@rotorz/unity3d-localized-strings",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rotorz/unity3d-localized-strings.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.3"
+}

@@ -15,7 +15,7 @@ namespace Game.Unit {
         public float rhythm;                // 유닛 속도
         public float mspeed;                // 이동 속도
         public float aspeed;                // 공격 속도
-
+        public float rspeed;                // 회전 속도
 
         public float damage;                // 공격력
         public float armor;                 // 방어력
@@ -33,7 +33,7 @@ namespace Game.Unit {
         public Vector2 axis;                // 바라보고 있는 축
 
         public float flying;                // 기본 높이 (고정)
-        public float current_flying;        // 현재 높이
+        public float airborn;        // 현재 높이
 
 
         // 추가 스텟

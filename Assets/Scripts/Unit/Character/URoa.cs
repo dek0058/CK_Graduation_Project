@@ -6,6 +6,12 @@ namespace Game.Unit.Character {
 
     public class URoa : UUnit {
 
+        private enum ActionId {
+            Idle = 0,
+            Movement = 1,
+            Attack = 2,
+        }
+
         
         private RoaType my_type;
 
@@ -27,20 +33,18 @@ namespace Game.Unit.Character {
 
         protected override void active_rotate() {
             base.active_rotate();
-            float angle = Angle.trim ( unit_status.angle ) / 360f;
-            get_animator ( ).SetFloat ( Animation_Angle_Hash, angle );
         }
 
 
         protected override void active_move() {
-            if(get_animator_state(0).IsTag(state_tag[AnimatorTag.Movement]) ||
-                get_animator_nextstate ( 0 ).IsTag ( state_tag[AnimatorTag.Movement] ) ) { 
-                base.active_move ( );
+            if(unit_status.input == Vector2.zero) {
+                return;
             }
 
-            // HACK : 수정예정
-
-            get_animator ( ).SetBool ( "isMovement", unit_order.execute ( ) == OrderId.Move );
+            base.active_move ( );
+            if ( get_animator ( ).GetInteger ( state_para[AnimatorParameter.OrderId] ) != (int)ActionId.Movement ) {
+                action_animation ( (int)ActionId.Movement );
+            }
         }
 
 

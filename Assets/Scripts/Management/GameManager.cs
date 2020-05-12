@@ -16,6 +16,9 @@ namespace Game.Management {
         public GamePostProcessing post_processing;
 
 
+        public float world_Y_position = 0.001f;
+
+
         public void load_resource ( ) {
             // TODO : 추가 리소스들
             current_stage.load_resource ( );
@@ -37,7 +40,7 @@ namespace Game.Management {
         public void initialize ( ) {
             PlayerManager.instance.initialize ( );
             game_initializer.initialize ( );
-            current_stage.initialize ( );
+            //current_stage.initialize ( );
         }
 
 

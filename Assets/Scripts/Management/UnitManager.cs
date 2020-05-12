@@ -16,6 +16,7 @@ namespace Game.Management
             Hp,
             Mspeed,
             Aspeed,
+            Rspeed,
             Damage,
             Armor,
             Atime,
@@ -53,6 +54,7 @@ namespace Game.Management
                             { DataType.Hp,          u_data[i].hp},
                             { DataType.Mspeed,      u_data[i].mspeed },
                             { DataType.Aspeed,      u_data[i].aspeed },
+                            { DataType.Aspeed,      u_data[i].rspeed },
                             { DataType.Damage,      u_data[i].damage },
                             { DataType.Armor,       u_data[i].armor },
                             { DataType.Atime,       u_data[i].atime },
@@ -71,6 +73,7 @@ namespace Game.Management
                             { DataType.Hp,          Convert.ToSingle ( table[i]["hp"] ) },
                             { DataType.Mspeed,      Convert.ToSingle ( table[i]["mspeed"] ) },
                             { DataType.Aspeed,      Convert.ToSingle ( table[i]["aspeed"] ) },
+                            { DataType.Rspeed,      Convert.ToSingle ( table[i]["rspeed"] ) },
                             { DataType.Damage,      Convert.ToSingle ( table[i]["damage"] ) },
                             { DataType.Armor,       Convert.ToSingle ( table[i]["armor"] ) },
                             { DataType.Atime,       Convert.ToSingle ( table[i]["atime"] ) },
@@ -94,6 +97,7 @@ namespace Game.Management
                          unit_data.unit_table_data.hp = Convert.ToSingle(data_table[i][DataType.Hp]);
                          unit_data.unit_table_data.mspeed = Convert.ToUInt32(data_table[i][DataType.Mspeed]);
                          unit_data.unit_table_data.aspeed = Convert.ToUInt32(data_table[i][DataType.Aspeed]);
+                         unit_data.unit_table_data.rspeed = Convert.ToUInt32(data_table[i][DataType.Rspeed]);
                          unit_data.unit_table_data.damage = Convert.ToUInt32(data_table[i][DataType.Damage]);
                          unit_data.unit_table_data.armor = Convert.ToUInt32(data_table[i][DataType.Armor]);
                          unit_data.unit_table_data.atime = Convert.ToUInt32(data_table[i][DataType.Atime]);

@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f1dd113bb5eed4cafc47b3a915b011, type: 3}
+  m_Name: samplemap
+  m_EditorClassIdentifier: 
+  MAPDATA: XY/15/15/1.3/0.4
+  PREFABDATA:
+  - 0/0/0/0/0/0/0/3_13 59/BLOCK_BLUE
+  - 0/0/0/0/0/0/0/4_14 75/BLOCK_BLUE
+  - 0/0/0/0/0/0/0/5_14 90/BLOCK_BLUE
+  - 0/0/0/0/0/0/0/6_14 105/BLOCK_BLUE
+  - 0/0/0/0/0/0/0/7_13 119/BLOCK_BLUE
+  - 0/0/0/0/0/0/0/8_12 133/BLOCK_BLUE
+  - 0/0/0/0/0/0/0/9_12 148/BLOCK_BLUE
+  - 0/0/0/0/0/0/0/10_12 163/BLOCK_BLUE
+  - 0/0/0/0/0/0/0/12_13 194/BLOCK_BLUE
+  - 0/0/0/0/0/0/0/10_14 165/BLOCK_BLUE
+  - 0/0/0/0/0/0/0/11_14 180/BLOCK_BLUE
+  - 0/0/0/0/0/0/0/11_12 178/BLOCK_BLUE
+  - 0/0/0/0/0/0/0/4_12 73/BLOCK_BLUE
+  - 0/0/0/0/0/0/0/4_10 71/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/5_10 86/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/6_10 101/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/7_10 116/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/8_10 131/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/9_10 146/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/10_10 161/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/11_10 176/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/12_10 191/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/3_10 56/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/4_9 70/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/5_8 84/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/6_8 99/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/4_7 68/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/3_6 52/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/4_6 67/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/5_6 82/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/6_6 97/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/7_6 112/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/8_6 127/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/9_6 142/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/10_6 157/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/11_6 172/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/12_6 187/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/3_4 50/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/4_4 65/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/5_4 80/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/6_4 95/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/7_4 110/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/8_4 125/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/9_4 140/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/10_4 155/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/11_4 170/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/12_4 185/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/3_3 49/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/4_2 63/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/5_2 78/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/6_2 93/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/7_2 108/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/8_3 124/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/3_0 46/BLOCK_BLUE
+  - 0/0/0/0/0/0/0/4_0 61/BLOCK_GRAY
+  - 0/0/0/0/0/0/0/5_0 76/BLOCK_GREEN
+  - 0/0/0/0/0/0/0/6_0 91/BLOCK_MAGENTA
+  - 0/0/0/0/0/0/0/7_0 106/BLOCK_MAGENTA2
+  - 0/0/0/0/0/0/0/8_0 121/BLOCK_PINK
+  - 0/0/0/0/0/0/0/9_0 136/BLOCK_RED
+  - 0/0/0/0/0/0/0/10_0 151/BLOCK_SKYBLUE
+  - 0/0/0/0/0/0/0/11_0 166/BLOCK_YELLOW
+  - 0/0/0/0/0/0/0/12_0 181/BLOCK_BLUE
+  PrefabSources:
+  - {fileID: 166800, guid: fe14dbc580bb49046a5ede93d3fd3880, type: 3}
+  - {fileID: 154064, guid: 38a4d88f60bef2544acda6c83904117b, type: 3}
+  - {fileID: 153588, guid: 7a46f65fb63b64041b1a402dfcbf26a9, type: 3}
+  - {fileID: 136674, guid: 4fc0e83e4d24b91478b9e9f1594d61f8, type: 3}
+  - {fileID: 122326, guid: 6bfb622742282524baf90f785cda9a9c, type: 3}
+  - {fileID: 199066, guid: 69902d7db24ac894cb562a4344ee5ae0, type: 3}
+  - {fileID: 133164, guid: 523cc2fa454e7a746ae8b9f95347780c, type: 3}
+  - {fileID: 154610, guid: 052c0bf827171404bafe6446f8633abb, type: 3}
+  - {fileID: 148824, guid: 21ce3ac14fa52344cba53fcb4d3ba654, type: 3}

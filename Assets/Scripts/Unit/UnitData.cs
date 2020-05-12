@@ -20,6 +20,7 @@ namespace Game.Unit
         public float hp;                // 체력
         public float mspeed;            // 이동속도
         public float aspeed;            // 공격속도
+        public float rspeed;            // 회전속도
 
         public float damage;            // 공격력
         public float armor;             // 방어력
@@ -28,13 +29,14 @@ namespace Game.Unit
 
         // TODO : 추가 스텟 AND 추가해야할 능력부여
 
-        public UnitTableData(string _id, string _nickname, string _hp, string _mspeed, string _aspeed, string _damage, string _armor, string _atime, string _flying)
+        public UnitTableData(string _id, string _nickname, string _hp, string _mspeed, string _aspeed, string _rspeed, string _damage, string _armor, string _atime, string _flying)
         {
             id = uint.Parse(_id);
             nickname = _nickname;
             hp = float.Parse(_hp);
             mspeed = float.Parse(_mspeed);
             aspeed = float.Parse(_aspeed);
+            rspeed = float.Parse(_rspeed);
             damage = float.Parse(_damage);
             armor = float.Parse(_armor);
             atime = float.Parse(_atime);
