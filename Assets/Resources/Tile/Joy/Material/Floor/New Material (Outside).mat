@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: New Material (Outside)
   m_Shader: {fileID: -6465566751694194690, guid: 98703357648dd2a43b510416e0066cc0,
     type: 3}
   m_ShaderKeywords: 
@@ -53,7 +53,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Boolean_8D440219: 0
+    - Boolean_8D440219: 1
     - Vector1_1A78205: 1
     - Vector1_3A5BAD49: 0.25
     - Vector1_40222094: 0

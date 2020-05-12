@@ -19,7 +19,7 @@ namespace Game.Management {
         public bool is_update = false;
 
 
-        
+        public Transform target;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///                                                                 Unity                                                                ///
@@ -33,6 +33,10 @@ namespace Game.Management {
 #if UNITY_EDITOR
             if ( !is_update) {
                 return;
+            }
+
+            if( target ) {
+                world_position = new Vector3 ( target.position.x, world_position.y, target.position.z );
             }
 
             Shader.SetGlobalVector ( "_world_pos", world_position );
