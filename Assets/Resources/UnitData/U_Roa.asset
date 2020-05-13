@@ -18,7 +18,7 @@ MonoBehaviour:
     hp: 10
     mspeed: 100
     aspeed: 1
-    rspeed: 500
+    rspeed: 1000
     damage: 1
     armor: 0
     atime: 1

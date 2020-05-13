@@ -29,6 +29,9 @@ namespace Game.Management {
             Beatbox_Platform,
             //
 
+            // Effect
+            Purgatory_Area,
+
             // Weapon
 
 
@@ -92,6 +95,9 @@ namespace Game.Management {
 
             // Product
             {Resource.Beatbox_Platform, "Unit/Product/BeatboxPuzzle/Beatbox Platform" },
+
+            // Effect
+            {Resource.Purgatory_Area, "Ability/Prefab/Purgatory Area" },
 
             // Weapon
 

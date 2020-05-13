@@ -27,6 +27,7 @@ namespace Game.Unit {
         public OrderId execute ( ) {
             OrderId id = previous;
             previous = next;
+            next = OrderId.None;
             return id;
         }
 
@@ -50,6 +51,6 @@ namespace Game.Unit {
         Attack,
 
         // 어빌리티
-
+        PurgatoryArea,
     }
 }

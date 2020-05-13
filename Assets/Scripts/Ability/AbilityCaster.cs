@@ -4,11 +4,13 @@ using System.Collections.Generic;
 
 namespace Game.Ability{
     using Unit;
+    using Management;
 
     [System.Serializable]
     public class AbilityCaster {
 
         public UUnit unit;
+        public Ability.Info info = new Ability.Info();
         public List<Ability> abilitys = new List<Ability> ( );
 
         /// <summary> 능력의 상태 </summary>
@@ -27,8 +29,8 @@ namespace Game.Ability{
 
 
         public static void add(UUnit unit, int id) {
-            if(Ability.ability_list.ContainsKey(id)) {
-                Ability a = Ability.ability_list[id];
+            if ( AbilityManager.instance.ability_list.ContainsKey ( id ) ) {
+                Ability a = AbilityManager.instance.ability_list[id];
                 if ( !unit.ability_caster.abilitys.Contains ( a ) ) {
                     unit.ability_caster.abilitys.Add ( a );
                 }
@@ -36,8 +38,8 @@ namespace Game.Ability{
         }
 
         public static void remove(UUnit unit, int id) {
-            if ( Ability.ability_list.ContainsKey ( id ) ) {
-                Ability a = Ability.ability_list[id];
+            if ( AbilityManager.instance.ability_list.ContainsKey ( id ) ) {
+                Ability a = AbilityManager.instance.ability_list[id];
                 if ( unit.ability_caster.abilitys.Contains ( a ) ) {
                     unit.ability_caster.abilitys.Remove ( a );
                 }
@@ -55,16 +57,14 @@ namespace Game.Ability{
                     continue;
                 }
                 if(unit.unit_order.order == abilitys[i].order_id) {
-                    // TODO : 어빌리티 사용
+                    // HACK : 스펠마다 단계가 있어야 함.
+                    unit.unit_order.execute ( );
+                    abilitys[i].event_use ( info );
                     break;
                 }
             }
 
         }
-
-
-        
-
 
 
         /// <summary>

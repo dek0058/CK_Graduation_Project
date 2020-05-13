@@ -169,6 +169,9 @@ namespace Game.Unit {
                 }
             }
 
+            ability_caster.unit = this;
+            ability_caster.info.source = this;
+
 
             if ( movement_system == null ) {
                 movement_system = GetComponent<MovementSystem> ( );
@@ -343,8 +346,9 @@ namespace Game.Unit {
 
         protected virtual void active_update ( ) {
             unit_order.update ( );
+            ability_caster.update ( );
 
-            if(get_animator() != null) {
+            if (get_animator() != null) {
                 get_animator ( ).SetFloat ( state_para[AnimatorParameter.Aspeed], unit_status.rhythm );
             }
 
@@ -438,7 +442,8 @@ namespace Game.Unit {
         ///                               Unity                                  ///
         ////////////////////////////////////////////////////////////////////////////
 
-        private void Awake ( ) {
+        private IEnumerator Start ( ) {
+            yield return new WaitUntil ( ( ) => GameManager.instance.is_complete );
             confirm ( );
         }
 

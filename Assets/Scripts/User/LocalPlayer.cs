@@ -11,7 +11,7 @@ namespace Game.User {
 
         [Header ( "Control Unit" )]
         public UUnit unit = null;
-        public BitLayer layer = new BitLayer ( );
+        public bool do_input = false;
 
         private Vector2 axis = new Vector2 ( );
         private float releas_both_input_time = 0f;
@@ -47,6 +47,7 @@ namespace Game.User {
             if ( !is_local || unit == null ) {
                 return;
             }
+            do_input = false;
 
             // 이동
             float x = Singleton<PlayerInput>.instance.horizontal.value;
@@ -109,9 +110,9 @@ namespace Game.User {
 
             // 이동 키를 누르고 있으므로 유닛에게 이동 명령을 알림
             if( is_receiving ) {
+                do_input = true;
                 unit.unit_order.set ( OrderId.Move );
             }
-            layer.set ( (int)UnitOrderProperties.Properties.Movement, is_receiving );
             unit.move ( temp_axis );
 
             // 키보드 회전
@@ -122,23 +123,23 @@ namespace Game.User {
 
 
             if ( Singleton<PlayerInput>.instance.attack.down ) {
+                do_input = true;
                 unit.unit_order.set ( OrderId.Attack );
-                layer.set ( (int)UnitOrderProperties.Properties.Attack, true );
-            } else if ( !Singleton<PlayerInput>.instance.attack.held ) {
-                layer.set ( (int)UnitOrderProperties.Properties.Attack, false );
             }
 
             if ( Singleton<PlayerInput>.instance.purgatory.down ) {
-                if ( !is_purgatory ) {
-                    active_purgatory_area ( );
-                } else {
-                    inactive_purgatory_area ( );
-                }
+                do_input = true;
+                unit.unit_order.set ( OrderId.PurgatoryArea );
+                //if ( !is_purgatory ) {
+                //    active_purgatory_area ( );
+                //} else {
+                //    inactive_purgatory_area ( );
+                //}
             }
 
 
-            if ( layer.current == 0 ) {
-                unit.unit_order.set ( OrderId.Stop );
+            if ( !do_input ) {
+                //unit.unit_order.set ( OrderId.Stop );
             }
 
 

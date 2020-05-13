@@ -25,7 +25,7 @@ namespace Game.Unit {
         }
 
         [SerializeField]
-        private float radius;
+        private float radius = 0.05f;
 
 
         /// <summary>

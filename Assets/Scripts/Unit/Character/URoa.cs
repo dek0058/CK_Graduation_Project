@@ -1,8 +1,10 @@
 using UnityEngine;
 
 namespace Game.Unit.Character {
-    using Game.Unit.Type;
+    using Type;
     using JToolkit.Math;
+    using Ability;
+    using Ability.Spell;
 
     public class URoa : UUnit {
 
@@ -25,7 +27,7 @@ namespace Game.Unit.Character {
                 // unit_data = Resources.Load<UnitData>("PATH");
             }
 
-
+            AbilityCaster.add ( this, APurgatoryArea.ID );
             
             my_type = unit_type as RoaType;
         }
@@ -50,7 +52,6 @@ namespace Game.Unit.Character {
 
         protected override void active_update() {
             base.active_update();
-
         }
 
         protected override void active_fixedupdate() {

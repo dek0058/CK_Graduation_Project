@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
   m_Name: GreyMask
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
     passTag: GreyMask
     Event: 550
@@ -57,7 +57,7 @@ MonoBehaviour:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 32256
+        m_Bits: 4294967295
       PassNames: []
     overrideMaterial: {fileID: 2100000, guid: 7c81807d435b3c1488772b834bf8366f, type: 2}
     overrideMaterialPassIndex: 0

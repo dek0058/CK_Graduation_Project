@@ -15,9 +15,8 @@ namespace Game.Management {
 
         public GamePostProcessing post_processing;
 
-
         public float world_Y_position = 0.001f;
-
+        public bool is_complete = false;
 
         public void load_resource ( ) {
             // TODO : 추가 리소스들
@@ -39,8 +38,11 @@ namespace Game.Management {
 
         public void initialize ( ) {
             PlayerManager.instance.initialize ( );
+            AbilityManager.instance.initialize ( );
             game_initializer.initialize ( );
             //current_stage.initialize ( );
+
+            is_complete = true;
         }
 
 
