@@ -580,7 +580,7 @@ namespace Rotorz.Tile.Editor
             }
             else {
                 template = ProjectSettings.Instance.OpaqueTilesetMaterialTemplate;
-                shaderName = "Rotorz/Tileset/Opaque Unlit";
+                shaderName = "Shader Graphs/DefaultTilemapSG ";
             }
 
             var material = template != null
