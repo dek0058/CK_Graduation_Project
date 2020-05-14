@@ -3,8 +3,8 @@ using System.Collections;
 
 namespace Game.Management {
     using JToolkit.Utility;
-    using Game.Stage;
-    
+    using Stage;
+    using Unit;
 
     public class GameManager : Singleton<GameManager> {
         public const float World_Y_Position = 0.02f;
@@ -19,14 +19,10 @@ namespace Game.Management {
 
         public bool is_complete = false;
 
+
         public void load_resource ( ) {
             // TODO : 추가 리소스들
             current_stage.load_resource ( );
-        }
-
-
-        public void confirm ( ) {
-
         }
 
 
@@ -37,6 +33,11 @@ namespace Game.Management {
             current_stage?.initialize ( );
 
             is_complete = true;
+        }
+
+
+        public void unit_pause(bool value) {
+            UUnit[] unit = Unit_Transform.GetComponentsInChildren<UUnit> ( );
         }
 
 
@@ -56,10 +57,6 @@ namespace Game.Management {
                 if ( instance != this ) {
                     Destroy ( gameObject );
                 }
-            }
-
-            if(instance == this) {
-                confirm ( );
             }
         }
 

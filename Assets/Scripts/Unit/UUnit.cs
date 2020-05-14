@@ -200,6 +200,19 @@ namespace Game.Unit {
 
 
         /// <summary>
+        /// 유닛을 정지시킵니다.
+        /// </summary>
+        public void pause ( bool value ) {
+            if(value) {
+                unit_order_properties.save ( );
+                unit_order_properties.clear ( );
+            } else {
+                unit_order_properties.load ( );
+            }
+        }
+
+
+        /// <summary>
         /// Unit을 목표 각도로 회전시킵니다.
         /// </summary>
         public virtual void rotate ( float target ) {
