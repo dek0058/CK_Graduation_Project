@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9152509444031317555}
   m_Layer: 0
-  m_Name: Room_D_Ground_04
+  m_Name: Room_D_Ground_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 4f72980b8961c3b438557d245f54b34a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4f72980b8961c3b438557d245f54b34a,
         type: 3}
@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 4f72980b8961c3b438557d245f54b34a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4f72980b8961c3b438557d245f54b34a,
         type: 3}
