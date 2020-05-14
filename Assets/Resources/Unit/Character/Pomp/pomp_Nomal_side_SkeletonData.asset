@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: pomp_Nomal_side_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: bbfd1926d923fc5498f4ed3590b0eaff, type: 2}
+  - {fileID: 11400000, guid: 476654758e4ca634ab69c9150a5e582d, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 3d5f29d753084a9468307a6709d65cbb, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 0d292d7b811e86f4890b2cd7834b1638, type: 3}
   skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []
   defaultMix: 0.2
-  controller: {fileID: 9100000, guid: 358e83789d35c1742b3ab8519e2a9d4f, type: 2}
+  controller: {fileID: 9100000, guid: d343501658a81344abe639d225e59ba0, type: 2}

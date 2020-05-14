@@ -7,6 +7,7 @@ namespace Game.Management {
     
 
     public class GameManager : Singleton<GameManager> {
+        public const float World_Y_Position = 0.002f;
 
         public Transform allocation_area;
 
@@ -15,7 +16,6 @@ namespace Game.Management {
 
         public GamePostProcessing post_processing;
 
-        public float world_Y_position = 0.001f;
         public bool is_complete = false;
 
         public void load_resource ( ) {

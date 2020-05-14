@@ -26,6 +26,7 @@ namespace Game.Unit {
 
         [SerializeField]
         private float radius = 0.05f;
+        private float pre_ground_y = GameManager.World_Y_Position;
 
 
         /// <summary>
@@ -75,7 +76,7 @@ namespace Game.Unit {
 
             flying = unit.unit_status.flying;
             airborn = unit.unit_status.airborn;
-            transform.position = new Vector3 ( transform.position.x, GameManager.instance.world_Y_position + flying + airborn, transform.position.z );
+            transform.position = new Vector3 ( transform.position.x, GameManager.World_Y_Position + flying + airborn, transform.position.z );
         }
 
 
@@ -87,20 +88,25 @@ namespace Game.Unit {
 
         private void update_airborn ( ) {    // Fixed
             float amount = flying + airborn;
-            float true_flying = transform.position.y - amount;
-            Vector3 position = transform.position + new Vector3(0f, amount, 0f);
+            float ground_y = pre_ground_y + GameManager.World_Y_Position;
+            Vector3 position = grounded ? 
+                new Vector3( transform.position.x, ground_y + amount, transform.position.z) : transform.position;
 
-            if(!Mathf.Approximately(true_flying, GameManager.instance.world_Y_position)) {  // Y값 보정
-                transform.position = new Vector3 ( transform.position.x, GameManager.instance.world_Y_position + amount, transform.position.z );
+            if (grounded) {
+                if ( position.y < ground_y ) {
+                    position.y = ground_y;
+                }
             }
 
             rigidbody.MovePosition ( position );
 
-            if( amount > 0f) {
+            if( airborn > 0f) {
                 unit.unit_status.airborn += Physics.gravity.y * fixedtimescale;
-            } else if( amount < 0f ) {
+            } else if( airborn < 0f ) {
                 unit.unit_status.airborn = 0f;
             }
+
+            
         }
 
 
@@ -111,7 +117,13 @@ namespace Game.Unit {
 
             bool collision = Physics.SphereCast ( origin, radius, Vector3.down, out hit, Mathf.Infinity, layer );
             if(collision ) {
-                grounded = true;
+                if ( hit.normal.y >= 1.0f) {
+                    grounded = true;
+                    pre_ground_y = hit.point.y;
+                } else {
+                    grounded = false;
+                }
+
             } else {
                 grounded = false;
             }

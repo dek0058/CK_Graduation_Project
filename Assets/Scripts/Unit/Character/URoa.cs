@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace Game.Unit.Character {
     using Type;
-    using JToolkit.Math;
     using Ability;
     using Ability.Spell;
 
@@ -22,13 +21,7 @@ namespace Game.Unit.Character {
         public override void confirm() {
             base.confirm();
 
-            if(unit_data == null) {
-                // TODO : 유닛 데이타 경로
-                // unit_data = Resources.Load<UnitData>("PATH");
-            }
-
             AbilityCaster.add ( this, APurgatoryArea.ID );
-            
             my_type = unit_type as RoaType;
         }
 

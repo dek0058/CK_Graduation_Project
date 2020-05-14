@@ -11,8 +11,6 @@ namespace Game.Management {
         public Vector3 world_position = Vector3.zero;
         [Range(0, 100f)]
         public float radius = 2f;
-        [Range(0, 100f)]
-        public float softness = 0f;
         [Range ( 0, 1f )]
         public float alpha = 1f;
 
@@ -37,9 +35,9 @@ namespace Game.Management {
 #endif
             Shader.SetGlobalVector ( "_world_pos", world_position );
             Shader.SetGlobalFloat ( "_radius", radius );
-            Shader.SetGlobalFloat ( "_softness", softness );
             Shader.SetGlobalFloat ( "_alpha", alpha );
         }
+
 
         private void OnEnable ( ) {
             if ( instance == null ) {

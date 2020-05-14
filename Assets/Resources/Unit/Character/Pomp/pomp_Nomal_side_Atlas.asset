@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: pomp_Nomal_side_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: 5b9980871962a4142ba9f864fa42e0ee, type: 3}
+  atlasFile: {fileID: 4900000, guid: ea93352b754ddd44d897598faeef1bf1, type: 3}
   materials:
-  - {fileID: 2100000, guid: e1e212f45953644489069129951bcece, type: 2}
+  - {fileID: 2100000, guid: b8be00a4ae324204f98cf2e16b8f0eea, type: 2}
