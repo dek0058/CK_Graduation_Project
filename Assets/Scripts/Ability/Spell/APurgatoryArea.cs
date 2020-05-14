@@ -15,6 +15,7 @@ namespace Game.Ability.Spell {
         public APurgatoryArea ( ) {
             order_id = OrderId.PurgatoryArea;
             cooltime = 0.1f;
+            ignore_doing = true;
             event_use += use;
             effect = create ( ).GetComponent<PurgatoryArea> ( );
             effect.active ( false );

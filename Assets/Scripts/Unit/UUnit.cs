@@ -36,8 +36,20 @@ namespace Game.Unit {
         public event on_attack event_attack    = null;
         public event on_damaged event_damaged  = null;
 
-        private float fixedtimescale = 0f;
+        protected bool doing = false;
+        public bool action_doing {
+            get => doing;
+            set {
+                doing = value;
+                if ( doing ) {
+                    if ( get_animator ( ) != null ) {
+                        get_animator ( ).ResetTrigger ( state_para[AnimatorParameter.Action] );
+                    }
+                }
+            }
+        }
 
+        private float fixedtimescale = 0f;
         private bool do_confirm = false;
 
         public enum AnimatorTag {
@@ -241,6 +253,7 @@ namespace Game.Unit {
         /// </summary>
         /// <param name="id">애니메이션 ID</param>
         public void action_animation ( int id ) {
+            unit_type.animator.ResetTrigger ( state_para[AnimatorParameter.Action] );
             unit_type.animator.SetInteger ( state_para[AnimatorParameter.OrderId], id );
             unit_type.animator.SetTrigger ( state_para[AnimatorParameter.Action] );
         }
@@ -286,8 +299,11 @@ namespace Game.Unit {
         /// <summary>
         /// 유닛이 공격을 시작했을 때 이벤트
         /// </summary>       
-        protected void active_attack ( ) {
+        protected virtual void active_attack ( ) {
+            // TODO : 어떠한 행동을 하고 있다면 Ruturn 시켜줘야함
             event_attack?.Invoke ( this );
+            unit_order.execute ( );
+            action_doing = true;
         }
 
 
@@ -350,39 +366,23 @@ namespace Game.Unit {
 
         protected virtual void active_update ( ) {
             //ability_caster.update ( );
-            for ( int i = 0; i < ability_caster.abilitys.Count; ++i ) {
-                if ( ability_caster.abilitys[i].is_passive ) {
-                    continue;
-                }
-                if ( unit_order.order == ability_caster.abilitys[i].order_id ) {
-                    if ( ability_caster.abilitys[i].is_cooltime ) {
-                        break;
-                    }
-
-                    // HACK : 스펠마다 단계가 있어야 함.
-                    unit_order.execute ( );
-                    ability_caster.abilitys[i].ability.event_use ( ability_caster.info );
-                    StartCoroutine ( ability_caster.Ecooltime_update ( ability_caster.abilitys[i] ) );
-
-                    break;
-                }
-            }
-
 
             if (get_animator() != null) {
                 get_animator ( ).SetFloat ( state_para[AnimatorParameter.Aspeed], unit_status.rhythm );
             }
 
-            
-            if ( unit_movemt_order.order == OrderId.Stop ||
-                unit_movemt_order.order == OrderId.None ) {
 
-                if ( unit_movemt_order.order == OrderId.Stop ) {
-                    unit_movemt_order.execute ( );
-                }
-                unit_status.look_at = unit_status.angle;
-                if ( get_animator ( ).GetInteger ( state_para[AnimatorParameter.OrderId] ) != 0 ) {
-                    action_animation ( 0 );
+            if ( !doing ) {
+                if ( unit_movemt_order.order == OrderId.Stop ||
+                    unit_movemt_order.order == OrderId.None ) {
+
+                    if ( unit_movemt_order.order == OrderId.Stop ) {
+                        unit_movemt_order.execute ( );
+                    }
+                    unit_status.look_at = unit_status.angle;
+                    if ( get_animator ( ).GetInteger ( state_para[AnimatorParameter.OrderId] ) != 0 ) {
+                        action_animation ( 0 );
+                    }
                 }
             }
         }
@@ -390,13 +390,46 @@ namespace Game.Unit {
 
         protected virtual void active_fixedupdate ( ) {
             fixedtimescale = Time.fixedDeltaTime * unit_status.rhythm;
+            
+            if ( unit_order_properties.get ( UnitOrderProperties.Properties.Attack ) ) {
+                if ( unit_order.order == OrderId.Attack ) {
+                    active_attack ( );
+                }
+            }
 
-            if (unit_order_properties.get(UnitOrderProperties.Properties.Rotation)) {
+            if ( unit_order_properties.get ( UnitOrderProperties.Properties.Rotation ) ) {
                 active_rotate ( );
             }
-            
-            if(unit_order_properties.get(UnitOrderProperties.Properties.Movement)) {
+
+            if ( unit_order_properties.get ( UnitOrderProperties.Properties.Movement ) ) {
                 active_move ( );
+            }
+
+            if ( unit_order_properties.get ( UnitOrderProperties.Properties.Spell ) ) {
+                for ( int i = 0; i < ability_caster.abilitys.Count; ++i ) {
+                    if ( ability_caster.abilitys[i].is_passive ) {
+                        continue;
+                    }
+                    if ( unit_order.order == ability_caster.abilitys[i].order_id ) {
+                        if ( ability_caster.abilitys[i].is_cooltime ) {
+                            break;
+                        }
+
+                        if ( ability_caster.abilitys[i].ability.ignore_doing ) {
+                            unit_order.execute ( );
+                            ability_caster.abilitys[i].ability.event_use ( ability_caster.info );
+                            StartCoroutine ( ability_caster.Ecooltime_update ( ability_caster.abilitys[i] ) );
+                        } else {
+                            if ( !action_doing ) {
+                                unit_order.execute ( );
+                                ability_caster.abilitys[i].ability.event_use ( ability_caster.info );
+                                StartCoroutine ( ability_caster.Ecooltime_update ( ability_caster.abilitys[i] ) );
+                            }
+                        }
+                        // HACK : 스펠마다 단계가 있어야 함.
+                        break;
+                    }
+                }
             }
         }
 
@@ -409,7 +442,6 @@ namespace Game.Unit {
 
             unit_movemt_order.update ( );
             unit_order.update ( );
-            
         }
 
 
@@ -473,6 +505,7 @@ namespace Game.Unit {
 
         private IEnumerator Start ( ) {
             yield return new WaitUntil ( ( ) => GameManager.instance.is_complete );
+            Animation.SceneLinkedSMB<UUnit>.Initialize ( get_animator ( ), this );
             confirm ( );
         }
 

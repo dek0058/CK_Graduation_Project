@@ -7,14 +7,14 @@ namespace Game.Management {
     
 
     public class GameManager : Singleton<GameManager> {
-        public const float World_Y_Position = 0.002f;
+        public const float World_Y_Position = 0.02f;
 
-        public Transform allocation_area;
+        public Transform Unit_Transform;
+
 
         public GameCamera game_camera = new GameCamera();
         public GameStage current_stage = null;
         public GameInitializer game_initializer = new GameInitializer ( );
-
         public GamePostProcessing post_processing = new GamePostProcessing();
 
         public bool is_complete = false;
@@ -27,9 +27,6 @@ namespace Game.Management {
 
         public void confirm ( ) {
 
-            if ( allocation_area == null ) {
-                allocation_area = GameObject.FindGameObjectWithTag ( "AllocationArea" ).transform;
-            }
         }
 
 
@@ -37,7 +34,7 @@ namespace Game.Management {
             PlayerManager.instance.initialize ( );
             AbilityManager.instance.initialize ( );
             game_initializer.initialize ( );
-            //current_stage.initialize ( );
+            current_stage.initialize ( );
 
             is_complete = true;
         }

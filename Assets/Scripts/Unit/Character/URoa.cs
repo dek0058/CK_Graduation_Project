@@ -27,12 +27,16 @@ namespace Game.Unit.Character {
 
 
         protected override void active_rotate ( ) {
+            if( action_doing ) {
+                return;
+            }
+
             base.active_rotate ( );
         }
 
 
         protected override void active_move ( ) {
-            if ( unit_status.input == Vector2.zero ) {
+            if ( unit_status.input == Vector2.zero || action_doing) {
                 return;
             }
 
@@ -40,7 +44,16 @@ namespace Game.Unit.Character {
             if ( get_animator ( ).GetInteger ( state_para[AnimatorParameter.OrderId] ) != (int)ActionId.Movement ) {
                 action_animation ( (int)ActionId.Movement );
             }
-        } 
+        }
+
+
+        protected override void active_attack ( ) {
+            if (doing) {
+                return;
+            }
+            base.active_attack ( );
+            action_animation ( (int)ActionId.Attack );
+        }
 
 
         protected override void active_update() {

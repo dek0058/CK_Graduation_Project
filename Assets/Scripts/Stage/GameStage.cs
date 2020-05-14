@@ -7,7 +7,7 @@ namespace Game.Stage {
 
     public class GameStage : MonoBehaviour {
 
-        
+        public Transform start_point;
         
         public virtual void load_resource ( ) { // 게임씬에서 필요한 프리펩 로드
             ResourceLoader.instance.add ( ResourceLoader.Resource.Roa );
@@ -15,11 +15,15 @@ namespace Game.Stage {
 
 
         public void initialize ( ) {
-            
+            UUnit unit = UUnit.create<Unit.Character.URoa> ( start_point.position, PlayerManager.instance.local_player );
+            unit.transform.parent = GameManager.instance.Unit_Transform;
+            PlayerManager.instance.local_player.unit = unit;
+
+            GameManager.instance.game_camera.cv_camera.Follow = unit.transform;
         }
 
 
-        
+
 
 
         private void confirm ( ) {

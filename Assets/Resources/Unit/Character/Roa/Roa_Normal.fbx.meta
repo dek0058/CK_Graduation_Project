@@ -1,17 +1,23 @@
 fileFormatVersion: 2
-guid: 20ca68946cbab2f4b8202f46662b06f8
+guid: 957b21635f5c6b548b3736c0cee53178
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
-      74: -5252816984213320552
-    second: idle
+      74: 1995016039022346462
+    second: RoA_Normal_basics
   - first:
-      74: 6200578666267062213
-    second: run
+      74: 2647870366443146230
+    second: RoA_Normal_run
   - first:
-      74: -6239216113759591374
-    second: attack
+      74: -8402341919228623589
+    second: RoA_Normal_cypAtk
+  - first:
+      74: -8418735584525605867
+    second: RoA_Normal_death
+  - first:
+      74: 6404564212575482820
+    second: RoA_Normal_strike
   externalObjects:
   - first:
       type: UnityEngine:Material
