@@ -14,37 +14,42 @@ namespace Game.Stage.Level {
             ResourceLoader.instance.add ( ResourceLoader.Resource.Stage1_Joy_Music );
             ResourceLoader.instance.add ( ResourceLoader.Resource.Stage1_Boss_Music );
 
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Piano_Do_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Piano_Re_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Piano_Mi_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Piano_Pa_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Piano_Sol_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Piano_Ra_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Piano_Si_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room01_Do_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room01_Re_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room01_Mi_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room01_Pa_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room01_Sol_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room01_Ra_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room01_Si_SFX);
 
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Drum_Do_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Drum_Re_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Drum_Mi_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Drum_Pa_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Drum_Sol_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Drum_Ra_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Drum_Si_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room02_Sound01_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room02_Sound02_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room02_Sound03_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room02_Sound04_SFX);
 
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Guitar_Do_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Guitar_Re_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Guitar_Mi_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Guitar_Pa_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Guitar_Sol_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Guitar_Ra_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Guitar_Si_SFX);
-            
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Bass_Do_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Bass_Re_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Bass_Mi_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Bass_Pa_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Bass_Sol_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Bass_Ra_SFX);
-            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Bass_Si_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Cello01_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Cello02_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Cello03_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Cello04_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Cello05_SFX);
+
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Piano01_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Piano02_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Piano03_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Piano04_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Piano05_SFX);
+
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Trumpet01_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Trumpet02_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Trumpet03_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Trumpet04_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Trumpet05_SFX);
+
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Violin01_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Violin02_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Violin03_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Violin04_SFX);
+            ResourceLoader.instance.add(ResourceLoader.Resource.Stage1_Room03_Violin05_SFX);
         }
     }
 }

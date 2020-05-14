@@ -13,11 +13,13 @@ namespace Game.Management {
             Intro = 1,
             Menu = 2,
             Game_StageJoy = 3,
+            Test = 4, // 테스트용
         }
         private EnumDictionary<SceneType, string> scene_names = new EnumDictionary<SceneType, string> {
             {SceneType.Intro, "Scene01-Intro" },
             {SceneType.Menu, "Scene02-Menu" },
             {SceneType.Game_StageJoy, "Scene03-StageJoy" },
+            {SceneType.Test, "puzzle_test" },
         };
 
         public SceneType current {
@@ -99,7 +101,7 @@ namespace Game.Management {
             bool secne_fader = false;
             // HACK : 나중에 수정하도록 하겠음
             //          게임 씬과 그 외 씬의 로딩 전이는 연출이 달라져야함.
-
+            
             switch ( scene ) {
                 case SceneType.Intro: {
                 } break;
@@ -119,7 +121,7 @@ namespace Game.Management {
                 // TODO : 프로그래스 바는 여기서
                 yield return null;
             }
-
+            
             if ( secne_fader ) {
                 yield return StartCoroutine ( SceneFader.Efade_in ( ) );
             }

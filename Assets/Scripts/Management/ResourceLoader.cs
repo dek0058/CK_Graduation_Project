@@ -44,38 +44,47 @@ namespace Game.Management {
             Stage1_Joy_Music,
             Stage1_Boss_Music,
 
-            // SFX
-            Stage1_Piano_Do_SFX,
-            Stage1_Piano_Re_SFX,
-            Stage1_Piano_Mi_SFX,
-            Stage1_Piano_Pa_SFX,
-            Stage1_Piano_Sol_SFX,
-            Stage1_Piano_Ra_SFX,
-            Stage1_Piano_Si_SFX,
+            //////// SFX ////////
+            // Room 1
+            Stage1_Room01_Do_SFX,
+            Stage1_Room01_Re_SFX,
+            Stage1_Room01_Mi_SFX,
+            Stage1_Room01_Pa_SFX,
+            Stage1_Room01_Sol_SFX,
+            Stage1_Room01_Ra_SFX,
+            Stage1_Room01_Si_SFX,
 
-            Stage1_Drum_Do_SFX,
-            Stage1_Drum_Re_SFX,
-            Stage1_Drum_Mi_SFX,
-            Stage1_Drum_Pa_SFX,
-            Stage1_Drum_Sol_SFX,
-            Stage1_Drum_Ra_SFX,
-            Stage1_Drum_Si_SFX,
+            // Room 2
+            Stage1_Room02_Sound01_SFX,
+            Stage1_Room02_Sound02_SFX,
+            Stage1_Room02_Sound03_SFX,
+            Stage1_Room02_Sound04_SFX,
 
-            Stage1_Guitar_Do_SFX,
-            Stage1_Guitar_Re_SFX,
-            Stage1_Guitar_Mi_SFX,
-            Stage1_Guitar_Pa_SFX,
-            Stage1_Guitar_Sol_SFX,
-            Stage1_Guitar_Ra_SFX,
-            Stage1_Guitar_Si_SFX,
+            // Room 3
+            Stage1_Room03_Cello01_SFX,
+            Stage1_Room03_Cello02_SFX,
+            Stage1_Room03_Cello03_SFX,
+            Stage1_Room03_Cello04_SFX,
+            Stage1_Room03_Cello05_SFX,
 
-            Stage1_Bass_Do_SFX,
-            Stage1_Bass_Re_SFX,
-            Stage1_Bass_Mi_SFX,
-            Stage1_Bass_Pa_SFX,
-            Stage1_Bass_Sol_SFX,
-            Stage1_Bass_Ra_SFX,
-            Stage1_Bass_Si_SFX,
+            Stage1_Room03_Piano01_SFX,
+            Stage1_Room03_Piano02_SFX,
+            Stage1_Room03_Piano03_SFX,
+            Stage1_Room03_Piano04_SFX,
+            Stage1_Room03_Piano05_SFX,
+
+            Stage1_Room03_Trumpet01_SFX,
+            Stage1_Room03_Trumpet02_SFX,
+            Stage1_Room03_Trumpet03_SFX,
+            Stage1_Room03_Trumpet04_SFX,
+            Stage1_Room03_Trumpet05_SFX,
+
+            Stage1_Room03_Violin01_SFX,
+            Stage1_Room03_Violin02_SFX,
+            Stage1_Room03_Violin03_SFX,
+            Stage1_Room03_Violin04_SFX,
+            Stage1_Room03_Violin05_SFX,
+            //////// SFX ////////
         }
         private EnumDictionary<Resource, PrefabData> prefabs = new EnumDictionary<Resource, PrefabData> ( );
 
@@ -111,38 +120,47 @@ namespace Game.Management {
             {Resource.Stage1_Joy_Music, "Audio/Music/OST - Inconsolable" }, // Temporary
             {Resource.Stage1_Boss_Music, "Audio/Music/The Moon Over the Lake Composed by Hemio - New age piano" },
 
-            // SFX
-            {Resource.Stage1_Piano_Do_SFX, "Audio/SFX/Beat/Piano/piaon_Do" }, // Temporary
-            {Resource.Stage1_Piano_Re_SFX, "Audio/SFX/Beat/Piano/piaon_Re" }, // Temporary
-            {Resource.Stage1_Piano_Mi_SFX, "Audio/SFX/Beat/Piano/piaon_Mi" }, // Temporary
-            {Resource.Stage1_Piano_Pa_SFX, "Audio/SFX/Beat/Piano/piaon_Pa" }, // Temporary
-            {Resource.Stage1_Piano_Sol_SFX, "Audio/SFX/Beat/Piano/piaon_Sol" }, // Temporary
-            {Resource.Stage1_Piano_Ra_SFX, "Audio/SFX/Beat/Piano/piaon_Ra" }, // Temporary
-            {Resource.Stage1_Piano_Si_SFX, "Audio/SFX/Beat/Piano/piaon_Si" }, // Temporary
+            //////// SFX ////////
+            // Room 1
+            {Resource.Stage1_Room01_Do_SFX, "Audio/SFX/Beat/Room_01/1_violin_1" },
+            {Resource.Stage1_Room01_Re_SFX, "Audio/SFX/Beat/Room_01/1_violin_2" },
+            {Resource.Stage1_Room01_Mi_SFX, "Audio/SFX/Beat/Room_01/1_violin_3" },
+            {Resource.Stage1_Room01_Pa_SFX, "Audio/SFX/Beat/Room_01/1_violin_4" },
+            {Resource.Stage1_Room01_Sol_SFX, "Audio/SFX/Beat/Room_01/1_violin_5" },
+            {Resource.Stage1_Room01_Ra_SFX, "Audio/SFX/Beat/Room_01/1_violin_6" },
+            {Resource.Stage1_Room01_Si_SFX, "Audio/SFX/Beat/Room_01/1_violin_7" },
 
-            {Resource.Stage1_Drum_Do_SFX, "Audio/SFX/Beat/Drum/drum_Do" }, // Temporary
-            {Resource.Stage1_Drum_Re_SFX, "Audio/SFX/Beat/Drum/drum_Re" }, // Temporary
-            {Resource.Stage1_Drum_Mi_SFX, "Audio/SFX/Beat/Drum/drum_Mi" }, // Temporary
-            {Resource.Stage1_Drum_Pa_SFX, "Audio/SFX/Beat/Drum/drum_Pa" }, // Temporary
-            {Resource.Stage1_Drum_Sol_SFX, "Audio/SFX/Beat/Drum/drum_Sol" }, // Temporary
-            {Resource.Stage1_Drum_Ra_SFX, "Audio/SFX/Beat/Drum/drum_Ra" }, // Temporary
-            {Resource.Stage1_Drum_Si_SFX, "Audio/SFX/Beat/Drum/drum_Si" }, // Temporary
+            // Room 2
+            {Resource.Stage1_Room02_Sound01_SFX, "Audio/SFX/Beat/Room_02/puzzle_Sound_1" },
+            {Resource.Stage1_Room02_Sound02_SFX, "Audio/SFX/Beat/Room_02/puzzle_Sound_2" },
+            {Resource.Stage1_Room02_Sound03_SFX, "Audio/SFX/Beat/Room_02/puzzle_Sound_3" },
+            {Resource.Stage1_Room02_Sound04_SFX, "Audio/SFX/Beat/Room_02/puzzle_Sound_4" },
 
-            {Resource.Stage1_Guitar_Do_SFX, "Audio/SFX/Beat/Guitar/guitar_Do" }, // Temporary
-            {Resource.Stage1_Guitar_Re_SFX, "Audio/SFX/Beat/Guitar/guitar_Re" }, // Temporary
-            {Resource.Stage1_Guitar_Mi_SFX, "Audio/SFX/Beat/Guitar/guitar_Mi" }, // Temporary
-            {Resource.Stage1_Guitar_Pa_SFX, "Audio/SFX/Beat/Guitar/guitar_Pa" }, // Temporary
-            {Resource.Stage1_Guitar_Sol_SFX, "Audio/SFX/Beat/Guitar/guitar_Sol" }, // Temporary
-            {Resource.Stage1_Guitar_Ra_SFX, "Audio/SFX/Beat/Guitar/guitar_Ra" }, // Temporary
-            {Resource.Stage1_Guitar_Si_SFX, "Audio/SFX/Beat/Guitar/guitar_Si" }, // Temporary
+            // Room 3
+            {Resource.Stage1_Room03_Cello01_SFX, "Audio/SFX/Beat/Room_03/cello/cello_1" },
+            {Resource.Stage1_Room03_Cello02_SFX, "Audio/SFX/Beat/Room_03/cello/cello_2" },
+            {Resource.Stage1_Room03_Cello03_SFX, "Audio/SFX/Beat/Room_03/cello/cello_3" },
+            {Resource.Stage1_Room03_Cello04_SFX, "Audio/SFX/Beat/Room_03/cello/cello_4" },
+            {Resource.Stage1_Room03_Cello05_SFX, "Audio/SFX/Beat/Room_03/cello/cello_5" },
 
-            {Resource.Stage1_Bass_Do_SFX, "Audio/SFX/Beat/Bass/bass_Do" }, // Temporary
-            {Resource.Stage1_Bass_Re_SFX, "Audio/SFX/Beat/Bass/bass_Re" }, // Temporary
-            {Resource.Stage1_Bass_Mi_SFX, "Audio/SFX/Beat/Bass/bass_Mi" }, // Temporary
-            {Resource.Stage1_Bass_Pa_SFX, "Audio/SFX/Beat/Bass/bass_Pa" }, // Temporary
-            {Resource.Stage1_Bass_Sol_SFX, "Audio/SFX/Beat/Bass/bass_Sol" }, // Temporary
-            {Resource.Stage1_Bass_Ra_SFX, "Audio/SFX/Beat/Bass/bass_Ra" }, // Temporary
-            {Resource.Stage1_Bass_Si_SFX, "Audio/SFX/Beat/Bass/bass_Si" }, // Temporary
+            {Resource.Stage1_Room03_Piano01_SFX, "Audio/SFX/Beat/Room_03/piano/piano_1" },
+            {Resource.Stage1_Room03_Piano02_SFX, "Audio/SFX/Beat/Room_03/piano/piano_2" },
+            {Resource.Stage1_Room03_Piano03_SFX, "Audio/SFX/Beat/Room_03/piano/piano_3" },
+            {Resource.Stage1_Room03_Piano04_SFX, "Audio/SFX/Beat/Room_03/piano/piano_4" },
+            {Resource.Stage1_Room03_Piano05_SFX, "Audio/SFX/Beat/Room_03/piano/piano_5" },
+
+            {Resource.Stage1_Room03_Trumpet01_SFX, "Audio/SFX/Beat/Room_03/trumpet/trumpet_1" },
+            {Resource.Stage1_Room03_Trumpet02_SFX, "Audio/SFX/Beat/Room_03/trumpet/trumpet_2" },
+            {Resource.Stage1_Room03_Trumpet03_SFX, "Audio/SFX/Beat/Room_03/trumpet/trumpet_3" },
+            {Resource.Stage1_Room03_Trumpet04_SFX, "Audio/SFX/Beat/Room_03/trumpet/trumpet_4" },
+            {Resource.Stage1_Room03_Trumpet05_SFX, "Audio/SFX/Beat/Room_03/trumpet/trumpet_5" },
+
+            {Resource.Stage1_Room03_Violin01_SFX, "Audio/SFX/Beat/Room_03/violin/violin_1" },
+            {Resource.Stage1_Room03_Violin02_SFX, "Audio/SFX/Beat/Room_03/violin/violin_2" },
+            {Resource.Stage1_Room03_Violin03_SFX, "Audio/SFX/Beat/Room_03/violin/violin_3" },
+            {Resource.Stage1_Room03_Violin04_SFX, "Audio/SFX/Beat/Room_03/violin/violin_4" },
+            {Resource.Stage1_Room03_Violin05_SFX, "Audio/SFX/Beat/Room_03/violin/violin_5" },
+            //////// SFX ////////
         };
 
         private EnumDictionary<Resource, string> prefabs_name = new EnumDictionary<Resource, string> ( ) {
