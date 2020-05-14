@@ -35,7 +35,7 @@ namespace Game.Ability.Spell {
             } else {
                 effect.active ( false );
                 effect.source = null;
-                ShaderBlackBoard.instance.alpha = 1f;
+                ShaderBlackBoard.instance.alpha = 0f;
                 ShaderBlackBoard.instance.radius = 0f;
             }
         }
