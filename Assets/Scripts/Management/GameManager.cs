@@ -11,10 +11,11 @@ namespace Game.Management {
 
         public Transform allocation_area;
 
-        public GameStage current_stage;
-        public GameInitializer game_initializer;
+        public GameCamera game_camera = new GameCamera();
+        public GameStage current_stage = null;
+        public GameInitializer game_initializer = new GameInitializer ( );
 
-        public GamePostProcessing post_processing;
+        public GamePostProcessing post_processing = new GamePostProcessing();
 
         public bool is_complete = false;
 
@@ -28,10 +29,6 @@ namespace Game.Management {
 
             if ( allocation_area == null ) {
                 allocation_area = GameObject.FindGameObjectWithTag ( "AllocationArea" ).transform;
-            }
-
-            if( game_initializer  == null) {
-                game_initializer = new GameInitializer ( );
             }
         }
 

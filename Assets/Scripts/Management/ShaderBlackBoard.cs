@@ -23,6 +23,12 @@ namespace Game.Management {
         ///                                                                 Unity                                                                ///
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        private void Start ( ) {
+            Shader.SetGlobalVector ( "_world_pos", world_position );
+            Shader.SetGlobalFloat ( "_radius", radius );
+            Shader.SetGlobalFloat ( "_alpha", alpha );
+        }
+
         private void Update ( ) {
 #if UNITY_EDITOR
             if ( !is_update) {

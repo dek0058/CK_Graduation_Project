@@ -13,26 +13,26 @@ namespace Game.Unit.Character {
             Attack = 2,
         }
 
-        
+
         private RoaType my_type;
 
-    
 
-        public override void confirm() {
-            base.confirm();
+
+        public override void confirm ( ) {
+            base.confirm ( );
 
             AbilityCaster.add ( this, APurgatoryArea.ID );
             my_type = unit_type as RoaType;
         }
 
 
-        protected override void active_rotate() {
-            base.active_rotate();
+        protected override void active_rotate ( ) {
+            base.active_rotate ( );
         }
 
 
-        protected override void active_move() {
-            if(unit_status.input == Vector2.zero) {
+        protected override void active_move ( ) {
+            if ( unit_status.input == Vector2.zero ) {
                 return;
             }
 
@@ -40,7 +40,7 @@ namespace Game.Unit.Character {
             if ( get_animator ( ).GetInteger ( state_para[AnimatorParameter.OrderId] ) != (int)ActionId.Movement ) {
                 action_animation ( (int)ActionId.Movement );
             }
-        }
+        } 
 
 
         protected override void active_update() {

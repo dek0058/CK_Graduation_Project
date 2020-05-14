@@ -11,8 +11,6 @@ namespace Game.Unit.Character {
         }
 
         private PompType my_type;
-        private float angle;
-
 
 
         public override void confirm ( ) {
@@ -23,7 +21,7 @@ namespace Game.Unit.Character {
 
 
         protected override void active_rotate ( ) {
-            angle = JToolkit.Math.Angle.trim ( unit_status.look_at );
+            unit_status.angle = JToolkit.Math.Angle.trim ( unit_status.look_at );
         }
 
 
@@ -41,7 +39,7 @@ namespace Game.Unit.Character {
 
         protected override void active_update ( ) {
             base.active_update ( );
-            get_animator ( ).SetFloat ( "Angle", angle );
+            get_animator ( ).SetFloat ( "Angle", unit_status.angle );
         }
     }
 }

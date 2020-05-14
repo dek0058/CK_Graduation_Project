@@ -26,6 +26,7 @@ namespace Game.Unit {
         public UnitStatus unit_status = new UnitStatus();
         public UnitOrderProperties unit_order_properties = new UnitOrderProperties ( );
 
+        public UnitOrder unit_movemt_order = new UnitOrder ( );
         public UnitOrder unit_order = new UnitOrder ( );
         public AbilityCaster ability_caster = new AbilityCaster ( );
 
@@ -37,6 +38,7 @@ namespace Game.Unit {
 
         private float fixedtimescale = 0f;
 
+        private bool do_confirm = false;
 
         public enum AnimatorTag {
             Default = 0,
@@ -180,6 +182,8 @@ namespace Game.Unit {
 
             game_space = gp;
             unit_order_properties.full ( );
+
+            do_confirm = true;
         }
 
 
@@ -345,15 +349,37 @@ namespace Game.Unit {
 
 
         protected virtual void active_update ( ) {
-            unit_order.update ( );
-            ability_caster.update ( );
+            //ability_caster.update ( );
+            for ( int i = 0; i < ability_caster.abilitys.Count; ++i ) {
+                if ( ability_caster.abilitys[i].is_passive ) {
+                    continue;
+                }
+                if ( unit_order.order == ability_caster.abilitys[i].order_id ) {
+                    if ( ability_caster.abilitys[i].is_cooltime ) {
+                        break;
+                    }
+
+                    // HACK : 스펠마다 단계가 있어야 함.
+                    unit_order.execute ( );
+                    ability_caster.abilitys[i].ability.event_use ( ability_caster.info );
+                    StartCoroutine ( ability_caster.Ecooltime_update ( ability_caster.abilitys[i] ) );
+
+                    break;
+                }
+            }
+
 
             if (get_animator() != null) {
                 get_animator ( ).SetFloat ( state_para[AnimatorParameter.Aspeed], unit_status.rhythm );
             }
 
-            OrderId order_id = unit_order.execute ( );
-            if ( order_id == OrderId.Stop || order_id == OrderId.None ) {
+            
+            if ( unit_movemt_order.order == OrderId.Stop ||
+                unit_movemt_order.order == OrderId.None ) {
+
+                if ( unit_movemt_order.order == OrderId.Stop ) {
+                    unit_movemt_order.execute ( );
+                }
                 unit_status.look_at = unit_status.angle;
                 if ( get_animator ( ).GetInteger ( state_para[AnimatorParameter.OrderId] ) != 0 ) {
                     action_animation ( 0 );
@@ -379,8 +405,11 @@ namespace Game.Unit {
             if ( unit_status.current_hp <= 0.664f ||
                 unit_status.is_dead ) {
                 active_dead ( );
-                return;
             }
+
+            unit_movemt_order.update ( );
+            unit_order.update ( );
+            
         }
 
 
@@ -448,14 +477,23 @@ namespace Game.Unit {
         }
 
         private void Update ( ) {
+            if( !do_confirm ) {
+                return;
+            }
             active_update ( );
         }
 
         private void FixedUpdate ( ) {
+            if ( !do_confirm ) {
+                return;
+            }
             active_fixedupdate ( );
         }
 
         private void LateUpdate ( ) {
+            if ( !do_confirm ) {
+                return;
+            }
             active_lateupdate ( );
         }
     }

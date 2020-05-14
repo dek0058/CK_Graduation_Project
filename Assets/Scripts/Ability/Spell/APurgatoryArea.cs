@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.Ability.Spell {
     using Management;
@@ -19,6 +14,7 @@ namespace Game.Ability.Spell {
 
         public APurgatoryArea ( ) {
             order_id = OrderId.PurgatoryArea;
+            cooltime = 0.1f;
             event_use += use;
             effect = create ( ).GetComponent<PurgatoryArea> ( );
             effect.active ( false );

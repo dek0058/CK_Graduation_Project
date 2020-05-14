@@ -11,32 +11,13 @@ namespace Game.User {
 
         [Header ( "Control Unit" )]
         public UUnit unit = null;
-        public bool do_input = false;
 
         private Vector2 axis = new Vector2 ( );
+
         private float releas_both_input_time = 0f;
         [SerializeField, Range ( 1f, 10f )]
         private float releas_input_time_speed = 5f;
         private const float Releas_Both_Input_Time = 0.56f;
-
-        private bool do_purgatory_wait = false;
-        private bool do_purgatory = false;
-        public bool is_purgatory {
-            get => do_purgatory;
-        }
-
-
-        public void active_purgatory_area ( ) {
-            if ( unit == null || unit.unit_status.is_dead ) {
-                return;
-            }
-            StartCoroutine ( Eactive_purgatory ( ) );
-        }
-
-
-        public void inactive_purgatory_area ( ) {
-            do_purgatory = false;
-        }
 
 
 
@@ -47,7 +28,6 @@ namespace Game.User {
             if ( !is_local || unit == null ) {
                 return;
             }
-            do_input = false;
 
             // 이동
             float x = Singleton<PlayerInput>.instance.horizontal.value;
@@ -110,8 +90,11 @@ namespace Game.User {
 
             // 이동 키를 누르고 있으므로 유닛에게 이동 명령을 알림
             if( is_receiving ) {
-                do_input = true;
-                unit.unit_order.set ( OrderId.Move );
+                if ( unit.unit_order.order == OrderId.None ||
+                    unit.unit_order.order == OrderId.Stop ||
+                    unit.unit_order.order == OrderId.Move ) {
+                    unit.unit_movemt_order.set ( OrderId.Move );
+                }
             }
             unit.move ( temp_axis );
 
@@ -123,33 +106,12 @@ namespace Game.User {
 
 
             if ( Singleton<PlayerInput>.instance.attack.down ) {
-                do_input = true;
                 unit.unit_order.set ( OrderId.Attack );
             }
 
             if ( Singleton<PlayerInput>.instance.purgatory.down ) {
-                do_input = true;
                 unit.unit_order.set ( OrderId.PurgatoryArea );
-                //if ( !is_purgatory ) {
-                //    active_purgatory_area ( );
-                //} else {
-                //    inactive_purgatory_area ( );
-                //}
             }
-
-
-            if ( !do_input ) {
-                //unit.unit_order.set ( OrderId.Stop );
-            }
-
-
-            // 마우스 회전
-            //Camera main_camera = Camera.main;
-            //Vector2 mouse_pos = Input.mousePosition;
-            //Vector3 point = new Vector3 ( mouse_pos.x, mouse_pos.y, -main_camera.transform.parent.position.z );
-            //Vector2 dir = main_camera.ScreenToWorldPoint ( point );
-            //float angle = (Angle.target_to_angle ( unit.get_position ( ), dir ) * Mathf.Rad2Deg);
-            //unit.rotate ( angle );
         }
 
 
@@ -157,34 +119,11 @@ namespace Game.User {
             base.confirm ( );
 
             releas_input_time_speed = 8f;
-            //HACK
-            //ShaderBlackBoard.instance.range = 0f;
         }
 
         protected override void update ( ) {
             base.update ( );
             controller ( );
-        }
-
-
-        private IEnumerator Eactive_purgatory ( ) {
-            if ( do_purgatory_wait ) {
-                yield break;
-            }
-            do_purgatory_wait = true;
-            do_purgatory = true;
-            unit.game_space = GameSpace.Both;
-
-
-            while (do_purgatory) {
-
-
-                yield return null;
-            }
-
-
-            unit.game_space = GameSpace.Origin;
-            do_purgatory_wait = false;
         }
     }
 }

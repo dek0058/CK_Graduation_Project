@@ -11,7 +11,7 @@ namespace Game.Ability{
 
         public UUnit unit;
         public Ability.Info info = new Ability.Info();
-        public List<Ability> abilitys = new List<Ability> ( );
+        public List<AbilityInfo> abilitys = new List<AbilityInfo> ( );
 
         /// <summary> 능력의 상태 </summary>
         public enum Condition { 
@@ -30,40 +30,41 @@ namespace Game.Ability{
 
         public static void add(UUnit unit, int id) {
             if ( AbilityManager.instance.ability_list.ContainsKey ( id ) ) {
-                Ability a = AbilityManager.instance.ability_list[id];
-                if ( !unit.ability_caster.abilitys.Contains ( a ) ) {
-                    unit.ability_caster.abilitys.Add ( a );
+                // 중복체크
+                for(int i = 0; i < unit.ability_caster.abilitys.Count; ++i ) {
+                    if (unit.ability_caster.abilitys[i].id == id) {
+                        return;
+                    }
                 }
+
+                Ability a = AbilityManager.instance.ability_list[id];
+                unit.ability_caster.abilitys.Add ( new AbilityInfo ( a ) );
             }
         }
 
         public static void remove(UUnit unit, int id) {
             if ( AbilityManager.instance.ability_list.ContainsKey ( id ) ) {
-                Ability a = AbilityManager.instance.ability_list[id];
-                if ( unit.ability_caster.abilitys.Contains ( a ) ) {
-                    unit.ability_caster.abilitys.Remove ( a );
+                AbilityInfo info = null;
+                for ( int i = 0; i < unit.ability_caster.abilitys.Count; ++i ) {
+                    if ( unit.ability_caster.abilitys[i].id == id ) {
+                        info = unit.ability_caster.abilitys[i];
+                        break;
+                    }
+                }
+
+                if(info != null) {
+                    unit.ability_caster.abilitys.Remove ( info );
                 }
             }
         }
 
-
+        /// <summary>
+        /// 미사용
+        /// </summary>
         public void update ( ) {
             if(do_use) {
                 return;
             }
-
-            for(int i = 0; i < abilitys.Count; ++i ) {
-                if(abilitys[i].is_passive) {
-                    continue;
-                }
-                if(unit.unit_order.order == abilitys[i].order_id) {
-                    // HACK : 스펠마다 단계가 있어야 함.
-                    unit.unit_order.execute ( );
-                    abilitys[i].event_use ( info );
-                    break;
-                }
-            }
-
         }
 
 
@@ -78,6 +79,26 @@ namespace Game.Ability{
                 }
             }
             return value;
+        }
+
+
+        public IEnumerator Ecooltime_update ( AbilityInfo info ) {
+            bool loop = true;
+            info.cooltime = info.ability.cooltime;
+
+            while(loop) {
+                if(info == null) {
+                    yield break;
+                }
+
+                info.cooltime -= Time.deltaTime;
+                if(info.cooltime <= 0f) {
+                    info.cooltime = 0f;
+                    loop = false;
+                }
+
+                yield return null;
+            }
         }
     }
 }

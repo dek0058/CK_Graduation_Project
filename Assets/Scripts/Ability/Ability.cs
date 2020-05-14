@@ -14,7 +14,7 @@ namespace Game.Ability {
         }
         public bool is_passive = false;
         public OrderId order_id;
-
+        public float cooltime;
 
         public struct Info {
             public UUnit source;
