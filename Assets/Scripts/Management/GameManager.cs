@@ -38,6 +38,9 @@ namespace Game.Management {
 
         public void unit_pause(bool value) {
             UUnit[] unit = Unit_Transform.GetComponentsInChildren<UUnit> ( );
+            foreach ( var u in unit ) {
+                u.pause ( value );
+            }
         }
 
 

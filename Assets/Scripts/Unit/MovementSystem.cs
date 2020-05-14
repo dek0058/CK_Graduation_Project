@@ -87,26 +87,17 @@ namespace Game.Unit {
 
 
         private void update_airborn ( ) {    // Fixed
-            float amount = flying + airborn;
-            float ground_y = pre_ground_y + GameManager.World_Y_Position;
-            Vector3 position = grounded ? 
-                new Vector3( transform.position.x, ground_y + amount, transform.position.z) : transform.position;
-
-            if (grounded) {
-                if ( position.y < ground_y ) {
-                    position.y = ground_y;
-                }
-            }
-
-            rigidbody.MovePosition ( position );
-
-            if( airborn > 0f) {
-                unit.unit_status.airborn += Physics.gravity.y * fixedtimescale;
-            } else if( airborn < 0f ) {
+            if ( airborn > 0f ) {
+                unit.unit_status.airborn += (Physics.gravity.y * fixedtimescale);
+            } else if ( airborn < 0f ) {
                 unit.unit_status.airborn = 0f;
             }
+            // 수정필요
+            float amount = flying + airborn;
+            float ground_y = pre_ground_y + GameManager.World_Y_Position + flying;
 
-            
+            Vector3 position = new Vector3 ( transform.position.x, amount, transform.position.z );
+            rigidbody.MovePosition ( position );
         }
 
 
@@ -201,9 +192,6 @@ namespace Game.Unit {
                 return;
             }
             
-            flying = unit.unit_status.flying;
-            airborn = unit.unit_status.airborn;
-
             update_grounded ( );
         }
 
@@ -211,6 +199,9 @@ namespace Game.Unit {
             if(unit == null) {
                 return;
             }
+
+            flying = unit.unit_status.flying;
+            airborn = unit.unit_status.airborn;
             fixedtimescale = Time.fixedDeltaTime * unit.unit_status.rhythm;
             update_movement ( );
             update_airborn ( );
