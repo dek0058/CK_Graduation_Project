@@ -40,7 +40,12 @@ namespace Game.Ability.Effect {
             if(source == null) {
                 return;
             }
-            transform.position = source.get_position ( );
+
+            if(transform.parent != source.transform) {
+                transform.SetParent ( source.transform );
+                float radius = ShaderBlackBoard.instance.radius;
+                transform.localScale = new Vector3 ( radius, radius, radius );
+            }
             ShaderBlackBoard.instance.world_position = source.get_position ( );
         }
 

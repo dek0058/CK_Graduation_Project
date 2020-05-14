@@ -21,6 +21,7 @@ namespace Game.Management {
             // Unit
             // Character
             Roa,
+            Pomp,
 
             // Missile
 
@@ -88,6 +89,7 @@ namespace Game.Management {
             // Unit
             // Character
             {Resource.Roa, "Unit/Character/Roa/Roa"},
+            {Resource.Pomp, "Unit/Character/Pomp/Pomp" },
 
 
             // Missile
@@ -146,6 +148,7 @@ namespace Game.Management {
         private EnumDictionary<Resource, string> prefabs_name = new EnumDictionary<Resource, string> ( ) {
             // Characters
             {Resource.Roa, typeof(Unit.Character.URoa).Name},
+            {Resource.Pomp, typeof(Unit.Character.UPomp).Name},
 
 
             // Missiles

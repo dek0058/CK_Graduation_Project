@@ -96,11 +96,9 @@ namespace Game.Management {
 
         public IEnumerator Eload_resource ( SceneType scene ) {
             ResourceLoader loader = ResourceLoader.instance;
-
+            bool secne_fader = false;
             // HACK : 나중에 수정하도록 하겠음
             //          게임 씬과 그 외 씬의 로딩 전이는 연출이 달라져야함.
-
-            yield return StartCoroutine ( SceneFader.Efade_out ( SceneFader.FadeType.Loading ) );
 
             switch ( scene ) {
                 case SceneType.Intro: {
@@ -108,7 +106,9 @@ namespace Game.Management {
                 case SceneType.Menu: { 
                 } break;
                 case SceneType.Game_StageJoy: {
-                   //GameManager.instance.current_stage.load_resource ( );
+                    secne_fader = true;
+                    yield return StartCoroutine ( SceneFader.Efade_out ( SceneFader.FadeType.Loading ) );
+                    //GameManager.instance.current_stage.load_resource ( );
                 } break;
             }
             
@@ -119,8 +119,10 @@ namespace Game.Management {
                 // TODO : 프로그래스 바는 여기서
                 yield return null;
             }
-            
-            yield return StartCoroutine ( SceneFader.Efade_in ( ) );
+
+            if ( secne_fader ) {
+                yield return StartCoroutine ( SceneFader.Efade_in ( ) );
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////////

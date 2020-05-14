@@ -28,7 +28,6 @@ namespace Game.Ability.Spell {
                 effect.source = info.source;
                 ShaderBlackBoard.instance.alpha = 1f;
                 ShaderBlackBoard.instance.radius = 2.8f;
-                effect.transform.localScale = new Vector3 ( 2.8f, 2.8f, 2.8f );
             } else {
                 effect.active ( false );
                 effect.source = null;
