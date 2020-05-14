@@ -5,5 +5,7 @@ using UnityEngine;
 namespace Game.Event {
     public class EventStageJoyStart : MonoBehaviour {
 
+
+
     }
 }

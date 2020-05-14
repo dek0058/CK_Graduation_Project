@@ -34,7 +34,7 @@ namespace Game.Management {
             PlayerManager.instance.initialize ( );
             AbilityManager.instance.initialize ( );
             game_initializer.initialize ( );
-            current_stage.initialize ( );
+            current_stage?.initialize ( );
 
             is_complete = true;
         }

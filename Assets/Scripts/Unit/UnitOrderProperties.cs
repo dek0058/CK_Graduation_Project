@@ -12,6 +12,7 @@
         }
 
         private BitLayer layer = new BitLayer ( );
+        private BitLayer save_layer = new BitLayer ( );
 
 
         /// <summary>
@@ -36,6 +37,14 @@
 
         public void full ( ) {
             layer.full ( );
+        }
+
+        public void save ( ) {
+            save_layer.current = layer.current;
+        }
+
+        public void load ( ) {
+            layer.current = save_layer.current;
         }
     }
 }

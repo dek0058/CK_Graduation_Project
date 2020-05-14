@@ -10,6 +10,7 @@ namespace JToolkit.Utility {
         private int layer = 0;
         public int current {
             get => layer;
+            set => layer = value;
         }
 
         /// <summary>
