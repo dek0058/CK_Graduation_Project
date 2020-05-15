@@ -11,6 +11,7 @@ namespace Game.Unit.Character {
             Idle = 0,
             Movement = 1,
             Attack = 2,
+            Death = 3,
         }
 
 
@@ -53,19 +54,15 @@ namespace Game.Unit.Character {
             }
             base.active_attack ( );
             action_animation ( (int)ActionId.Attack );
+            action_doing = true;
         }
 
+        protected override void active_dead ( ) {
+            base.active_dead ( );
 
-        protected override void active_update() {
-            base.active_update();
-        }
-
-        protected override void active_fixedupdate() {
-            base.active_fixedupdate();
-        }
-
-        protected override void active_lateupdate() {
-            base.active_lateupdate();
+            if ( get_animator ( ).GetInteger ( state_para[AnimatorParameter.OrderId] ) != (int)ActionId.Death ) {
+                action_animation ( (int)ActionId.Death );
+            }
         }
     }
 }

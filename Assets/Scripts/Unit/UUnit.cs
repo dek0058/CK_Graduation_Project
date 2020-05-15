@@ -49,6 +49,7 @@ namespace Game.Unit {
             }
         }
 
+
         private float fixedtimescale = 0f;
         private bool do_confirm = false;
 
@@ -322,7 +323,6 @@ namespace Game.Unit {
             // TODO : 어떠한 행동을 하고 있다면 Ruturn 시켜줘야함
             event_attack?.Invoke ( this );
             unit_order.execute ( );
-            action_doing = true;
         }
 
 
@@ -384,14 +384,20 @@ namespace Game.Unit {
 
 
         protected virtual void active_update ( ) {
-            //ability_caster.update ( );
-
             if (get_animator() != null) {
                 get_animator ( ).SetFloat ( state_para[AnimatorParameter.Aspeed], unit_status.rhythm );
             }
+        }
 
 
-            if ( !doing ) {
+        protected virtual void active_fixedupdate ( ) {
+            fixedtimescale = Time.fixedDeltaTime * unit_status.rhythm;
+            
+            if(unit_status.is_dead) {
+                return;
+            }
+
+            if ( !action_doing ) {
                 if ( unit_movemt_order.order == OrderId.Stop ||
                     unit_movemt_order.order == OrderId.None ) {
 
@@ -406,12 +412,7 @@ namespace Game.Unit {
                     }
                 }
             }
-        }
 
-
-        protected virtual void active_fixedupdate ( ) {
-            fixedtimescale = Time.fixedDeltaTime * unit_status.rhythm;
-            
             if ( unit_order_properties.get ( UnitOrderProperties.Properties.Attack ) ) {
                 if ( unit_order.order == OrderId.Attack ) {
                     active_attack ( );

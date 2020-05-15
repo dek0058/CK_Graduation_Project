@@ -10,10 +10,12 @@ namespace Game.Unit.Character
         {
             Idle = 0,
             Movement = 1,
+            Death = 3,
         }
         
         private BejjangiType my_type;
         
+
         public override void confirm()
         {
             base.confirm();
@@ -28,8 +30,7 @@ namespace Game.Unit.Character
 
         protected override void active_move()
         {
-            if (unit_status.input == Vector2.zero)
-            {
+            if ( unit_status.input == Vector2.zero || action_doing ) {
                 return;
             }
 
@@ -39,20 +40,15 @@ namespace Game.Unit.Character
                 action_animation((int)ActionId.Movement);
             }
         }
-        
-        protected override void active_update()
-        {
-            base.active_update();
+
+
+        protected override void active_dead ( ) {
+            base.active_dead ( );
+
+            if ( get_animator ( ).GetInteger ( state_para[AnimatorParameter.OrderId] ) != (int)ActionId.Death ) {
+                action_animation ( (int)ActionId.Death );
+            }
         }
 
-        protected override void active_fixedupdate()
-        {
-            base.active_fixedupdate();
-        }
-
-        protected override void active_lateupdate()
-        {
-            base.active_lateupdate();
-        }
     }
 }

@@ -223,10 +223,6 @@ namespace Game.Unit {
         private void OnDrawGizmosSelected ( ) {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere ( transform.position, radius );
-
-            Gizmos.color = Color.red;
-            Ray ray = new Ray ( transform.position + Vector3.up, Vector3.down * 1000f );
-            Gizmos.DrawRay ( ray );
         }
 #endif
     }
