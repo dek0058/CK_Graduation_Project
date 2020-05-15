@@ -13,7 +13,7 @@ namespace Game.Unit.Product {
             if(piece == null) {
                 return false;
             }
-            AudioClip clip = ResourceLoader.instance.get_prefab ( (int)piece.clip ) as AudioClip;
+            AudioClip clip = ResourceLoader.instance.get_prefab ( (int)piece.beat_clip ) as AudioClip;
             sfx.play ( clip, 1f, 0f, 1f );
             return true;
         }

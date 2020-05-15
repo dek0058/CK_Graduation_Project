@@ -16,9 +16,9 @@ MonoBehaviour:
     id: 3
     nickname: "\uBC30\uC9F1\uC774"
     hp: 100
-    mspeed: 500
+    mspeed: 100
     aspeed: 1
-    rspeed: 100
+    rspeed: 1000
     damage: 0
     armor: 0
     atime: 0
