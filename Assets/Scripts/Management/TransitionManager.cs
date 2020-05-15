@@ -108,9 +108,9 @@ namespace Game.Management {
                 case SceneType.Menu: { 
                 } break;
                 case SceneType.Game_StageJoy: {
+                    GameManager.instance.current_stage.load_resource ( );
                     secne_fader = true;
                     yield return StartCoroutine ( SceneFader.Efade_out ( SceneFader.FadeType.Loading ) );
-                    //GameManager.instance.current_stage.load_resource ( );
                 } break;
             }
             
