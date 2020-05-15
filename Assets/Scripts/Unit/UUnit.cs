@@ -196,6 +196,10 @@ namespace Game.Unit {
             unit_order_properties.full ( );
 
             do_confirm = true;
+
+            if ( get_animator ( ) != null ) {
+                Animation.SceneLinkedSMB<UUnit>.Initialize ( get_animator ( ), this );
+            }
         }
 
 
@@ -522,9 +526,6 @@ namespace Game.Unit {
 
         private IEnumerator Start ( ) {
             yield return new WaitUntil ( ( ) => GameManager.instance.is_complete );
-            if ( get_animator() != null ) {
-                Animation.SceneLinkedSMB<UUnit>.Initialize ( get_animator ( ), this );
-            }
             confirm ( );
         }
 
