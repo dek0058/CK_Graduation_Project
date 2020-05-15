@@ -115,7 +115,6 @@ namespace Game.Unit {
                 if ( hit.normal.y >= 1.0f) {
                     grounded = true;
                     pre_ground_y = hit.point.y;
-                    Debug.Log ( pre_ground_y );
                 } else {
                     grounded = false;
                 }

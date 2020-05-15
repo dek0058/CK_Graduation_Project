@@ -274,7 +274,6 @@ namespace Game.Unit {
         /// </summary>
         /// <param name="id">애니메이션 ID</param>
         public void action_animation ( int id ) {
-            unit_type.animator.ResetTrigger ( state_para[AnimatorParameter.Action] );
             unit_type.animator.SetInteger ( state_para[AnimatorParameter.OrderId], id );
             unit_type.animator.SetTrigger ( state_para[AnimatorParameter.Action] );
         }

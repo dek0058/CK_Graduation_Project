@@ -13,7 +13,7 @@ public class ObjectHeightHelper : MonoBehaviour {
         float far = Camera.main.farClipPlane;
 
         foreach ( var obj in positioning ) {
-            obj.localPosition = new Vector3 ( 0f, -(y_axis / far) * 2, 0f );
+            obj.localPosition = new Vector3 ( 0f, -(y_axis / far) * 4, 0f );
         }
 
         foreach ( var obj in scaling ) {
