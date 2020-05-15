@@ -38,7 +38,10 @@ namespace Game.Ability.Spell {
 
 
         private GameObject create ( ) {
-            return GameObject.Instantiate ( ResourceLoader.instance.get_prefab ( ResourceLoader.Resource.Purgatory_Area ) as GameObject, AbilityManager.instance.transform );
+            GameObject obj = GameObject.Instantiate ( ResourceLoader.instance.get_prefab ( ResourceLoader.Resource.Purgatory_Area ) as GameObject, GameManager.instance.Unit_Transform );
+            float radius = ShaderBlackBoard.instance.radius;
+            obj.transform.localScale = new Vector3 ( radius, radius, radius );
+            return obj;
         }
     }
 }

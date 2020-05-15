@@ -36,16 +36,12 @@ namespace Game.Ability.Effect {
         }
 
 
-        private void Update ( ) {
+        private void FixedUpdate ( ) {
             if(source == null) {
                 return;
             }
 
-            if(transform.parent != source.transform) {
-                transform.SetParent ( source.transform );
-                float radius = ShaderBlackBoard.instance.radius;
-                transform.localScale = new Vector3 ( radius, radius, radius );
-            }
+            transform.position = source.transform.position;
             ShaderBlackBoard.instance.world_position = source.get_position ( );
         }
 

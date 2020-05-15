@@ -112,7 +112,8 @@ namespace Game.Unit {
             if(prefab == null) {
                 return default ( T );
             }
-            GameObject obj = Instantiate ( prefab, position, Quaternion.identity );
+            GameObject obj = Instantiate ( prefab, position, Quaternion.identity, GameManager.instance.Unit_Transform );
+            obj.transform.localScale = new Vector3 ( 1f, 1f, 1f );
             T unit = obj.GetComponent<T> ( );
             
             (unit as UUnit).rotate ( angle );
