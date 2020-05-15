@@ -39,8 +39,11 @@ MonoBehaviour:
     type: 0
     rotation: 0
     variations:
-    - {fileID: 3798269504274998865, guid: d08e380bc3a06f843b2018035098d79e, type: 3}
-    variationWeights: 32000000
+    - {fileID: 5920323986480922706, guid: 4cd6f03c8866f7d45b8c624696b61e87, type: 3}
+    - {fileID: 3076608316163309815, guid: fe3d0c69c2f512e4f92456e5ea2ce431, type: 3}
+    - {fileID: 8166684869936614668, guid: 5dd4325c8852cc940af0e1a77ff10b48, type: 3}
+    - {fileID: 1589181863439848393, guid: e6b1e370779dc8c4bad32c589f09e842, type: 3}
+    variationWeights: 32000000320000003200000032000000
   materialMappingFrom: []
   materialMappingTo: []
   coalesce: 1
