@@ -12,13 +12,27 @@ namespace Game.Obj.Puzzle
         public UUnit unit = null;
         public UBeatboxPiece[] beats;
         private int beat_cnt = 0;
+        private Material mat;
 
         private void Start()
         {
+            mat = Resources.Load<Material>("Tile/Material/Green");
             beats = transform.GetComponentsInChildren<UBeatboxPiece>();
             StartCoroutine(MoveToPosition(unit.transform, beats[beat_cnt].transform.position, 0f));
         }
-        
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                for (int i = 0; i < beats.Length; i++)
+                {
+                    beats[i].transform.GetComponent<MeshRenderer>().material = mat;
+                    beats[i].isActive = true;
+                }
+            }
+        }
+
         private IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove)
         {
             Vector3 currentPos = transform.position;
