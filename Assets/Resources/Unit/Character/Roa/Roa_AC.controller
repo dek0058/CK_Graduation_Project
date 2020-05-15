@@ -26,6 +26,20 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-6084471373627268998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be8e7d19a2ab9b4f9125d943a50315c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doing: 0
+  exit_time: 1
 --- !u!1101 &-4736421090206462116
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -119,6 +133,20 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-752220766987465324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be8e7d19a2ab9b4f9125d943a50315c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doing: 0
+  exit_time: 1
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -159,6 +187,20 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!114 &28545510814026727
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be8e7d19a2ab9b4f9125d943a50315c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doing: 0
+  exit_time: 1
 --- !u!1101 &1339642548714437956
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -305,7 +347,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be8e7d19a2ab9b4f9125d943a50315c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doing: 0
   exit_time: 0.7
+--- !u!114 &6777507913217525439
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be8e7d19a2ab9b4f9125d943a50315c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doing: 0
+  exit_time: 1
 --- !u!1101 &7033653670479827901
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

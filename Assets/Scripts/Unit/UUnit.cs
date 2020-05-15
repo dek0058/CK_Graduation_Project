@@ -36,7 +36,7 @@ namespace Game.Unit {
         public event on_attack event_attack    = null;
         public event on_damaged event_damaged  = null;
 
-        protected bool doing = false;
+        public bool doing = false;
         public bool action_doing {
             get => doing;
             set {
@@ -60,7 +60,7 @@ namespace Game.Unit {
             Attack,     // 2
             Dead,       // 3
         }
-        readonly protected EnumDictionary<AnimatorTag, string> state_tag = new EnumDictionary<AnimatorTag, string> {
+        readonly public EnumDictionary<AnimatorTag, string> state_tag = new EnumDictionary<AnimatorTag, string> {
             { AnimatorTag.Default,   "" },
             { AnimatorTag.Idle,      "Idle" },
             { AnimatorTag.Movement,  "Movement" },
@@ -72,7 +72,7 @@ namespace Game.Unit {
             OrderId,
             Action,
         }
-        readonly protected EnumDictionary<AnimatorParameter, int> state_para = new EnumDictionary<AnimatorParameter, int> {
+        readonly public EnumDictionary<AnimatorParameter, int> state_para = new EnumDictionary<AnimatorParameter, int> {
             { AnimatorParameter.Aspeed, Animator.StringToHash ( "Aspeed" ) },
             { AnimatorParameter.OrderId, Animator.StringToHash ( "OrderId" ) },
             { AnimatorParameter.Action, Animator.StringToHash ( "Action" ) },

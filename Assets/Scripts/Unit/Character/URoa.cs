@@ -49,15 +49,12 @@ namespace Game.Unit.Character {
 
 
         protected override void active_attack ( ) {
-            Debug.Log ( unit_order.order );
-            Debug.Log ( action_doing );
             if ( action_doing ) {
                 return;
             }
             base.active_attack ( );
-            action_animation ( (int)ActionId.Attack );
-            Debug.Log ( get_animator ( ).GetBool ( state_para[AnimatorParameter.Action] ) );
             action_doing = true;
+            action_animation ( (int)ActionId.Attack );
         }
 
         protected override void active_dead ( ) {
