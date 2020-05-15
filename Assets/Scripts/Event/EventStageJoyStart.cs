@@ -5,9 +5,9 @@ using UnityEngine;
 namespace Game.Event {
     using Management;
 
-    public class EventStageJoyStart : MonoBehaviour {
+    public class EventStageJoyStart : GameEvent {
 
-        public void execute ( ) {
+        public override void execute ( ) {
             GameManager.instance.unit_pause ( true );
 
         }

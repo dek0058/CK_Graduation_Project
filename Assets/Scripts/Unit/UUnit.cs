@@ -202,8 +202,10 @@ namespace Game.Unit {
         /// <summary>
         /// 유닛을 정지시킵니다.
         /// </summary>
+        public bool is_pause = false;
         public void pause ( bool value ) {
-            if(value) {
+            is_pause = value;
+            if (value) {
                 unit_order_properties.save ( );
                 unit_order_properties.clear ( );
             } else {
@@ -393,8 +395,10 @@ namespace Game.Unit {
                         unit_movemt_order.execute ( );
                     }
                     unit_status.look_at = unit_status.angle;
-                    if ( get_animator ( ).GetInteger ( state_para[AnimatorParameter.OrderId] ) != 0 ) {
-                        action_animation ( 0 );
+                    if ( get_animator ( ) != null ) {
+                        if ( get_animator ( ).GetInteger ( state_para[AnimatorParameter.OrderId] ) != 0 ) {
+                            action_animation ( 0 );
+                        }
                     }
                 }
             }
@@ -518,7 +522,9 @@ namespace Game.Unit {
 
         private IEnumerator Start ( ) {
             yield return new WaitUntil ( ( ) => GameManager.instance.is_complete );
-            Animation.SceneLinkedSMB<UUnit>.Initialize ( get_animator ( ), this );
+            if ( get_animator() != null ) {
+                Animation.SceneLinkedSMB<UUnit>.Initialize ( get_animator ( ), this );
+            }
             confirm ( );
         }
 

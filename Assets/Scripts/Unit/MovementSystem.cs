@@ -92,25 +92,30 @@ namespace Game.Unit {
             } else if ( airborn < 0f ) {
                 unit.unit_status.airborn = 0f;
             }
-            // 수정필요
-            float amount = flying + airborn;
-            float ground_y = pre_ground_y + GameManager.World_Y_Position + flying;
 
-            Vector3 position = new Vector3 ( transform.position.x, amount, transform.position.z );
-            rigidbody.MovePosition ( position );
+            float amount = flying + airborn;
+            float ground_y = pre_ground_y + GameManager.World_Y_Position + amount;
+
+            Vector3 position = new Vector3 ( transform.position.x, ground_y, transform.position.z );
+            transform.position = position;
         }
 
 
         public void update_grounded ( ) {   // Update
             Vector3 origin = transform.position + Vector3.up;
+            Ray ray = new Ray ( origin, Vector3.down );
             RaycastHit hit;
             LayerMask layer = 1 << (int)GameLayer.Field_Both;
+            layer |= 1 << (int)GameLayer.Field_Origin;
+            layer |= 1 << (int)GameLayer.Field_Purgatory;
 
-            bool collision = Physics.SphereCast ( origin, radius, Vector3.down, out hit, Mathf.Infinity, layer );
-            if(collision ) {
+
+            bool collision = Physics.SphereCast ( ray, radius, out hit, Mathf.Infinity, layer );
+            if (collision ) {
                 if ( hit.normal.y >= 1.0f) {
                     grounded = true;
                     pre_ground_y = hit.point.y;
+                    Debug.Log ( pre_ground_y );
                 } else {
                     grounded = false;
                 }
@@ -203,6 +208,11 @@ namespace Game.Unit {
             flying = unit.unit_status.flying;
             airborn = unit.unit_status.airborn;
             fixedtimescale = Time.fixedDeltaTime * unit.unit_status.rhythm;
+            
+            if(unit.is_pause) {
+                return;
+            }
+
             update_movement ( );
             update_airborn ( );
         }
@@ -213,6 +223,10 @@ namespace Game.Unit {
         private void OnDrawGizmosSelected ( ) {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere ( transform.position, radius );
+
+            Gizmos.color = Color.red;
+            Ray ray = new Ray ( transform.position + Vector3.up, Vector3.down * 1000f );
+            Gizmos.DrawRay ( ray );
         }
 #endif
     }

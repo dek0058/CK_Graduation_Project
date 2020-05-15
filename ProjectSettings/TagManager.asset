@@ -4,12 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - GameCamera
-  - CameraPoint
-  - AllocationArea
   - EditorTile
   - eraser
   - sub
+  - UICamera
   layers:
   - Default
   - TransparentFX
@@ -44,18 +42,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Cliff
-    uniqueID: 2501216103
-    locked: 0
-  - name: Origin Ground
-    uniqueID: 1285863855
-    locked: 0
-  - name: Purgatory Ground
-    uniqueID: 2289719839
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Forword
-    uniqueID: 2270184469
     locked: 0
